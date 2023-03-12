@@ -16,7 +16,7 @@ const PortfolioThree = () => {
       <Header />
       <Breadcrumb title={"Encuentra tu tatuaje"} />
       <PortfolioItems />
-      <FooterThree />
+      {/* <FooterThree /> */}
     </Wrapper>
   );
 };
