@@ -1,8 +1,9 @@
 import { useFormik } from "formik";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
+
 import ErrorMsg from "./error-msg";
 
-export const registerSupplementary = () => {
+export const RegisterSupplementary = () => {
   const { completaarRegistro } = useTattoboxApi();
   // use formik
   const { handleChange, handleSubmit, handleBlur, errors, values, touched } =

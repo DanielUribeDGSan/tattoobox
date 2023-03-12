@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { add_user, sign_out } from "../redux/features/auth-slice";
 import Router from "next/router";
 
-export const useTattoboxApi = () => {
+const useTattoboxApi = () => {
   const dispatch = useDispatch();
   const [token, setToken] = useState("");
   const [idParte, setIdParte] = useState("");
