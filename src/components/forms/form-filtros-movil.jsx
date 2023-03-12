@@ -45,6 +45,7 @@ export const FormFiltrosMovil = ({
             placeholder="Estado"
             instanceId="estado"
             isClearable={isClearable}
+            isSearchable={false}
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
@@ -72,6 +73,7 @@ export const FormFiltrosMovil = ({
             components={{
               Option: SelectCheckbox,
             }}
+            isSearchable={false}
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
@@ -101,6 +103,7 @@ export const FormFiltrosMovil = ({
             components={{
               Option: SelectCheckbox,
             }}
+            isSearchable={false}
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
