@@ -3,10 +3,9 @@ import { ModalTatuaje } from "../../modals/modalTatuaje";
 import { useTattoBox } from "../../../hooks/use-tattobox";
 import { useQuery } from "react-query";
 import { FormFiltros } from "../../forms/form-filtros";
-import { BottomSheet } from "react-spring-bottom-sheet";
-import "react-spring-bottom-sheet/dist/style.css";
 import { FormFiltrosMovil } from "../../forms/form-filtros-movil";
 import { IputSearchMovil } from "../../inputs/InputSearchMovil";
+import { ModalSearchMovil } from "../../modals/modalSearchMovil";
 
 const PortfolioItems = () => {
   // Hooks
@@ -18,7 +17,7 @@ const PortfolioItems = () => {
   const [precioState, setPrecioState] = useState([]);
   const [isClearable, setIsClearable] = useState(true);
   const [page, setPage] = useState(1);
-  const [open, setOpen] = useState(false);
+
   // Custom hooks
   const {
     isLoading,
@@ -54,7 +53,11 @@ const PortfolioItems = () => {
               searchState={searchState}
               setSearchState={setSearchState}
             />
-            <button className="mt-2" onClick={() => setOpen(true)}>
+            <button
+              className="mt-2"
+              data-bs-toggle="modal"
+              data-bs-target="#filtrosMovilModal"
+            >
               Mostrar más filtros
             </button>
           </div>
@@ -110,7 +113,22 @@ const PortfolioItems = () => {
           <ModalTatuaje modal_id="tatuajeModal" url_img={urlImage} />
         </div>
       </div>
-      <BottomSheet open={open} style={{ zIndex: 100 }}>
+      <ModalSearchMovil modal_id="filtrosMovilModal">
+        <FormFiltrosMovil
+          estadoState={estadoState}
+          setEstadoState={setEstadoState}
+          estiloState={estiloState}
+          setEstiloState={setEstiloState}
+          precioState={precioState}
+          setPrecioState={setPrecioState}
+          selectEstados={selectEstados}
+          selectEstilos={selectEstilos}
+          selectPrecios={selectPrecios}
+          isClearable={isClearable}
+          setIsClearable={setIsClearable}
+        />
+      </ModalSearchMovil>
+      {/* <BottomSheet open={open} style={{ zIndex: 100 }}>
         <div
           className="container"
           style={{ maxHeight: "50vh", minHeight: "50vh", overflowX: "auto" }}
@@ -139,7 +157,7 @@ const PortfolioItems = () => {
             setOpen={setOpen}
           />
         </div>
-      </BottomSheet>
+      </BottomSheet> */}
     </>
   );
 };

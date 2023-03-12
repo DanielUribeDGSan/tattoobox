@@ -13,21 +13,17 @@ export const FormFiltrosMovil = ({
   selectPrecios,
   isClearable,
   setIsClearable,
-  setOpen,
 }) => {
   const handleSelectEstadoChange = (estados) => {
     setEstadoState(estados);
-    setOpen(false);
   };
 
   const handleSelectEstiloChange = (estilos_onchange) => {
     setEstiloState(estilos_onchange);
-    setOpen(false);
   };
 
   const handleSelectPrecioChange = (precios_onchange) => {
     setPrecioState(precios_onchange);
-    setOpen(false);
   };
 
   return (
@@ -46,6 +42,7 @@ export const FormFiltrosMovil = ({
             instanceId="estado"
             isClearable={isClearable}
             isSearchable={false}
+            menuShouldScrollIntoView={false}
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
@@ -74,6 +71,7 @@ export const FormFiltrosMovil = ({
               Option: SelectCheckbox,
             }}
             isSearchable={false}
+            menuShouldScrollIntoView={false}
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
@@ -104,6 +102,7 @@ export const FormFiltrosMovil = ({
               Option: SelectCheckbox,
             }}
             isSearchable={false}
+            menuShouldScrollIntoView={false}
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
