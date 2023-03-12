@@ -1,0 +1,48 @@
+@use "../utils" as *;
+
+.input-search {
+  background-color: var(--tp-common-white);
+  border-radius: 8px 0px 0px 8px;
+  @media #{$md,$sm,$xs} {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  & input {
+    appearance: none;
+    background-color: var(--tp-common-white);
+    border: 1px solid var(--tp-common-white);
+    border-radius: 8px 0px 0px 8px;
+    color: var(--tp-common-black);
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    padding: 17px 5px 17px 28px;
+    width: 95%;
+    @media #{$md,$sm,$xs} {
+      padding: 10px;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    &::after {
+      border-right: 1px solid var(--tp-common-black);
+    }
+  }
+  & span {
+    align-self: stretch;
+    width: 1px;
+    border-right: 1px solid #cdcbcb;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    box-sizing: border-box;
+  }
+}
+
+.input-content-movil {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+}

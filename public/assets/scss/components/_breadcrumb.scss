@@ -1,0 +1,54 @@
+@use "../utils" as *;
+
+.breadcrumb {
+  &__pt-310 {
+    padding-top: 300px;
+    padding-bottom: 145px;
+    @media #{$md} {
+      padding-top: 120px;
+    }
+    @media #{$sm, $xs} {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+  }
+  &__title {
+    font-size: 65px;
+    color: var(--tp-common-white);
+    font-weight: 700;
+    margin-bottom: 40px;
+    @media #{$xs} {
+      font-size: 40px;
+    }
+  }
+}
+
+.ac-about-shape-img {
+  position: absolute;
+  bottom: -17px;
+  left: 34px;
+  z-index: 999;
+}
+.ac-testimonial-space {
+  padding-top: 115px;
+  padding-bottom: 130px;
+  @media #{$xs} {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+.breadcrumb__area {
+  & .overlay {
+    background-color: var(--tp-common-black);
+    opacity: 0.7;
+    transition: background-color 0.3s, border-radius 0.3s, opacity 0.3s;
+  }
+  @media #{$xl} {
+    background-size: cover;
+    background-position: right;
+  }
+  @media #{$lg,$md,$xs} {
+    background-size: cover;
+    background-position: left;
+  }
+}
