@@ -2,10 +2,10 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ModalTatuaje } from "../../modals/modalTatuaje";
 import { useTattoBox } from "../../../hooks/use-tattobox";
 import { useQuery } from "react-query";
-import { FormFiltros } from "../../forms/form-filtros";
 import { FormFiltrosMovil } from "../../forms/form-filtros-movil";
 import { IputSearchMovil } from "../../inputs/InputSearchMovil";
 import { ModalSearchMovil } from "../../modals/modalSearchMovil";
+import { FormFiltros } from "../../forms/form-filtros";
 
 const PortfolioItems = () => {
   // Hooks
@@ -17,6 +17,22 @@ const PortfolioItems = () => {
   const [precioState, setPrecioState] = useState([]);
   const [isClearable, setIsClearable] = useState(true);
   const [page, setPage] = useState(1);
+
+  const [state, setState] = React.useState({
+    bottom: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
 
   // Custom hooks
   const {
@@ -53,11 +69,7 @@ const PortfolioItems = () => {
               searchState={searchState}
               setSearchState={setSearchState}
             />
-            <button
-              className="mt-2"
-              data-bs-toggle="modal"
-              data-bs-target="#filtrosMovilModal"
-            >
+            <button className="mt-2" onClick={toggleDrawer("bottom", true)}>
               Mostrar más filtros
             </button>
           </div>
@@ -113,7 +125,12 @@ const PortfolioItems = () => {
           <ModalTatuaje modal_id="tatuajeModal" url_img={urlImage} />
         </div>
       </div>
-      <ModalSearchMovil modal_id="filtrosMovilModal">
+
+      <ModalSearchMovil
+        modal_id="filtrosMovilModal"
+        state={state}
+        toggleDrawer={toggleDrawer}
+      >
         <FormFiltrosMovil
           estadoState={estadoState}
           setEstadoState={setEstadoState}
@@ -128,6 +145,7 @@ const PortfolioItems = () => {
           setIsClearable={setIsClearable}
         />
       </ModalSearchMovil>
+
       {/* <BottomSheet open={open} style={{ zIndex: 100 }}>
         <div
           className="container"

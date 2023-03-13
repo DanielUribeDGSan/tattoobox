@@ -1285,12 +1285,11 @@
   border-color: #fff !important;
   border-radius: 0px !important;
   color: var(--tp-common-black);
-  display: block;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
   padding: 11px 4px;
-  width: 100%;
+
   @media #{$md,$sm,$xs} {
     padding: 0px;
     margin-bottom: 0.5rem;
@@ -1309,7 +1308,6 @@
   border-color: #fff !important;
   border-radius: 0px !important;
   color: var(--tp-common-black);
-  display: block;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
@@ -1344,7 +1342,6 @@
   border-color: var(--tp-common-white) !important;
   border-radius: 0px 8px 8px 0px !important;
   color: var(--tp-common-black);
-  display: block;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
