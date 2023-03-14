@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTattoBox } from "../../../hooks/use-tattobox";
+import { useTattoBoxFiltros } from "../../../hooks/use-tattobox-filtros";
 import { useQuery } from "react-query";
 import { FormFiltrosMovil } from "../../forms/form-filtros-movil";
 import { IputSearchMovil } from "../../inputs/InputSearchMovil";
@@ -40,7 +40,7 @@ const PortfolioItems = () => {
     selectEstados,
     selectEstilos,
     selectPrecios,
-  } = useTattoBox();
+  } = useTattoBoxFiltros();
   const {
     isLoading: isLoadingSearch,
     data: tatuajes,
@@ -57,8 +57,6 @@ const PortfolioItems = () => {
     ],
     queryFn: getTatuajes,
   });
-
-  console.log(tatuajes);
 
   return (
     <>

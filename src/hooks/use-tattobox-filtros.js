@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { tattoApiSocial, tattoApi } from "../api/tattoApi";
 import { toast } from "react-toastify";
 
-export const useTattoBox = () => {
+export const useTattoBoxFiltros = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [filtros, setFiltros] = useState({
     estados: [],

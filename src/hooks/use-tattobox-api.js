@@ -6,9 +6,14 @@ import { add_user, sign_out } from "../redux/features/auth-slice";
 import Router from "next/router";
 
 const useTattoboxApi = () => {
+  // Auth and register
   const dispatch = useDispatch();
+
+  const [isLoading, setIsLoading] = useState(true);
   const [token, setToken] = useState("");
   const [idParte, setIdParte] = useState("");
+  const [contenidoTatuaje, setContenidoTatuaje] = useState([]);
+
   const registroEmail = async (email) => {
     try {
       const body = {
@@ -81,11 +86,40 @@ const useTattoboxApi = () => {
     Router.push("/");
   };
 
+  // Data tatuajes
+
+  const getContenidoTatuaje = async (idContenido) => {
+    try {
+      setIsLoading(true);
+      const config = {
+        headers: {
+          fetchOptions: {
+            mode: "no-cors",
+          },
+        },
+      };
+      const { data } = await tattoApiSocial.get(
+        `/v1/busqueda/${idContenido}`,
+        config
+      );
+      setContenidoTatuaje(data.contenido);
+      setIsLoading(false);
+    } catch (error) {
+      const errorMessage = error?.message;
+      toast.error(`${errorMessage}`, {
+        position: "top-left",
+      });
+    }
+  };
+
   return {
+    isLoading,
     logout,
     registroEmail,
     validarCodigo,
     completaarRegistro,
+    getContenidoTatuaje,
+    contenidoTatuaje,
   };
 };
 

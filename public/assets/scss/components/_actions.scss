@@ -1,0 +1,19 @@
+@use "../utils" as *;
+
+.actions-tatuaje {
+  background-color: var(--tp-theme-2);
+  padding: 1rem 1.2rem;
+  border-radius: 0px 0px 20px 20px;
+  & .likes {
+    margin-left: 0.5rem;
+  }
+  & .precio-icon {
+    margin-left: 0.5rem;
+  }
+  & .precio {
+    margin-left: 0.5rem;
+  }
+  & span {
+    font-size: 1.1rem;
+  }
+}

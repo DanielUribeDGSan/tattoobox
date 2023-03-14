@@ -1,79 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { Profile } from "../profile/profile";
+import { ActionsTatuajes } from "../actions/actionsTatuajes";
+import useTattoboxApi from "../../hooks/use-tattobox-api";
 
-const Profile = () => {
-  return (
-    <>
-      <div className="row grid gx-3 profile">
-        <div className="col-xl-2 col-lg-2 col-md-2 d-flex align-items-center justify-content-center">
-          <img
-            className="img-profile"
-            src="/assets/img/tatuajes/tatuaje3.jpg"
-            alt="profile tattoobox"
-          />
-        </div>
-        <div className="col-xl-10 col-lg-10 col-md-10 d-flex align-items-center">
-          <div>
-            <p className="mb-0">
-              schecoperez
-              <span>
-                <img src="/assets/img/svg/verify.svg" alt="" />
-              </span>
-            </p>
-            <span>Tattos Mexican</span>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <p className="profile-biografia pt-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-          laudantium, eligendi, cum aspernatur corrupti mollitia aut. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-          laudantium, eligendi, cum aspernatur corrupti mollitia aut.
-        </p>
-        <div className="row grid gx-3 pb-3">
-          <div className="col-xl-7 col-lg-7 col-md-7">
-            <ul className="list-group">
-              <li className="list-group-item">
-                <img
-                  src="/assets/img/svg/tattoo-machine.svg"
-                  alt="svg tattoo"
-                />
-                Experiencia en tatuajes realistas
-              </li>
-              <li className="list-group-item">
-                <img
-                  src="/assets/img/svg/tattoo-machine.svg"
-                  alt="svg tattoo"
-                />
-                Experiencia en tatuajes de color y blanco y negro
-              </li>
-              <li className="list-group-item">
-                <img
-                  src="/assets/img/svg/tattoo-machine.svg"
-                  alt="svg tattoo"
-                />
-                Experiencia en tatuajes grandes
-              </li>
-            </ul>
-          </div>
-          <div className="col-xl-5 col-lg-5 col-md-5 d-flex align-items-end justify-content-center">
-            <div className="">
-              <Link href="#">
-                <a className="btn-reserva">
-                  <i className="fal fa-calendar"></i>
-                  <span>Reservar</span>
-                </a>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+export const ModalTatuaje = ({ modal_id, idContenido }) => {
+  const { getContenidoTatuaje, contenidoTatuaje, isLoading } = useTattoboxApi();
 
-export const ModalTatuaje = ({ modal_id, url_img }) => {
+  useEffect(() => {
+    if (idContenido) {
+      getContenidoTatuaje(idContenido);
+    }
+  }, [idContenido]);
+
   return (
     <div
       className="modal fade modal-tatauje"
@@ -90,14 +29,30 @@ export const ModalTatuaje = ({ modal_id, url_img }) => {
         ></button> */}
         <div className="modal-content">
           <div className="modal-body">
-            <div className="row grid gx-3">
-              <div className="col-xl-6 col-lg-6 col-md-6">
-                <img className="img-fluid" src={url_img} alt="tattoobox" />
+            {isLoading ? (
+              <p>Cargando...</p>
+            ) : (
+              <div className="row grid gx-3">
+                <div className="col-xl-6 col-lg-6 col-md-6">
+                  <img
+                    className="img-fluid w-100"
+                    src={contenidoTatuaje.UrlImagen}
+                    alt="tattoobox"
+                    style={{
+                      maxHeight: "80vh",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                      height: "70vh",
+                      borderRadius: "20px 20px 0px 0px",
+                    }}
+                  />
+                  <ActionsTatuajes contenido={contenidoTatuaje} />
+                </div>
+                <div className="col-xl-6 col-lg-6 col-md-6">
+                  <Profile contenido={contenidoTatuaje} />
+                </div>
               </div>
-              <div className="col-xl-6 col-lg-6 col-md-6">
-                <Profile />
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
