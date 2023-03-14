@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import PortfolioItems from "../portfolios/portfolio-2/portfolio-items";
 
 const Profile = () => {
   return (
@@ -83,12 +82,12 @@ export const ModalTatuaje = ({ modal_id, url_img }) => {
       aria-hidden="true"
     >
       <div className="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <button
+        {/* <button
           type="button"
           className="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
-        ></button>
+        ></button> */}
         <div className="modal-content">
           <div className="modal-body">
             <div className="row grid gx-3">
@@ -97,8 +96,6 @@ export const ModalTatuaje = ({ modal_id, url_img }) => {
               </div>
               <div className="col-xl-6 col-lg-6 col-md-6">
                 <Profile />
-                <hr />
-                <PortfolioItems />
               </div>
             </div>
           </div>
