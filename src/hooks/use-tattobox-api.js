@@ -10,11 +10,9 @@ const useTattoboxApi = () => {
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [token, setToken] = useState("");
-  const [idParte, setIdParte] = useState("");
-  const [contenidoTatuaje, setContenidoTatuaje] = useState([]);
+  const [contentTattoo, setContentTattoo] = useState([]);
 
-  const registroEmail = async (email) => {
+  const registerEmail = async (email) => {
     try {
       const body = {
         email,
@@ -27,7 +25,7 @@ const useTattoboxApi = () => {
     }
   };
 
-  const validarCodigo = async (email, code) => {
+  const validateCode = async (email, code) => {
     try {
       const body = {
         email,
@@ -54,7 +52,7 @@ const useTattoboxApi = () => {
     }
   };
 
-  const completaarRegistro = async (body) => {
+  const completeRegister = async (body) => {
     try {
       await tattoApiIdentify.post("/registro/complementario", body);
 
@@ -88,7 +86,7 @@ const useTattoboxApi = () => {
 
   // Data tatuajes
 
-  const getContenidoTatuaje = async (idContenido) => {
+  const getContentTattoo = async (idContent) => {
     try {
       setIsLoading(true);
       const config = {
@@ -99,10 +97,10 @@ const useTattoboxApi = () => {
         },
       };
       const { data } = await tattoApiSocial.get(
-        `/v1/busqueda/${idContenido}`,
+        `/v1/busqueda/${idContent}`,
         config
       );
-      setContenidoTatuaje(data.contenido);
+      setContentTattoo(data.contenido);
       setIsLoading(false);
     } catch (error) {
       const errorMessage = error?.message;
@@ -115,11 +113,11 @@ const useTattoboxApi = () => {
   return {
     isLoading,
     logout,
-    registroEmail,
-    validarCodigo,
-    completaarRegistro,
-    getContenidoTatuaje,
-    contenidoTatuaje,
+    registerEmail,
+    validateCode,
+    completeRegister,
+    getContentTattoo,
+    contentTattoo,
   };
 };
 

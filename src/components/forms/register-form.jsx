@@ -10,7 +10,7 @@ import { get_user } from "../../redux/features/auth-slice";
 
 const RegisterForm = () => {
   // register With Email Password
-  const { registroEmail, validarCodigo, completaarRegistro } = useTattoboxApi();
+  const { registerEmail, validateCode } = useTattoboxApi();
   const [showCode, setShowCode] = useState(false);
   const { user } = useSelector((state) => state.auth);
 
@@ -27,10 +27,10 @@ const RegisterForm = () => {
       validationSchema: !showCode ? registerSchema : registerCode,
       onSubmit: ({ email, code, terminos }, { resetForm }) => {
         if (!showCode) {
-          registroEmail(email);
+          registerEmail(email);
           setShowCode(true);
         } else {
-          validarCodigo(email, code);
+          validateCode(email, code);
         }
         // resetForm();
       },

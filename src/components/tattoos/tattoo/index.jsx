@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { FooterThree, Header, Wrapper } from "../../../layout";
 import { animationCreate } from "../../../utils/utils";
 import Breadcrumb from "../../common/breadcrumb/breadcrumb";
-import PortfolioItems from "./portfolio-items";
+import TattoItems from "./tattoo-items";
 
-const PortfolioThree = () => {
+const TattooMain = () => {
   useEffect(() => {
     setTimeout(() => {
       animationCreate();
@@ -15,10 +15,10 @@ const PortfolioThree = () => {
     <Wrapper>
       <Header />
       <Breadcrumb title={"Encuentra tu tatuaje"} />
-      <PortfolioItems />
+      <TattoItems />
       {/* <FooterThree /> */}
     </Wrapper>
   );
 };
 
-export default PortfolioThree;
+export default TattooMain;

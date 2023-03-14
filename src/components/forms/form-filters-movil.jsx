@@ -1,29 +1,29 @@
 import { SelectCheckbox } from "../selects/selectCheckbox";
 import Select from "react-select";
 
-export const FormFiltrosMovil = ({
-  estadoState,
-  setEstadoState,
-  estiloState,
-  setEstiloState,
-  precioState,
-  setPrecioState,
-  selectEstados,
-  selectEstilos,
-  selectPrecios,
+export const FormFiltersMovil = ({
+  stateCountryState,
+  setStateCountryState,
+  styleState,
+  setStyleState,
+  priceState,
+  setPriceState,
+  dataStateCountry,
+  dataStyles,
+  dataPrices,
   isClearable,
   setIsClearable,
 }) => {
-  const handleSelectEstadoChange = (estados) => {
-    setEstadoState(estados);
+  const handleChangeState = (states) => {
+    setStateCountryState(states);
   };
 
-  const handleSelectEstiloChange = (estilos_onchange) => {
-    setEstiloState(estilos_onchange);
+  const handleChangeStyle = (styles) => {
+    setStyleState(styles);
   };
 
-  const handleSelectPrecioChange = (precios_onchange) => {
-    setPrecioState(precios_onchange);
+  const handleChangePrice = (prices) => {
+    setPriceState(prices);
   };
 
   return (
@@ -36,8 +36,8 @@ export const FormFiltrosMovil = ({
             classNamePrefix="react-select-filtros"
             name="estadosTxt"
             id="estadosTxt"
-            options={selectEstados}
-            onChange={handleSelectEstadoChange}
+            options={dataStateCountry}
+            onChange={handleChangeState}
             placeholder="Estado"
             instanceId="estado"
             isClearable={isClearable}
@@ -52,7 +52,7 @@ export const FormFiltrosMovil = ({
                 primary: "#263946",
               },
             })}
-            value={estadoState || ""}
+            value={stateCountryState || ""}
           />
         </div>
         <div className="col-xl-3 col-lg-3 col-md-3 p-0 m-0">
@@ -61,11 +61,11 @@ export const FormFiltrosMovil = ({
             classNamePrefix="react-select-filtros2"
             name="estilosTxt"
             id="estilosTxt"
-            options={selectEstilos}
+            options={dataStyles}
             isMulti
             hideSelectedOptions={false}
             placeholder="Estilos"
-            onChange={handleSelectEstiloChange}
+            onChange={handleChangeStyle}
             instanceId="estilos"
             components={{
               Option: SelectCheckbox,
@@ -81,7 +81,7 @@ export const FormFiltrosMovil = ({
                 primary: "#263946",
               },
             })}
-            value={estiloState || ""}
+            value={styleState || ""}
           />
         </div>
         <div className="col-xl-2 col-lg-2 col-md-2 p-0 m-0">
@@ -93,9 +93,9 @@ export const FormFiltrosMovil = ({
             isMulti
             multiple
             placeholder="Precios"
-            options={selectPrecios}
+            options={dataPrices}
             hideSelectedOptions={false}
-            onChange={handleSelectPrecioChange}
+            onChange={handleChangePrice}
             // isOptionDisabled={() => estiloState.length >= 2}
             instanceId="precio"
             components={{
@@ -112,7 +112,7 @@ export const FormFiltrosMovil = ({
                 primary: "#263946",
               },
             })}
-            value={precioState || ""}
+            value={priceState || ""}
           />
         </div>
       </div>

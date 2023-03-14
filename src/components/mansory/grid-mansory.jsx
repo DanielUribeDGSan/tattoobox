@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
-import { ModalTatuaje } from "../modals/modalTatuaje";
+import { ModalTattoo } from "../modals/modalTattoo";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const GridMansory = ({ data }) => {
-  const [urlImage, setUrlImage] = useState("");
-  const [idContenido, setIdContenido] = useState("");
+  const [idContent, setIdContent] = useState("");
   const matches = useMediaQuery("(max-width:800px)");
 
-  const handleSowTatuaje = (idContenido, img) => {
-    setIdContenido(idContenido);
-    setUrlImage(img);
+  const handleSowTatuaje = (idContent, img) => {
+    setIdContent(idContent);
   };
 
   return (
@@ -42,7 +40,7 @@ export const GridMansory = ({ data }) => {
           ))}
         </Masonry>
       </Box>
-      <ModalTatuaje modal_id="tatuajeModal" idContenido={idContenido} />
+      <ModalTattoo modal_id="tatuajeModal" idContent={idContent} />
     </>
   );
 };

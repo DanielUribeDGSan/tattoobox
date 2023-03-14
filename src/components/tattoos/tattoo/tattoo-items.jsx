@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useTattoBoxFiltros } from "../../../hooks/use-tattobox-filtros";
 import { useQuery } from "react-query";
-import { FormFiltrosMovil } from "../../forms/form-filtros-movil";
+import { FormFiltersMovil } from "../../forms/form-filters-movil";
 import { IputSearchMovil } from "../../inputs/InputSearchMovil";
 import { ModalSearchMovil } from "../../modals/modalSearchMovil";
-import { FormFiltros } from "../../forms/form-filtros";
+import { FormFilters } from "../../forms/form-filters";
 import { GridMansory } from "../../mansory/grid-mansory";
 
-const PortfolioItems = () => {
+const TattoItems = () => {
   // Hooks
 
   const [searchState, setSearchState] = useState("");
-  const [estadoState, setEstadoState] = useState("");
-  const [estiloState, setEstiloState] = useState([]);
-  const [precioState, setPrecioState] = useState([]);
+  const [stateCountryState, setStateCountryState] = useState("");
+  const [styleState, setStyleState] = useState([]);
+  const [priceState, setPriceState] = useState([]);
   const [isClearable, setIsClearable] = useState(true);
   const [page, setPage] = useState(1);
 
@@ -34,28 +34,24 @@ const PortfolioItems = () => {
   };
 
   // Custom hooks
-  const {
-    isLoading,
-    getTatuajes,
-    selectEstados,
-    selectEstilos,
-    selectPrecios,
-  } = useTattoBoxFiltros();
+  const { isLoading, getTattoos, dataStateCountry, dataStyles, dataPrices } =
+    useTattoBoxFiltros();
+
   const {
     isLoading: isLoadingSearch,
-    data: tatuajes,
+    data: tattoos,
     isError,
     error,
   } = useQuery({
     queryKey: [
-      "tatuajes",
+      "tattoos",
       page,
       searchState,
-      estadoState,
-      estiloState,
-      precioState,
+      stateCountryState,
+      styleState,
+      priceState,
     ],
-    queryFn: getTatuajes,
+    queryFn: getTattoos,
   });
 
   return (
@@ -73,18 +69,18 @@ const PortfolioItems = () => {
             </button>
           </div>
           <div className="d-none-movil">
-            <FormFiltros
+            <FormFilters
               searchState={searchState}
               setSearchState={setSearchState}
-              estadoState={estadoState}
-              setEstadoState={setEstadoState}
-              estiloState={estiloState}
-              setEstiloState={setEstiloState}
-              precioState={precioState}
-              setPrecioState={setPrecioState}
-              selectEstados={selectEstados}
-              selectEstilos={selectEstilos}
-              selectPrecios={selectPrecios}
+              stateCountryState={stateCountryState}
+              setStateCountryState={setStateCountryState}
+              styleState={styleState}
+              setStyleState={setStyleState}
+              priceState={priceState}
+              setPriceState={setPriceState}
+              dataStateCountry={dataStateCountry}
+              dataStyles={dataStyles}
+              dataPrices={dataPrices}
               isClearable={isClearable}
               setIsClearable={setIsClearable}
             />
@@ -95,8 +91,8 @@ const PortfolioItems = () => {
               <p>Cargando...</p>
             ) : (
               <>
-                {tatuajes.length == 0 && <p>No hay datos encontrados</p>}
-                <GridMansory data={tatuajes} />
+                {tattoos.length == 0 && <p>No hay datos encontrados</p>}
+                <GridMansory data={tattoos} />
               </>
             )}
           </div>
@@ -104,20 +100,20 @@ const PortfolioItems = () => {
       </div>
 
       <ModalSearchMovil
-        modal_id="filtrosMovilModal"
+        modal_id="filtersMovilModal"
         state={state}
         toggleDrawer={toggleDrawer}
       >
-        <FormFiltrosMovil
-          estadoState={estadoState}
-          setEstadoState={setEstadoState}
-          estiloState={estiloState}
-          setEstiloState={setEstiloState}
-          precioState={precioState}
-          setPrecioState={setPrecioState}
-          selectEstados={selectEstados}
-          selectEstilos={selectEstilos}
-          selectPrecios={selectPrecios}
+        <FormFiltersMovil
+          stateCountryState={stateCountryState}
+          setStateCountryState={setStateCountryState}
+          styleState={styleState}
+          setStyleState={setStyleState}
+          priceState={priceState}
+          setPriceState={setPriceState}
+          dataStateCountry={dataStateCountry}
+          dataStyles={dataStyles}
+          dataPrices={dataPrices}
           isClearable={isClearable}
           setIsClearable={setIsClearable}
         />
@@ -126,4 +122,4 @@ const PortfolioItems = () => {
   );
 };
 
-export default PortfolioItems;
+export default TattoItems;

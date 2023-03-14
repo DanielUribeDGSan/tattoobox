@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { Profile } from "../profile/profile";
-import { ActionsTatuajes } from "../actions/actionsTatuajes";
+import { ActionsTattoos } from "../actions/actions-tattoos";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
 
-export const ModalTatuaje = ({ modal_id, idContenido }) => {
-  const { getContenidoTatuaje, contenidoTatuaje, isLoading } = useTattoboxApi();
+export const ModalTattoo = ({ modal_id, idContent }) => {
+  const { getContentTattoo, contentTattoo, isLoading } = useTattoboxApi();
 
   useEffect(() => {
-    if (idContenido) {
-      getContenidoTatuaje(idContenido);
+    if (idContent) {
+      getContentTattoo(idContent);
     }
-  }, [idContenido]);
+  }, [idContent]);
 
   return (
     <div
@@ -36,7 +36,7 @@ export const ModalTatuaje = ({ modal_id, idContenido }) => {
                 <div className="col-xl-6 col-lg-6 col-md-6">
                   <img
                     className="img-fluid w-100"
-                    src={contenidoTatuaje.UrlImagen}
+                    src={contentTattoo.UrlImagen}
                     alt="tattoobox"
                     style={{
                       maxHeight: "80vh",
@@ -46,10 +46,10 @@ export const ModalTatuaje = ({ modal_id, idContenido }) => {
                       borderRadius: "20px 20px 0px 0px",
                     }}
                   />
-                  <ActionsTatuajes contenido={contenidoTatuaje} />
+                  <ActionsTattoos content={contentTattoo} />
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-6">
-                  <Profile contenido={contenidoTatuaje} />
+                  <Profile content={contentTattoo} />
                 </div>
               </div>
             )}

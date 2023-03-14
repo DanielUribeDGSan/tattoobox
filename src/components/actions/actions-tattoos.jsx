@@ -4,7 +4,7 @@ import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 
-export const ActionsTatuajes = ({ contenido }) => {
+export const ActionsTattoos = ({ content }) => {
   return (
     <div className="actions-tatuaje">
       <div className="row grid gx-3">

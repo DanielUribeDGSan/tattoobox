@@ -1,7 +1,7 @@
 import React from "react";
 
 export const IputSearchMovil = ({ searchState, setSearchState }) => {
-  const handleSearchChange = (e) => {
+  const handleChangeSearch = (e) => {
     setSearchState(e.target.value);
   };
 
@@ -12,7 +12,7 @@ export const IputSearchMovil = ({ searchState, setSearchState }) => {
         placeholder="Buscar tatuaje"
         name="searchTxt"
         id="searchTxt"
-        onChange={handleSearchChange}
+        onChange={handleChangeSearch}
         value={searchState || ""}
       />
       {/* <span></span> */}

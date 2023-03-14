@@ -4,14 +4,14 @@ import { toast } from "react-toastify";
 
 export const useTattoBoxFiltros = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [filtros, setFiltros] = useState({
+  const [filters, setFilters] = useState({
     estados: [],
     estilos: [],
     precios: [],
   });
-  const [selectEstados, setSelectEstados] = useState([]);
-  const [selectEstilos, setSelectEstilos] = useState([]);
-  const [selectPrecios, setSelectPrecios] = useState([]);
+  const [dataStateCountry, setDataStateCountry] = useState([]);
+  const [dataStyles, setDataStyles] = useState([]);
+  const [dataPrices, setDataPrices] = useState([]);
 
   const config = {
     headers: {
@@ -19,7 +19,7 @@ export const useTattoBoxFiltros = () => {
     },
   };
 
-  const getFiltros = async () => {
+  const getFilters = async () => {
     const estadosPromise = tattoApi.get("/estados");
     const estilosPromise = tattoApi.get("/estilos/tatuajes");
     const preciossPromise = tattoApi.get("/rangoprecios");
@@ -30,7 +30,7 @@ export const useTattoBoxFiltros = () => {
       preciossPromise,
     ]);
 
-    setFiltros({
+    setFilters({
       estados: resps[0].data.estados,
       estilos: resps[1].data.estilos,
       precios: resps[2].data.rangoprecios,
@@ -39,37 +39,45 @@ export const useTattoBoxFiltros = () => {
     setIsLoading(false);
   };
 
-  const getTatuajes = async ({ queryKey }) => {
+  const getTattoos = async ({ queryKey }) => {
     try {
-      let busqueda = "",
-        estado = "",
-        estilos = [],
-        precios = [];
+      let searchTxt = "",
+        stateCountry = "",
+        styles = [],
+        rangePrices = [];
 
       if (queryKey[2]) {
-        busqueda = queryKey[2];
+        searchTxt = queryKey[2];
       }
       if (queryKey[3]) {
-        estado = queryKey[3].value;
+        stateCountry = queryKey[3].value;
       }
       if (queryKey[4].length > 0) {
-        estilos = queryKey[4].map((e) => {
+        styles = queryKey[4].map((e) => {
           return parseInt(e.value);
         });
       }
       if (queryKey[5].length > 0) {
-        precios = queryKey[5].map((e) => {
+        rangePrices = queryKey[5].map((e) => {
           return parseInt(e.value);
         });
       }
 
       const data = {
-        textoBusqueda: busqueda,
-        estado,
-        estilo: estilos,
-        rango_precio: precios,
+        textoBusqueda: searchTxt,
+        estado: stateCountry,
+        estilo: styles,
+        rangePango_precio: rangePrices,
       };
-      const resp = await tattoApiSocial.post("/v1/busqueda", data);
+      const config = {
+        headers: {
+          fetchOptions: {
+            mode: "no-cors",
+          },
+        },
+      };
+      const resp = await tattoApiSocial.post("/v1/busqueda", config, data);
+
       return resp.data.contenidos;
     } catch (error) {
       const errorMessage = error?.message;
@@ -79,13 +87,13 @@ export const useTattoBoxFiltros = () => {
     }
   };
 
-  const getDatosSelectEstados = async () => {
+  const geDataStateCountry = async () => {
     try {
       const { data } = await tattoApi.get("/estados");
-      let options = data.estados.map((elemento) => {
-        return { value: `${elemento.nombre}`, label: `${elemento.nombre}` };
+      let options = data.estados.map((element) => {
+        return { value: `${element.nombre}`, label: `${element.nombre}` };
       });
-      setSelectEstados(options);
+      setDataStateCountry(options);
     } catch (error) {
       const errorMessage = error?.message;
       toast.error(`${errorMessage}`, {
@@ -94,13 +102,13 @@ export const useTattoBoxFiltros = () => {
     }
   };
 
-  const getDatosSelectEstilos = async () => {
+  const getDataStyles = async () => {
     try {
       const { data } = await tattoApi.get("/estilos/tatuajes");
-      let options = data.estilos.map((elemento) => {
-        return { value: `${elemento.id}`, label: `${elemento.nombre}` };
+      let options = data.estilos.map((element) => {
+        return { value: `${element.id}`, label: `${element.nombre}` };
       });
-      setSelectEstilos(options);
+      setDataStyles(options);
     } catch (error) {
       const errorMessage = error?.message;
       toast.error(`${errorMessage}`, {
@@ -109,13 +117,13 @@ export const useTattoBoxFiltros = () => {
     }
   };
 
-  const getDatosSelectPrecios = async () => {
+  const getDataPrices = async () => {
     try {
       const { data } = await tattoApi.get("/rangoprecios");
-      let options = data.rangoprecios.map((elemento) => {
-        return { value: `${elemento.id}`, label: `${elemento.rango}` };
+      let options = data.rangoprecios.map((element) => {
+        return { value: `${element.id}`, label: `${element.rango}` };
       });
-      setSelectPrecios(options);
+      setDataPrices(options);
     } catch (error) {
       const errorMessage = error?.message;
       toast.error(`${errorMessage}`, {
@@ -125,19 +133,17 @@ export const useTattoBoxFiltros = () => {
   };
 
   useEffect(() => {
-    // getFiltros();
-    getDatosSelectEstados();
-    getDatosSelectEstilos();
-    getDatosSelectPrecios();
+    geDataStateCountry();
+    getDataStyles();
+    getDataPrices();
     setIsLoading(false);
   }, []);
 
   return {
-    // ...filtros,
-    selectEstados,
-    selectEstilos,
-    selectPrecios,
+    dataStateCountry,
+    dataStyles,
+    dataPrices,
     isLoading,
-    getTatuajes,
+    getTattoos,
   };
 };

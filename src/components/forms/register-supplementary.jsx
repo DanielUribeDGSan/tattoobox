@@ -4,7 +4,7 @@ import useTattoboxApi from "../../hooks/use-tattobox-api";
 import ErrorMsg from "./error-msg";
 
 export const RegisterSupplementary = () => {
-  const { completaarRegistro } = useTattoboxApi();
+  const { completeRegister } = useTattoboxApi();
   // use formik
   const { handleChange, handleSubmit, handleBlur, errors, values, touched } =
     useFormik({
@@ -37,7 +37,7 @@ export const RegisterSupplementary = () => {
           Fecha_Nacimiento: fechaDeNacimiento,
           IdClasificacionParte: 1,
         };
-        completaarRegistro(body);
+        completeRegister(body);
 
         // resetForm();
       },
