@@ -1,11 +1,36 @@
 @use "../utils" as *;
 
 .modal-tattoo {
+  & .btn-close {
+    display: none;
+    background: none;
+    opacity: 1;
+    background-color: #000;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    z-index: 99;
+    font-size: 2rem;
+    box-shadow: 0 1px 11px 0 #fff;
+    @media #{$sm,$xs} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
   & .modal-dialog {
-    display: flex;
-    align-items: flex-end;
+    @media #{$md} {
+      max-width: 600px;
+    }
+    @media #{$sm,$xs} {
+      display: flex;
+      align-items: flex-end;
+      pointer-events: inherit;
+    }
   }
   & .modal-content {
-    max-height: 90vh !important;
+    @media #{$sm,$xs} {
+      min-height: 90vh;
+    }
   }
 }

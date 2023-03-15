@@ -35,6 +35,7 @@ const PortfolioItems = () => {
   };
   // images
   const images = items.map((img) => img.img);
+
   // all categories
   const all_categories = [...new Set(project_items.map((c) => c.category))];
   // handleCategory

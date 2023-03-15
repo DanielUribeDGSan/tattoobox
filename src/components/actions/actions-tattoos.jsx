@@ -13,11 +13,11 @@ export const ActionsTattoos = ({ content }) => {
         </div>
         <div className="col-xl-6 col-lg-6 col-md-6 col-6 d-flex align-items-center justify-content-center">
           <p className="m-0 p-0 d-inline-flex">
-            <strong>Precio:</strong>
+            <strong className="d-none-movil">Precio:</strong>
           </p>
-          <span className="precio-icon">
+          {/* <span className="precio-icon">
             <AllInclusiveIcon sx={{ color: "#dd4846", fontSize: "1.8rem" }} />
-          </span>
+          </span> */}
           <span className="precio">$ 2,500 MXN</span>
         </div>
         <div className="col-xl-3 col-lg-3 col-md-3 col-3 d-flex align-items-center justify-content-center">

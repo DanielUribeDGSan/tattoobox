@@ -12,8 +12,18 @@
   }
   & .precio {
     margin-left: 0.5rem;
+    @media #{$sm,$xs} {
+      margin-left: 0rem;
+    }
   }
   & span {
     font-size: 1.1rem;
   }
+}
+
+.ril-image-current {
+  // pointer-events: none;
+}
+.ril__toolbarRightSide {
+  position: absolute;
 }

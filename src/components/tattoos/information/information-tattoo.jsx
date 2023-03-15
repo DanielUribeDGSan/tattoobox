@@ -11,7 +11,7 @@ export const InformationTattoo = ({ content }) => {
   return (
     <div className="container">
       <div className="row grid gx-3">
-        <div className="col-6 d-flex align-items-center">
+        <div className="col-xl-6 col-lg-6 col-md-6 col-auto d-flex align-items-center">
           <Stack direction="row" spacing={2}>
             <Avatar alt={Titulo} src={UrlImagen} />{" "}
           </Stack>
@@ -19,7 +19,7 @@ export const InformationTattoo = ({ content }) => {
             {PerfilArtista?.NombrePerfil}
           </p>
         </div>
-        <div className="col-6 d-flex align-items-center justify-content-end">
+        <div className="col-xl-6 col-lg-6 col-md-6 col-auto d-flex align-items-center justify-content-end mt-lg-0 mt-md-0 mt-2">
           <Link href="#">
             <a className="btn-small-primary">Agendar cita</a>
           </Link>

@@ -2,12 +2,12 @@
 
 .d-none-movil {
   @media #{$md,$sm,$xs} {
-    display: none;
+    display: none !important;
   }
 }
 
 .d-none-lg {
   @media #{$mw-lg} {
-    display: none;
+    display: none !important;
   }
 }
