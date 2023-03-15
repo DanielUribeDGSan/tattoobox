@@ -1,0 +1,13 @@
+@use "../utils" as *;
+
+.d-none-movil {
+  @media #{$md,$sm,$xs} {
+    display: none;
+  }
+}
+
+.d-none-lg {
+  @media #{$mw-lg} {
+    display: none;
+  }
+}

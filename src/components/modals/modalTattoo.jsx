@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
-import { Profile } from "../profile/profile";
+
 import { ActionsTattoos } from "../actions/actions-tattoos";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
+import { InformationTattoo } from "../tattoos/information/information-tattoo";
 
 export const ModalTattoo = ({ modal_id, idContent }) => {
   const { getContentTattoo, contentTattoo, isLoading } = useTattoboxApi();
+  const matches = useMediaQuery("(max-width:800px)");
 
   useEffect(() => {
     if (idContent) {
@@ -15,7 +18,7 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
 
   return (
     <div
-      className="modal fade modal-tatauje"
+      className="modal fade modal-tattoo"
       id={modal_id}
       aria-labelledby="tatuajeModalLabel"
       aria-hidden="true"
@@ -42,14 +45,14 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
                       maxHeight: "80vh",
                       objectFit: "cover",
                       objectPosition: "center",
-                      height: "70vh",
+                      height: matches ? "auto" : "70vh",
                       borderRadius: "20px 20px 0px 0px",
                     }}
                   />
                   <ActionsTattoos content={contentTattoo} />
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-6">
-                  <Profile content={contentTattoo} />
+                  <InformationTattoo content={contentTattoo} />
                 </div>
               </div>
             )}

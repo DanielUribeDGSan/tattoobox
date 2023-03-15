@@ -1,2 +1,11 @@
-@use '../utils' as *;
+@use "../utils" as *;
 
+.modal-tattoo {
+  & .modal-dialog {
+    display: flex;
+    align-items: flex-end;
+  }
+  & .modal-content {
+    max-height: 90vh !important;
+  }
+}

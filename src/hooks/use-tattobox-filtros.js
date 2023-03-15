@@ -69,6 +69,7 @@ export const useTattoBoxFiltros = () => {
         estilo: styles,
         rangePango_precio: rangePrices,
       };
+
       const config = {
         headers: {
           fetchOptions: {
@@ -76,8 +77,7 @@ export const useTattoBoxFiltros = () => {
           },
         },
       };
-      const resp = await tattoApiSocial.post("/v1/busqueda", config, data);
-
+      const resp = await tattoApiSocial.post("/v1/busqueda", data, config);
       return resp.data.contenidos;
     } catch (error) {
       const errorMessage = error?.message;

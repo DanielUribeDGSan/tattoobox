@@ -15,7 +15,7 @@ export const GridMansory = ({ data }) => {
   return (
     <>
       <Box sx={{ width: "100%", minHeight: 400 }}>
-        <Masonry columns={matches ? 3 : 4} spacing={2}>
+        <Masonry columns={matches ? 2 : 4} spacing={2}>
           {data.map((item, index) => (
             <div key={index}>
               <img

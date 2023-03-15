@@ -33,7 +33,7 @@ export const FormFilters = ({
   };
 
   return (
-    <div className="filtros">
+    <div className="filters">
       <div className="row grid gx-3 pb-50">
         <div className="col-xl-4 col-lg-4 col-md-4 p-0 m-0">
           <div className="input-search">
@@ -50,8 +50,8 @@ export const FormFilters = ({
         </div>
         <div className="col-xl-3 col-lg-3 col-md-3 p-0 m-0">
           <Select
-            className="react-select-container-filtros"
-            classNamePrefix="react-select-filtros"
+            className="react-select-container-filters"
+            classNamePrefix="react-select-filters"
             name="estadosTxt"
             id="estadosTxt"
             options={dataStateCountry}
@@ -73,8 +73,8 @@ export const FormFilters = ({
         </div>
         <div className="col-xl-3 col-lg-3 col-md-3 p-0 m-0">
           <Select
-            className="react-select-container-filtros2"
-            classNamePrefix="react-select-filtros2"
+            className="react-select-container-filters2"
+            classNamePrefix="react-select-filters2"
             name="estilosTxt"
             id="estilosTxt"
             options={dataStyles}
@@ -100,8 +100,8 @@ export const FormFilters = ({
         </div>
         <div className="col-xl-2 col-lg-2 col-md-2 p-0 m-0">
           <Select
-            className="react-select-container-filtros3"
-            classNamePrefix="react-select-filtros3"
+            className="react-select-container-filters3"
+            classNamePrefix="react-select-filters3"
             name="preciosTxt"
             id="preciosTxt"
             isMulti
