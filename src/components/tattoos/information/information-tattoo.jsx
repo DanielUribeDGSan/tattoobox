@@ -28,12 +28,12 @@ export const InformationTattoo = ({ content }) => {
         </div>
       </div>
       <div className="row grid gx-3">
-        <div className="col-12 mt-3 ">
+        <div className="col-12 mt-3">
           <div className="description-tatto">
             <p className="text-black p-0 m-0">
               {Cuerpo} - {EstiloTatuaje}
             </p>
-            <p className="text-black p-0 m-0"> #Lorem-ipsum #dolorsit</p>
+            <p className="text-black p-0 m-0">#Lorem-ipsum #dolorsit</p>
           </div>
         </div>
         <div className="col-12 mt-3 ">
@@ -82,7 +82,7 @@ export const InformationTattoo = ({ content }) => {
             <div className="col-9 p-0 m-0">
               <div className="comment">
                 <p className="text-black">
-                  <strong>Daniel Uribe</strong>{" "}
+                  <strong>Daniel Uribe</strong>
                   <span>
                     WOW THAT'S AWESOME REALLY""YO EVERYONE CAN DRAW BUT NOT LIKE
                     THIS THAT TAKES TALENT AND A Lot OF APPRECIATE
