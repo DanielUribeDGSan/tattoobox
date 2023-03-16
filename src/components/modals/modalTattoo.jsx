@@ -34,7 +34,7 @@ export const ModalTattoo = ({
 
   const onImgLoad = ({ target: img }) => {
     setImageSize(img.offsetHeight);
-    if (img.offsetHeight <= 500 || img.offsetHeight > 800) {
+    if (img.offsetHeight <= 600 || img.offsetHeight > 800) {
       imageTattoo.current.style.height = "100%";
     }
   };
@@ -75,7 +75,7 @@ export const ModalTattoo = ({
               className="container"
               style={{
                 height:
-                  imageSize > 500
+                  imageSize > 600
                     ? `${imageSize}px`
                     : imageSize <= 800
                     ? "65vh"
