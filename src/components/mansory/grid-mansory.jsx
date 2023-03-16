@@ -3,14 +3,38 @@ import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
 import { ModalTattoo } from "../modals/modalTattoo";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useEffect } from "react";
 
 export const GridMansory = ({ data }) => {
   const [idContent, setIdContent] = useState("");
   const matches = useMediaQuery("(max-width:800px)");
+  const [tattoosIndex, setTattoosIndex] = useState([]);
+  const [idContentAfter, setIdContentAfter] = useState("");
+  const [idContentBefore, setIdContentBefore] = useState("");
 
-  const handleSowTatuaje = (idContent, img) => {
+  const handleSowTatuaje = (idContent, index) => {
+    console.log(index);
+    const tattooAfter = tattoosIndex.find(
+      (tattoo) => tattoo.index === index + 1
+    );
+    const tattooBefore = tattoosIndex.find(
+      (tattoo) => tattoo.index === index - 1
+    );
+
+    setIdContentAfter(tattooAfter?.idContent);
+    setIdContentBefore(tattooBefore?.idContent);
     setIdContent(idContent);
   };
+
+  useEffect(() => {
+    const tattoosAsignedIndex = data.map((element, index) => {
+      return { index: index, idContent: `${element.IdContenido}` };
+    });
+
+    setTattoosIndex(tattoosAsignedIndex);
+  }, [data]);
+
+  console.log(idContentAfter, idContentBefore);
 
   return (
     <>
@@ -22,7 +46,7 @@ export const GridMansory = ({ data }) => {
                 data-bs-toggle="modal"
                 data-bs-target="#tatuajeModal"
                 onClick={() => {
-                  handleSowTatuaje(item.IdContenido, item.UrlImagen);
+                  handleSowTatuaje(item.IdContenido, index);
                 }}
                 src={`${item.UrlImagen}?w=162&auto=format`}
                 srcSet={`${item.UrlImagen}?w=162&auto=format&dpr=2 2x`}
@@ -40,7 +64,12 @@ export const GridMansory = ({ data }) => {
           ))}
         </Masonry>
       </Box>
-      <ModalTattoo modal_id="tatuajeModal" idContent={idContent} />
+      <ModalTattoo
+        modal_id="tatuajeModal"
+        idContent={idContent}
+        idContentAfter={idContentAfter}
+        idContentBefore={idContentBefore}
+      />
     </>
   );
 };

@@ -42,14 +42,14 @@ const NavMenus = () => {
       ))}
       {!user?.email && (
         <>
-          <li>
+          {/* <li>
             <Link href="/login">
               <a>Login</a>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link href="/registro">
-              <a>Registro</a>
+              <a>Registro - Login</a>
             </Link>
           </li>
         </>

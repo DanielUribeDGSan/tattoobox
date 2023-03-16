@@ -7,12 +7,15 @@ import { registerSchema, registerCode } from "../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
 import { get_user } from "../../redux/features/auth-slice";
+import useFirebase from "../../hooks/use-firebase";
 
 const RegisterForm = () => {
   // register With Email Password
   const { registerEmail, validateCode } = useTattoboxApi();
   const [showCode, setShowCode] = useState(false);
   const { user } = useSelector((state) => state.auth);
+
+  const { loginWithGoogle } = useFirebase();
 
   const dispatch = useDispatch();
 
@@ -113,6 +116,13 @@ const RegisterForm = () => {
         <div className="tp-login-button">
           <button className="tp-btn-yellow w-100" type="submit">
             {!showCode ? "Registrarme" : "Verificar código"}
+          </button>
+          <button
+            type="button"
+            className="tp-btn-yellow w-100 mt-3"
+            onClick={loginWithGoogle}
+          >
+            Entrar con google
           </button>
         </div>
         <div className="tp-signup d-flex justify-content-between">

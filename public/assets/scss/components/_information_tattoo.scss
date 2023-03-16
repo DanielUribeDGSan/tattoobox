@@ -1,0 +1,46 @@
+@use "../utils" as *;
+
+$it-font-size-title: 1rem;
+$it-font-size-content: 1rem;
+$it-font-size-small: 0.8rem;
+$it-font-size-comments: 0.9rem;
+$it-opacity-text: 0.8;
+
+.information-tattoo {
+  & .description-tatto {
+    p {
+      font-size: 1rem;
+      font-weight: 100;
+      opacity: $it-opacity-text;
+    }
+  }
+  & .actions {
+    justify-content: space-between;
+    & span {
+      font-size: $it-font-size-small;
+      opacity: $it-opacity-text;
+    }
+  }
+  & .comments {
+    & h2 {
+      font-size: $it-font-size-title;
+      display: inline-block;
+      border-bottom: 1px solid var(--tp-common-black);
+      padding-bottom: 3px;
+    }
+    & .comment {
+      & p {
+        font-size: $it-font-size-comments;
+        & span {
+          font-size: $it-font-size-comments;
+        }
+      }
+      margin-left: 15px;
+    }
+  }
+}
+.content-informatin-tattoo {
+  background-color: var(--tp-common-white);
+  border: 1px solid #e4e4e4;
+  border-radius: 0px 20px 20px 0px;
+}

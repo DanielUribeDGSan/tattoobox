@@ -46,3 +46,15 @@
   justify-content: flex-end;
   flex-direction: column;
 }
+
+.input-comment {
+  background-color: var(--tp-common-white);
+  border: 1px solid #e4e4e4;
+  padding: 0.7rem;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 0.9rem;
+  &::placeholder {
+    color: #a5a5a5;
+  }
+}
