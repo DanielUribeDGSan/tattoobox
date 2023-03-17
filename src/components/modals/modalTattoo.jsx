@@ -6,11 +6,9 @@ import useTattoboxApi from "../../hooks/use-tattobox-api";
 import { InformationTattoo } from "../tattoos/information/information-tattoo";
 import CloseIcon from "@mui/icons-material/Close";
 import ImageLightBox from "../common/modals/image-lightbox";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import IosShareIcon from "@mui/icons-material/IosShare";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { BtnSliderTattoo } from "../buttons/btn-slider-tattoo";
+import { BtnsActionsTattooFloat } from "../buttons/btns-actions-tattoo-float";
+import { UserCircleImage } from "../tattoos/information/user-circle-image";
 
 export const ModalTattoo = ({
   modal_id,
@@ -87,25 +85,13 @@ export const ModalTattoo = ({
               ) : (
                 <div className="row grid gx-3 h-inherit">
                   <div className="col-1  p-0 m-0 d-flex align-items-center justify-content-center h-inherit">
-                    <button
-                      className="btn-back-tattoo"
-                      onClick={handleOnClickBack}
-                    >
-                      <KeyboardArrowLeftIcon sx={{ color: "#000" }} />
-                    </button>
+                    <BtnSliderTattoo
+                      direction="left"
+                      action={handleOnClickNext}
+                    />
                   </div>
                   <div className="col-6 p-0 m-0 h-inherit position-relative">
-                    <div className="btns-floats">
-                      <button className="btn">
-                        <FavoriteBorderIcon sx={{ color: "#000" }} />
-                      </button>
-                      <button className="btn">
-                        <IosShareIcon sx={{ color: "#000" }} />
-                      </button>
-                      <button className="btn">
-                        <MoreHorizIcon sx={{ color: "#000" }} />
-                      </button>
-                    </div>
+                    <BtnsActionsTattooFloat />
                     <img
                       ref={imageTattoo}
                       onLoad={onImgLoad}
@@ -131,16 +117,15 @@ export const ModalTattoo = ({
                     style={{ overflowY: "auto" }}
                   >
                     <div className="container">
+                      <UserCircleImage content={contentTattoo} />
                       <InformationTattoo content={contentTattoo} />
                     </div>
                   </div>
                   <div className="col-1 p-0 m-0 d-flex align-items-center justify-content-center h-inherit">
-                    <button
-                      className="btn-next-tattoo"
-                      onClick={handleOnClickNext}
-                    >
-                      <KeyboardArrowRightIcon />
-                    </button>
+                    <BtnSliderTattoo
+                      direction="right"
+                      action={handleOnClickBack}
+                    />
                   </div>
                 </div>
               )}

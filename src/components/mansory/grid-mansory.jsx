@@ -4,6 +4,7 @@ import Masonry from "@mui/lab/Masonry";
 import { ModalTattoo } from "../modals/modalTattoo";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useEffect } from "react";
+import { ModalTattooMovil } from "../modals/modalTattooMovil";
 
 export const GridMansory = ({ data }) => {
   const [idContent, setIdContent] = useState("");
@@ -11,6 +12,7 @@ export const GridMansory = ({ data }) => {
   const [tattoosIndex, setTattoosIndex] = useState([]);
   const [idContentAfter, setIdContentAfter] = useState("");
   const [idContentBefore, setIdContentBefore] = useState("");
+  const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
 
   const handleSowTatuaje = (idContent, index) => {
     console.log(index);
@@ -33,8 +35,6 @@ export const GridMansory = ({ data }) => {
 
     setTattoosIndex(tattoosAsignedIndex);
   }, [data]);
-
-  console.log(idContentAfter, idContentBefore);
 
   return (
     <>
@@ -64,12 +64,22 @@ export const GridMansory = ({ data }) => {
           ))}
         </Masonry>
       </Box>
-      <ModalTattoo
-        modal_id="tatuajeModal"
-        idContent={idContent}
-        idContentAfter={idContentAfter}
-        idContentBefore={idContentBefore}
-      />
+
+      {movilIpadaScreen ? (
+        <ModalTattooMovil
+          modal_id="tatuajeModal"
+          idContent={idContent}
+          idContentAfter={idContentAfter}
+          idContentBefore={idContentBefore}
+        />
+      ) : (
+        <ModalTattoo
+          modal_id="tatuajeModal"
+          idContent={idContent}
+          idContentAfter={idContentAfter}
+          idContentBefore={idContentBefore}
+        />
+      )}
     </>
   );
 };

@@ -64,9 +64,21 @@ const TattoItems = () => {
               searchState={searchState}
               setSearchState={setSearchState}
             />
-            <button className="mt-2" onClick={toggleDrawer("bottom", true)}>
-              Mostrar más filtros
-            </button>
+            <div className="w-100 d-flex align-items-center justify-content-center">
+              <FormFiltersMovil
+                stateCountryState={stateCountryState}
+                setStateCountryState={setStateCountryState}
+                styleState={styleState}
+                setStyleState={setStyleState}
+                priceState={priceState}
+                setPriceState={setPriceState}
+                dataStateCountry={dataStateCountry}
+                dataStyles={dataStyles}
+                dataPrices={dataPrices}
+                isClearable={isClearable}
+                setIsClearable={setIsClearable}
+              />
+            </div>
           </div>
           <div className="d-none-movil">
             <FormFilters
@@ -98,26 +110,6 @@ const TattoItems = () => {
           </div>
         </div>
       </div>
-
-      <ModalSearchMovil
-        modal_id="filtersMovilModal"
-        state={state}
-        toggleDrawer={toggleDrawer}
-      >
-        <FormFiltersMovil
-          stateCountryState={stateCountryState}
-          setStateCountryState={setStateCountryState}
-          styleState={styleState}
-          setStyleState={setStyleState}
-          priceState={priceState}
-          setPriceState={setPriceState}
-          dataStateCountry={dataStateCountry}
-          dataStyles={dataStyles}
-          dataPrices={dataPrices}
-          isClearable={isClearable}
-          setIsClearable={setIsClearable}
-        />
-      </ModalSearchMovil>
     </>
   );
 };

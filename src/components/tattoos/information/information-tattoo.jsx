@@ -1,32 +1,15 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import Divider from "@mui/material/Divider";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 export const InformationTattoo = ({ content }) => {
-  console.log(content);
   const { UrlImagen, Titulo, Cuerpo, EstiloTatuaje, PerfilArtista } = content;
 
   return (
     <div className="px-2 information-tattoo">
-      <div className="row grid gx-3">
-        <div className="col-xl-12 col-lg-12 col-md-12 col-auto d-flex align-items-center mt-2">
-          <Stack direction="row" spacing={2}>
-            <Avatar alt={Titulo} src={UrlImagen} />
-          </Stack>
-          <p className="text-black p-0 my-0" style={{ marginLeft: "0.5rem" }}>
-            {PerfilArtista?.NombrePerfil}
-          </p>
-        </div>
-        <div>
-          <Divider
-            sx={{ marginTop: "20px", borderColor: "rgb(0 0 0 / 45%)" }}
-          />
-        </div>
-      </div>
       <div className="row grid gx-3">
         <div className="col-12 mt-3">
           <div className="description-tatto">

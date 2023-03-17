@@ -5,6 +5,15 @@
     background-color: #f8f8f8;
     overflow: hidden;
     height: 100vh;
+    @media #{$md,$sm,$xs} {
+      background-color: var(--tp-common-white);
+      padding: 0px;
+      height: 100%;
+      overflow: auto;
+    }
+    & .content-movil {
+      padding-top: 80px;
+    }
   }
   & .btn-close {
     display: flex;
@@ -22,33 +31,5 @@
     & svg {
       color: var(--tp-common-black);
     }
-
-    // @media #{$sm,$xs} {
-    //   display: flex;
-    //   align-items: center;
-    //   justify-content: center;
-    // }
   }
-  // & .modal-dialog {
-  //   @media #{$md} {
-  //     max-width: 600px;
-  //   }
-  //   @media #{$sm,$xs} {
-  //     display: flex;
-  //     align-items: flex-end;
-  //     pointer-events: inherit;
-  //   }
-  // }
-  // & .modal-content {
-  //   max-height: 90vh;
-  //   @media #{$sm,$xs} {
-  //     min-height: 90vh;
-  //   }
-  // }
-  // & .modal-body {
-  //   overflow: hidden;
-  //   @media #{$sm,$xs} {
-  //     overflow: auto;
-  //   }
-  // }
 }
