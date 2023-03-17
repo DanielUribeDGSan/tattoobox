@@ -125,7 +125,7 @@
   border-radius: 8px !important;
 
   @media #{$md,$sm,$xs} {
-    background-color: #fff;
+    background-color: #fff !important;
     color: rgba(0, 0, 0, 0.87);
     -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -144,10 +144,10 @@
     -webkit-flex: 1 0 auto;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
-    z-index: 1200;
-    -webkit-overflow-scrolling: touch;
-    position: fixed;
-    top: auto;
+    z-index: 1200 !important;
+    -webkit-overflow-scrolling: touch !important;
+    position: fixed !important;
+    top: auto !important;
     outline: 0;
     left: 0;
     bottom: 0;
