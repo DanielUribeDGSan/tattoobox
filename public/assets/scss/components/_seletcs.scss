@@ -151,3 +151,12 @@
   z-index: 99;
   border-radius: 8px !important;
 }
+
+.react-select-filters__placeholder,
+.react-select-filters2__placeholder,
+.react-select-filters3__placeholder,
+.react-select-filters__indicator,
+.react-select-filters2__indicator,
+.react-select-filters3__indicator {
+  color: var(--tp-common-black);
+}

@@ -66,6 +66,7 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
               className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
+              title="Close"
             >
               <CloseIcon />
             </button>
