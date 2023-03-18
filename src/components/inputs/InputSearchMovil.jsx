@@ -8,6 +8,7 @@ export const IputSearchMovil = ({ searchState, setSearchState }) => {
   return (
     <div className="input-search">
       <input
+        aria-label="Busqueda"
         type="text"
         placeholder="Buscar tatuaje"
         name="searchTxt"

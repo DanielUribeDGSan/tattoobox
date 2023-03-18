@@ -31,6 +31,7 @@ export const FormFiltersMovil = ({
       <div className="row grid gx-3 m-0">
         <div className="col-4 p-0 m-0">
           <Select
+            aria-label="Estados"
             className="react-select-container-filters"
             classNamePrefix="react-select-filters"
             name="estadosTxt"
@@ -56,6 +57,7 @@ export const FormFiltersMovil = ({
         </div>
         <div className="col-4 p-0 m-0">
           <Select
+            aria-label="Estilos"
             className="react-select-container-filters2"
             classNamePrefix="react-select-filters2"
             name="estilosTxt"
@@ -85,6 +87,7 @@ export const FormFiltersMovil = ({
         </div>
         <div className="col-4 p-0 m-0">
           <Select
+            aria-label="Precios"
             className="react-select-container-filters3"
             classNamePrefix="react-select-filters3"
             name="preciosTxt"

@@ -38,6 +38,7 @@ export const FormFilters = ({
         <div className="col-xl-4 col-lg-4 col-md-4 p-0 m-0">
           <div className="input-search">
             <input
+              aria-label="Busqueda"
               type="text"
               placeholder="Buscar tatuaje"
               name="searchTxt"
@@ -50,6 +51,7 @@ export const FormFilters = ({
         </div>
         <div className="col-xl-3 col-lg-3 col-md-3 p-0 m-0">
           <Select
+            aria-label="Estados"
             className="react-select-container-filters"
             classNamePrefix="react-select-filters"
             name="estadosTxt"
@@ -73,6 +75,7 @@ export const FormFilters = ({
         </div>
         <div className="col-xl-3 col-lg-3 col-md-3 p-0 m-0">
           <Select
+            aria-label="Estilos"
             className="react-select-container-filters2"
             classNamePrefix="react-select-filters2"
             name="estilosTxt"
@@ -99,6 +102,7 @@ export const FormFilters = ({
         </div>
         <div className="col-xl-2 col-lg-2 col-md-2 p-0 m-0">
           <Select
+            aria-label="Precios"
             className="react-select-container-filters3"
             classNamePrefix="react-select-filters3"
             name="preciosTxt"
