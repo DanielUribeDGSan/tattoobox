@@ -10,26 +10,6 @@
     box-shadow: none;
   }
 }
-.react-select-filters__control {
-  &:hover {
-    border: none;
-  }
-  &:focus {
-    border: none;
-    box-shadow: none;
-  }
-  &:focus-visible {
-    border: none;
-    box-shadow: none;
-  }
-}
-
-.react-select-container-filters {
-  &:focus-visible,
-  &:focus {
-    border: 0px solid #fff !important;
-  }
-}
 
 .react-select-filters__control {
   &:hover,
@@ -123,6 +103,7 @@
   color: var(--tp-common-black);
   z-index: 99;
   border-radius: 8px !important;
+  background-color: #fff !important;
 
   @media #{$md,$sm,$xs} {
     background-color: #fff !important;

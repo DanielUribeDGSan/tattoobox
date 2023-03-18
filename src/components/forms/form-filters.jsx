@@ -65,7 +65,7 @@ export const FormFilters = ({
               colors: {
                 ...theme.colors,
                 primary25: "#fff",
-                primary: "#263946",
+                primary: "transparent",
               },
             })}
             value={stateCountryState || ""}
@@ -90,9 +90,8 @@ export const FormFilters = ({
               ...theme,
               borderRadius: 0,
               colors: {
-                ...theme.colors,
                 primary25: "#fff",
-                primary: "#263946",
+                primary: "transparent",
               },
             })}
             value={styleState || ""}
@@ -121,7 +120,7 @@ export const FormFilters = ({
               colors: {
                 ...theme.colors,
                 primary25: "#fff",
-                primary: "#263946",
+                primary: "transparent",
               },
             })}
             value={priceState || ""}
