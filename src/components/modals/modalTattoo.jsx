@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useRef } from "react";
 import Link from "next/link";
 import { ActionsTattoos } from "../actions/actions-tattoos";
@@ -10,12 +10,7 @@ import { BtnSliderTattoo } from "../buttons/btn-slider-tattoo";
 import { BtnsActionsTattooFloat } from "../buttons/btns-actions-tattoo-float";
 import { UserCircleImage } from "../tattoos/information/user-circle-image";
 
-export const ModalTattoo = ({
-  modal_id,
-  idContent,
-  idContentAfter,
-  idContentBefore,
-}) => {
+export const ModalTattoo = ({ modal_id, idContent }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
@@ -38,17 +33,22 @@ export const ModalTattoo = ({
   };
 
   const handleOnClickNext = () => {
-    getContentTattoo(idContentAfter);
+    // getContentTattoo(idContentAfter);
   };
 
   const handleOnClickBack = () => {
-    getContentTattoo(idContentBefore);
+    // getContentTattoo(idContentBefore);
   };
 
   useEffect(() => {
-    if (idContent) {
+    let isActive = true;
+
+    if (idContent && isActive) {
       getContentTattoo(idContent);
     }
+    return () => {
+      isActive = false;
+    };
   }, [idContent]);
 
   return (

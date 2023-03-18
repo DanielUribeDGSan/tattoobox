@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Avatar from "@mui/material/Avatar";
 import Link from "next/link";
 import Divider from "@mui/material/Divider";

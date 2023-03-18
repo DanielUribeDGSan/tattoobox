@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 export const IputSearchMovil = ({ searchState, setSearchState }) => {
   const handleChangeSearch = (e) => {
