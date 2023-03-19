@@ -11,7 +11,6 @@ import { CommentsTattoo } from "../tattoos/comments/comments-tattoo";
 
 export const ModalTattoo = ({ modal_id, idContent }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
-  const [newMessages, setNewMessages] = useState(false);
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
   const imageTattoo = useRef();
@@ -44,12 +43,11 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
 
     if (idContent && isActive) {
       getContentTattoo(idContent);
-      setNewMessages(false);
     }
     return () => {
       isActive = false;
     };
-  }, [idContent, newMessages]);
+  }, [idContent]);
   // console.log(contentTattoo);
 
   return (
@@ -122,10 +120,7 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
                       <div className="px-2 information-tattoo">
                         <UserCircleImage content={contentTattoo} />
                         <InformationTattoo content={contentTattoo} />
-                        <CommentsTattoo
-                          content={contentTattoo}
-                          setNewMessages={setNewMessages}
-                        />
+                        <CommentsTattoo content={contentTattoo} />
                       </div>
                     </div>
                   </div>

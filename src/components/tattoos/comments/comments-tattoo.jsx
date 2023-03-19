@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { FormCommentTatto } from "../../forms/form-comment-tatto";
+import useTattoboxApi from "../../../hooks/use-tattobox-api";
 
-export const CommentsTattoo = ({ content, setNewMessages }) => {
-  const { UrlImagen, Titulo, Comentarios, IdContenido } = content;
+export const CommentsTattoo = ({ content }) => {
+  const [newMessages, setNewMessages] = useState(false);
+  const { UrlImagen, Titulo, IdContenido } = content;
+  const { getContentTattoo, contentTattoo, isLoading } = useTattoboxApi();
+
+  useEffect(() => {
+    let isActive = true;
+
+    if (isActive) {
+      getContentTattoo(IdContenido);
+      setNewMessages(false);
+    }
+    return () => {
+      isActive = false;
+    };
+  }, [newMessages]);
+
+  if (isLoading) {
+    return <p>Cargando..</p>;
+  }
+
   return (
     <div>
       <div className="row grid gx-3 comments">
         <div className="col-12 mt-3 ">
           <h2 className="text-black title">
-            Comentarios ({Comentarios?.length})
+            Comentarios ({contentTattoo?.Comentarios?.length})
           </h2>
         </div>
         <div className="col-12 mt-2 mb-3">
@@ -20,7 +40,7 @@ export const CommentsTattoo = ({ content, setNewMessages }) => {
           />
         </div>
         <div className="col-12">
-          {Comentarios?.map((comment, index) => (
+          {contentTattoo?.Comentarios?.map((comment, index) => (
             <div className="row grid gx-3" key={index}>
               <div className="col-1 p-0 m-0">
                 <Avatar alt={Titulo} src={UrlImagen} />
