@@ -95,7 +95,7 @@ const useTattoboxApi = () => {
           },
         },
       };
-      const resp = await tattoApiSocial.get(`/v1/perfil/${idPart}`, config);
+      const resp = await tattoApiSocial.get(`/v1/perfil/${idPart}`, {}, config);
 
       dispatch(
         edit_user({
