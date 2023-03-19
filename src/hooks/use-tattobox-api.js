@@ -2,7 +2,7 @@ import { useState } from "react";
 import { tattoApiSocial, tattoApi, tattoApiIdentify } from "../api/tattoApi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { add_user, sign_out } from "../redux/features/auth-slice";
+import { add_user, edit_user, sign_out } from "../redux/features/auth-slice";
 import Router from "next/router";
 
 const useTattoboxApi = () => {
@@ -32,7 +32,6 @@ const useTattoboxApi = () => {
         code: parseInt(code),
       };
       const resp = await tattoApiIdentify.post("/register-mail-auth", body);
-      console.log(resp);
       dispatch(
         add_user({
           email: email,
@@ -40,6 +39,7 @@ const useTattoboxApi = () => {
           uid: resp.data.token,
         })
       );
+      await getIdPerfil(resp.data.IdParte);
       toast.success(`Registro completado`, {
         position: "top-left",
       });
@@ -84,9 +84,29 @@ const useTattoboxApi = () => {
     Router.push("/");
   };
 
-  // Data tatuajes
+  // Get data for user
+
+  const getIdPerfil = async (idPart) => {
+    try {
+      const resp = await tattoApiSocial.get(`/v1/perfil/${idPart}`);
+
+      dispatch(
+        edit_user({
+          idPerfil: resp.data.perfiles.Perfiles[0].IdPerfil,
+        })
+      );
+    } catch (error) {
+      const errorMessage = error?.message;
+      toast.error(`Ocurrio un error - ${errorMessage}`, {
+        position: "top-left",
+      });
+    }
+  };
+
+  // Get data for tattoos
 
   const getContentTattoo = async (idContent) => {
+    console.log("se ejecuto");
     try {
       setIsLoading(true);
       const config = {
@@ -110,6 +130,29 @@ const useTattoboxApi = () => {
     }
   };
 
+  const setCommentTattoo = async (body) => {
+    try {
+      const config = {
+        headers: {
+          fetchOptions: {
+            mode: "no-cors",
+          },
+        },
+      };
+      const { data } = await tattoApiSocial.post(
+        "/v1/comentario",
+        body,
+        config
+      );
+      await getContentTattoo(data.data.idContenido);
+    } catch (error) {
+      const errorMessage = error?.message;
+      toast.error(`${errorMessage}`, {
+        position: "top-left",
+      });
+    }
+  };
+
   return {
     isLoading,
     logout,
@@ -117,7 +160,9 @@ const useTattoboxApi = () => {
     validateCode,
     completeRegister,
     getContentTattoo,
+    getIdPerfil,
     contentTattoo,
+    setCommentTattoo,
   };
 };
 

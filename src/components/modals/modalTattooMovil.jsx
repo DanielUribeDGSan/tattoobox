@@ -1,24 +1,22 @@
 import React, { memo, useEffect, useState } from "react";
 import { useRef } from "react";
-import Link from "next/link";
-import { ActionsTattoos } from "../actions/actions-tattoos";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
 import { InformationTattoo } from "../tattoos/information/information-tattoo";
 import CloseIcon from "@mui/icons-material/Close";
 import ImageLightBox from "../common/modals/image-lightbox";
-import { BtnSliderTattoo } from "../buttons/btn-slider-tattoo";
 import { BtnsActionsTattooFloat } from "../buttons/btns-actions-tattoo-float";
 import { UserCircleImage } from "../tattoos/information/user-circle-image";
+import { CommentsTattoo } from "../tattoos/comments/comments-tattoo";
 
 export const ModalTattooMovil = ({ modal_id, idContent }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
+  const [newMessages, setNewMessages] = useState(false);
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
-
+  const imageTattoo = useRef();
   const { getContentTattoo, contentTattoo, isLoading } = useTattoboxApi();
 
-  const images = [contentTattoo.UrlImagen];
-  const imageTattoo = useRef();
+  const images = [contentTattoo?.UrlImagen];
 
   const handleImagePopup = (index) => {
     setPhotoIndex(index);
@@ -45,11 +43,13 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
 
     if (idContent && isActive) {
       getContentTattoo(idContent);
+      setNewMessages(false);
     }
     return () => {
       isActive = false;
     };
-  }, [idContent]);
+  }, [idContent, newMessages]);
+  // console.log(contentTattoo);
 
   return (
     <div
@@ -62,18 +62,22 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
         <div className="modal-content">
           <div className="modal-body">
             <div className="content-movil">
-              <UserCircleImage
-                content={contentTattoo}
-                divider={false}
-                style={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  width: "100%",
-                  padding: "0rem 1rem 1.2rem 0.3rem",
-                  borderBottom: "1px solid rgb(0 0 0 / 14%)",
-                }}
-              />
+              {isLoading ? (
+                <p>Cargando...</p>
+              ) : (
+                <UserCircleImage
+                  content={contentTattoo}
+                  divider={false}
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    padding: "0rem 1rem 1.2rem 0.3rem",
+                    borderBottom: "1px solid rgb(0 0 0 / 14%)",
+                  }}
+                />
+              )}
               <button
                 type="button"
                 className="btn-close"
@@ -126,7 +130,13 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                       style={{ overflowY: "auto" }}
                     >
                       <div className="container">
-                        <InformationTattoo content={contentTattoo} />
+                        <div className="px-2 information-tattoo">
+                          <InformationTattoo content={contentTattoo} />
+                          <CommentsTattoo
+                            content={contentTattoo}
+                            setNewMessages={setNewMessages}
+                          />
+                        </div>
                       </div>
                     </div>
                     {/* <div className="col-1 p-0 m-0 d-flex align-items-center justify-content-center h-inherit">

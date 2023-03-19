@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
 import Image from "mui-image";

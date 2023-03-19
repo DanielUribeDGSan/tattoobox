@@ -24,7 +24,10 @@ const Header = () => {
                 <div className="tp-logo">
                   <Link href="/">
                     <a>
-                      <img src="/assets/img/logo/logo_tattoobox.png" alt="" />
+                      <img
+                        src="/assets/img/logo/logo_tattoobox.png"
+                        alt="logo tattobox"
+                      />
                     </a>
                   </Link>
                 </div>

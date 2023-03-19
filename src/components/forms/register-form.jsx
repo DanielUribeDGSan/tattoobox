@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-
 import { registerSchema, registerCode } from "../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
@@ -69,14 +68,13 @@ const RegisterForm = () => {
                   name="terminos"
                   value={values.terminos}
                   onChange={handleChange}
-                  onBlur={handleBlur}
                 />
                 <label htmlFor="terminos" style={{ marginLeft: "10px" }}>
                   Acepto los términos y condiciones
                 </label>
-                {touched.terminos && (
+                {
                   <ErrorMsg error="Necesitas aceptar los términos y condicones" />
-                )}
+                }
               </div>
             </div>
           </>

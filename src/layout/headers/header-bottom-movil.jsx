@@ -71,10 +71,15 @@ export const HeaderBottomMovil = ({ setSidebarOpen }) => {
         </Link>
       </div>
       <div className="col-auto">
-        <a onClick={() => setSidebarOpen(true)}>
+        <button
+          type="button"
+          title="Perfil"
+          aria-label="Perfil"
+          onClick={() => setSidebarOpen(true)}
+        >
           <IconPerson />
           <span>Perfil</span>
-        </a>
+        </button>
       </div>
     </div>
   );

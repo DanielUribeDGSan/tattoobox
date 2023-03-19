@@ -23,7 +23,7 @@ const NavMenus = () => {
         >
           <Link href={menu.link}>
             <a>
-              {menu.title}{" "}
+              {menu.title}
               {menu.has_dropdown && <i className="fal fa-angle-down"></i>}
             </a>
           </Link>
