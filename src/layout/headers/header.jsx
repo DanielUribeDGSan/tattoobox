@@ -5,10 +5,12 @@ import Sidebar from "../../components/common/off-canvas";
 import NavMenus from "./nav-menus";
 import MobileMenu from "./mobile-menu";
 import { HeaderBottomMovil } from "./header-bottom-movil";
+import { useUser } from "../../hooks/use-user";
 
 const Header = () => {
   const { headerSticky } = useSticky();
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const { user } = useUser();
 
   return (
     <React.Fragment>
@@ -43,14 +45,16 @@ const Header = () => {
                 </div>
               </div>
               <div className="col-xl-2 col-lg-2">
-                <div
-                  className="tp-menu-bar text-end"
-                  onClick={() => setSidebarOpen(true)}
-                >
-                  <button>
-                    <i className="fal fa-bars"></i>
-                  </button>
-                </div>
+                {user?.email && (
+                  <div
+                    className="tp-menu-bar text-end"
+                    onClick={() => setSidebarOpen(true)}
+                  >
+                    <button>
+                      <i className="fal fa-bars"></i>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -63,7 +67,9 @@ const Header = () => {
       {/* <!-- mobile-menu-area-end --> */}
 
       {/* off canvas start */}
+
       <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
+
       {/* off canvas end */}
     </React.Fragment>
   );

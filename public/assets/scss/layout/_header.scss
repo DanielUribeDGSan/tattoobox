@@ -946,3 +946,31 @@
     font-size: 0.65rem;
   }
 }
+
+.header-profile {
+  & .content-item-profile {
+    background-color: var(--tp-common-white);
+    min-height: 70px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0rem 0rem 0rem 0.5rem;
+    justify-content: flex-start;
+    cursor: pointer;
+    @media #{$xs, $sm} {
+    }
+
+    & a {
+      display: flex;
+      align-items: center;
+      & svg {
+        margin-right: 5px;
+      }
+    }
+    & p,
+    span {
+      color: var(--tp-common-black);
+    }
+  }
+}

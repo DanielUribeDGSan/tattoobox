@@ -2,26 +2,38 @@ import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
-import { getUser } from "../../../utils/getUser";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { width } from "@mui/system";
 import Link from "next/link";
+import { useUser } from "../../../hooks/use-user";
 
 const menuProfileData = [
   {
-    icon: <AccountBoxIcon sx={{ height: "30px", width: "30px" }} />,
+    icon: (
+      <AccountBoxIcon
+        sx={{ height: "30px", width: "30px", color: "var(--tp-common-black)" }}
+      />
+    ),
     title: "Favoritos",
     subTitle: "Ve tus tatuajes favoritos",
     path: "/",
   },
   {
-    icon: <AccountBoxIcon sx={{ height: "30px", width: "30px" }} />,
+    icon: (
+      <AccountBoxIcon
+        sx={{ height: "30px", width: "30px", color: "var(--tp-common-black)" }}
+      />
+    ),
     title: "Ayuda",
     subTitle: "Estamos aquí para ayudarte",
     path: "/",
   },
   {
-    icon: <AccountBoxIcon sx={{ height: "30px", width: "30px" }} />,
+    icon: (
+      <AccountBoxIcon
+        sx={{ height: "30px", width: "30px", color: "var(--tp-common-black)" }}
+      />
+    ),
     title: "Configuración",
     subTitle: "Configura tu cuenta",
     path: "/",
@@ -29,10 +41,10 @@ const menuProfileData = [
 ];
 
 export const Profile = () => {
-  const user = getUser();
+  const { user } = useUser();
 
   return (
-    <div>
+    <div className="header-profile">
       <div className="row grid gx-3">
         <div className="col-12 d-flex align-items-center ">
           <Stack direction="row" spacing={2}>
@@ -50,111 +62,77 @@ export const Profile = () => {
         <div>
           <Divider sx={{ margin: "10px 0px", borderColor: "#fff" }} />
         </div>
-        <div className="col-12  ">
-          {/* Completar registro */}
-          <div>
+      </div>
+      <div className="row ">
+        {/* Completar registro */}
+        <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
+          <div className="content-item-profile">
             <Link href="/">
               <a>
-                <div className="row w-100 mb-3">
-                  <div className="col-2">
-                    <AccountBoxIcon
-                      sx={{
-                        height: "30px",
-                        width: "30px",
-                        color: "var(--tp-theme-1)",
-                      }}
-                    />
-                  </div>
-                  <div className="col-10">
-                    <p
-                      className="p-0 m-0"
-                      style={{ color: "var(--tp-theme-1)" }}
-                    >
-                      Completar registro
-                    </p>
-                  </div>
-                </div>
+                <AccountBoxIcon
+                  sx={{
+                    height: "30px",
+                    width: "30px",
+                    color: "var(--tp-common-black)",
+                  }}
+                />
+                <p className="p-0 m-0 d-inline-block">Completar registro</p>
               </a>
             </Link>
           </div>
-          {/* end completar registro */}
+        </div>
+        {/* end completar registro */}
 
-          {/* unete como estudio */}
-          <div>
+        {/* unete como estudio */}
+        <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
+          <div className="content-item-profile">
             <Link href="/">
               <a>
-                <div className="row w-100 mb-3">
-                  <div className="col-2 d-flex align-items-center">
-                    <AccountBoxIcon
-                      sx={{
-                        height: "30px",
-                        width: "30px",
-                        color: "#fff",
-                      }}
-                    />
-                  </div>
-                  <div className="col-10 d-flex align-items-center">
-                    <p className="p-0 m-0">Únete como estudio</p>
-                  </div>
-                </div>
+                <AccountBoxIcon
+                  sx={{
+                    height: "30px",
+                    width: "30px",
+                    color: "var(--tp-common-black)",
+                  }}
+                />
+                <p className="p-0 m-0 d-inline-block">Únete como estudio</p>
               </a>
             </Link>
           </div>
-          {/* end unete como estudio */}
+        </div>
+        {/* end unete como estudio */}
 
-          {/* unete como artista */}
-          <div>
+        {/* unete como artista */}
+        <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
+          <div className="content-item-profile">
             <Link href="/">
               <a>
-                <div className="row w-100 mb-3">
-                  <div className="col-2 d-flex align-items-center">
-                    <AccountBoxIcon
-                      sx={{
-                        height: "30px",
-                        width: "30px",
-                        color: "#fff",
-                      }}
-                    />
-                  </div>
-                  <div className="col-10 d-flex align-items-center">
-                    <p className="p-0 m-0">Únete como artista</p>
-                  </div>
-                </div>
+                <AccountBoxIcon
+                  sx={{
+                    height: "30px",
+                    width: "30px",
+                    color: "var(--tp-common-black)",
+                  }}
+                />
+                <p className="p-0 m-0 d-inline-block">Únete como artista</p>
               </a>
             </Link>
           </div>
-          {/* end unete como artista */}
+        </div>
+        {/* end unete como artista */}
 
-          {menuProfileData.map((item, i) => (
-            <div key={i}>
+        {menuProfileData.map((item, i) => (
+          <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12" key={i}>
+            <div className="content-item-profile">
               <Link href={`${item.path}`}>
                 <a>
-                  <div className="row w-100 mb-3">
-                    <div className="col-2 d-flex align-items-center">
-                      {item.icon}
-                    </div>
-                    <div className="col-10 d-flex align-items-center">
-                      <p className="text-white p-0 m-0">{item.title}</p>
-                      {/* <span
-                        className="text-white "
-                        style={{
-                          textTransform: "none",
-                          fontSize: "0.8rem",
-                          marginBottom: "0px",
-                        }}
-                      >
-                        
-                      </span> */}
-                    </div>
-                  </div>
+                  {item.icon}
+                  <p className="p-0 m-0 d-inline-block">{item.title}</p>
                 </a>
               </Link>
-              {/* <div>
-                <Divider sx={{ margin: "10px 0px", borderColor: "#fff" }} />
-              </div> */}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -1,9 +1,8 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import useTattoboxApi from "../../../hooks/use-tattobox-api";
+import { useUser } from "../../../hooks/use-user";
 import menu_data from "../../../layout/headers/menu-data";
-
-import { getUser } from "../../../utils/getUser";
 import { Profile } from "./profile";
 
 const sidebar_contents = {
@@ -23,7 +22,8 @@ const { inst_imgs, title } = sidebar_contents;
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const [navTitle, setNavTitle] = useState("");
-  const user = getUser();
+  const { user } = useUser();
+
   const { logout } = useTattoboxApi();
 
   const openMobileMenu = (menu) => {
