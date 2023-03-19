@@ -39,7 +39,7 @@ const useTattoboxApi = () => {
           uid: resp.data.token,
         })
       );
-      if (resp?.data.IdParte) await getIdPerfil(resp.data.IdParte);
+      if (resp?.data.IdParte) await getIdProfile(resp.data.IdParte);
       toast.success(`Registro completado`, {
         position: "top-left",
       });
@@ -86,9 +86,16 @@ const useTattoboxApi = () => {
 
   // Get data for user
 
-  const getIdPerfil = async (idPart) => {
+  const getIdProfile = async (idPart) => {
     try {
-      const resp = await tattoApiSocial.get(`/v1/perfil/${idPart}`);
+      const config = {
+        headers: {
+          fetchOptions: {
+            mode: "no-cors",
+          },
+        },
+      };
+      const resp = await tattoApiSocial.get(`/v1/perfil/${idPart}`, config);
 
       dispatch(
         edit_user({
@@ -159,7 +166,7 @@ const useTattoboxApi = () => {
     validateCode,
     completeRegister,
     getContentTattoo,
-    getIdPerfil,
+    getIdProfile,
     contentTattoo,
     setCommentTattoo,
   };
