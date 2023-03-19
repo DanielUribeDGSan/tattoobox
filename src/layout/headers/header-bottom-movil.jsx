@@ -1,41 +1,67 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const IconTatto = () => {
   return (
-    <div>
-      <img src="/assets/img/svg/tattoo-machine.svg" alt="svg tattoo" />
+    <div style={{ height: "23px" }}>
+      <Image
+        src="/assets/img/svg/tattoo-machine.svg"
+        alt="svg tattoo"
+        width={23}
+        height={23}
+      />
     </div>
   );
 };
 
 const IconInfinity = () => {
   return (
-    <div>
-      <img src="/assets/img/svg/infinity-svgrepo-com.svg" alt="svg tattoo" />
+    <div style={{ height: "23px" }}>
+      <Image
+        src="/assets/img/svg/infinity-svgrepo-com.svg"
+        alt="svg tattoo"
+        width={23}
+        height={23}
+      />
     </div>
   );
 };
 
 const IconPerson = () => {
   return (
-    <div>
-      <img src="/assets/img/svg/person-svgrepo-com.svg" alt="svg tattoo" />
+    <div style={{ height: "23px" }}>
+      <Image
+        src="/assets/img/svg/person-svgrepo-com.svg"
+        alt="svg tattoo"
+        width={23}
+        height={23}
+      />
     </div>
   );
 };
 
 const IconSearch = () => {
   return (
-    <div>
-      <img src="/assets/img/svg/search-svgrepo-com.svg" alt="svg tattoo" />
+    <div style={{ height: "23px" }}>
+      <Image
+        src="/assets/img/svg/search-svgrepo-com.svg"
+        alt="svg tattoo"
+        width={23}
+        height={23}
+      />
     </div>
   );
 };
 
 const IconAdd = () => {
   return (
-    <div>
-      <img src="/assets/img/svg/add-svgrepo-com.svg" alt="svg tattoo" />
+    <div style={{ height: "23px" }}>
+      <Image
+        src="/assets/img/svg/add-svgrepo-com.svg"
+        alt="svg tattoo"
+        width={23}
+        height={23}
+      />
     </div>
   );
 };
@@ -59,14 +85,14 @@ export const HeaderBottomMovil = ({ setSidebarOpen }) => {
           </a>
         </Link>
       </div>
-      <div className="col-auto add">
+      {/* <div className="col-auto add">
         <IconAdd />
-      </div>
+      </div> */}
       <div className="col-auto">
         <Link href="/tatuajes">
           <a>
             <IconSearch />
-            <span>Buscar</span>
+            <span>Artistas</span>
           </a>
         </Link>
       </div>

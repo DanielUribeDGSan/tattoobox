@@ -12,9 +12,7 @@ import Testimonial from "./testimonial";
 
 const Home = () => {
   useEffect(() => {
-    setTimeout(() => {
-      animationCreate();
-    }, 500);
+    animationCreate();
   }, []);
   return (
     <Wrapper>

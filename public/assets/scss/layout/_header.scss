@@ -775,6 +775,7 @@
   }
   &__contact {
     clear: both;
+    word-break: break-word;
     @media #{$md,$sm} {
       margin-top: 60px;
     }
@@ -909,7 +910,7 @@
   width: 100%;
   padding: 0px;
   margin: 0px;
-  height: 100px;
+  height: 80px;
   display: none;
   align-items: center;
   justify-content: space-evenly;

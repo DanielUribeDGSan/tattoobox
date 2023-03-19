@@ -39,6 +39,8 @@ const TattoItems = () => {
     queryFn: getTattoos,
   });
 
+  if (isError) return <p>Tuvimos problema al caragar el servicio</p>;
+
   return (
     <>
       <div className="tp-portfolio-area pt-120 pb-100 p-custom p-relative">

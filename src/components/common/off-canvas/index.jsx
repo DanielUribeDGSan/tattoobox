@@ -1,9 +1,10 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import useTattoboxApi from "../../../hooks/use-tattobox-api";
 import menu_data from "../../../layout/headers/menu-data";
-import { get_user } from "../../../redux/features/auth-slice";
+
+import { getUser } from "../../../utils/getUser";
+import { Profile } from "./profile";
 
 const sidebar_contents = {
   title: (
@@ -22,8 +23,7 @@ const { inst_imgs, title } = sidebar_contents;
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const [navTitle, setNavTitle] = useState("");
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const user = getUser();
   const { logout } = useTattoboxApi();
 
   const openMobileMenu = (menu) => {
@@ -33,10 +33,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       setNavTitle(menu);
     }
   };
-
-  useEffect(() => {
-    dispatch(get_user());
-  }, [dispatch]);
 
   return (
     <>
@@ -57,9 +53,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               <i className="fal fa-times-hexagon"></i>
             </button>
           </div>
-          <div className="tpoffcanvas__content d-none d-sm-block">
+          {/* <div className="tpoffcanvas__content d-none d-sm-block">
             <p>{title}</p>
-          </div>
+          </div> */}
           <div className="mobile-menu d-lg-none">
             <div className="mm-menu">
               <ul>
@@ -108,7 +104,10 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                 )}
                 {user?.email && (
                   <li>
-                    <button onClick={logout} style={{ cursor: "pointer" }}>
+                    <button
+                      onClick={logout}
+                      style={{ cursor: "pointer", padding: 0 }}
+                    >
                       <a>Cerrar sesión</a>
                     </button>
                   </li>
@@ -116,52 +115,12 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               </ul>
             </div>
           </div>
-          <div className="tpoffcanvas__contact">
-            <span>Contact us</span>
-            <ul>
-              <li>
-                <i className="fas fa-star"></i>{" "}
-                <a
-                  href="https://goo.gl/maps/abHegV4AoiJA6Syd8"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Melbone st, Australia, Ny 12099
-                </a>
-              </li>
-              <li>
-                <i className="fas fa-star"></i>
-                <a href="tel:8180012345678">+81 800 123 456 78</a>
-              </li>
-              <li>
-                <i className="fas fa-star"></i>
-                <a href="mailto:Collaxmail@gmail.com">Collaxmail@gmail.com</a>
-              </li>
-            </ul>
-          </div>
-          <div className="tpoffcanvas__input d-none d-sm-block">
-            <p>Get UPdate</p>
-            <form className="p-relative" action="#">
-              <input type="text" placeholder="Enter mail" />
-              <button type="submit">
-                <i className="fas fa-paper-plane"></i>
-              </button>
-            </form>
-          </div>
-          <div className="tpoffcanvas__instagram d-none d-sm-block">
-            <p>Check Instagram POst</p>
-            <div className="tp-insta">
-              <div className="row">
-                {inst_imgs.map((img, i) => (
-                  <div key={i} className="col-3 col-sm-3">
-                    <a href="#">
-                      <img src={img} alt="" />
-                    </a>
-                  </div>
-                ))}
-              </div>
+          {user?.email && (
+            <div className="tpoffcanvas__contact">
+              <span style={{ marginBottom: "10px " }}>Perfil</span>
+              <Profile />
             </div>
-          </div>
+          )}
         </div>
       </div>
 

@@ -15,7 +15,11 @@ export const useTattoBoxFiltros = () => {
 
   const config = {
     headers: {
-      "Content-Type": "text/plain;charset=utf-8",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      fetchOptions: {
+        mode: "no-cors",
+      },
     },
   };
 
@@ -70,13 +74,6 @@ export const useTattoBoxFiltros = () => {
         rangePango_precio: rangePrices,
       };
 
-      const config = {
-        headers: {
-          fetchOptions: {
-            mode: "no-cors",
-          },
-        },
-      };
       const resp = await tattoApiSocial.post("/v1/busqueda", data, config);
       return resp.data.contenidos;
     } catch (error) {

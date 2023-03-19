@@ -12,6 +12,16 @@ const useTattoboxApi = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [contentTattoo, setContentTattoo] = useState([]);
 
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      fetchOptions: {
+        mode: "no-cors",
+      },
+    },
+  };
+
   const registerEmail = async (email) => {
     try {
       const body = {
@@ -39,7 +49,7 @@ const useTattoboxApi = () => {
           uid: resp.data.token,
         })
       );
-      if (resp?.data.IdParte) await getIdProfile(resp.data.IdParte);
+      await getIdProfile(resp.data.IdParte);
       toast.success(`Registro completado`, {
         position: "top-left",
       });
@@ -88,15 +98,8 @@ const useTattoboxApi = () => {
 
   const getIdProfile = async (idPart) => {
     try {
-      const config = {
-        headers: {
-          fetchOptions: {
-            mode: "no-cors",
-          },
-        },
-      };
       const resp = await tattoApiSocial.get(`/v1/perfil/${idPart}`, config);
-
+      console.log(resp);
       dispatch(
         edit_user({
           idPerfil: resp.data.perfiles.Perfiles[0].IdPerfil,
@@ -115,13 +118,7 @@ const useTattoboxApi = () => {
   const getContentTattoo = async (idContent) => {
     try {
       setIsLoading(true);
-      const config = {
-        headers: {
-          fetchOptions: {
-            mode: "no-cors",
-          },
-        },
-      };
+
       const { data } = await tattoApiSocial.get(
         `/v1/busqueda/${idContent}`,
         config
@@ -138,13 +135,6 @@ const useTattoboxApi = () => {
 
   const setCommentTattoo = async (body) => {
     try {
-      const config = {
-        headers: {
-          fetchOptions: {
-            mode: "no-cors",
-          },
-        },
-      };
       const { data } = await tattoApiSocial.post(
         "/v1/comentario",
         body,

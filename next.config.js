@@ -2,8 +2,12 @@
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
-  source: "/api/:path*",
-  destination: "https://tattooboxmx.netlify.app/:path*",
+  headers: [
+    {
+      key: "Access-Control-Allow-Origin",
+      value: "https://tattooboxmx.netlify.app",
+    },
+  ],
   images: {
     formats: ["image/avif", "image/webp"],
     domains: ["social.tattoobox.mediaserviceagency.com"],
@@ -11,8 +15,6 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "social.tattoobox.mediaserviceagency.com",
-        port: "",
-        pathname: "/image/upload/**",
       },
     ],
   },
