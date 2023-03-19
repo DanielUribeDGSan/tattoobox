@@ -39,7 +39,7 @@ const useTattoboxApi = () => {
           uid: resp.data.token,
         })
       );
-      await getIdPerfil(resp.data.IdParte);
+      if (resp?.data.IdParte) await getIdPerfil(resp.data.IdParte);
       toast.success(`Registro completado`, {
         position: "top-left",
       });
@@ -106,7 +106,6 @@ const useTattoboxApi = () => {
   // Get data for tattoos
 
   const getContentTattoo = async (idContent) => {
-    console.log("se ejecuto");
     try {
       setIsLoading(true);
       const config = {
