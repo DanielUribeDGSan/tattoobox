@@ -132,7 +132,7 @@ export const RegisterSupplementary = ({ refBtn }) => {
               {touched.birthDate && <ErrorMsg error={errors.birthDate} />}
             </div>
             <div className="tp-login-button">
-              <button className="tp-btn-yellow w-100 text-white" type="submit">
+              <button className="tp-btn-black w-100 text-white" type="submit">
                 Completar registro
               </button>
             </div>
