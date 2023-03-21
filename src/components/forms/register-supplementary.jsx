@@ -1,124 +1,144 @@
 import { useFormik } from "formik";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
-
+import { useUser } from "../../hooks/use-user";
+import { registerSupplementary } from "../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
 
-export const RegisterSupplementary = () => {
+export const RegisterSupplementary = ({ refBtn }) => {
   const { completeRegister } = useTattoboxApi();
+  const { user } = useUser();
+
   // use formik
   const { handleChange, handleSubmit, handleBlur, errors, values, touched } =
     useFormik({
       initialValues: {
-        nombre: "",
-        apellidoPaterno: "",
-        apellidoMaterno: "",
-        NumeroCelular: "",
+        name: "",
+        lastNamePaternal: "",
+        lastNameMaternal: "",
+        mobileNumber: "",
         userName: "",
-        fechaDeNacimiento: "",
+        birthDate: "",
       },
-      validationSchema: registerExtra,
+      validationSchema: registerSupplementary,
       onSubmit: (
         {
-          nombre,
-          apellidoPaterno,
-          apellidoMaterno,
-          NumeroCelular,
+          name,
+          lastNamePaternal,
+          lastNameMaternal,
+          mobileNumber,
           userName,
-          fechaDeNacimiento,
+          birthDate,
         },
         { resetForm }
       ) => {
         const body = {
-          Nombre: nombre,
-          Apellido_Paterno: apellidoPaterno,
-          Apellido_Materno: apellidoMaterno,
-          NumeroCelular: NumeroCelular,
+          email: user?.email,
+          Nombre: name,
+          Apellido_Paterno: lastNamePaternal,
+          Apellido_Materno: lastNameMaternal,
+          NumeroCelular: mobileNumber,
           UserName: userName,
-          Fecha_Nacimiento: fechaDeNacimiento,
+          Fecha_Nacimiento: birthDate,
           IdClasificacionParte: 1,
         };
         completeRegister(body);
-
-        // resetForm();
+        refBtn.current.click();
+        resetForm();
       },
     });
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="tp-number">
-        <label htmlFor="email">Nombre</label>
-        <input
-          value={values.nombre}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          type="text"
-          placeholder="Ingresa tu nombre"
-          id="nombre"
-        />
-        {touched.nombre && <ErrorMsg error={errors.nombre} />}
+    <div className="d-flex justify-content-center">
+      <div className="tpsupplementary">
+        <div className="tpsupplementary__title">
+          <h3>Completa tu registro</h3>
+        </div>
+        <div className="tpsupplementary__form">
+          <form onSubmit={handleSubmit}>
+            <div className="tp-input">
+              <label htmlFor="name">Nombre</label>
+              <input
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="text"
+                placeholder="Ingresa tu name"
+                id="name"
+              />
+              {touched.name && <ErrorMsg error={errors.name} />}
+            </div>
+            <div className="tp-input">
+              <label htmlFor="lastNamePaternal">Apellido paterno</label>
+              <input
+                value={values.lastNamePaternal}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="text"
+                placeholder="Ingresa tu apellido paterno"
+                id="lastNamePaternal"
+              />
+              {touched.lastNamePaternal && (
+                <ErrorMsg error={errors.lastNamePaternal} />
+              )}
+            </div>
+            <div className="tp-input">
+              <label htmlFor="lastNameMaternal">Apellido materno</label>
+              <input
+                value={values.lastNameMaternal}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="text"
+                placeholder="Ingresa tu apellido materno"
+                id="lastNameMaternal"
+              />
+              {touched.lastNameMaternal && (
+                <ErrorMsg error={errors.lastNameMaternal} />
+              )}
+            </div>
+            <div className="tp-input">
+              <label htmlFor="mobileNumber">Número de celular</label>
+              <input
+                value={values.mobileNumber}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="text"
+                placeholder="Ingresa tu número de celular"
+                id="mobileNumber"
+              />
+              {touched.mobileNumber && <ErrorMsg error={errors.mobileNumber} />}
+            </div>
+            <div className="tp-input">
+              <label htmlFor="userName">Nombre de usuario</label>
+              <input
+                value={values.userName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="text"
+                placeholder="Ingresa tu name de usuario"
+                id="userName"
+              />
+              {touched.userName && <ErrorMsg error={errors.userName} />}
+            </div>
+            <div className="tp-input">
+              <label htmlFor="birthDate">Fecha de nacimiento</label>
+              <input
+                value={values.birthDate}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="date"
+                placeholder="Ingresa tu fecha de nacimiento"
+                id="birthDate"
+              />
+              {touched.birthDate && <ErrorMsg error={errors.birthDate} />}
+            </div>
+            <div className="tp-login-button">
+              <button className="tp-btn-yellow w-100 text-white" type="submit">
+                Completar registro
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div className="tp-number">
-        <label htmlFor="email">Apellido paterno</label>
-        <input
-          value={values.apellidoPaterno}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          type="text"
-          placeholder="Ingresa tu apellido paterno"
-          id="apellidoPaterno"
-        />
-        {touched.apellidoPaterno && <ErrorMsg error={errors.apellidoPaterno} />}
-      </div>
-      <div className="tp-number">
-        <label htmlFor="email">Apellido materno</label>
-        <input
-          value={values.apellidoMaterno}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          type="text"
-          placeholder="Ingresa tu apellido materno"
-          id="apellidoMaterno"
-        />
-        {touched.apellidoMaterno && <ErrorMsg error={errors.apellidoMaterno} />}
-      </div>
-      <div className="tp-number">
-        <label htmlFor="email">Número de celular</label>
-        <input
-          value={values.NumeroCelular}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          type="text"
-          placeholder="Ingresa tu número de celular"
-          id="NumeroCelular"
-        />
-        {touched.NumeroCelular && <ErrorMsg error={errors.NumeroCelular} />}
-      </div>
-      <div className="tp-number">
-        <label htmlFor="email">Nombre de usuario</label>
-        <input
-          value={values.userName}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          type="text"
-          placeholder="Ingresa tu nombre de usuario"
-          id="userName"
-        />
-        {touched.userName && <ErrorMsg error={errors.userName} />}
-      </div>
-      <div className="tp-number">
-        <label htmlFor="email">Fecha de nacimiento</label>
-        <input
-          value={values.fechaDeNacimiento}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          type="date"
-          placeholder="Ingresa tu fecha de nacimiento"
-          id="fechaDeNacimiento"
-        />
-        {touched.fechaDeNacimiento && (
-          <ErrorMsg error={errors.fechaDeNacimiento} />
-        )}
-      </div>
-    </form>
+    </div>
   );
 };

@@ -15,9 +15,29 @@ export const authSlice = createSlice({
       state.user = payload;
       setLocalStorage("user", state.user);
     },
-    edit_user: (state, { payload }) => {
-      const perfil = payload;
-      state.user = { ...state.user, perfil };
+    set_id_profile: (state, { payload }) => {
+      const { idPerfil } = payload;
+      state.user = { ...state.user, idPerfil };
+      setLocalStorage("user", state.user);
+    },
+    set_data_supplementary: (state, { payload }) => {
+      const {
+        name,
+        lastNamePaternal,
+        lastNameMaternal,
+        mobileNumber,
+        userName,
+        birthDate,
+      } = payload;
+      state.user = {
+        ...state.user,
+        name,
+        lastNamePaternal,
+        lastNameMaternal,
+        mobileNumber,
+        userName,
+        birthDate,
+      };
       setLocalStorage("user", state.user);
     },
     user_info: (state, { payload }) => {
@@ -34,7 +54,13 @@ export const authSlice = createSlice({
   },
 });
 
-export const { user_info, add_user, edit_user, sign_out, get_user } =
-  authSlice.actions;
+export const {
+  user_info,
+  add_user,
+  set_id_profile,
+  sign_out,
+  get_user,
+  set_data_supplementary,
+} = authSlice.actions;
 
 export default authSlice.reducer;

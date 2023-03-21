@@ -1,15 +1,12 @@
-import { useEffect } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
 import ErrorMsg from "./error-msg";
-import { get_user } from "../../redux/features/auth-slice";
+import { useUser } from "../../hooks/use-user";
 
 export const FormCommentTatto = ({ IdContenido, setNewMessages }) => {
   const { setCommentTattoo } = useTattoboxApi();
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useUser();
 
   const { handleChange, handleSubmit, handleBlur, errors, values, touched } =
     useFormik({
@@ -24,7 +21,7 @@ export const FormCommentTatto = ({ IdContenido, setNewMessages }) => {
       }),
       onSubmit: ({ comment }, { resetForm }) => {
         const body = {
-          IdPerfil: user.perfil.idPerfil,
+          IdPerfil: user?.idPerfil,
           IdContenido: IdContenido,
           Comentario: comment,
           IdComentarioRespuesta: "",
@@ -35,11 +32,6 @@ export const FormCommentTatto = ({ IdContenido, setNewMessages }) => {
         resetForm();
       },
     });
-
-  // get_user
-  useEffect(() => {
-    dispatch(get_user());
-  }, [dispatch]);
 
   return (
     <form onSubmit={handleSubmit}>

@@ -41,7 +41,7 @@ $it-opacity-text: 0.8;
 }
 .content-informatin-tattoo {
   background-color: var(--tp-common-white);
-  border: 1px solid #e4e4e4;
+  border: 1px solid var(--tp-common-border);
   border-radius: 0px 20px 20px 0px;
   @media #{$md,$sm,$xs} {
     border: none;

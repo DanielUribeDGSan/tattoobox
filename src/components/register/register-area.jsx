@@ -12,7 +12,8 @@ const RegisterArea = () => {
               <div
                 className="tp-login-thumb login-space d-flex justify-content-center "
                 style={{
-                  backgroundImage: "url(/assets/img/contact/banner-1.jpeg)",
+                  backgroundImage:
+                    "url(/assets/img/register/banner-girl-tattoo.jpeg)",
                 }}
               ></div>
             </div>
@@ -31,7 +32,7 @@ const RegisterArea = () => {
               <div className="tp-login-wrapper d-flex justify-content-center">
                 <div className="tplogin">
                   <div className="tplogin__title">
-                    <h3 className="tp-login-title">Registra tu cuenta</h3>
+                    <h3 className="tp-login-title">Ingresa a tattoobox</h3>
                   </div>
                   <div className="tplogin__form">
                     <RegisterForm />

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
 import { InformationTattoo } from "../tattoos/information/information-tattoo";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
@@ -6,6 +6,8 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { width } from "@mui/system";
 import Link from "next/link";
 import { useUser } from "../../../hooks/use-user";
+import { ModalFullScreen } from "../../modals/modalFullScreen";
+import { RegisterSupplementary } from "../../forms/register-supplementary";
 
 const menuProfileData = [
   {
@@ -42,6 +44,7 @@ const menuProfileData = [
 
 export const Profile = () => {
   const { user } = useUser();
+  const btnClose = useRef();
 
   return (
     <div className="header-profile">
@@ -65,22 +68,24 @@ export const Profile = () => {
       </div>
       <div className="row ">
         {/* Completar registro */}
-        <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
-          <div className="content-item-profile">
-            <Link href="/">
-              <a>
-                <AccountBoxIcon
-                  sx={{
-                    height: "30px",
-                    width: "30px",
-                    color: "var(--tp-common-black)",
-                  }}
-                />
-                <p className="p-0 m-0 d-inline-block">Completar registro</p>
-              </a>
-            </Link>
+        {!user?.userName && (
+          <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
+            <div
+              className="content-item-profile"
+              data-bs-toggle="modal"
+              data-bs-target="#registerSupplementary"
+            >
+              <AccountBoxIcon
+                sx={{
+                  height: "30px",
+                  width: "30px",
+                  color: "var(--tp-common-black)",
+                }}
+              />
+              <p className="p-0 m-0 d-inline-block">Completar registro</p>
+            </div>
           </div>
-        </div>
+        )}
         {/* end completar registro */}
 
         {/* unete como estudio */}
@@ -105,7 +110,7 @@ export const Profile = () => {
         {/* unete como artista */}
         <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
           <div className="content-item-profile">
-            <Link href="/">
+            <Link href="/registro-artista">
               <a>
                 <AccountBoxIcon
                   sx={{
@@ -134,6 +139,11 @@ export const Profile = () => {
           </div>
         ))}
       </div>
+      {!user?.userName && (
+        <ModalFullScreen modal_id={"registerSupplementary"} refBtn={btnClose}>
+          <RegisterSupplementary refBtn={btnClose} />
+        </ModalFullScreen>
+      )}
     </div>
   );
 };

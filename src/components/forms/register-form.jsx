@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { registerSchema, registerCode } from "../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
-import { get_user } from "../../redux/features/auth-slice";
 import useFirebase from "../../hooks/use-firebase";
+import { useUser } from "../../hooks/use-user";
 
 const RegisterForm = () => {
   // register With Email Password
   const { registerEmail, validateCode } = useTattoboxApi();
   const [showCode, setShowCode] = useState(false);
-  const { user } = useSelector((state) => state.auth);
-
   const { loginWithGoogle } = useFirebase();
-
-  const dispatch = useDispatch();
+  const { verifyLoggedUser } = useUser();
+  verifyLoggedUser();
 
   // use formik
   const { handleChange, handleSubmit, handleBlur, errors, values, touched } =
@@ -38,11 +35,6 @@ const RegisterForm = () => {
       },
     });
 
-  // get_user
-  useEffect(() => {
-    dispatch(get_user());
-  }, [dispatch]);
-
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -53,12 +45,11 @@ const RegisterForm = () => {
               <input
                 value={values.email}
                 onChange={handleChange}
-                onBlur={handleBlur}
                 type="text"
                 placeholder="Ingresa tu correo"
                 id="email"
               />
-              {touched.email && <ErrorMsg error={errors.email} />}
+              {errors.email && <ErrorMsg error={errors.email} />}
             </div>
             <div className="tp-forgot-password d-flex justify-content-between">
               <div className="checkbox">
@@ -72,9 +63,9 @@ const RegisterForm = () => {
                 <label htmlFor="terminos" style={{ marginLeft: "10px" }}>
                   Acepto los términos y condiciones
                 </label>
-                {
+                {errors.terminos && (
                   <ErrorMsg error="Necesitas aceptar los términos y condicones" />
-                }
+                )}
               </div>
             </div>
           </>
@@ -93,7 +84,7 @@ const RegisterForm = () => {
                   style={{
                     marginRight: "10px",
                   }}
-                ></i>{" "}
+                ></i>
                 Verificar correo
               </button>
             </div>
@@ -113,7 +104,7 @@ const RegisterForm = () => {
         )}
         <div className="tp-login-button">
           <button className="tp-btn-yellow w-100" type="submit">
-            {!showCode ? "Registrarme" : "Verificar código"}
+            {!showCode ? "Ingresar" : "Verificar código"}
           </button>
           <button
             type="button"
@@ -124,11 +115,11 @@ const RegisterForm = () => {
           </button>
         </div>
         <div className="tp-signup d-flex justify-content-between">
-          <div className="account">
+          {/* <div className="account">
             <Link href="/login">
               <a href="#">¿Tienes una cuenta?</a>
             </Link>
-          </div>
+          </div> */}
           {/* <div className="signin">
           <Link href="/login">
             <a>Sign in now</a>

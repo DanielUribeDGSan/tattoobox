@@ -18,10 +18,10 @@ export const registerSchema = Yup.object().shape({
     .required("El correo es obligatorio")
     .email("El formato del correo es inválido")
     .label("Correo electrónico"),
-  terminos: Yup.bool("").oneOf([
-    true,
-    "Necesitas aceptar los términos y condicones",
-  ]),
+  terminos: Yup.bool().oneOf(
+    [true],
+    "Necesitas aceptar los términos y condicones"
+  ),
   // password: Yup.string().required().min(6).label("Password")
 });
 
@@ -33,10 +33,23 @@ export const registerCode = Yup.object().shape({
   // password: Yup.string().required().min(6).label("Password")
 });
 
-export const registerExtra = Yup.object().shape({
-  // name: Yup.string().required().label("Name"),
-  // email: Yup.string().required().email().label("Email"),
-  // msg: Yup.string().required().min(20).label("Message"),
+export const registerSupplementary = Yup.object().shape({
+  name: Yup.string().required("El nombre es requerido").label("Nombre"),
+  lastNamePaternal: Yup.string()
+    .required("El apellido paterno es requerido")
+    .label("Apellido paterno"),
+  lastNameMaternal: Yup.string()
+    .required("El apellido materno es requerido")
+    .label("Apellido materno"),
+  mobileNumber: Yup.number()
+    .required("El número de celular es requerido")
+    .label("Número de celular"),
+  userName: Yup.string()
+    .required("El nombre de usaurio es requerido")
+    .label("Nombre de usuario"),
+  birthDate: Yup.string()
+    .required("La fecha de nacimiento es requerida")
+    .label("Name"),
 });
 
 export const loginSchema = Yup.object().shape({

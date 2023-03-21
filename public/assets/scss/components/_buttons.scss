@@ -536,7 +536,8 @@
     line-height: 56px;
   }
 }
-.tp-btn-yellow {
+.tp-btn-yellow,
+.tp-btn-black {
   display: inline-block;
   font-size: 16px;
   font-weight: 700;
@@ -607,6 +608,29 @@
     }
   }
 }
+
+.tp-btn-black {
+  color: var(--tp-common-white);
+  background: var(--tp-common-black);
+  &:hover {
+    color: var(--tp-common-white);
+
+    & i {
+      animation: none;
+    }
+  }
+  &::before,
+  &::after {
+    content: "";
+    color: var(--tp-common-white);
+    background: var(--tp-common-black);
+    height: 50%;
+    width: 0;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
 .tp-btn-border-sm {
   display: inline-block;
   font-size: 16px;
@@ -1280,7 +1304,7 @@
 .btn-next-tattoo,
 .btn-back-tattoo {
   background-color: var(--tp-common-white);
-  border: 1px solid #e4e4e4;
+  border: 1px solid var(--tp-common-border);
   color: var(--tp-common-black);
   /* font-size: 0rem; */
   padding: 0.3rem;

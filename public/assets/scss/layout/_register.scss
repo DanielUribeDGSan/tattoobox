@@ -1,0 +1,13 @@
+@use "../utils" as *;
+
+.tp-register-artist-area {
+  height: 100vh;
+  overflow: hidden;
+  & .artist-banner {
+  }
+  & .artist-content {
+    height: 100vh;
+    overflow-y: auto;
+    background-color: var(--tp-common-white);
+  }
+}

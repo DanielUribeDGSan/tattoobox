@@ -1,6 +1,7 @@
 @use "../utils" as *;
 
-.modal-tattoo {
+.modal-tattoo,
+.modal-full-screen {
   & .modal-body {
     background-color: #f8f8f8;
     overflow: hidden;
@@ -27,9 +28,22 @@
     top: 10px;
     background-color: var(--tp-common-white);
     border-radius: 100%;
-    border: 1px solid #e4e4e4;
+    border: 1px solid var(--tp-common-border);
     & svg {
       color: var(--tp-common-black);
+    }
+  }
+}
+
+.modal-full-screen {
+  & .modal-body {
+    background-color: var(--tp-common-white);
+    overflow: auto;
+    @media #{$md} {
+      padding: 5rem;
+    }
+    @media #{$sm,$xs} {
+      padding: 1rem;
     }
   }
 }

@@ -2,7 +2,12 @@ import { useState } from "react";
 import { tattoApiSocial, tattoApi, tattoApiIdentify } from "../api/tattoApi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { add_user, edit_user, sign_out } from "../redux/features/auth-slice";
+import {
+  add_user,
+  set_data_supplementary,
+  set_id_profile,
+  sign_out,
+} from "../redux/features/auth-slice";
 import Router from "next/router";
 
 const useTattoboxApi = () => {
@@ -65,16 +70,14 @@ const useTattoboxApi = () => {
   const completeRegister = async (body) => {
     try {
       await tattoApiIdentify.post("/registro/complementario", body);
-
       dispatch(
-        add_user({
+        set_data_supplementary({
           name: body.Nombre,
-          email: body.email,
-          apellidoPaterno: body.Apellido_Paterno,
-          apellidoMaterno: body.Apellido_Materno,
-          numeroCelular: body.NumeroCelular,
+          lastNamePaternal: body.Apellido_Paterno,
+          lastNameMaternal: body.Apellido_Materno,
+          mobileNumber: body.NumeroCelular,
           userName: body.UserName,
-          fechaNacimiento: body.Fecha_Nacimiento,
+          birthDate: body.Fecha_Nacimiento,
         })
       );
       toast.success(`Registro completado`, {
@@ -101,7 +104,7 @@ const useTattoboxApi = () => {
       const resp = await tattoApiSocial.get(`/v1/perfil/${idPart}`, config);
       console.log(resp);
       dispatch(
-        edit_user({
+        set_id_profile({
           idPerfil: resp.data.perfiles.Perfiles[0].IdPerfil,
         })
       );

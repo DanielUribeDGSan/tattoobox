@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { get_user } from "../redux/features/auth-slice";
+import Router from "next/router";
 
 export const useUser = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,12 @@ export const useUser = () => {
     dispatch(get_user());
   }, [dispatch]);
 
+  const verifyLoggedUser = () => {
+    if (user?.email) Router.push("/");
+  };
+
   return {
     user,
+    verifyLoggedUser,
   };
 };
