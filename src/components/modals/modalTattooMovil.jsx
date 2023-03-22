@@ -7,6 +7,9 @@ import ImageLightBox from "../common/modals/image-lightbox";
 import { BtnsActionsTattooFloat } from "../buttons/btns-actions-tattoo-float";
 import { UserCircleImage } from "../tattoos/information/user-circle-image";
 import { CommentsTattoo } from "../tattoos/comments/comments-tattoo";
+import { BtnAcheduleAppointment } from "../buttons/btn-schedule-appointment";
+import { BtnSliderTattoo } from "../buttons/btn-slider-tattoo";
+import { Divider } from "@mui/material";
 
 export const ModalTattooMovil = ({ modal_id, idContent }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
@@ -63,18 +66,30 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
               {isLoading ? (
                 <p>Cargando...</p>
               ) : (
-                <UserCircleImage
-                  content={contentTattoo}
-                  divider={false}
-                  style={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    width: "100%",
-                    padding: "0rem 1rem 1.2rem 0.3rem",
-                    borderBottom: "1px solid rgb(0 0 0 / 14%)",
-                  }}
-                />
+                <>
+                  <BtnSliderTattoo
+                    direction="left"
+                    action={handleOnClickNext}
+                    style={{
+                      position: "absolute",
+                      top: "20px",
+                      left: "1%",
+                      width: "auto",
+                      padding: "0rem 1rem 1.2rem 0.3rem",
+                    }}
+                  />
+                  <BtnSliderTattoo
+                    direction="right"
+                    action={handleOnClickNext}
+                    style={{
+                      position: "absolute",
+                      top: "20px",
+                      left: "12%",
+                      width: "auto",
+                      padding: "0rem 1rem 1.2rem 0.3rem",
+                    }}
+                  />
+                </>
               )}
               <button
                 type="button"
@@ -102,7 +117,6 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                     />
                   </div> */}
                     <div className="col-12 p-0 m-0 h-inherit position-relative">
-                      <BtnsActionsTattooFloat />
                       <img
                         ref={imageTattoo}
                         onLoad={onImgLoad}
@@ -129,8 +143,51 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                     >
                       <div className="container">
                         <div className="px-2 information-tattoo">
-                          <InformationTattoo content={contentTattoo} />
-                          <CommentsTattoo content={contentTattoo} />
+                          <div className="row mt-3">
+                            <div className="col-6 d-flex align-items-center justify-content-center">
+                              <p
+                                className="text-black p-0 m-0"
+                                style={{
+                                  fontSize: "1.3rem",
+                                  fontWeight: "bold",
+                                }}
+                              >
+                                2500 MXN
+                              </p>
+                            </div>
+                            <div className="col-6 d-flex align-items-center justify-content-center">
+                              <BtnsActionsTattooFloat />
+                            </div>
+                          </div>
+
+                          <div className="row mt-3">
+                            <div className="col-8 m-0 p-0">
+                              <UserCircleImage
+                                content={contentTattoo}
+                                divider={false}
+                              />
+                            </div>
+                            <div className="col-auto d-flex align-items-center justify-content-end p-0 m-0">
+                              <BtnAcheduleAppointment
+                                style={{
+                                  marginTop: "10px",
+                                  marginLeft: "10px",
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <Divider
+                              sx={{
+                                marginTop: "20px",
+                                borderColor: "rgb(0 0 0 / 45%)",
+                              }}
+                            />
+                          </div>
+                          <div className="mt-1">
+                            <InformationTattoo content={contentTattoo} />
+                            <CommentsTattoo content={contentTattoo} />
+                          </div>
                         </div>
                       </div>
                     </div>

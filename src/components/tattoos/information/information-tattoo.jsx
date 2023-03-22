@@ -10,7 +10,7 @@ export const InformationTattoo = ({ content }) => {
   return (
     <>
       <div className="row grid gx-3">
-        <div className="col-12 mt-3">
+        <div className="col-12">
           <div className="description-tatto">
             <p className="text-black p-0 m-0">
               {Cuerpo} - {EstiloTatuaje}
@@ -36,13 +36,6 @@ export const InformationTattoo = ({ content }) => {
           <Divider
             sx={{ marginTop: "20px", borderColor: "rgb(0 0 0 / 45%)" }}
           />
-        </div>
-      </div>
-      <div className="row grid gx-3">
-        <div className="col-12 mt-3 d-flex align-items-center justify-content-end">
-          <Link href="#">
-            <a className="btn-small-primary">Agendar cita</a>
-          </Link>
         </div>
       </div>
     </>

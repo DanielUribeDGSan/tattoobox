@@ -8,6 +8,8 @@ import { BtnSliderTattoo } from "../buttons/btn-slider-tattoo";
 import { BtnsActionsTattooFloat } from "../buttons/btns-actions-tattoo-float";
 import { UserCircleImage } from "../tattoos/information/user-circle-image";
 import { CommentsTattoo } from "../tattoos/comments/comments-tattoo";
+import { BtnAcheduleAppointment } from "../buttons/btn-schedule-appointment";
+import { Divider } from "@mui/material";
 
 export const ModalTattoo = ({ modal_id, idContent }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
@@ -118,9 +120,39 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
                   >
                     <div className="container">
                       <div className="px-2 information-tattoo">
-                        <UserCircleImage content={contentTattoo} />
-                        <InformationTattoo content={contentTattoo} />
-                        <CommentsTattoo content={contentTattoo} />
+                        <div className="row mt-2">
+                          <div className="col-8">
+                            <UserCircleImage
+                              content={contentTattoo}
+                              divider={false}
+                            />
+                          </div>
+                          <div className="col-auto d-flex align-items-center justify-content-end m-0 p-0">
+                            <BtnAcheduleAppointment
+                              style={{ marginTop: "10px" }}
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <Divider
+                            sx={{
+                              marginTop: "20px",
+                              borderColor: "rgb(0 0 0 / 45%)",
+                            }}
+                          />
+                        </div>
+                        <div className="mt-2">
+                          <p
+                            className="text-black p-0 m-0 text-end"
+                            style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+                          >
+                            2500 MXN
+                          </p>
+                        </div>
+                        <div className="mt-1">
+                          <InformationTattoo content={contentTattoo} />
+                          <CommentsTattoo content={contentTattoo} />
+                        </div>
                       </div>
                     </div>
                   </div>
