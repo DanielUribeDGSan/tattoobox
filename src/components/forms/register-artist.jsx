@@ -417,19 +417,30 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
               </>
             )}
 
-            {sectionForm < 4 ? (
-              <div className="tp-login-button mb-3">
-                <button className="tp-btn-black w-100" type="submit">
-                  Siguiente
-                </button>
-              </div>
-            ) : (
-              <div className="tp-login-button mb-3">
-                <button className="tp-btn-black w-100" type="submit">
-                  Completar registro
-                </button>
-              </div>
-            )}
+            <div className="tp-login-button mb-3">
+              {sectionForm === 3 && (
+                <div className="mb-2">
+                  <p
+                    className="text-black  p-0 m-0"
+                    style={{ fontSize: "1rem" }}
+                  >
+                    <span className="fw-bold">Importante:</span> Antes de seguir
+                    confirma que el icono de tu ubicación este marcado
+                    correctamente en el mapa.
+                  </p>
+                  <p
+                    className="text-black  p-0 mx-0 mt-2"
+                    style={{ fontSize: "1rem" }}
+                  >
+                    En caso de no estar correcto, puedes mover el icono
+                    seleccionandolo y arrastandolo al lugar correcto.
+                  </p>
+                </div>
+              )}
+              <button className="tp-btn-black w-100" type="submit">
+                {sectionForm < 4 ? "Siguiente" : "Completar registro"}
+              </button>
+            </div>
           </form>
         </div>
       </div>

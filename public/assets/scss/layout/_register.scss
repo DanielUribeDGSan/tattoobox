@@ -3,16 +3,21 @@
 .tp-register-artist-area {
   height: 100vh;
   overflow: hidden;
-
+  background-color: var(--tp-common-white);
+  @media #{$md,$sm,$xs} {
+    height: 100%;
+  }
   & .artist-banner {
     height: 100vh;
     @media #{$md,$sm,$xs} {
-      height: 50vh;
+      height: 100vh;
     }
   }
   & .artist-content {
-    height: 100vh;
+    min-height: 100vh;
     overflow-y: auto;
-    background-color: var(--tp-common-white);
+    @media #{$md,$sm,$xs} {
+      min-height: 100%;
+    }
   }
 }

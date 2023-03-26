@@ -7,6 +7,7 @@ import { MemoizedMapGoogle } from "../../googlemaps";
 
 const RegisterArea = () => {
   const [selected, setSelected] = useState("");
+  const [showMap, setShowMap] = useState(false);
   const [showImage, setShowImage] = useState(true);
   const [libraries] = useState(["places"]);
   const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
@@ -19,12 +20,12 @@ const RegisterArea = () => {
   return (
     <>
       <div className="tp-register-artist-area">
-        <div className="row h-100 m-0 p-0">
+        <div className="row  m-0 p-0 h-100">
           <div
-            className="col-xl-4 col-lg-4 col-12 artist-content m-0 p-0"
-            style={{
-              height: !showImage && movilIpadaScreen ? "50vh" : "100vh",
-            }}
+            className="col-xl-4 col-lg-4 col-12 artist-content m-0 p-0 position-relative"
+            // style={{
+            //   height: !showImage && movilIpadaScreen ? "50vh" : "100vh",
+            // }}
           >
             <RegisterArtist
               selected={selected}
@@ -32,7 +33,12 @@ const RegisterArea = () => {
               setShowImage={setShowImage}
             />
           </div>
-          <div className="col-xl-8 col-lg-8 col-12 artist-banner m-0 p-0">
+          <div
+            className="col-xl-8 col-lg-8 col-12 artist-banner m-0 p-0"
+            style={{
+              height: !showMap && movilIpadaScreen ? "auto" : "100vh",
+            }}
+          >
             {!showImage ? (
               <MemoizedMapGoogle
                 selected={selected}
