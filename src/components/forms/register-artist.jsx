@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Router from "next/router";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -162,8 +162,13 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
         return false;
     }
     if (sectionForm === 2) setShowImage(false);
+    if (sectionForm === 3) setShowImage(true);
     setSectionForm(sectionForm + 1);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [sectionForm]);
 
   return (
     <>
