@@ -24,12 +24,12 @@ const RegisterForm = () => {
         terminos: false,
       },
       validationSchema: !showCode ? registerSchema : registerCode,
-      onSubmit: ({ email, code, terminos }, { resetForm }) => {
+      onSubmit: async ({ email, code, terminos }, { resetForm }) => {
         if (!showCode) {
-          registerEmail(email);
+          await registerEmail(email);
           setShowCode(true);
         } else {
-          validateCode(email, code);
+          await validateCode(email, code);
         }
         // resetForm();
       },
@@ -73,6 +73,7 @@ const RegisterForm = () => {
           <>
             <div>
               <button
+                type="button"
                 style={{ fontSize: "1.1rem", marginBottom: "10px" }}
                 onClick={() => {
                   values.code = "";

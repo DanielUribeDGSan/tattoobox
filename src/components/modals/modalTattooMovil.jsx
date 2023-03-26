@@ -10,6 +10,7 @@ import { CommentsTattoo } from "../tattoos/comments/comments-tattoo";
 import { BtnAcheduleAppointment } from "../buttons/btn-schedule-appointment";
 import { BtnSliderTattoo } from "../buttons/btn-slider-tattoo";
 import { Divider } from "@mui/material";
+import { ActionsTattoos } from "../tattoos/actions/actions-tattoos";
 
 export const ModalTattooMovil = ({ modal_id, idContent }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
@@ -135,7 +136,7 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                           borderRadius: "20px",
                         }}
                       />
-                      {/* <ActionsTattoos content={contentTattoo} /> */}
+                      <BtnsActionsTattooFloat />
                     </div>
                     <div
                       className="col-12 mt-lg-0 content-informatin-tattoo p-0 m-0 "
@@ -143,23 +144,6 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                     >
                       <div className="container">
                         <div className="px-2 information-tattoo">
-                          <div className="row mt-3">
-                            <div className="col-6 d-flex align-items-center justify-content-center">
-                              <p
-                                className="text-black p-0 m-0"
-                                style={{
-                                  fontSize: "1.3rem",
-                                  fontWeight: "bold",
-                                }}
-                              >
-                                2500 MXN
-                              </p>
-                            </div>
-                            <div className="col-6 d-flex align-items-center justify-content-center">
-                              <BtnsActionsTattooFloat />
-                            </div>
-                          </div>
-
                           <div className="row mt-3">
                             <div className="col-8 m-0 p-0">
                               <UserCircleImage
@@ -186,6 +170,14 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                           </div>
                           <div className="mt-1">
                             <InformationTattoo content={contentTattoo} />
+                            <ActionsTattoos
+                              content={contentTattoo}
+                              style={{
+                                marginTop: "15px",
+                                marginBottom: "15px",
+                              }}
+                            />
+
                             <CommentsTattoo content={contentTattoo} />
                           </div>
                         </div>

@@ -11,7 +11,6 @@ import {
 import Router from "next/router";
 
 const useTattoboxApi = () => {
-  // Auth and register
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -25,6 +24,13 @@ const useTattoboxApi = () => {
         mode: "no-cors",
       },
     },
+  };
+
+  // Auth
+
+  const logout = () => {
+    dispatch(sign_out());
+    Router.push("/");
   };
 
   const registerEmail = async (email) => {
@@ -67,6 +73,8 @@ const useTattoboxApi = () => {
     }
   };
 
+  // Register
+
   const completeRegister = async (body) => {
     try {
       await tattoApiIdentify.post("/registro/complementario", body);
@@ -92,9 +100,30 @@ const useTattoboxApi = () => {
     }
   };
 
-  const logout = () => {
-    dispatch(sign_out());
-    Router.push("/");
+  const registerArtist = async (body) => {
+    try {
+      const resp = await tattoApiSocial.post("/v1/perfil/artista", body);
+      // dispatch(
+      //   set_data_supplementary({
+      //     name: body.Nombre,
+      //     lastNamePaternal: body.Apellido_Paterno,
+      //     lastNameMaternal: body.Apellido_Materno,
+      //     mobileNumber: body.NumeroCelular,
+      //     userName: body.UserName,
+      //     birthDate: body.Fecha_Nacimiento,
+      //   })
+      // );
+      console.log(resp);
+      toast.success(`Registro completado`, {
+        position: "top-left",
+      });
+      Router.push("/");
+    } catch (error) {
+      const errorMessage = error?.message;
+      toast.error(`Ocurrio un error - ${errorMessage}`, {
+        position: "top-left",
+      });
+    }
   };
 
   // Get data for user
@@ -162,6 +191,7 @@ const useTattoboxApi = () => {
     getIdProfile,
     contentTattoo,
     setCommentTattoo,
+    registerArtist,
   };
 };
 

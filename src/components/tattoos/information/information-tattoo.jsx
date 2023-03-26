@@ -12,24 +12,10 @@ export const InformationTattoo = ({ content }) => {
       <div className="row grid gx-3">
         <div className="col-12">
           <div className="description-tatto">
-            <p className="text-black p-0 m-0">
+            <p className="text-black p-0 m-0 fw-bold">
               {Cuerpo} - {EstiloTatuaje}
             </p>
             <p className="text-black p-0 m-0">#Lorem-ipsum #dolorsit</p>
-          </div>
-        </div>
-        <div className="col-12 mt-3 ">
-          <div className="actions d-flex align-items-center">
-            <span>
-              <FavoriteBorderIcon
-                sx={{ color: "var(--tp-common-black)", fontSize: "1rem" }}
-              />
-              <span className="text-black" style={{ marginLeft: "10px" }}>
-                7000
-              </span>
-            </span>
-
-            <span className="text-black">Creado el 20 de febrero</span>
           </div>
         </div>
         <div>

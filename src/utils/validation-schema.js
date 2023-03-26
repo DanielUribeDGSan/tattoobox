@@ -33,23 +33,43 @@ export const registerCode = Yup.object().shape({
   // password: Yup.string().required().min(6).label("Password")
 });
 
-export const registerSupplementary = Yup.object().shape({
-  name: Yup.string().required("El nombre es requerido").label("Nombre"),
-  lastNamePaternal: Yup.string()
-    .required("El apellido paterno es requerido")
-    .label("Apellido paterno"),
-  lastNameMaternal: Yup.string()
-    .required("El apellido materno es requerido")
-    .label("Apellido materno"),
-  mobileNumber: Yup.number()
-    .required("El número de celular es requerido")
-    .label("Número de celular"),
-  userName: Yup.string()
-    .required("El nombre de usaurio es requerido")
-    .label("Nombre de usuario"),
-  birthDate: Yup.string()
-    .required("La fecha de nacimiento es requerida")
-    .label("Name"),
+export const registerSupplementarySection1 = Yup.object().shape({
+  description: Yup.string()
+    .required("La descripción es requerida")
+    .label("Descripción"),
+});
+
+export const registerSupplementarySection2 = Yup.object().shape({
+  instagram: Yup.string()
+    .required("El instagram es requerido")
+    .label("Instagram"),
+});
+
+export const registerSupplementarySection3 = Yup.object().shape({
+  nameAddress: Yup.string()
+    .required("La dirección es requerida")
+    .label("Dirección completa"),
+  zipCode: Yup.number("Solo puedes ingresar números")
+    .required("El código postal es requerido")
+    .label("Código postal"),
+  colonia: Yup.string("Solo puedes ingresar letras")
+    .required("La colonia es requerida")
+    .label("Colonia"),
+  street: Yup.string("Solo puedes ingresar letras")
+    .required("La calle es requerida")
+    .label("Calle"),
+});
+
+export const registerSupplementarySection4 = Yup.object().shape({
+  state: Yup.string("Solo puedes ingresar letras")
+    .required("El estado es requerido")
+    .label("Estado"),
+  delegation: Yup.string("Solo puedes ingresar letras")
+    .required("La delegación es requerida")
+    .label("Delegación"),
+  innerNumber: Yup.string()
+    .required("El número interior es requerido")
+    .label("Número interior"),
 });
 
 export const loginSchema = Yup.object().shape({

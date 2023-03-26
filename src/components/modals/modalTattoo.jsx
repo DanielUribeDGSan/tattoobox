@@ -10,6 +10,7 @@ import { UserCircleImage } from "../tattoos/information/user-circle-image";
 import { CommentsTattoo } from "../tattoos/comments/comments-tattoo";
 import { BtnAcheduleAppointment } from "../buttons/btn-schedule-appointment";
 import { Divider } from "@mui/material";
+import { ActionsTattoos } from "../tattoos/actions/actions-tattoos";
 
 export const ModalTattoo = ({ modal_id, idContent }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
@@ -112,7 +113,6 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
                         borderRadius: "20px 0px 0px 20px",
                       }}
                     />
-                    {/* <ActionsTattoos content={contentTattoo} /> */}
                   </div>
                   <div
                     className="col-4 mt-lg-0 mt-md-3 mt-3 content-informatin-tattoo p-0 m-0 h-inherit"
@@ -133,6 +133,7 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
                             />
                           </div>
                         </div>
+
                         <div>
                           <Divider
                             sx={{
@@ -141,16 +142,13 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
                             }}
                           />
                         </div>
-                        <div className="mt-2">
-                          <p
-                            className="text-black p-0 m-0 text-end"
-                            style={{ fontSize: "1.5rem", fontWeight: "bold" }}
-                          >
-                            2500 MXN
-                          </p>
-                        </div>
                         <div className="mt-1">
                           <InformationTattoo content={contentTattoo} />
+
+                          <ActionsTattoos
+                            content={contentTattoo}
+                            style={{ marginTop: "15px", marginBottom: "15px" }}
+                          />
                           <CommentsTattoo content={contentTattoo} />
                         </div>
                       </div>

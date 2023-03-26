@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import { useState } from "react";
+import Router from "next/router";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -8,11 +9,17 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 import useTattoboxApi from "../../hooks/use-tattobox-api";
 import { useUser } from "../../hooks/use-user";
-import { registerSupplementary } from "../../utils/validation-schema";
+import {
+  registerSupplementarySection1,
+  registerSupplementarySection2,
+  registerSupplementarySection3,
+  registerSupplementarySection4,
+} from "../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
 
-export const RegisterArtist = ({ setSelected, setShowImage }) => {
+export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
   const [sectionForm, setSectionForm] = useState(1);
+  const { registerArtist } = useTattoboxApi();
   const {
     ready,
     value,
@@ -21,7 +28,6 @@ export const RegisterArtist = ({ setSelected, setShowImage }) => {
     clearSuggestions,
   } = usePlacesAutocomplete();
 
-  const { completeRegister } = useTattoboxApi();
   const { user } = useUser();
 
   // use formik
@@ -43,8 +49,15 @@ export const RegisterArtist = ({ setSelected, setShowImage }) => {
         numberOutside: "",
         innerNumber: "",
       },
-      validationSchema: registerSupplementary,
-      onSubmit: (
+      validationSchema:
+        sectionForm === 1
+          ? registerSupplementarySection1
+          : sectionForm === 2
+          ? registerSupplementarySection2
+          : sectionForm === 3
+          ? registerSupplementarySection3
+          : registerSupplementarySection4,
+      onSubmit: async (
         {
           description,
           facebook,
@@ -63,8 +76,29 @@ export const RegisterArtist = ({ setSelected, setShowImage }) => {
         },
         { resetForm }
       ) => {
+        handleSubmitValidateForm();
+        const body = {
+          idPerfil: user?.idPerfil,
+          Descripcion: description,
+          Facebook: facebook,
+          Instagram: instagram,
+          Twitter: twitter,
+          Whatsapp: whatsapp,
+          SitioWeb: webSitie,
+          NombreDireccion: nameAddress,
+          CodigoPostal: zipCode,
+          Estado: state,
+          Delegacion: delegation,
+          Colonia: colonia,
+          Calle: street,
+          NumeroExterior: numberOutside,
+          NumeroInterior: innerNumber,
+          Lat: selected.lat,
+          Lon: selected.lng,
+        };
+
+        if (sectionForm === 4) await registerArtist(body);
         // completeRegister(body);
-        resetForm();
       },
     });
 
@@ -72,7 +106,7 @@ export const RegisterArtist = ({ setSelected, setShowImage }) => {
     setValue(address, false);
     clearSuggestions();
     const results = await getGeocode({ address });
-    const { lat, lng } = await getLatLng(results[0]);
+    const { lat, lng } = getLatLng(results[0]);
     const zipCode = getZipCode(results[0], false);
 
     const params = {
@@ -101,6 +135,36 @@ export const RegisterArtist = ({ setSelected, setShowImage }) => {
     setLocation(description, place_id);
   };
 
+  const handleOnClickBack = () => {
+    if (sectionForm === 1) Router.push("/");
+    if (sectionForm < 4) {
+      setShowImage(true);
+    } else {
+      setShowImage(false);
+    }
+    setSectionForm(sectionForm - 1);
+  };
+
+  const handleSubmitValidateForm = () => {
+    if (!values.description && sectionForm === 1) return false;
+    if (!values.instagram && sectionForm === 2) return false;
+    if (sectionForm === 3) {
+      if (
+        !values.nameAddress ||
+        !values.zipCode ||
+        !values.colonia ||
+        !values.street
+      )
+        return false;
+    }
+    if (sectionForm === 4) {
+      if (!values.state || !values.delegation || !values.innerNumber)
+        return false;
+    }
+    if (sectionForm === 2) setShowImage(false);
+    setSectionForm(sectionForm + 1);
+  };
+
   return (
     <>
       <div className="tpartist h-100">
@@ -109,6 +173,23 @@ export const RegisterArtist = ({ setSelected, setShowImage }) => {
         </div>
         <div className="tpartist__form">
           <form onSubmit={handleSubmit}>
+            <div>
+              <button
+                type="button"
+                className="text-black"
+                style={{ fontSize: "1.1rem", marginBottom: "15px" }}
+                onClick={handleOnClickBack}
+              >
+                <i
+                  className="far fa-arrow-left"
+                  style={{
+                    marginRight: "10px",
+                  }}
+                ></i>
+                {sectionForm === 1 ? "Regresar al inicio" : "Regresar"}
+              </button>
+            </div>
+
             {sectionForm === 1 && (
               <div className="tp-input">
                 <label htmlFor="description">Descripciópn</label>
@@ -202,8 +283,17 @@ export const RegisterArtist = ({ setSelected, setShowImage }) => {
                     id="adressFull"
                     placeholder="Escribe tu dirección completa"
                   />
+
                   <div>
                     <ul className="list-group">
+                      {status === "OK" && (
+                        <p
+                          className="text-black m-0 p-0"
+                          style={{ fontSize: "1rem" }}
+                        >
+                          Selecciona tu dirección
+                        </p>
+                      )}
                       {status === "OK" &&
                         data.map((sugestion) => (
                           <a
@@ -219,6 +309,9 @@ export const RegisterArtist = ({ setSelected, setShowImage }) => {
                         ))}
                     </ul>
                   </div>
+                  {touched.nameAddress && (
+                    <ErrorMsg error={errors.nameAddress} />
+                  )}
                 </div>
                 <input
                   value={values.nameAddress}
@@ -326,14 +419,7 @@ export const RegisterArtist = ({ setSelected, setShowImage }) => {
 
             {sectionForm < 4 ? (
               <div className="tp-login-button mb-3">
-                <button
-                  className="tp-btn-black w-100"
-                  type="button"
-                  onClick={() => {
-                    if (sectionForm === 2) setShowImage(false);
-                    setSectionForm(sectionForm + 1);
-                  }}
-                >
+                <button className="tp-btn-black w-100" type="submit">
                   Siguiente
                 </button>
               </div>

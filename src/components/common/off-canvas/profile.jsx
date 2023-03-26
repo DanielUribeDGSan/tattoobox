@@ -87,12 +87,23 @@ export const Profile = () => {
           </div>
         )}
         {/* end completar registro */}
-
+        {menuProfileData.map((item, i) => (
+          <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12" key={i}>
+            <Link href={`${item.path}`}>
+              <a>
+                <div className="content-item-profile">
+                  {item.icon}
+                  <p className="p-0 m-0 d-inline-block">{item.title}</p>
+                </div>
+              </a>
+            </Link>
+          </div>
+        ))}
         {/* unete como estudio */}
         <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
-          <div className="content-item-profile">
-            <Link href="/">
-              <a>
+          <Link href="/">
+            <a>
+              <div className="content-item-profile">
                 <AccountBoxIcon
                   sx={{
                     height: "30px",
@@ -101,17 +112,17 @@ export const Profile = () => {
                   }}
                 />
                 <p className="p-0 m-0 d-inline-block">Únete como estudio</p>
-              </a>
-            </Link>
-          </div>
+              </div>
+            </a>
+          </Link>
         </div>
         {/* end unete como estudio */}
 
         {/* unete como artista */}
         <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
-          <div className="content-item-profile">
-            <Link href="/registro-artista">
-              <a>
+          <Link href="/registro-artista">
+            <a>
+              <div className="content-item-profile">
                 <AccountBoxIcon
                   sx={{
                     height: "30px",
@@ -120,24 +131,11 @@ export const Profile = () => {
                   }}
                 />
                 <p className="p-0 m-0 d-inline-block">Únete como artista</p>
-              </a>
-            </Link>
-          </div>
+              </div>
+            </a>
+          </Link>
         </div>
         {/* end unete como artista */}
-
-        {menuProfileData.map((item, i) => (
-          <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12" key={i}>
-            <div className="content-item-profile">
-              <Link href={`${item.path}`}>
-                <a>
-                  {item.icon}
-                  <p className="p-0 m-0 d-inline-block">{item.title}</p>
-                </a>
-              </Link>
-            </div>
-          </div>
-        ))}
       </div>
       {!user?.userName && (
         <ModalFullScreen modal_id={"registerSupplementary"} refBtn={btnClose}>

@@ -3,7 +3,12 @@
 .tp-register-artist-area {
   height: 100vh;
   overflow: hidden;
+
   & .artist-banner {
+    height: 100vh;
+    @media #{$md,$sm,$xs} {
+      height: 50vh;
+    }
   }
   & .artist-content {
     height: 100vh;
