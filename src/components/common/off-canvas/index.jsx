@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import useTattoboxApi from "../../../hooks/use-tattobox-api";
+import useTattoboxAuthRegister from "../../../hooks/use-tattobox-auth-register";
 import { useUser } from "../../../hooks/use-user";
 import menu_data from "../../../layout/headers/menu-data";
 import { Profile } from "./profile";
@@ -24,7 +24,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   const [navTitle, setNavTitle] = useState("");
   const { user } = useUser();
 
-  const { logout } = useTattoboxApi();
+  const { logout } = useTattoboxAuthRegister();
 
   const openMobileMenu = (menu) => {
     if (navTitle === menu) {

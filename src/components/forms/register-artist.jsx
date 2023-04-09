@@ -7,7 +7,7 @@ import usePlacesAutocomplete, {
   getZipCode,
   getDetails,
 } from "use-places-autocomplete";
-import useTattoboxApi from "../../hooks/use-tattobox-api";
+import useTattoboxAuthRegister from "../../hooks/use-tattobox-auth-register";
 import { useUser } from "../../hooks/use-user";
 import {
   registerSupplementarySection1,
@@ -19,7 +19,7 @@ import ErrorMsg from "./error-msg";
 
 export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
   const [sectionForm, setSectionForm] = useState(1);
-  const { registerArtist } = useTattoboxApi();
+  const { registerArtist } = useTattoboxAuthRegister();
   const {
     ready,
     value,
@@ -97,8 +97,7 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
           Lon: selected.lng,
         };
 
-        if (sectionForm === 4) await registerArtist(body);
-        // completeRegister(body);
+        if (sectionForm === 4) await registerArtist(body, user?.idParte);
       },
     });
 

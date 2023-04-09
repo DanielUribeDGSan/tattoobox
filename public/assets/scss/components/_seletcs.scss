@@ -1,6 +1,7 @@
 @use "../utils" as *;
 
-.react-select-container {
+.react-select-container,
+.react-select-container-upload {
   &:focus {
     border: none;
     box-shadow: none;
@@ -136,6 +137,7 @@
     max-height: 100%;
   }
 }
+
 .react-select-filters__menu-list,
 .react-select-filters2__menu-list,
 .react-select-filters3__menu-list {
@@ -158,5 +160,89 @@
 .react-select-filters__indicator,
 .react-select-filters2__indicator,
 .react-select-filters3__indicator {
+  color: var(--tp-common-black) !important;
+}
+
+.react-select-upload__control {
+  &:hover,
+  &:focus-visible,
+  &:focus {
+    border: 1px solid rgb(0 0 0 / 14%);
+  }
+  appearance: none;
+  display: flex;
+  background-color: var(--tp-common-white);
+  color: var(--tp-common-black);
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0.45rem 1rem;
+  border-radius: 10px !important;
+  border: 1px solid rgb(0 0 0 / 14%);
+
+  @media #{$md,$sm,$xs} {
+    padding: 0px;
+    margin-bottom: 0.5rem;
+    border-radius: 0px 0px 0px 8px !important;
+    height: 47px;
+  }
+}
+
+.react-select-upload__menu {
+  color: var(--tp-common-black);
+  z-index: 99;
+  border-radius: 8px !important;
+  background-color: #fff !important;
+  position: relative;
+
+  @media #{$md,$sm,$xs} {
+    background-color: #fff !important;
+    color: rgba(0, 0, 0, 0.87);
+    -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
+      0px 16px 24px 2px rgba(0, 0, 0, 0.14),
+      0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+    overflow-y: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: auto;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    z-index: 1200 !important;
+    -webkit-overflow-scrolling: touch !important;
+    position: fixed !important;
+    top: auto !important;
+    outline: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    max-height: 100%;
+  }
+}
+.react-select-upload__menu__menu-list {
+  color: var(--tp-common-black);
+  z-index: 99;
+  border-radius: 8px !important;
+}
+.react-select-upload__menu__option {
+  color: var(--tp-common-black);
+  background-color: transparent;
+  z-index: 99;
+  border-radius: 8px !important;
+}
+
+.react-select-upload__menu__placeholder,
+.react-select-upload__menu__indicator {
+  color: var(--tp-common-black) !important;
+}
+
+.react-select-upload__placeholder,
+.react-select-upload__indicator {
   color: var(--tp-common-black) !important;
 }

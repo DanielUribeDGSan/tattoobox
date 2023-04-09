@@ -1,11 +1,11 @@
 import { useFormik } from "formik";
-import useTattoboxApi from "../../hooks/use-tattobox-api";
+import useTattoboxAuthRegister from "../../hooks/use-tattobox-auth-register";
 import { useUser } from "../../hooks/use-user";
 import { registerSupplementary } from "../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
 
 export const RegisterSupplementary = ({ refBtn }) => {
-  const { completeRegister } = useTattoboxApi();
+  const { completeRegister } = useTattoboxAuthRegister();
   const { user } = useUser();
 
   // use formik

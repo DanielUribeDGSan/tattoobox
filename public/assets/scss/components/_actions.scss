@@ -2,19 +2,24 @@
 
 .actions-tatuaje {
   & .likes {
-    margin-left: 0.5rem;
+    margin-left: 0.2rem;
   }
   & .precio-icon {
-    margin-left: 0.5rem;
+    margin-left: 0.2rem;
   }
   & .precio {
-    margin-left: 0.5rem;
+    margin-left: 0.2rem;
+    font-size: 1rem;
+
     @media #{$sm,$xs} {
       margin-left: 0rem;
     }
   }
   & span {
     font-size: 1.1rem;
+  }
+  & .actions-icons {
+    justify-content: space-around;
   }
 }
 

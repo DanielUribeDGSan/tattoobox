@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { FooterThree, Header, Wrapper } from "../../../layout";
 import { animationCreate } from "../../../utils/utils";
-import Breadcrumb from "../../common/breadcrumb/breadcrumb";
+import BreadcrumbSmall from "../../common/breadcrumb/breadcrumbSmal";
 import TattoItems from "./tattoo-items";
 
 const TattooMain = () => {
@@ -14,7 +14,7 @@ const TattooMain = () => {
   return (
     <Wrapper>
       <Header />
-      <Breadcrumb title={"Encuentra tu tatuaje"} />
+      <BreadcrumbSmall title={""} />
       <TattoItems />
       {/* <FooterThree /> */}
     </Wrapper>

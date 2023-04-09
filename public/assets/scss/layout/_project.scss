@@ -1086,6 +1086,11 @@
   }
 }
 
+.filters {
+  box-shadow: 0px 2px 10px 0 rgba(0, 0, 0, 0.16);
+  margin-bottom: 3rem;
+}
+
 [data-rsbs-overlay],
 [data-rsbs-backdrop],
 [data-rsbs-root]:after {

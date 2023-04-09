@@ -67,9 +67,6 @@ export const registerSupplementarySection4 = Yup.object().shape({
   delegation: Yup.string("Solo puedes ingresar letras")
     .required("La delegación es requerida")
     .label("Delegación"),
-  innerNumber: Yup.string()
-    .required("El número interior es requerido")
-    .label("Número interior"),
 });
 
 export const loginSchema = Yup.object().shape({
@@ -81,6 +78,13 @@ export const contactSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
   email: Yup.string().required().email().label("Email"),
   msg: Yup.string().required().min(20).label("Message"),
+});
+
+export const uploadTattoo = Yup.object().shape({
+  tattoo: Yup.string().required("Es requerido el tatuaje").label("Tatuaje"),
+  description: Yup.string()
+    .required("Es requerida la descripción")
+    .label("Descripción"),
 });
 
 export const blogSchema = Yup.object().shape({

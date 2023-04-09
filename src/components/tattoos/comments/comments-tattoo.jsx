@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { FormCommentTatto } from "../../forms/form-comment-tatto";
-import useTattoboxApi from "../../../hooks/use-tattobox-api";
+import useTattoboxTattoos from "../../../hooks/use-tattobox-tattoos";
 
 export const CommentsTattoo = ({ content }) => {
   const [newMessages, setNewMessages] = useState(false);
   const { UrlImagen, Titulo, IdContenido } = content;
-  const { getContentTattoo, contentTattoo, isLoading } = useTattoboxApi();
+  const { getContentTattoo, contentTattoo, isLoading } = useTattoboxTattoos();
 
   useEffect(() => {
     let isActive = true;

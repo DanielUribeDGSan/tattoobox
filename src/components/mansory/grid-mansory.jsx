@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
 import Image from "mui-image";
-import { ModalTattoo } from "../modals/modalTattoo";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { ModalTattoo } from "../modals/modalTattoo";
 import { ModalTattooMovil } from "../modals/modalTattooMovil";
 
 export const GridMansory = ({ data }) => {
@@ -18,7 +18,14 @@ export const GridMansory = ({ data }) => {
   return (
     <>
       <Box sx={{ width: "100%", minHeight: 400 }}>
-        <Masonry columns={matches ? 2 : 4} spacing={2}>
+        <Masonry
+          columns={matches ? 2 : 4}
+          spacing={2}
+          sx={{
+            marginRight: movilIpadaScreen && 0,
+            marginLeft: movilIpadaScreen && 0,
+          }}
+        >
           {data.map((item, index) => (
             <div key={index}>
               <Image
@@ -32,7 +39,6 @@ export const GridMansory = ({ data }) => {
                 showLoading={false}
                 distance="100px"
                 shiftDuration={900}
-                bgColor="var(--tp-theme-2)"
                 src={`${item.UrlImagen}?w=162&auto=format`}
                 alt={item?.Titulo}
                 style={{
@@ -41,6 +47,7 @@ export const GridMansory = ({ data }) => {
                   display: "block",
                   width: "100%",
                   borderRadius: matches ? 5 : 20,
+                  boxShadow: "0 3px 10px 0 rgba(0, 0, 0, 0.16)",
                 }}
               />
             </div>

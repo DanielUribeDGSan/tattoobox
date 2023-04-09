@@ -34,7 +34,7 @@ export const FormFilters = ({
 
   return (
     <div className="filters">
-      <div className="row grid gx-3 pb-50">
+      <div className="row grid gx-3 ">
         <div className="col-xl-4 col-lg-4 col-md-4 p-0 m-0">
           <div className="input-search">
             <input

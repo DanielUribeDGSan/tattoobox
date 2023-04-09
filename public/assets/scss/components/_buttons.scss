@@ -314,6 +314,7 @@
     line-height: 56px;
   }
 }
+
 .tp-btn-sm {
   @media #{$lg} {
     margin-right: 30px;
@@ -1303,6 +1304,12 @@
 .btn-small-black {
   background-color: var(--tp-common-black);
   padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.btn-md-black {
+  background-color: var(--tp-common-black);
+  padding: 0.5rem 1.5rem;
   border-radius: 5px;
 }
 

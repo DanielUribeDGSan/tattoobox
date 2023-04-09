@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import { useRef } from "react";
-import useTattoboxApi from "../../hooks/use-tattobox-api";
+import useTattoboxTattoos from "../../hooks/use-tattobox-tattoos";
 import { InformationTattoo } from "../tattoos/information/information-tattoo";
 import CloseIcon from "@mui/icons-material/Close";
 import ImageLightBox from "../common/modals/image-lightbox";
@@ -17,7 +17,7 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
   const imageTattoo = useRef();
-  const { getContentTattoo, contentTattoo, isLoading } = useTattoboxApi();
+  const { getContentTattoo, contentTattoo, isLoading } = useTattoboxTattoos();
 
   const images = [contentTattoo?.UrlImagen];
 
@@ -138,6 +138,12 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                       />
                       <BtnsActionsTattooFloat />
                     </div>
+                    <ActionsTattoos
+                      content={contentTattoo}
+                      style={{
+                        marginTop: "15px",
+                      }}
+                    />
                     <div
                       className="col-12 mt-lg-0 content-informatin-tattoo p-0 m-0 "
                       style={{ overflowY: "auto" }}
@@ -170,13 +176,6 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                           </div>
                           <div className="mt-1">
                             <InformationTattoo content={contentTattoo} />
-                            <ActionsTattoos
-                              content={contentTattoo}
-                              style={{
-                                marginTop: "15px",
-                                marginBottom: "15px",
-                              }}
-                            />
 
                             <CommentsTattoo content={contentTattoo} />
                           </div>

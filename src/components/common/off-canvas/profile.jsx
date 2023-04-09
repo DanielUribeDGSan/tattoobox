@@ -67,6 +67,24 @@ export const Profile = () => {
         </div>
       </div>
       <div className="row ">
+        {user?.idTipoPerfil == 2 && (
+          <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
+            <div
+              className="content-item-profile"
+              data-bs-toggle="modal"
+              data-bs-target="#registerSupplementary"
+            >
+              <AccountBoxIcon
+                sx={{
+                  height: "30px",
+                  width: "30px",
+                  color: "var(--tp-common-black)",
+                }}
+              />
+              <p className="p-0 m-0 d-inline-block">Subir tatuajes</p>
+            </div>
+          </div>
+        )}
         {/* Completar registro */}
         {!user?.userName && (
           <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">

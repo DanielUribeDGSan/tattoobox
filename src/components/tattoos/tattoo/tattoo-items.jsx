@@ -43,11 +43,20 @@ const TattoItems = () => {
 
   return (
     <>
-      <div className="tp-portfolio-area pt-120 pb-100 p-custom p-relative">
+      <div
+        className="tp-portfolio-area pt-50 pb-100 p-custom p-relative"
+        style={{ paddingTop: movilIpadaScreen ? "20px" : "50px" }}
+      >
         <div className="container">
           {/* filtros  */}
           {movilIpadaScreen && (
-            <div className="input-content-movil pb-4">
+            <div
+              className="input-content-movil filters mb-4"
+              style={{
+                backgroundColor: "var(--tp-common-white)",
+                borderRadius: "10px",
+              }}
+            >
               <IputSearchMovil
                 searchState={searchState}
                 setSearchState={setSearchState}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
-import useTattoboxApi from "../../hooks/use-tattobox-api";
+import useTattoboxTattoos from "../../hooks/use-tattobox-tattoos";
 import { InformationTattoo } from "../tattoos/information/information-tattoo";
 import CloseIcon from "@mui/icons-material/Close";
 import ImageLightBox from "../common/modals/image-lightbox";
@@ -17,7 +17,7 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
   const imageTattoo = useRef();
-  const { getContentTattoo, contentTattoo, isLoading } = useTattoboxApi();
+  const { getContentTattoo, contentTattoo, isLoading } = useTattoboxTattoos();
 
   const images = [contentTattoo?.UrlImagen];
 

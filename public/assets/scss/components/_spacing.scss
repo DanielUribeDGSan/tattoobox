@@ -530,6 +530,9 @@
 }
 .pt-80 {
   padding-top: 80px;
+  @media #{$sm, $xs} {
+    padding-top: 50px;
+  }
 }
 .pt-85 {
   padding-top: 85px;
@@ -671,6 +674,9 @@
 }
 .pb-80 {
   padding-bottom: 80px;
+  @media #{$sm, $xs} {
+    padding-bottom: 50px;
+  }
 }
 .pb-85 {
   padding-bottom: 85px;

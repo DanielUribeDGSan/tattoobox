@@ -1,4 +1,10 @@
 @use "../utils" as *;
+.input-default {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgb(0 0 0 / 14%);
+}
 
 .input-search {
   background-color: var(--tp-common-white);
@@ -20,6 +26,7 @@
     line-height: 26px;
     padding: 17px 5px 17px 28px;
     width: 95%;
+
     @media #{$md,$sm,$xs} {
       border-radius: 8px 8px 0px 0px;
       padding: 10px;

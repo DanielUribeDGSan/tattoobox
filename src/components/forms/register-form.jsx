@@ -3,13 +3,13 @@ import Link from "next/link";
 import { useFormik } from "formik";
 import { registerSchema, registerCode } from "../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
-import useTattoboxApi from "../../hooks/use-tattobox-api";
+import useTattoboxAuthRegister from "../../hooks/use-tattobox-auth-register";
 import useFirebase from "../../hooks/use-firebase";
 import { useUser } from "../../hooks/use-user";
 
 const RegisterForm = () => {
   // register With Email Password
-  const { registerEmail, validateCode } = useTattoboxApi();
+  const { registerEmail, validateCode } = useTattoboxAuthRegister();
   const [showCode, setShowCode] = useState(false);
   const { loginWithGoogle } = useFirebase();
   const { verifyLoggedUser } = useUser();

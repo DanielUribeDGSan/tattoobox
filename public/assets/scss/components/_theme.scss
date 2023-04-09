@@ -34,12 +34,12 @@
 	typography css start 
 ---------------------------------*/
 body {
-  background-color: var(--tp-theme-secondary);
+  background-color: var(--tp-theme-white);
   font-family: var(--tp-ff-body);
   font-size: 14px;
   font-weight: 400;
   color: var(--tp-text-body);
-  line-height: 26px;
+  line-height: 25px;
   overflow-x: hidden;
 }
 
@@ -344,4 +344,10 @@ input[type="color"] {
 }
 .radius-20 {
   border-radius: 20px;
+}
+
+.container-fluid-pm-0 {
+  @media #{$sm,$xs} {
+    padding: 0;
+  }
 }

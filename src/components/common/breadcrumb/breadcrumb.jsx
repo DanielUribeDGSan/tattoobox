@@ -5,7 +5,9 @@ const Breadcrumb = ({ title, back_home = false }) => {
   return (
     <section
       className="breadcrumb__area  breadcrumb__pt-310 include-bg p-relative"
-      style={{ backgroundImage: "url(/assets/img/breadcrum/bg-tatuaje.jpg)" }}
+      style={{
+        backgroundImage: "url(/assets/img/breadcrum/bg-tatuaje.jpg)",
+      }}
     >
       <div className="overlay"></div>
       {/* <div className="ac-about-shape-img z-index-1">

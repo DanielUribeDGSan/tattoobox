@@ -1,0 +1,219 @@
+@use "../utils" as *;
+
+.tp-profile-area {
+  & .tp-profile {
+    height: 100%;
+    overflow: hidden;
+    & .col-profile-content {
+      height: inherit;
+      background-color: #f8f8f8;
+      overflow-y: auto;
+      height: 100vh;
+      // background-image: linear-gradient(
+      //   to top,
+      //   #e6dee9 0%,
+      //   #e6dee9 1%,
+      //   #13212c 100%
+      // );
+      overflow-y: auto;
+      & .container-profile-content {
+        margin: 0px 5px;
+        max-width: 1250px;
+        min-width: 1250px;
+      }
+    }
+  }
+}
+
+.tp-profile-header {
+  position: sticky;
+  top: 80px;
+  background-color: var(--tp-common-white);
+  margin: 5px 0px;
+  border-radius: 20px;
+  & ul {
+    & li {
+      cursor: pointer;
+      border-color: var(--tp-common-white);
+    }
+  }
+}
+
+.col-profile-content,
+.col-profile-grid {
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  &::-webkit-scrollbar:vertical {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-button:increment,
+  .contenedor::-webkit-scrollbar-button {
+    display: none;
+  }
+  &::-webkit-scrollbar:horizontal {
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+}
+
+.tp-profile-user-content {
+  background-color: var(--tp-common-white);
+  & .banner-profile {
+    height: 35vh;
+    background-color: var(--tp-common-blue-white);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  & .content-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+
+    & .container-user-banner {
+      position: relative;
+      & .img-content-user {
+        background-color: var(--tp-common-white);
+        border-radius: 100%;
+        display: inline-flex;
+        margin-top: -50px;
+        position: relative;
+        padding: 0.4rem;
+        & img {
+          border-radius: 100%;
+          object-fit: cover;
+          width: 170px;
+          height: 170px;
+        }
+      }
+      & .user-data-banner {
+        position: absolute;
+        right: -310px;
+        top: 30px;
+      }
+    }
+  }
+
+  & .container-user {
+    padding: 0px 30px;
+  }
+}
+
+.tp-profile-publication {
+  background-color: var(--tp-common-white);
+  margin: 5px 0px;
+  border-radius: 20px;
+  & .image-circle {
+    & img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 100%;
+    }
+  }
+
+  & .actions {
+    justify-content: space-evenly;
+    & .icons {
+      margin-right: 15px;
+    }
+  }
+}
+
+.tp-profile-grid {
+  & .grid {
+    padding-top: 50px;
+  }
+}
+.tp-profile-publication {
+  & .container-publication {
+    padding: 0px 5px;
+    & .img-publication {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+    }
+  }
+  & .header-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 1.5rem;
+    & .user-circle {
+      & img {
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+        border-radius: 100%;
+        object-position: center;
+        display: inline-flex;
+      }
+      & p {
+        display: inline-flex;
+        margin-left: 10px;
+      }
+    }
+  }
+  & .header-count-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 1.5rem;
+    & span {
+      color: var(--tp-common-gray);
+      font-size: 15px;
+      line-height: 25px;
+    }
+  }
+}
+
+.tp-publication-messages {
+  & .user-circle {
+    & img {
+      height: 50px;
+      width: 50px;
+      object-fit: cover;
+      border-radius: 100%;
+      object-position: center;
+      display: inline-flex;
+      margin-right: 10px;
+    }
+    & .message {
+      display: inline-flex;
+      flex-direction: column;
+      padding: 0.5rem;
+      border-radius: 20px;
+      & p {
+        display: inline-flex;
+        font-size: 0.9rem;
+        &:nth-child(2n) {
+          margin-top: 0px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}
+
+.txt-user {
+  font-size: 2rem;
+}
+.txt-username {
+  margin-top: -5px;
+  color: var(--tp-common-gray);
+}
+.txt-description {
+  color: var(--tp-common-gray);
+  font-size: 15px;
+  line-height: 25px;
+}

@@ -136,51 +136,6 @@ const Testimonial = () => {
             </Swiper>
             {/* slider end */}
           </div>
-
-          {/* slider 2 start */}
-          <div className="tp-testimonial-slider-section-2 d-flex justify-content-center">
-            <Swiper
-              loop={sliderLoopTwo}
-              slidesPerView={1}
-              spaceBetween={50}
-              className="swiper-container testimonial-slider-active-2"
-              breakpoints={{
-                // when window width is >= 1200px
-                1200: { slidesPerView: 4 },
-                992: { slidesPerView: 3 },
-                768: { slidesPerView: 3 },
-                576: { slidesPerView: 1 },
-                0: { slidesPerView: 1 },
-              }}
-            >
-              {testimonial_2_data.map((item, i) => (
-                <SwiperSlide key={i}>
-                  <div className="tp-testimonial-item">
-                    <div className="tp-testi-meta d-flex justify-content-between mb-40">
-                      <div className="tp-testi-icon-box d-flex align-items-center">
-                        <div className="tp-testi-img mr-20">
-                          <img src={item.user} alt="" />
-                        </div>
-                        <div className="tp-testi-client-position">
-                          <h3>{item.name}</h3>
-                          <h6>{item.title}</h6>
-                        </div>
-                      </div>
-                      <div className="tp-testi-ratting">
-                        {item.ratings.map((r, i) => (
-                          <i key={i} className="fas fa-star"></i>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="tp-testi-p-text">
-                      <p>{item.desc}</p>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-          {/* slider 2 end */}
         </div>
       </div>
     </React.Fragment>

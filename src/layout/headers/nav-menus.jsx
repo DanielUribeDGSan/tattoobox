@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import menu_data from "./menu-data";
 import { get_user } from "../../redux/features/auth-slice";
-import useTattoboxApi from "../../hooks/use-tattobox-api";
+import useTattoboxAuthRegister from "../../hooks/use-tattobox-auth-register";
 
 const NavMenus = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const { logout } = useTattoboxApi();
+  const { logout } = useTattoboxAuthRegister();
   // get_user
   useEffect(() => {
     dispatch(get_user());

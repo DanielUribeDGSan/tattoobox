@@ -7,6 +7,7 @@
 .tp-hero-space {
   padding-top: 220px;
   padding-bottom: 65px;
+  background-color: var(--tp-theme-2);
   @media #{$md,$xs} {
     padding-top: 50px;
     padding-bottom: 50px;
