@@ -13,6 +13,7 @@ import Router from "next/router";
 const useTattoboxTattoos = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [contentTattoo, setContentTattoo] = useState([]);
+  const [comments, setComments] = useState([]);
   const [tattosHome, SettattosHome] = useState({
     artist: [],
     studies: [],
@@ -54,7 +55,25 @@ const useTattoboxTattoos = () => {
         body,
         config
       );
-      await getContentTattoo(data.data.idContenido);
+      await getCommentsTattoo(data.data.idContenido);
+    } catch (error) {
+      const errorMessage = error?.message;
+      toast.error(`${errorMessage}`, {
+        position: "top-left",
+      });
+    }
+  };
+
+  const getCommentsTattoo = async (idContent) => {
+    try {
+      setIsLoading(true);
+
+      const { data } = await tattoApiSocial.get(
+        `/v1/comentario/${idContent}`,
+        config
+      );
+      setComments(data.comentarios);
+      setIsLoading(false);
     } catch (error) {
       const errorMessage = error?.message;
       toast.error(`${errorMessage}`, {
@@ -66,8 +85,10 @@ const useTattoboxTattoos = () => {
   return {
     isLoading,
     getContentTattoo,
-    setCommentTattoo,
     contentTattoo,
+    getCommentsTattoo,
+    comments,
+    setCommentTattoo,
   };
 };
 

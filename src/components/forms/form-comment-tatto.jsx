@@ -1,11 +1,11 @@
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import useTattoboxAuthRegister from "../../hooks/use-tattobox-auth-register";
+import useTattoboxTattoos from "../../hooks/use-tattobox-tattoos";
 import ErrorMsg from "./error-msg";
 import { useUser } from "../../hooks/use-user";
 
 export const FormCommentTatto = ({ IdContenido, setNewMessages }) => {
-  const { setCommentTattoo } = useTattoboxAuthRegister();
+  const { setCommentTattoo } = useTattoboxTattoos();
   const { user } = useUser();
 
   const { handleChange, handleSubmit, handleBlur, errors, values, touched } =

@@ -114,6 +114,22 @@ const useTattoboxAuthRegister = () => {
     }
   };
 
+  const registerStudio = async (body, idPart) => {
+    try {
+      await tattoApiSocial.post("/v1/perfil/estudio", body);
+      await getIdProfile(idPart);
+      toast.success(`Registro completado`, {
+        position: "top-left",
+      });
+      Router.push("/");
+    } catch (error) {
+      const errorMessage = error?.message;
+      toast.error(`Ocurrio un error - ${errorMessage}`, {
+        position: "top-left",
+      });
+    }
+  };
+
   // Get data for user
 
   const getIdProfile = async (idPart) => {
@@ -143,6 +159,7 @@ const useTattoboxAuthRegister = () => {
     completeRegister,
     getIdProfile,
     registerArtist,
+    registerStudio,
   };
 };
 

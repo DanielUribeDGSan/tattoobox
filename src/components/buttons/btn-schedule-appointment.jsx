@@ -5,7 +5,7 @@ export const BtnAcheduleAppointment = ({ style }) => {
   return (
     <div style={{ ...style }}>
       <Link href="#">
-        <a className="btn-small-black">Agendar cita</a>
+        <a className="btn-small-black">Agendar</a>
       </Link>
     </div>
   );

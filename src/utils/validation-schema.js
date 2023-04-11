@@ -45,6 +45,13 @@ export const registerSupplementarySection2 = Yup.object().shape({
     .label("Instagram"),
 });
 
+export const registerSupplementarySection2Studio = Yup.object().shape({
+  instagram: Yup.string()
+    .required("El instagram es requerido")
+    .label("Instagram"),
+  whatsapp: Yup.string().required("El whatsapp es requerido").label("Whatsapp"),
+});
+
 export const registerSupplementarySection3 = Yup.object().shape({
   nameAddress: Yup.string()
     .required("La dirección es requerida")

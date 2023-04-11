@@ -7,10 +7,11 @@ import ImageLightBox from "../common/modals/image-lightbox";
 import { BtnSliderTattoo } from "../buttons/btn-slider-tattoo";
 import { BtnsActionsTattooFloat } from "../buttons/btns-actions-tattoo-float";
 import { UserCircleImage } from "../tattoos/information/user-circle-image";
-import { CommentsTattoo } from "../tattoos/comments/comments-tattoo";
+
 import { BtnAcheduleAppointment } from "../buttons/btn-schedule-appointment";
 import { Divider } from "@mui/material";
 import { ActionsTattoos } from "../tattoos/actions/actions-tattoos";
+import { TabCommentsTattoos } from "../tattoos/tabs/tab-comments-tattoos";
 
 export const ModalTattoo = ({ modal_id, idContent }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
@@ -121,7 +122,7 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
                     <div className="container">
                       <div className="px-2 information-tattoo">
                         <div className="row mt-2">
-                          <div className="col-8">
+                          <div className="col-9">
                             <UserCircleImage
                               content={contentTattoo}
                               divider={false}
@@ -149,7 +150,7 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
                             content={contentTattoo}
                             style={{ marginTop: "15px", marginBottom: "15px" }}
                           />
-                          <CommentsTattoo content={contentTattoo} />
+                          <TabCommentsTattoos idContent={idContent} />
                         </div>
                       </div>
                     </div>

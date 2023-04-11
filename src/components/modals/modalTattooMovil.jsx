@@ -6,11 +6,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import ImageLightBox from "../common/modals/image-lightbox";
 import { BtnsActionsTattooFloat } from "../buttons/btns-actions-tattoo-float";
 import { UserCircleImage } from "../tattoos/information/user-circle-image";
-import { CommentsTattoo } from "../tattoos/comments/comments-tattoo";
 import { BtnAcheduleAppointment } from "../buttons/btn-schedule-appointment";
 import { BtnSliderTattoo } from "../buttons/btn-slider-tattoo";
 import { Divider } from "@mui/material";
 import { ActionsTattoos } from "../tattoos/actions/actions-tattoos";
+import { TabCommentsTattoos } from "../tattoos/tabs/tab-comments-tattoos";
 
 export const ModalTattooMovil = ({ modal_id, idContent }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
@@ -151,7 +151,7 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                       <div className="container">
                         <div className="px-2 information-tattoo">
                           <div className="row mt-3">
-                            <div className="col-8 m-0 p-0">
+                            <div className="col-9 m-0 p-0">
                               <UserCircleImage
                                 content={contentTattoo}
                                 divider={false}
@@ -177,7 +177,7 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                           <div className="mt-1">
                             <InformationTattoo content={contentTattoo} />
 
-                            <CommentsTattoo content={contentTattoo} />
+                            <TabCommentsTattoos idContent={idContent} />
                           </div>
                         </div>
                       </div>
