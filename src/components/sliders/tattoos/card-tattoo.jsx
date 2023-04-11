@@ -3,7 +3,6 @@ import Image from "next/image";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export const CardTattoo = ({ tattoo }) => {
-  console.log(tattoo);
   return (
     <div className="card-tattoo">
       <img src={tattoo?.UrlImagen} />

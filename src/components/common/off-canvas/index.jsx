@@ -117,7 +117,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           </div>
           {user?.email && (
             <div className="tpoffcanvas__contact">
-              <span style={{ marginBottom: "10px " }}>Perfil</span>
+              <div style={{ marginBottom: "10px" }}>
+                <Link href="/perfil">
+                  <a className="text-md" style={{ marginLeft: "10px" }}>
+                    Ver mi perfil
+                  </a>
+                </Link>
+              </div>
               <Profile />
             </div>
           )}

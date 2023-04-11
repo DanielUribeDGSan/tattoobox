@@ -119,7 +119,7 @@ export const Profile = () => {
         ))}
         {/* unete como estudio */}
         <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
-          <Link href="/">
+          <Link href="/registro-estudio">
             <a>
               <div className="content-item-profile">
                 <AccountBoxIcon

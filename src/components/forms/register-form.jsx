@@ -74,7 +74,11 @@ const RegisterForm = () => {
             <div>
               <button
                 type="button"
-                style={{ fontSize: "1.1rem", marginBottom: "10px" }}
+                style={{
+                  fontSize: "1.1rem",
+                  marginBottom: "10px",
+                  color: "black",
+                }}
                 onClick={() => {
                   values.code = "";
                   setShowCode(false);

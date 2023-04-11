@@ -145,7 +145,7 @@
 .tp-login-title {
   font-size: 35px;
   font-weight: 700;
-  color: var(--tp-common-white);
+  color: var(--tp-common-black);
   padding-bottom: 30px;
   @media #{$xs} {
     font-size: 30px;
@@ -162,7 +162,7 @@
     & .tp-mail {
       margin-bottom: 15px;
       & label {
-        color: var(--tp-common-white);
+        color: var(--tp-common-black);
         display: block;
         font-size: 14px;
         font-weight: 500;
@@ -235,7 +235,7 @@
       margin-bottom: 40px;
       & .checkbox {
         & label {
-          color: var(--tp-common-white);
+          color: var(--tp-common-black);
           font-size: 14px;
           font-weight: 500;
         }

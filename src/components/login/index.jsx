@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
-import { FooterThree, Header, Wrapper } from '../../layout';
-import { animationCreate } from '../../utils/utils';
-import Breadcrumb from '../common/breadcrumb/breadcrumb';
-import LoginArea from './login-area';
-
+import React, { useEffect } from "react";
+import { FooterThree, Header, Wrapper } from "../../layout";
+import { animationCreate } from "../../utils/utils";
+import LoginArea from "./login-area";
 
 const Login = () => {
-
   useEffect(() => {
     setTimeout(() => {
       animationCreate();
@@ -16,8 +13,7 @@ const Login = () => {
   return (
     <Wrapper>
       <Header />
-      <Breadcrumb title={'Login'} />
-      <LoginArea/>
+      <LoginArea />
       <FooterThree />
     </Wrapper>
   );

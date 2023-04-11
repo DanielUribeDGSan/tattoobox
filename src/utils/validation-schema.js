@@ -33,6 +33,19 @@ export const registerCode = Yup.object().shape({
   // password: Yup.string().required().min(6).label("Password")
 });
 
+export const registerSupplementary = Yup.object().shape({
+  name: Yup.string().required("El es nombre es requerido").label("Nombre"),
+  lastNamePaternal: Yup.string()
+    .required("Apellido paterno es requerido")
+    .label("Descripción"),
+  lastNameMaternal: Yup.string()
+    .required("Apellido materno es requerido")
+    .label("Descripción"),
+  userName: Yup.string()
+    .required("El nombre de usuario es requerido")
+    .label("Descripción"),
+});
+
 export const registerSupplementarySection1 = Yup.object().shape({
   description: Yup.string()
     .required("La descripción es requerida")
