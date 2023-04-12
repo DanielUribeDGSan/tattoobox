@@ -216,8 +216,10 @@
   @media #{$sm,$xs,$md} {
     margin-top: 10px !important;
   }
-  & img {
+  & .img {
+    position: relative;
     width: 255px;
+    height: 100px;
     @media #{$sm,$xs} {
       width: 100%;
     }
@@ -1231,11 +1233,11 @@
 
   & .video-container {
     position: absolute;
-    top: 50%;
+    top: 49%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 87%;
-    height: 95%;
+    height: 94.5%;
     overflow: hidden;
     border-radius: 20px;
     z-index: -1;

@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-
 import { Swiper, SwiperSlide } from "swiper/react";
+import { CardTattoo } from "./card-tattoo";
 
 import "swiper/swiper-bundle.css";
 
-import { Pagination, Navigation } from "swiper";
+import { Navigation } from "swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { CardTattoo } from "./card-tattoo";
 
 export const SliderTattoo = ({ data, loading, title }) => {
   const [sliderLoop, setSliderLoop] = useState(false);

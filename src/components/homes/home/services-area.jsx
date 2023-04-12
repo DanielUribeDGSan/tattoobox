@@ -1,19 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const ServicesArea = () => {
+  const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
+
   return (
     <div className="tp-service-area bg-gray pt-100 pb-100 p-relative fix">
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12 d-none-movil">
-            <img
-              className="img-fluid image-content"
-              src="/assets/img/trash/how_it_works.webp"
-              alt="tattoobox"
-            />
-          </div>
+          {!movilIpadaScreen && (
+            <div className="col-lg-6 col-md-12 col-12 d-none-movil">
+              <div className="image-content">
+                <Image
+                  className="img-fluid image-content"
+                  src="/assets/img/trash/how_it_works.webp"
+                  alt="tattoobox"
+                  layout="fill"
+                  objectFit="cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          )}
           <div className="col-lg-6 col-md-12 col-12 d-flex align-items-center justify-content-center">
             <div className="container-steps">
               <article>
@@ -21,9 +31,12 @@ const ServicesArea = () => {
                 <ul>
                   <li className="d-flex">
                     <div className="icon">
-                      <img
+                      <Image
                         className="img-fluid"
                         src="/assets/img/service/lluvia-de-ideas.png"
+                        layout="fill"
+                        objectFit="contain"
+                        loading="lazy"
                       />
                     </div>
                     <div className="sub-title">
@@ -36,9 +49,12 @@ const ServicesArea = () => {
                   </li>
                   <li className="d-flex">
                     <div className="icon">
-                      <img
+                      <Image
                         className="img-fluid"
                         src="/assets/img/service/alrededor-del-mundo.png"
+                        layout="fill"
+                        objectFit="contain"
+                        loading="lazy"
                       />
                     </div>
                     <div className="sub-title">
@@ -51,9 +67,12 @@ const ServicesArea = () => {
                   </li>
                   <li className="d-flex">
                     <div className="icon">
-                      <img
+                      <Image
                         className="img-fluid"
                         src="/assets/img/service/maquina-de-tatuar.png"
+                        layout="fill"
+                        objectFit="contain"
+                        loading="lazy"
                       />
                     </div>
                     <div className="sub-title">

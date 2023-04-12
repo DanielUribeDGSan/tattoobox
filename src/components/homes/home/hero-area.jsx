@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const hero_contents = {
   title: "Encuentra el artista adecuado",
@@ -20,6 +21,8 @@ const { title, text, btn_text, btn_text_2, social_links, hero_img } =
   hero_contents;
 
 const HeroArea = () => {
+  const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
+
   return (
     <div className="tp-hero-area tp-hero-space p-relative z-index-1 fix">
       <div className="tp-hero-shape">
@@ -64,39 +67,89 @@ const HeroArea = () => {
                   </div>
                 </div>
               </div>
-              <div
-                className="tp-hero-social pb-30 wow tpfadeIn d-none-movil"
-                data-wow-duration=".7s"
-                data-wow-delay="1.2s"
-              >
-                <div className="tp-hero-social bp-hero-social row m-0">
-                  <div className="col-6 d-flex align-items-center justify-content-center">
-                    <img
-                      className="img-fluid"
-                      src="assets/img/store/google-play-logo.png"
-                    />
-                  </div>
-                  <div className="col-6 d-flex align-items-center justify-content-center">
-                    <img
-                      className="img-fluid"
-                      src="assets/img/store/Apple_Store.png"
-                    />
+              {!movilIpadaScreen && (
+                <div
+                  className="tp-hero-social pb-30 wow tpfadeIn d-none-movil"
+                  data-wow-duration=".7s"
+                  data-wow-delay="1.2s"
+                >
+                  <div className="tp-hero-social bp-hero-social row m-0">
+                    <div className="col-6 d-flex align-items-center justify-content-center">
+                      <div className="img">
+                        <Image
+                          className="img-fluid"
+                          src="/assets/img/store/google-play-logo.png"
+                          alt="google play store"
+                          layout="fill"
+                          objectFit="contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-6 d-flex align-items-center justify-content-center">
+                      <div className="img">
+                        <Image
+                          className="img-fluid"
+                          src="/assets/img/store/Apple_Store.png"
+                          alt="apple store"
+                          layout="fill"
+                          objectFit="contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
             <div className="col-xl-5 col-lg-5 d-flex justify-content-center position-relative phone-video">
-              <div className="phone-container">
-                {/* <div className="img-iphone">
-                  <Image
-                    src={hero_img}
-                    className="img-fluid "
-                    alt="Celular iphone"
-                    layout="fill"
-                    objectFit="cover"
-                    loading="lazy"
-                  />
-                </div> */}
+              {!movilIpadaScreen ? (
+                <div style={{ position: "relative" }}>
+                  <Image src={hero_img} alt="iPhone" width={331} height={596} />
+                  <div className="video-container">
+                    <video
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        zIndex: -1,
+                      }}
+                      autoPlay
+                      loop
+                      muted
+                    >
+                      <source
+                        src="assets/videos/tattoobox.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              ) : (
+                <div style={{ position: "relative" }}>
+                  <Image src={hero_img} alt="iPhone" width={231} height={400} />
+                  <div className="video-container">
+                    <video
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        zIndex: -1,
+                      }}
+                      autoPlay
+                      loop
+                      muted
+                    >
+                      <source
+                        src="assets/videos/tattoobox.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </div>
+              )}
+
+              {/* <div className="phone-container">             
 
                 <img
                   src={hero_img}
@@ -114,7 +167,7 @@ const HeroArea = () => {
                     loop
                   ></video>
                 </div>
-              </div>
+              </div> */}
             </div>
             {/* <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-7"></div>
@@ -141,26 +194,40 @@ const HeroArea = () => {
                 </div>
               </div>
             </div> */}
-            <div
-              className="tp-hero-social pb-30 wow tpfadeIn d-none-lg"
-              data-wow-duration=".7s"
-              data-wow-delay="1.2s"
-            >
-              <div className="tp-hero-social bp-hero-social row m-0">
-                <div className="col-6 d-flex align-items-center justify-content-center">
-                  <img
-                    className="img-fluid"
-                    src="assets/img/store/google-play-logo.png"
-                  />
-                </div>
-                <div className="col-6 d-flex align-items-center justify-content-center">
-                  <img
-                    className="img-fluid"
-                    src="assets/img/store/Apple_Store.png"
-                  />
+            {movilIpadaScreen && (
+              <div
+                className="tp-hero-social pb-30 wow tpfadeIn d-none-lg"
+                data-wow-duration=".7s"
+                data-wow-delay="1.2s"
+              >
+                <div className="tp-hero-social bp-hero-social row m-0">
+                  <div className="col-6 d-flex align-items-center justify-content-center">
+                    <div className="img">
+                      <Image
+                        className="img-fluid"
+                        src="/assets/img/store/google-play-logo.png"
+                        alt="google play store"
+                        layout="fill"
+                        objectFit="contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-6 d-flex align-items-center justify-content-center">
+                    <div className="img">
+                      <Image
+                        className="img-fluid"
+                        src="/assets/img/store/Apple_Store.png"
+                        alt="apple store"
+                        layout="fill"
+                        objectFit="contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
