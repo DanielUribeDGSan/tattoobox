@@ -8,16 +8,11 @@ const ServicesArea = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-6 col-md-12 col-12 d-none-movil">
-            <div className="image-content">
-              <Image
-                className="img-fluid"
-                src="/assets/img/trash/how_it_works.webp"
-                alt="tattoobox"
-                layout="fill"
-                objectFit="cover"
-                loading="lazy"
-              />
-            </div>
+            <img
+              className="img-fluid image-content"
+              src="/assets/img/trash/how_it_works.webp"
+              alt="tattoobox"
+            />
           </div>
           <div className="col-lg-6 col-md-12 col-12 d-flex align-items-center justify-content-center">
             <div className="container-steps">

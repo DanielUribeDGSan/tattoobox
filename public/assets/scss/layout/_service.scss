@@ -9,10 +9,7 @@
     position: relative;
     height: 70vh;
     width: 100%;
-
-    & img {
-      border-radius: 20px;
-    }
+    border-radius: 20px;
     @media #{$xs,$sm} {
       height: 40vh;
     }
