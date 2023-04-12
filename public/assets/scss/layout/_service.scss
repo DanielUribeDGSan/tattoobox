@@ -4,6 +4,57 @@
 
 @use "../utils" as *;
 
+.tp-service-area {
+  & .image-content {
+    position: relative;
+    height: 70vh;
+    width: 100%;
+
+    & img {
+      border-radius: 20px;
+    }
+    @media #{$xs,$sm} {
+      height: 40vh;
+    }
+  }
+  & .container-steps {
+    padding: 3rem;
+    @media #{$xs,$sm} {
+      padding: 0.5rem;
+    }
+
+    & .icon {
+      margin-right: 10px;
+      flex: 0.2;
+      & img {
+        height: auto;
+        width: 100px;
+        margin-right: 0px;
+        object-fit: contain;
+      }
+    }
+    & .title {
+      font-size: 2.7rem;
+      margin-bottom: 50px;
+    }
+
+    & li {
+      margin-bottom: 30px;
+    }
+    & .sub-title {
+      flex: 2;
+      & p {
+        font-size: 1.3rem;
+        margin-bottom: 0px;
+      }
+      & p:nth-child(2n + 1) {
+        font-weight: 700;
+        margin-bottom: 7px;
+      }
+    }
+  }
+}
+
 .tp-service-item {
   background-color: var(--tp-common-white);
   padding: 70px 60px;

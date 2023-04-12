@@ -30,7 +30,7 @@ export const SliderTattoo = ({ data, loading, title }) => {
   return (
     <>
       <>
-        <div className="secundary-bg pt-80 pb-80 fix">
+        <div className="pt-50 pb-50 fix">
           <div className="container-fluid container-fluid-pm-0">
             <div className="row">
               <div className="col-xl-12">
@@ -39,7 +39,7 @@ export const SliderTattoo = ({ data, loading, title }) => {
                 </div>
               </div>
             </div>
-            <div className="tp-tattoo-slider-section d-flex justify-content-center mb-50">
+            <div className="tp-tattoo-slider-section d-flex justify-content-center">
               {/* slider start */}
               <Swiper
                 {...swiperParams}
@@ -47,17 +47,17 @@ export const SliderTattoo = ({ data, loading, title }) => {
                 slidesPerView={1}
                 centeredSlides={true}
                 centeredSlidesBounds={true}
-                spaceBetween={20}
+                spaceBetween={0}
                 navigation
                 className="swiper-container "
                 breakpoints={{
                   // when window width is >= 1200px
-                  1500: { slidesPerView: 5 },
-                  1200: { slidesPerView: 4 },
+                  1500: { slidesPerView: 4 },
+                  1200: { slidesPerView: 3 },
                   1100: { slidesPerView: 3 },
                   768: { slidesPerView: 2 },
-                  576: { slidesPerView: 2 },
-                  0: { slidesPerView: 2 },
+                  576: { slidesPerView: 1.5 },
+                  0: { slidesPerView: 1.5 },
                 }}
               >
                 {data.map((tattoo, i) => (

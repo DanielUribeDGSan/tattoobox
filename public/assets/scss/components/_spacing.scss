@@ -545,6 +545,9 @@
 }
 .pt-100 {
   padding-top: 100px;
+  @media #{$sm, $xs} {
+    padding-top: 50px;
+  }
 }
 .pt-105 {
   padding-top: 105px;

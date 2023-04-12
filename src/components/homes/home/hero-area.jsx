@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -12,33 +13,7 @@ const hero_contents = {
   ),
   btn_text: "Encontrar mi tatuaje",
   btn_text_2: "About Collax",
-  social_links: [
-    {
-      id: 1,
-      icon: "fab fa-facebook-f social-icon-1",
-      title: "Facebook",
-      link: "http://facebook.com",
-    },
-    {
-      id: 3,
-      icon: "fab fa-youtube social-icon-3",
-      title: "Youtube",
-      link: "https://www.youtube.com/",
-    },
-    {
-      id: 2,
-      icon: "fab fa-twitter social-icon-2",
-      title: "Twitter",
-      link: "http://twitter.com",
-    },
-    {
-      id: 4,
-      icon: "fab fa-behance social-icon-4",
-      title: "Behance",
-      link: "https://www.behance.net/",
-    },
-  ],
-  hero_img: "/assets/img/hero/hero-bg-tattoo.jpeg",
+  hero_img: "/assets/img/hero/iphone-14-pro-max.png",
 };
 
 const { title, text, btn_text, btn_text_2, social_links, hero_img } =
@@ -56,8 +31,8 @@ const HeroArea = () => {
       </div>
       <div className="tp-hero-wapper">
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-xl-7 col-lg-7">
+          <div className="row align-items-start">
+            <div className="col-xl-7 col-lg-7 ">
               <div className="tp-hero-content">
                 <div className="tp-hero-text">
                   <h2
@@ -87,39 +62,103 @@ const HeroArea = () => {
                         <i className="far fa-arrow-right"></i></a>
                     </Link> */}
                   </div>
-                  <div
-                    className="tp-hero-social pb-30 wow tpfadeIn"
-                    data-wow-duration=".7s"
-                    data-wow-delay="1.2s"
-                  >
-                    <div className="tp-hero-social bp-hero-social">
-                      {social_links.map((l, i) => (
-                        <a
-                          key={i}
-                          className={`social-icon-${l.id}`}
-                          href={l.link}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <i className={l.icon}></i>
-                          <span>{l.title}</span>
-                        </a>
-                      ))}
-                    </div>
+                </div>
+              </div>
+              <div
+                className="tp-hero-social pb-30 wow tpfadeIn d-none-movil"
+                data-wow-duration=".7s"
+                data-wow-delay="1.2s"
+              >
+                <div className="tp-hero-social bp-hero-social row m-0">
+                  <div className="col-6 d-flex align-items-center justify-content-center">
+                    <img
+                      className="img-fluid"
+                      src="assets/img/store/google-play-logo.png"
+                    />
+                  </div>
+                  <div className="col-6 d-flex align-items-center justify-content-center">
+                    <img
+                      className="img-fluid"
+                      src="assets/img/store/Apple_Store.png"
+                    />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-xl-5 col-lg-5">
-              <div
-                className="tp-hero-big-img wow fadeInRight"
-                data-wow-duration=".7s"
-                data-wow-delay="1.2s"
-              >
+            <div className="col-xl-5 col-lg-5 d-flex justify-content-center position-relative phone-video">
+              <div className="phone-container">
+                {/* <div className="img-iphone">
+                  <Image
+                    src={hero_img}
+                    className="img-fluid "
+                    alt="Celular iphone"
+                    layout="fill"
+                    objectFit="cover"
+                    loading="lazy"
+                  />
+                </div> */}
+
+                <img
+                  src={hero_img}
+                  className="img-fluid img-iphone"
+                  alt="Celular iphone"
+                  loading="lazy"
+                />
+
+                <div className="video-container">
+                  <video
+                    src="assets/videos/tattoobox.mp4"
+                    autoPlay
+                    playsInline
+                    muted
+                    loop
+                  ></video>
+                </div>
+              </div>
+            </div>
+            {/* <div className="row" style={{ marginTop: "20px" }}>
+              <div className="col-7"></div>
+              <div className="col-5">
                 <div
-                  className="bg-hero-home"
-                  style={{ backgroundImage: `url('${hero_img}')` }}
-                ></div>
+                  className="tp-hero-social pb-30 wow tpfadeIn d-none-movil"
+                  data-wow-duration=".7s"
+                  data-wow-delay="1.2s"
+                >
+                  <div className="tp-hero-social bp-hero-social row m-0">
+                    <div className="col-6 d-flex align-items-center justify-content-end">
+                      <img
+                        className="img-fluid"
+                        src="assets/img/store/google-play-logo.png"
+                      />
+                    </div>
+                    <div className="col-6 d-flex align-items-center justify-content-center">
+                      <img
+                        className="img-fluid"
+                        src="assets/img/store/Apple_Store.png"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> */}
+            <div
+              className="tp-hero-social pb-30 wow tpfadeIn d-none-lg"
+              data-wow-duration=".7s"
+              data-wow-delay="1.2s"
+            >
+              <div className="tp-hero-social bp-hero-social row m-0">
+                <div className="col-6 d-flex align-items-center justify-content-center">
+                  <img
+                    className="img-fluid"
+                    src="assets/img/store/google-play-logo.png"
+                  />
+                </div>
+                <div className="col-6 d-flex align-items-center justify-content-center">
+                  <img
+                    className="img-fluid"
+                    src="assets/img/store/Apple_Store.png"
+                  />
+                </div>
               </div>
             </div>
           </div>

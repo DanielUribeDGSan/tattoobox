@@ -9,12 +9,13 @@ const BreadcrumbSmall = ({ title, back_home = false }) => {
     <section
       className="breadcrumb__area  breadcrumb__pt-310 include-bg p-relative"
       style={{
-        backgroundImage: "url(/assets/img/breadcrum/bg-tatuaje.jpg)",
+        backgroundColor: "var(--tp-common-gray-light)",
+        opacity: 1,
         padding: 0,
         height: "100px",
       }}
     >
-      <div className="overlay"></div>
+      {/* <div className="overlay"></div> */}
       {/* <div className="ac-about-shape-img z-index-1">
         <img src="/assets/img/breadcrum/ab-shape-1.1.jpg" alt="" />
       </div> */}

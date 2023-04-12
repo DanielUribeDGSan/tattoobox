@@ -8,19 +8,34 @@
 // }
 
 .swiper-button-next,
+.swiper-rtl .swiper-button-prev,
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  right: 25px !important;
+  left: auto;
+  height: 40px !important;
+  width: 40px !important;
+  @media #{$sm,$xs} {
+    height: 30px !important;
+    width: 30px !important;
+  }
+}
+
+.swiper-button-next,
 .swiper-button-prev {
-  color: #ffffffa6 !important;
+  color: #000 !important;
+  background-color: #fff;
+  border-radius: 100%;
 }
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  font-size: 2rem !important;
+  font-size: 1rem !important;
   @media #{$sm,$xs} {
-    font-size: 1.7rem !important;
+    font-size: 0.7rem !important;
   }
 }
 .tp-tattoo-slider-section {
   & .swiper-slide {
-    background-color: #ffffff0a;
     border-radius: 20px;
     min-height: 450px;
     padding: 1rem;
@@ -35,38 +50,62 @@
     // border: 1px solid #ffdc60;
   }
   & .card-tattoo {
+    & .footer-card {
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 0px 0px 20px 20px;
+      padding: 0.6rem 0.5rem 0.6rem 0rem;
+      @media #{$sm,$xs} {
+        border-radius: 0px 0px 10px 10px;
+      }
+      & .user-image {
+        width: 40px;
+        height: 40px;
+        position: relative;
+        & img {
+          border-radius: 100%;
+        }
+      }
+    }
+
     & .title {
-      color: var(--tp-common-white);
-      margin-top: 15px;
+      color: var(--tp-common-black);
       margin-bottom: 0px;
+      line-height: 25px;
+      font-size: 16px;
+      font-weight: 800;
       @media #{$sm,$xs} {
         font-size: 14px;
-        line-height: 20px;
       }
     }
     & .style {
-      color: var(--tp-common-white);
+      color: var(--tp-common-black);
       margin-top: 0px;
+      line-height: 25px;
+      font-size: 16px;
       @media #{$sm,$xs} {
         font-size: 14px;
-        line-height: 20px;
       }
     }
     & .price {
       color: var(--tp-common-black);
       margin-bottom: 0px;
     }
-    & .content-price {
-      justify-content: space-between;
+    & .image-tattoo {
+      position: relative;
+      width: 100%;
+      height: 32vh;
+      @media #{$md} {
+        height: 30vh;
+      }
+      @media #{$sm,$xs} {
+        height: 20vh;
+      }
     }
     & img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 20px;
+      border-radius: 20px 20px 0px 0px;
+
       @media #{$sm,$xs} {
-        height: 170px;
-        border-radius: 10px;
+        border-radius: 10px 10px 0px 0px;
       }
     }
   }

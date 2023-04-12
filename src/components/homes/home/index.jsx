@@ -26,9 +26,8 @@ const Home = () => {
       <HeroArea />
       <ServicesArea />
       <SliderTattoo data={newest} loading={isLoading} title={"Lo más nuevo"} />
-      <SliderTattoo data={artist} loading={isLoading} title={"Artistas"} />
-      <SliderTattoo data={studies} loading={isLoading} title={"Estudios"} />
-
+      {/* <SliderTattoo data={artist} loading={isLoading} title={"Artistas"} />
+      <SliderTattoo data={studies} loading={isLoading} title={"Estudios"} /> */}
       <CreativeArea />
       {/* <BrandArea/>    */}
       {/* <ProjectArea /> */}

@@ -350,8 +350,21 @@ input[type="color"] {
   border-radius: 20px;
 }
 
+.loading-skeleton {
+  background-color: #ccc;
+  border-radius: 0.25rem;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .container-fluid-pm-0 {
   @media #{$sm,$xs} {
     padding: 0;
   }
+}
+
+.bg-gray {
+  background-color: var(--tp-common-gray-light);
 }

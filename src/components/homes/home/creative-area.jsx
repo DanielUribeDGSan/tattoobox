@@ -57,7 +57,7 @@ const CreativeArea = () => {
         <div className="shape-two z-index-1">
           {/* <img src={shape_1} alt="" /> */}
         </div>
-        <div className="tp-creative-area p-relative secundary-bg pt-140 pb-135 fix">
+        <div className="tp-creative-area p-relative bg-gray pt-140 pb-135 fix">
           {/* <div className="circle-animation testimonial">
             <span className="tp-circle-1"></span>
             <span className="tp-circle-2"></span>

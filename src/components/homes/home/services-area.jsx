@@ -1,49 +1,78 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { services_data } from "../../../data";
-import SingleServiceTwo from "../../common/single-service-2";
-
-const services_contents = {
-  shape_img: "/assets/img/service/service-shape.png",
-  subtitle: "¿Cómo es el proceso?",
-  title: "Con tan solo estos tres sencillos pasos",
-  btn_text: "Empezar",
-};
-
-const { shape_img, title, subtitle, btn_text } = services_contents;
-const services_items = services_data.filter((ser) => ser.home);
 
 const ServicesArea = () => {
   return (
-    <div className="tp-service-area pt-190 pb-100 secundary-bg p-relative fix">
-      {/* <div className="tp-sv-shape-img z-index-1">
-        <img src={shape_img} alt="" />
-      </div> */}
-      {/* <div className="circle-animation service">
-        <span className="tp-circle-1"></span>
-        <span className="tp-circle-2"></span>
-      </div> */}
-      {/* <div className="circle-animation service-two">
-        <span className="tp-circle-skye"></span>
-      </div> */}
+    <div className="tp-service-area bg-gray pt-100 pb-100 p-relative fix">
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 col-md-12 col-12">
-            <div
-              className="tp-service-section-box mb-30 wow tpfadeUp"
-              data-wow-duration=".3s"
-              data-wow-delay=".6s"
-            >
-              <h5 className="tp-subtitle pb-10">{subtitle}</h5>
-              <h2 className="tp-title">{title}</h2>
-              <Link href="/service-1">
-                <a className="tp-btn">{btn_text}</a>
-              </Link>
+          <div className="col-lg-6 col-md-12 col-12 d-none-movil">
+            <div className="image-content">
+              <Image
+                className="img-fluid"
+                src="/assets/img/trash/how_it_works.webp"
+                alt="tattoobox"
+                layout="fill"
+                objectFit="cover"
+                loading="lazy"
+              />
             </div>
           </div>
-          {services_items.map((s, i) => (
-            <SingleServiceTwo key={i} service={s} />
-          ))}
+          <div className="col-lg-6 col-md-12 col-12 d-flex align-items-center justify-content-center">
+            <div className="container-steps">
+              <article>
+                <h2 className="text-black title">Cómo funciona</h2>
+                <ul>
+                  <li className="d-flex">
+                    <div className="icon">
+                      <img
+                        className="img-fluid"
+                        src="/assets/img/service/lluvia-de-ideas.png"
+                      />
+                    </div>
+                    <div className="sub-title">
+                      <p className="text-black">Describe tu idea de tatuaje</p>
+                      <p className="text-black">
+                        Proporcione algunos detalles sobre el tamaño, la
+                        colocación y el presupuesto de su tatuaje.
+                      </p>
+                    </div>
+                  </li>
+                  <li className="d-flex">
+                    <div className="icon">
+                      <img
+                        className="img-fluid"
+                        src="/assets/img/service/alrededor-del-mundo.png"
+                      />
+                    </div>
+                    <div className="sub-title">
+                      <p className="text-black">Conecta con tu artista</p>
+                      <p className="text-black">
+                        Elije a tu tatuador preferido entre nuestras
+                        sugerencias.
+                      </p>
+                    </div>
+                  </li>
+                  <li className="d-flex">
+                    <div className="icon">
+                      <img
+                        className="img-fluid"
+                        src="/assets/img/service/maquina-de-tatuar.png"
+                      />
+                    </div>
+                    <div className="sub-title">
+                      <p className="text-black">Tatúate</p>
+                      <p className="text-black">
+                        Reserva tu cita para tatuarte directamente a través de
+                        Tattoodo y tatúate.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </div>

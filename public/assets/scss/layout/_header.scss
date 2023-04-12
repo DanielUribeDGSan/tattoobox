@@ -24,7 +24,7 @@
       & a {
         font-size: 18px;
         font-weight: 500;
-        color: var(--tp-common-white);
+        color: var(--tp-common-black) !important;
         text-transform: capitalize;
         position: relative;
         padding: 37px 0;
@@ -323,7 +323,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background: var(--tp-theme-2);
+  background: var(--tp-common-white);
   width: 100%;
   padding-top: 0px;
   animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;

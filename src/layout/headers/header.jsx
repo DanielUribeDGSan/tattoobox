@@ -27,7 +27,7 @@ const Header = () => {
                   <Link href="/">
                     <a>
                       <img
-                        src="/assets/img/logo/logo_tattoobox.png"
+                        src="/assets/img/logo/logo_tattoobox_black.webp"
                         alt="logo tattobox"
                       />
                     </a>

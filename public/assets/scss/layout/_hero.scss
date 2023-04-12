@@ -7,7 +7,7 @@
 .tp-hero-space {
   padding-top: 220px;
   padding-bottom: 65px;
-  background-color: var(--tp-theme-2);
+  background-color: var(--tp-common-white);
   @media #{$md,$xs} {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -156,7 +156,7 @@
   }
 }
 .tp-hero-title {
-  color: var(--tp-common-white);
+  color: var(--tp-theme-2);
   font-size: 90px;
   font-weight: 700;
   line-height: 1.1;
@@ -195,6 +195,7 @@
     font-size: 18px;
     font-weight: 400;
     padding-bottom: 40px;
+    color: var(--tp-theme-2);
 
     @media #{$lg,$md,$xs} {
       & br {
@@ -212,9 +213,18 @@
 }
 
 .tp-hero-social {
+  @media #{$sm,$xs,$md} {
+    margin-top: 10px !important;
+  }
+  & img {
+    width: 255px;
+    @media #{$sm,$xs} {
+      width: 100%;
+    }
+  }
   & a {
     font-size: 14px;
-    color: var(--tp-common-white);
+    color: var(--tp-common-black);
     font-weight: 700;
     text-transform: uppercase;
     padding-right: 50px;
@@ -1198,14 +1208,60 @@
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 20px;
-  box-shadow: 0 3px 25px 0 rgb(255 255 255 / 14%);
-  height: 69vh;
-  opacity: 0.7;
+  // box-shadow: 0 3px 25px 0 rgb(255 255 255 / 14%);
+  height: 70vh;
+  // opacity: 0.7;
   @media #{$md} {
     height: 40vh;
   }
   @media #{$sm,$xs} {
     height: 30vh;
+  }
+}
+
+.tp-hero-wapper {
+  & .phone-video {
+    @media #{$sm,$xs,$md} {
+      margin-top: 10px;
+    }
+  }
+  & .phone-container {
+    position: relative;
+  }
+
+  & .video-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 87%;
+    height: 95%;
+    overflow: hidden;
+    border-radius: 20px;
+    z-index: -1;
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  // & video {
+  //   width: 100%;
+  //   height: 100%;
+  //   position: absolute;
+  //   left: 0;
+  //   z-index: -1;
+  //   object-fit: contain;
+  // }
+  & .img-iphone {
+    z-index: 2;
+    height: 70vh;
+    @media #{$md} {
+      height: 50vh;
+    }
+    @media #{$sm,$xs,$md} {
+      height: 50vh;
+    }
   }
 }
 

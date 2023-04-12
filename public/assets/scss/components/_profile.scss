@@ -6,7 +6,7 @@
     overflow: hidden;
     & .col-profile-content {
       height: inherit;
-      background-color: #f8f8f8;
+      background-color: var(--tp-common-gray-light);
       overflow-y: auto;
       height: 100vh;
       // background-image: linear-gradient(

@@ -3,7 +3,7 @@
 .modal-tattoo,
 .modal-full-screen {
   & .modal-body {
-    background-color: #f8f8f8;
+    background-color: var(--tp-common-gray-light);
     overflow: hidden;
     height: 100vh;
     @media #{$md,$sm,$xs} {
