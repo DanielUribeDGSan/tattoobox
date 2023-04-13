@@ -38,25 +38,9 @@ const HeroArea = () => {
             <div className="col-xl-7 col-lg-7 ">
               <div className="tp-hero-content">
                 <div className="tp-hero-text">
-                  <h2
-                    className="tp-hero-title wow tpfadeUp"
-                    data-wow-duration=".3s"
-                    data-wow-delay=".6s"
-                  >
-                    {title}
-                  </h2>
-                  <p
-                    className="wow tpfadeUp"
-                    data-wow-duration=".5s"
-                    data-wow-delay=".8s"
-                  >
-                    {text}
-                  </p>
-                  <div
-                    className="tp-hero-button mb-140 wow tpfadeUp"
-                    data-wow-duration=".7s"
-                    data-wow-delay="1s"
-                  >
+                  <h2 className="tp-hero-title ">{title}</h2>
+                  <p>{text}</p>
+                  <div className="tp-hero-button mb-140 ">
                     <Link href="/tatuajes">
                       <a className="tp-btn mr-30">{btn_text}</a>
                     </Link>
@@ -68,11 +52,7 @@ const HeroArea = () => {
                 </div>
               </div>
               {!movilIpadaScreen && (
-                <div
-                  className="tp-hero-social pb-30 wow tpfadeIn d-none-movil"
-                  data-wow-duration=".7s"
-                  data-wow-delay="1.2s"
-                >
+                <div className="tp-hero-social pb-30 d-none-movil">
                   <div className="tp-hero-social bp-hero-social row m-0">
                     <div className="col-6 d-flex align-items-center justify-content-center">
                       <div className="img">
@@ -173,9 +153,8 @@ const HeroArea = () => {
               <div className="col-7"></div>
               <div className="col-5">
                 <div
-                  className="tp-hero-social pb-30 wow tpfadeIn d-none-movil"
-                  data-wow-duration=".7s"
-                  data-wow-delay="1.2s"
+                  className="tp-hero-social pb-30 d-none-movil"
+                  
                 >
                   <div className="tp-hero-social bp-hero-social row m-0">
                     <div className="col-6 d-flex align-items-center justify-content-end">
@@ -196,7 +175,7 @@ const HeroArea = () => {
             </div> */}
             {movilIpadaScreen && (
               <div
-                className="tp-hero-social pb-30 wow tpfadeIn d-none-lg"
+                className="tp-hero-social pb-30 d-none-lg"
                 data-wow-duration=".7s"
                 data-wow-delay="1.2s"
               >

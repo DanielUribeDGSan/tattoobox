@@ -2,9 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useState } from "react";
+import Skeleton from "@mui/material/Skeleton";
 
 const ServicesArea = () => {
   const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
+  const [imageLoading, setImageLoading] = useState(true);
+
+  const handleOnLoad = () => {
+    setImageLoading(true);
+  };
+  const handleOnLoadingComplete = () => {
+    setImageLoading(false);
+  };
 
   return (
     <div className="tp-service-area bg-gray pt-100 pb-100 p-relative fix">
@@ -13,6 +23,16 @@ const ServicesArea = () => {
           {!movilIpadaScreen && (
             <div className="col-lg-6 col-md-12 col-12 d-none-movil">
               <div className="image-content">
+                {imageLoading && (
+                  <Skeleton
+                    variant="rectangular"
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "20px 20px 0px 0px",
+                    }}
+                  />
+                )}
                 <Image
                   className="img-fluid image-content"
                   src="/assets/img/trash/how_it_works.webp"
@@ -20,6 +40,8 @@ const ServicesArea = () => {
                   layout="fill"
                   objectFit="cover"
                   loading="lazy"
+                  onLoad={handleOnLoad}
+                  onLoadingComplete={handleOnLoadingComplete}
                 />
               </div>
             </div>

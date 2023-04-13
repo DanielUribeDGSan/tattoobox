@@ -13,8 +13,6 @@ import "swiper/css/scrollbar";
 export const SliderTattoo = ({ data, loading, title }) => {
   const [sliderLoop, setSliderLoop] = useState(false);
 
-  useEffect(() => setSliderLoop(true), []);
-
   const swiperParams = {
     modules: [Navigation],
     navigation: {
@@ -22,6 +20,8 @@ export const SliderTattoo = ({ data, loading, title }) => {
       prevEl: ".swiper-button-prev",
     },
   };
+
+  useEffect(() => setSliderLoop(true), []);
 
   if (loading) return <p>Cargando...</p>;
 
