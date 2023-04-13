@@ -19,6 +19,7 @@ const menuProfileData = [
     title: "Favoritos",
     subTitle: "Ve tus tatuajes favoritos",
     path: "/",
+    auth: false,
   },
   {
     icon: (
@@ -29,6 +30,7 @@ const menuProfileData = [
     title: "Ayuda",
     subTitle: "Estamos aquí para ayudarte",
     path: "/",
+    auth: false,
   },
   {
     icon: (
@@ -39,11 +41,12 @@ const menuProfileData = [
     title: "Configuración",
     subTitle: "Configura tu cuenta",
     path: "/",
+    auth: false,
   },
 ];
 
 export const Profile = () => {
-  const { user } = useUser();
+  const { user, artist, studie } = useUser();
   const btnClose = useRef();
 
   return (
@@ -67,24 +70,6 @@ export const Profile = () => {
         </div>
       </div>
       <div className="row ">
-        {user?.idTipoPerfil == 2 && (
-          <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
-            <div
-              className="content-item-profile"
-              data-bs-toggle="modal"
-              data-bs-target="#registerSupplementary"
-            >
-              <AccountBoxIcon
-                sx={{
-                  height: "30px",
-                  width: "30px",
-                  color: "var(--tp-common-black)",
-                }}
-              />
-              <p className="p-0 m-0 d-inline-block">Subir tatuajes</p>
-            </div>
-          </div>
-        )}
         {/* Completar registro */}
         {!user?.userName && (
           <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
@@ -105,6 +90,22 @@ export const Profile = () => {
           </div>
         )}
         {/* end completar registro */}
+        <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
+          <Link href="/perfil">
+            <a>
+              <div className="content-item-profile">
+                <AccountBoxIcon
+                  sx={{
+                    height: "30px",
+                    width: "30px",
+                    color: "var(--tp-common-black)",
+                  }}
+                />
+                <p className="p-0 m-0 d-inline-block">Ir a mi perfil</p>
+              </div>
+            </a>
+          </Link>
+        </div>
         {menuProfileData.map((item, i) => (
           <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12" key={i}>
             <Link href={`${item.path}`}>
@@ -118,41 +119,46 @@ export const Profile = () => {
           </div>
         ))}
         {/* unete como estudio */}
-        <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
-          <Link href="/registro-estudio">
-            <a>
-              <div className="content-item-profile">
-                <AccountBoxIcon
-                  sx={{
-                    height: "30px",
-                    width: "30px",
-                    color: "var(--tp-common-black)",
-                  }}
-                />
-                <p className="p-0 m-0 d-inline-block">Únete como estudio</p>
-              </div>
-            </a>
-          </Link>
-        </div>
+        {studie.length < 1 && (
+          <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
+            <Link href="/registro-estudio">
+              <a>
+                <div className="content-item-profile">
+                  <AccountBoxIcon
+                    sx={{
+                      height: "30px",
+                      width: "30px",
+                      color: "var(--tp-common-black)",
+                    }}
+                  />
+                  <p className="p-0 m-0 d-inline-block">Únete como estudio</p>
+                </div>
+              </a>
+            </Link>
+          </div>
+        )}
+
         {/* end unete como estudio */}
 
         {/* unete como artista */}
-        <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
-          <Link href="/registro-artista">
-            <a>
-              <div className="content-item-profile">
-                <AccountBoxIcon
-                  sx={{
-                    height: "30px",
-                    width: "30px",
-                    color: "var(--tp-common-black)",
-                  }}
-                />
-                <p className="p-0 m-0 d-inline-block">Únete como artista</p>
-              </div>
-            </a>
-          </Link>
-        </div>
+        {artist.length < 1 && (
+          <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
+            <Link href="/registro-artista">
+              <a>
+                <div className="content-item-profile">
+                  <AccountBoxIcon
+                    sx={{
+                      height: "30px",
+                      width: "30px",
+                      color: "var(--tp-common-black)",
+                    }}
+                  />
+                  <p className="p-0 m-0 d-inline-block">Únete como artista</p>
+                </div>
+              </a>
+            </Link>
+          </div>
+        )}
         {/* end unete como artista */}
       </div>
       {!user?.userName && (

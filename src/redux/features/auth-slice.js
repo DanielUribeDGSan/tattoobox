@@ -16,8 +16,16 @@ export const authSlice = createSlice({
       setLocalStorage("user", state.user);
     },
     set_id_profile: (state, { payload }) => {
-      const { idPerfil, idTipoPerfil } = payload;
-      state.user = { ...state.user, idPerfil, idTipoPerfil };
+      const { idPerfil, idTipoPerfil, userName, avatar, nameProfile } = payload;
+
+      state.user = {
+        ...state.user,
+        idPerfil,
+        idTipoPerfil,
+        userName,
+        avatar,
+        nameProfile,
+      };
       setLocalStorage("user", state.user);
     },
 

@@ -2,6 +2,16 @@ import { useEffect, useState } from "react";
 import { tattoApiSocial, tattoApi } from "../api/tattoApi";
 import { toast } from "react-toastify";
 
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    fetchOptions: {
+      mode: "no-cors",
+    },
+  },
+};
+
 export const useTattoBoxFiltros = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [filters, setFilters] = useState({
@@ -12,16 +22,6 @@ export const useTattoBoxFiltros = () => {
   const [dataStateCountry, setDataStateCountry] = useState([]);
   const [dataStyles, setDataStyles] = useState([]);
   const [dataPrices, setDataPrices] = useState([]);
-
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      fetchOptions: {
-        mode: "no-cors",
-      },
-    },
-  };
 
   const getFilters = async () => {
     const estadosPromise = tattoApi.get("/estados");

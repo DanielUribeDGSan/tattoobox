@@ -4,6 +4,16 @@ import { toast } from "react-toastify";
 import Router from "next/router";
 import { useEffect } from "react";
 
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    fetchOptions: {
+      mode: "no-cors",
+    },
+  },
+};
+
 const useTattoboxHomeTattoos = () => {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,16 +22,6 @@ const useTattoboxHomeTattoos = () => {
     studies: [],
     newest: [],
   });
-
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      fetchOptions: {
-        mode: "no-cors",
-      },
-    },
-  };
 
   const getTattoosHome = async () => {
     try {

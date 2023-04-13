@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { ChangeProfile } from "./change-profile";
 
 export const BannerUser = () => {
   return (
@@ -44,9 +45,8 @@ export const BannerUser = () => {
               Editar perfil
             </a>
           </Link>
-          <Link href="#">
-            <a className="btn-md-black">Agendar cita</a>
-          </Link>
+
+          <ChangeProfile />
         </div>
       </div>
     </div>

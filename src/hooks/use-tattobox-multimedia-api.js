@@ -2,28 +2,21 @@ import { useState } from "react";
 import { tattoApiSocial, tattoApi, tattoApiIdentify } from "../api/tattoApi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import {
-  add_user,
-  set_data_supplementary,
-  set_id_profile,
-  sign_out,
-} from "../redux/features/auth-slice";
-import Router from "next/router";
+
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    fetchOptions: {
+      mode: "no-cors",
+    },
+  },
+};
 
 const useTattoboxMultimediaApi = () => {
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);
-
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      fetchOptions: {
-        mode: "no-cors",
-      },
-    },
-  };
 
   const uploadTattooArtist = async (file, body) => {
     try {
@@ -62,7 +55,6 @@ const useTattoboxMultimediaApi = () => {
         bodyFormData,
         configMedia
       );
-      console.log(data);
     } catch (error) {
       const errorMessage = error?.message;
       // toast.error(`${errorMessage}`, {

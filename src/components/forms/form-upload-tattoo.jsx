@@ -8,13 +8,33 @@ import { uploadTattoo } from "../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
 import { useTattoBoxFiltros } from "../../hooks/use-tattobox-filtros";
 import useTattoboxMultimediaApi from "../../hooks/use-tattobox-multimedia-api";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#000000",
+    },
+    secondary: {
+      main: "#000000",
+    },
+  },
+});
 
 export const FormUploadTattoo = () => {
   const { dataStyles, dataPrices } = useTattoBoxFiltros();
   const [file, setFile] = useState([]);
   const [priceState, setPriceState] = useState();
   const [styleState, setStyleState] = useState();
-  const { user } = useUser();
+  const { user, artist, studie, isLoading } = useUser();
+
+  const [profileId, setProfileId] = useState(user?.idPerfil);
+
+  const handleChangeProfile = (e, profile) => {
+    setProfileId(profile);
+  };
 
   const updateFiles = (incommingFiles) => {
     setFile(incommingFiles);
@@ -35,7 +55,8 @@ export const FormUploadTattoo = () => {
       validationSchema: uploadTattoo,
       onSubmit: async ({ tattoo, description }, { resetForm }) => {
         const body = {
-          IdPerfil: user?.idPerfil,
+          IdPerfil:
+            studie.length > 0 && artist.length > 0 ? profileId : user?.idPerfil,
           Titulo: tattoo,
           Cuerpo: description,
           IdPrecio: parseInt(priceState?.value),
@@ -70,6 +91,61 @@ export const FormUploadTattoo = () => {
             <FileMosaic {...file} preview key={i} />
           ))}
         </Dropzone>
+      </div>
+      <div className="mb-20">
+        {isLoading ? (
+          <p className="text-black">Cargando</p>
+        ) : (
+          <>
+            {studie.length > 0 && artist.length > 0 && (
+              <>
+                <p
+                  className="text-black"
+                  style={{ fontSize: "1rem", padding: 0, margin: 0 }}
+                >
+                  Selecciona tu perfil
+                </p>
+                <ThemeProvider theme={theme}>
+                  <ToggleButtonGroup
+                    color="primary"
+                    value={profileId}
+                    exclusive
+                    onChange={handleChangeProfile}
+                    aria-label="Perfil"
+                    sx={{ width: "100%" }}
+                  >
+                    <ToggleButton
+                      value={artist[0]?.IdPerfil}
+                      sx={{
+                        textTransform: "inherit",
+                        color: "black",
+                        width: "50%",
+                      }}
+                    >
+                      <div className="d-flex flex-column">
+                        <span>{artist[0]?.UserName}</span>
+                        <span>{artist[0]?.TipoPerfil}</span>
+                      </div>
+                    </ToggleButton>
+                    <ToggleButton
+                      value={studie[0]?.IdPerfil}
+                      sx={{
+                        textTransform: "inherit",
+                        color: "black",
+                        width: "50%",
+                      }}
+                    >
+                      <div className="d-flex flex-column">
+                        <span>{studie[0]?.UserName}</span>
+                        <span>{studie[0]?.TipoPerfil}</span>
+                      </div>
+                    </ToggleButton>
+                  </ToggleButtonGroup>
+                </ThemeProvider>
+              </>
+            )}
+          </>
+        )}
       </div>
       <div className="mb-30">
         <input

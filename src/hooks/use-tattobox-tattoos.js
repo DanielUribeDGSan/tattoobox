@@ -1,34 +1,21 @@
 import { useState } from "react";
 import { tattoApiSocial, tattoApi, tattoApiIdentify } from "../api/tattoApi";
-import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import {
-  add_user,
-  set_data_supplementary,
-  set_id_profile,
-  sign_out,
-} from "../redux/features/auth-slice";
-import Router from "next/router";
+
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    fetchOptions: {
+      mode: "no-cors",
+    },
+  },
+};
 
 const useTattoboxTattoos = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [contentTattoo, setContentTattoo] = useState([]);
   const [comments, setComments] = useState([]);
-  const [tattosHome, SettattosHome] = useState({
-    artist: [],
-    studies: [],
-    newest: [],
-  });
-
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      fetchOptions: {
-        mode: "no-cors",
-      },
-    },
-  };
 
   const getContentTattoo = async (idContent) => {
     try {
@@ -42,9 +29,9 @@ const useTattoboxTattoos = () => {
       setIsLoading(false);
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -58,9 +45,9 @@ const useTattoboxTattoos = () => {
       await getCommentsTattoo(data.data.idContenido);
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -76,9 +63,9 @@ const useTattoboxTattoos = () => {
       setIsLoading(false);
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 

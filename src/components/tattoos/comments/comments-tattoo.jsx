@@ -28,7 +28,7 @@ export const CommentsTattoo = ({ idContent }) => {
   return (
     <div>
       <div className="row grid gx-3 comments">
-        {comments.length > 0 && (
+        {comments.length > 1 && (
           <>
             <div className="col-12 mt-2 mb-3">
               <FormCommentTatto
@@ -51,7 +51,7 @@ export const CommentsTattoo = ({ idContent }) => {
                     <div className="comment">
                       <p className="text-black p-0 m-0">
                         <strong style={{ margin: "0px 5px" }}>
-                          {comment?.Perfil.UserName}
+                          {comment?.Perfil?.UserName}
                         </strong>
                       </p>
                       <p className="text-black m-0 p-0">

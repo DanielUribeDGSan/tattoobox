@@ -10,19 +10,19 @@ import {
 } from "../redux/features/auth-slice";
 import Router from "next/router";
 
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    fetchOptions: {
+      mode: "no-cors",
+    },
+  },
+};
+
 const useTattoboxAuthRegister = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
-
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      fetchOptions: {
-        mode: "no-cors",
-      },
-    },
-  };
 
   // Auth
 
@@ -137,8 +137,11 @@ const useTattoboxAuthRegister = () => {
       const resp = await tattoApiSocial.get(`/v1/perfil/${idPart}`, config);
       dispatch(
         set_id_profile({
-          idPerfil: resp.data.perfiles.Perfiles[0].IdPerfil,
-          idTipoPerfil: resp.data.perfiles.Perfiles[0].IdTipoPerfil,
+          idPerfil: resp.data.perfiles.Perfiles[0]?.IdPerfil,
+          idTipoPerfil: resp.data.perfiles.Perfiles[0]?.IdTipoPerfil,
+          userName: resp.data.perfiles.Perfiles[0]?.UserName,
+          avatar: resp.data.perfiles.Perfiles[0]?.Avatar,
+          nameProfile: resp.data.perfiles.Perfiles[0]?.NombrePerfil,
         })
       );
     } catch (error) {
