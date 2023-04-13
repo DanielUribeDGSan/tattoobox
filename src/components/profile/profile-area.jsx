@@ -10,8 +10,8 @@ const ProfileArea = () => {
   return (
     <>
       <div className="tp-profile-area">
-        <div className="row gx-0 align-items-center tp-profile">
-          <div className="col-12 p-0 m-0 col-profile-content d-flex justify-content-center">
+        <div className="row gx-0 align-items-center tp-profile m-0 w-100">
+          <div className="col-12 p-0 m-0 col-profile-content d-flex justify-content-center m-0 w-100">
             <div className="container-profile-content">
               <BannerUser />
               <TabUser />

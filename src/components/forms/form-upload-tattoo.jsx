@@ -120,6 +120,7 @@ export const FormUploadTattoo = () => {
                         textTransform: "inherit",
                         color: "black",
                         width: "50%",
+                        overflowWrap: "anywhere",
                       }}
                     >
                       <div className="d-flex flex-column">
@@ -133,6 +134,7 @@ export const FormUploadTattoo = () => {
                         textTransform: "inherit",
                         color: "black",
                         width: "50%",
+                        overflowWrap: "anywhere",
                       }}
                     >
                       <div className="d-flex flex-column">

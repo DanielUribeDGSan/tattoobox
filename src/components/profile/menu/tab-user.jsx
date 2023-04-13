@@ -56,10 +56,13 @@ export const TabUser = () => {
           </Box>
           <TabPanel value="1" sx={{ padding: 0 }}>
             <div className="row m-0 pb-20">
-              <div className="col-5 m-0" style={{ paddingLeft: 0 }}>
+              <div className="col-xl-5 col-lg-5 col-12 m-0 header-col">
                 <Header />
               </div>
-              <div className="col-7 m-0" style={{ paddingRight: 0 }}>
+              <div
+                className="col-xl-7 col-lg-7 col-12 m-0"
+                style={{ paddingRight: 0 }}
+              >
                 <Publication />
                 <Publication />
                 <Publication />
@@ -67,7 +70,9 @@ export const TabUser = () => {
             </div>
           </TabPanel>
           <TabPanel value="2" sx={{ padding: 0 }}>
-            <Tatuajes />
+            <div className="container">
+              <Tatuajes />
+            </div>
           </TabPanel>
           <TabPanel value="3" sx={{ padding: 0 }}>
             <div>
