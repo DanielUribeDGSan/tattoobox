@@ -1,25 +1,38 @@
 import React, { useEffect } from "react";
 import { FooterThree, Header, Wrapper } from "../../../layout";
 import { animationCreate } from "../../../utils/utils";
-import BlogArea from "./blog-area";
-import BrandArea from "./brand-area";
 import CreativeArea from "./creative-area";
 import HeroArea from "./hero-area";
-import NewsLetter from "./news-letter";
-import ProjectArea from "./project-area";
 import ServicesArea from "./services-area";
 import { SliderTattoo } from "../../sliders/tattoos/slider-tattoo";
 import useTattoboxHomeTattoos from "../../../hooks/use-tattobox-home-tattoos";
-import Slider3D from "../../sliders/3d/slider3d";
 
 const Home = () => {
-  const { artist, studies, newest, isLoading } = useTattoboxHomeTattoos();
-
-  // console.log(isLoading);
+  const { artist, studies, newest, isLoading, error } =
+    useTattoboxHomeTattoos();
 
   useEffect(() => {
     animationCreate();
   }, []);
+
+  if (!error && isLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "transparent",
+          position: "absolute",
+          top: "49%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          overflow: "hidden",
+          height: "100%",
+        }}
+      />
+    );
+  }
   return (
     <Wrapper>
       <Header />

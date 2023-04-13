@@ -88,66 +88,35 @@ const HeroArea = () => {
                   <Image src={hero_img} alt="iPhone" width={331} height={596} />
                   <div className="video-container">
                     <video
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        zIndex: -1,
-                      }}
-                      autoPlay
-                      loop
+                      src="/assets/videos/tattoobox.mp4"
+                      autoPlay={true}
+                      playsInline
                       muted
-                    >
-                      <source
-                        src="assets/videos/tattoobox.mp4"
-                        type="video/mp4"
-                      />
-                    </video>
+                      loop
+                    />
                   </div>
                 </div>
               ) : (
-                <div style={{ position: "relative" }}>
-                  <Image src={hero_img} alt="iPhone" width={231} height={400} />
-                  <div className="video-container">
-                    <video
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        zIndex: -1,
-                      }}
-                      autoPlay
-                      loop
-                      muted
-                    >
-                      <source
-                        src="assets/videos/tattoobox.mp4"
-                        type="video/mp4"
+                <>
+                  <div style={{ position: "relative" }}>
+                    <Image
+                      src={hero_img}
+                      alt="iPhone"
+                      width={231}
+                      height={400}
+                    />
+                    <div className="video-container">
+                      <video
+                        src="/assets/videos/tattoobox.mp4"
+                        autoPlay={true}
+                        playsInline
+                        muted
+                        loop
                       />
-                    </video>
+                    </div>
                   </div>
-                </div>
+                </>
               )}
-
-              {/* <div className="phone-container">             
-
-                <img
-                  src={hero_img}
-                  className="img-fluid img-iphone"
-                  alt="Celular iphone"
-                  loading="lazy"
-                />
-
-                <div className="video-container">
-                  <video
-                    src="assets/videos/tattoobox.mp4"
-                    autoPlay
-                    playsInline
-                    muted
-                    loop
-                  ></video>
-                </div>
-              </div> */}
             </div>
             {/* <div className="row" style={{ marginTop: "20px" }}>
               <div className="col-7"></div>

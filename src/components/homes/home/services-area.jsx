@@ -59,6 +59,7 @@ const ServicesArea = () => {
                         layout="fill"
                         objectFit="contain"
                         loading="lazy"
+                        alt="icon lluvia de ideas"
                       />
                     </div>
                     <div className="sub-title">
@@ -77,6 +78,7 @@ const ServicesArea = () => {
                         layout="fill"
                         objectFit="contain"
                         loading="lazy"
+                        alt="icon al rededor del mundo"
                       />
                     </div>
                     <div className="sub-title">
@@ -95,6 +97,7 @@ const ServicesArea = () => {
                         layout="fill"
                         objectFit="contain"
                         loading="lazy"
+                        alt="icon mquina de tatuar"
                       />
                     </div>
                     <div className="sub-title">

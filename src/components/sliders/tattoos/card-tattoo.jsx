@@ -62,7 +62,6 @@ export const CardTattoo = ({ tattoo }) => {
         </div>
         <div className="col-xxl-10 col-xl-10 col-lg-10 col-md-10 col-9 content-user p-0">
           <p className="title">{tattoo?.Cuerpo || tattoo?.UserName}</p>
-          <p className="text-black">{imageLoading?.loading}</p>
           <p className="style mb-0">
             {tattoo?.EstiloTatuaje || tattoo?.Estado}
           </p>

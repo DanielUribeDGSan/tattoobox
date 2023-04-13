@@ -1,11 +1,11 @@
 @use "../utils" as *;
 
-// .swiper-button-next.swiper-button-disabled,
-// .swiper-button-prev.swiper-button-disabled {
-//   opacity: 1 !important;
-//   cursor: pointer !important;
-//   pointer-events: auto !important;
-// }
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  opacity: 1 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
 
 .swiper-button-next,
 .swiper-rtl .swiper-button-prev,
@@ -61,8 +61,8 @@
         width: 40px;
         height: 40px;
         @media #{$sm,$xs} {
-          width: 35px;
-          height: 35px;
+          width: 30px;
+          height: 30px;
         }
         position: relative;
         & img {

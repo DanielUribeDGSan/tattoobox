@@ -7,7 +7,6 @@ const IconTatto = () => {
       <Image
         src="/assets/img/svg/tattoo-machine.svg"
         alt="svg tattoo"
-        priority
         width={23}
         height={23}
       />
@@ -21,7 +20,6 @@ const IconInfinity = () => {
       <Image
         src="/assets/img/svg/infinity-svgrepo-com.svg"
         alt="svg tattoo"
-        priority
         width={23}
         height={23}
       />
@@ -35,7 +33,6 @@ const IconPerson = () => {
       <Image
         src="/assets/img/svg/person-svgrepo-com.svg"
         alt="svg tattoo"
-        priority
         width={23}
         height={23}
       />
@@ -49,7 +46,6 @@ const IconSearch = () => {
       <Image
         src="/assets/img/svg/search-svgrepo-com.svg"
         alt="svg tattoo"
-        priority
         width={23}
         height={23}
       />
@@ -63,7 +59,6 @@ const IconAdd = () => {
       <Image
         src="/assets/img/svg/add-svgrepo-com.svg"
         alt="svg tattoo"
-        priority
         width={23}
         height={23}
       />

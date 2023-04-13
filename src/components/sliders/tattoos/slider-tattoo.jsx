@@ -9,8 +9,10 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
+import useTattoboxHomeTattoos from "../../../hooks/use-tattobox-home-tattoos";
 
 export const SliderTattoo = ({ data, loading, title }) => {
+  const { artist, studies, newest, isLoading } = useTattoboxHomeTattoos();
   const [sliderLoop, setSliderLoop] = useState(false);
 
   const swiperParams = {
