@@ -38,9 +38,9 @@ const useTattoboxAuthRegister = () => {
       };
       await tattoApiIdentify.post("/register-mail", body);
     } catch (error) {
-      toast.error(`Ocurrio un error - ${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`Ocurrio un error - ${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -65,9 +65,9 @@ const useTattoboxAuthRegister = () => {
       Router.push("/");
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`Ocurrio un error - ${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`Ocurrio un error - ${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -92,9 +92,9 @@ const useTattoboxAuthRegister = () => {
       Router.push("/");
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`Ocurrio un error - ${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`Ocurrio un error - ${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -108,9 +108,9 @@ const useTattoboxAuthRegister = () => {
       Router.push("/");
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`Ocurrio un error - ${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`Ocurrio un error - ${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -124,9 +124,9 @@ const useTattoboxAuthRegister = () => {
       Router.push("/");
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`Ocurrio un error - ${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`Ocurrio un error - ${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -143,9 +143,9 @@ const useTattoboxAuthRegister = () => {
       );
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`Ocurrio un error - ${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`Ocurrio un error - ${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 

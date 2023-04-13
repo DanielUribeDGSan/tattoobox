@@ -35,9 +35,9 @@ const useTattoboxMultimediaApi = () => {
       await uploadImage(file, data.data.idContenido);
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -65,9 +65,9 @@ const useTattoboxMultimediaApi = () => {
       console.log(data);
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 

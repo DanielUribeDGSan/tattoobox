@@ -22,8 +22,6 @@
     "bootstrap": "^5.2.1",
     "firebase": "^9.10.0",
     "formik": "^2.2.9",
-    "intersection-observer": "0.10.0",
-    "just-debounce-it": "^3.2.0",
     "mui-image": "^1.0.7",
     "next": "12.3.0",
     "react": "18.2.0",

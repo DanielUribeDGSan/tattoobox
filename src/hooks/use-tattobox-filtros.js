@@ -78,9 +78,9 @@ export const useTattoBoxFiltros = () => {
       return resp.data.contenidos;
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -93,9 +93,9 @@ export const useTattoBoxFiltros = () => {
       setDataStateCountry(options);
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -108,9 +108,9 @@ export const useTattoBoxFiltros = () => {
       setDataStyles(options);
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
@@ -123,9 +123,9 @@ export const useTattoBoxFiltros = () => {
       setDataPrices(options);
     } catch (error) {
       const errorMessage = error?.message;
-      toast.error(`${errorMessage}`, {
-        position: "top-left",
-      });
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
     }
   };
 
