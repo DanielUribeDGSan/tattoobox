@@ -43,12 +43,14 @@ export const BannerUser = () => {
             </div>
           </div>
         </div>
-        <div className="">
-          <Link href="#">
-            <a className="btn-md-black " style={{ marginRight: "20px" }}>
-              Editar perfil
-            </a>
-          </Link>
+        <div className="user-buttons">
+          <button
+            className="btn-md-black "
+            style={{ marginRight: "20px" }}
+            aria-label="Editar perfil"
+          >
+            Editar perfil
+          </button>
 
           <ChangeProfile />
         </div>

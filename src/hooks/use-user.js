@@ -16,6 +16,7 @@ const config = {
 
 export const useUser = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingUser, setIsLoadingUser] = useState(true);
   const [profilesState, SetProfilesState] = useState({
     artist: [],
     studie: [],
@@ -26,6 +27,7 @@ export const useUser = () => {
 
   useEffect(() => {
     dispatch(get_user());
+    setIsLoadingUser(false);
   }, [dispatch]);
 
   useEffect(() => {
@@ -37,8 +39,8 @@ export const useUser = () => {
   };
 
   const getProfiles = async () => {
+    if (!user?.idParte) return false;
     try {
-      setIsLoading(true);
       const { data } = await tattoApiSocial.get(
         `/v1/perfil/${user?.idParte}`,
         config
@@ -55,6 +57,7 @@ export const useUser = () => {
   };
 
   return {
+    isLoadingUser,
     isLoading,
     user,
     ...profilesState,

@@ -20,7 +20,7 @@ const theme = createTheme({
   },
 });
 
-export const TabUser = () => {
+export const TabUser = ({ data }) => {
   const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
@@ -51,7 +51,7 @@ export const TabUser = () => {
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab label="Publicaciones" value="1" />
               <Tab label="Mis tatuajes" value="2" />
-              <Tab label="Información adicional" value="3" />
+              {/* <Tab label="Información adicional" value="3" /> */}
             </TabList>
           </Box>
           <TabPanel value="1" sx={{ padding: 0 }}>
@@ -63,20 +63,22 @@ export const TabUser = () => {
                 className="col-xl-7 col-lg-7 col-12 m-0"
                 style={{ paddingRight: 0 }}
               >
-                <Publication />
-                <Publication />
-                <Publication />
+                <div className="row m-0">
+                  {data?.Tatuajes.map((tatto, i) => (
+                    <div className="col-xl-6 col-lg-6 col-12" key={i}>
+                      <Publication
+                        tattooInfo={tatto}
+                        usuario={data?.UserName}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </TabPanel>
           <TabPanel value="2" sx={{ padding: 0 }}>
             <div className="container">
-              <Tatuajes />
-            </div>
-          </TabPanel>
-          <TabPanel value="3" sx={{ padding: 0 }}>
-            <div>
-              <p>Hol</p>
+              <Tatuajes tattoosData={data?.Tatuajes} />
             </div>
           </TabPanel>
         </TabContext>
