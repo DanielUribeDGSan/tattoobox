@@ -56,7 +56,7 @@ export const TabCommentsTattoos = ({ idContent, relatedTattoos = [] }) => {
               }}
             >
               <Tab
-                label="Tatuajes"
+                label="Relacionados"
                 value="1"
                 sx={{
                   padding: "0 10px",
