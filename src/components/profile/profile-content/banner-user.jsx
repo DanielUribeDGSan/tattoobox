@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { ChangeProfile } from "./change-profile";
-import EditIcon from "@mui/icons-material/Edit";
+import { ChangeProfileImage } from "./change-profile-image";
 
-export const BannerUser = () => {
+export const BannerUser = ({ profileStudio, user }) => {
   return (
     <div className="tp-profile-user-content pb-3">
       <div
@@ -16,9 +16,7 @@ export const BannerUser = () => {
       <div className="content-user">
         <div className="container-user-banner">
           <div className="img-content-user">
-            <button className="edit-image" aria-label="editar imagen de perfil">
-              <EditIcon sx={{ color: "var(--tp-common-black)" }} />
-            </button>
+            <ChangeProfileImage user={user} />
             <img
               src={
                 "https://www.cnet.com/a/img/resize/154ad36c2e7441e8178c3e9966fdb2d7ce65de63/hub/2019/04/15/228493c5-b10f-480f-b2e2-076e38bf0c3f/ep9-ff-000009.jpg?auto=webp&fit=crop&height=675&width=1200"

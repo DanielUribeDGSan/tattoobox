@@ -29,7 +29,7 @@ const ProfileArea = () => {
                 <p className="text-black">Cargando...</p>
               ) : (
                 <>
-                  <BannerUser data={profileStudio} />
+                  <BannerUser profileStudio={profileStudio} user={user} />
                   <TabUser data={profileStudio} />
                 </>
               )}
