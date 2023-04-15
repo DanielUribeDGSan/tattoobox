@@ -192,14 +192,14 @@
   }
 }
 
-.tp-profile-grid {
-  & .grid {
-    padding-top: 50px;
-    @media #{$md,$sm,$xs} {
-      padding-top: 20px;
-    }
-  }
-}
+// .tp-profile-grid {
+//   & .grid {
+//     padding-top: 50px;
+//     @media #{$md,$sm,$xs} {
+//       padding-top: 20px;
+//     }
+//   }
+// }
 .tp-profile-publication {
   & .container-publication {
     padding: 0px 5px;

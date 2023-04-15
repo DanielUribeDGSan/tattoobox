@@ -38,6 +38,12 @@
   }
 }
 
+.modal-tattoo {
+  & .modal-body {
+    overflow-y: auto;
+  }
+}
+
 .modal-full-screen {
   & .modal-body {
     background-color: var(--tp-common-white);

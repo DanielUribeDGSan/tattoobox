@@ -4,8 +4,10 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CommentsTattoo } from "../comments/comments-tattoo";
+import { GridMansoryNotModalTattoo } from "../../mansory/grid-mansory-not-modal-tattoo";
 
 const theme = createTheme({
   palette: {
@@ -18,8 +20,10 @@ const theme = createTheme({
   },
 });
 
-export const TabCommentsTattoos = ({ idContent }) => {
-  const [value, setValue] = useState("1");
+export const TabCommentsTattoos = ({ idContent, relatedTattoos = [] }) => {
+  const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
+
+  const [value, setValue] = useState(movilIpadaScreen ? "1" : "2");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -54,7 +58,11 @@ export const TabCommentsTattoos = ({ idContent }) => {
               <Tab
                 label="Tatuajes"
                 value="1"
-                sx={{ padding: "0 10px", color: "black" }}
+                sx={{
+                  padding: "0 10px",
+                  color: "black",
+                  display: movilIpadaScreen ? "flex" : "none",
+                }}
               />
               <Tab
                 label="Comentarios"
@@ -69,7 +77,11 @@ export const TabCommentsTattoos = ({ idContent }) => {
               padding: 0,
               marginBottom: "30px",
             }}
-          ></TabPanel>
+          >
+            <div className="mt-3">
+              <GridMansoryNotModalTattoo data={relatedTattoos} />
+            </div>
+          </TabPanel>
           <TabPanel value="2" sx={{ padding: 0, marginBottom: "30px" }}>
             <CommentsTattoo idContent={idContent} />
           </TabPanel>

@@ -7,7 +7,6 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 export const ActionsTattoos = ({ content, style }) => {
-  console.log(content);
   return (
     <div className="actions-tatuaje" style={style}>
       <div className="row grid gx-3">

@@ -17,7 +17,13 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
   const imageTattoo = useRef();
-  const { getContentTattoo, contentTattoo, isLoading } = useTattoboxTattoos();
+  const {
+    getContentTattoo,
+    contentTattoo,
+    getRelatedTattoos,
+    relatedTattoos,
+    isLoading,
+  } = useTattoboxTattoos();
 
   const images = [contentTattoo?.UrlImagen];
 
@@ -41,17 +47,25 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
     // getContentTattoo(idContentBefore);
   };
 
+  const getData = async () => {
+    const body = {
+      IdContenido: idContent,
+      page: 1,
+    };
+    await getContentTattoo(idContent);
+    await getRelatedTattoos(body);
+  };
+
   useEffect(() => {
     let isActive = true;
 
     if (idContent && isActive) {
-      getContentTattoo(idContent);
+      getData();
     }
     return () => {
       isActive = false;
     };
   }, [idContent]);
-  // console.log(contentTattoo);
 
   return (
     <div
@@ -177,7 +191,10 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                           <div className="mt-1">
                             <InformationTattoo content={contentTattoo} />
 
-                            <TabCommentsTattoos idContent={idContent} />
+                            <TabCommentsTattoos
+                              idContent={idContent}
+                              relatedTattoos={relatedTattoos}
+                            />
                           </div>
                         </div>
                       </div>
