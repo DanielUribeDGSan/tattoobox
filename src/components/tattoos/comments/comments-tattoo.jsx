@@ -4,7 +4,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { FormCommentTatto } from "../../forms/form-comment-tatto";
 import useTattoboxTattoos from "../../../hooks/use-tattobox-tattoos";
 
-export const CommentsTattoo = ({ idContent }) => {
+export const CommentsTattoo = ({ idContent, user }) => {
   const [newMessages, setNewMessages] = useState(false);
 
   const { getCommentsTattoo, comments, isLoading } = useTattoboxTattoos();
@@ -13,29 +13,26 @@ export const CommentsTattoo = ({ idContent }) => {
     let isActive = true;
 
     if (isActive) {
-      getCommentsTattoo(idContent);
-      setNewMessages(false);
+      getCommentsTattoo(idContent, 1);
     }
     return () => {
+      setNewMessages(false);
       isActive = false;
     };
   }, [newMessages]);
 
-  if (isLoading) {
-    return <p>Cargando..</p>;
-  }
-
   return (
     <div>
       <div className="row grid gx-3 comments">
+        <div className="col-12 mt-2 mb-3">
+          <FormCommentTatto
+            setNewMessages={setNewMessages}
+            IdContenido={idContent}
+            user={user}
+          />
+        </div>
         {comments.length > 1 && (
           <>
-            <div className="col-12 mt-2 mb-3">
-              <FormCommentTatto
-                setNewMessages={setNewMessages}
-                IdContenido={idContent}
-              />
-            </div>
             <div className="col-12">
               {comments?.map((comment, index) => (
                 <div className="row grid gx-3" key={index}>

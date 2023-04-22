@@ -6,12 +6,12 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { ModalTattoo } from "../modals/modalTattoo";
 import { ModalTattooMovil } from "../modals/modalTattooMovil";
 
-export const GridMansory = ({ data }) => {
+export const GridMansory = ({ data, user = {} }) => {
   const [idContent, setIdContent] = useState("");
   const matches = useMediaQuery("(max-width:800px)");
   const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
 
-  const handleSowTatuaje = (idContent, index) => {
+  const handleSowTatuaje = (idContent) => {
     setIdContent(idContent);
   };
 
@@ -32,7 +32,7 @@ export const GridMansory = ({ data }) => {
                 data-bs-toggle="modal"
                 data-bs-target="#tatuajeModal"
                 onClick={() => {
-                  handleSowTatuaje(item.IdContenido, index);
+                  handleSowTatuaje(item.IdContenido);
                 }}
                 duration={2000}
                 easing="ease-in"
@@ -56,9 +56,17 @@ export const GridMansory = ({ data }) => {
       </Box>
 
       {movilIpadaScreen ? (
-        <ModalTattooMovil modal_id="tatuajeModal" idContent={idContent} />
+        <ModalTattooMovil
+          modal_id="tatuajeModal"
+          idContent={idContent}
+          user={user}
+        />
       ) : (
-        <ModalTattoo modal_id="tatuajeModal" idContent={idContent} />
+        <ModalTattoo
+          modal_id="tatuajeModal"
+          idContent={idContent}
+          user={user}
+        />
       )}
     </>
   );

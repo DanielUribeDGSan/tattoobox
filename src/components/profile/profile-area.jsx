@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React, { useEffect } from "react";
 import { TabUser } from "./menu/tab-user";
 import { BannerUser } from "./profile-content/banner-user";
@@ -30,14 +29,11 @@ const ProfileArea = () => {
               ) : (
                 <>
                   <BannerUser profileStudio={profileStudio} user={user} />
-                  <TabUser data={profileStudio} />
+                  <TabUser data={profileStudio} user={user} />
                 </>
               )}
             </div>
           </div>
-          {/* <div className="col-xl-5 col-lg-5 col-12 p-0 m-0 col-profile-grid">
-            <Tatuajes />
-          </div> */}
         </div>
       </div>
     </>

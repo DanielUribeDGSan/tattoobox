@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { ChangeProfile } from "./change-profile";
 import { ChangeProfileImage } from "./change-profile-image";
@@ -50,7 +48,7 @@ export const BannerUser = ({ profileStudio, user }) => {
             Editar perfil
           </button>
 
-          <ChangeProfile />
+          <ChangeProfile user={user} />
         </div>
       </div>
     </div>

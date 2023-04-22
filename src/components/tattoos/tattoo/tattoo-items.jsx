@@ -6,10 +6,11 @@ import { FormFiltersMovil } from "../../forms/form-filters-movil";
 import { IputSearchMovil } from "../../inputs/InputSearchMovil";
 import { FormFilters } from "../../forms/form-filters";
 import { GridMansory } from "../../mansory/grid-mansory";
+import { useUser } from "../../../hooks/use-user";
 
 const TattoItems = () => {
   // Hooks
-
+  const { user, isLoadingUser } = useUser();
   const [searchState, setSearchState] = useState("");
   const [stateCountryState, setStateCountryState] = useState("");
   const [styleState, setStyleState] = useState([]);
@@ -100,12 +101,12 @@ const TattoItems = () => {
           )}
           {/* filtros end */}
           <div>
-            {isLoading || isLoadingSearch ? (
-              <p>Cargando...</p>
+            {isLoading || isLoadingSearch || isLoadingUser ? (
+              <p className="text-black">Cargando...</p>
             ) : (
               <>
                 {tattoos.length == 0 && <p>No hay datos encontrados</p>}
-                <GridMansory data={tattoos} />
+                <GridMansory data={tattoos} user={user} />
               </>
             )}
           </div>

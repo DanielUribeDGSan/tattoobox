@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import useSticky from "../../hooks/use-sticky";
 import Sidebar from "../../components/common/off-canvas";
@@ -9,11 +9,11 @@ import { useUser } from "../../hooks/use-user";
 
 const Header = () => {
   const { headerSticky } = useSticky();
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user } = useUser();
 
   return (
-    <React.Fragment>
+    <>
       <header className="d-none d-lg-block">
         <div
           id="header-sticky"
@@ -71,7 +71,7 @@ const Header = () => {
       <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
 
       {/* off canvas end */}
-    </React.Fragment>
+    </>
   );
 };
 

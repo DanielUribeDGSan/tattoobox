@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import { tattoApiSocial, tattoApi, tattoApiIdentify } from "../api/tattoApi";
 import { toast } from "react-toastify";
 
@@ -19,12 +20,12 @@ const useTattoboxTattoos = () => {
 
   const [comments, setComments] = useState([]);
 
-  const getContentTattoo = async (idContent) => {
+  const getContentTattoo = async (idContent, idProfile) => {
     try {
       setIsLoading(true);
 
       const { data } = await tattoApiSocial.get(
-        `/v1/busqueda/${idContent}`,
+        `/v1/busqueda/${idContent}/${idProfile}`,
         config
       );
       setContentTattoo(data.contenido);
@@ -37,13 +38,14 @@ const useTattoboxTattoos = () => {
     }
   };
 
-  const getRelatedTattoos = async (body) => {
+  // Comments
+
+  const getRelatedTattoos = async (idContent, page) => {
     try {
       setIsLoading(true);
 
-      const { data } = await tattoApiSocial.post(
-        "/v1/tatuajes-relacionados",
-        body,
+      const { data } = await tattoApiSocial.get(
+        `/v1/tatuajes-relacionados/${idContent}/${page}`,
         config
       );
       setRelatedTattoos(data.tatuajes.data);
@@ -56,14 +58,14 @@ const useTattoboxTattoos = () => {
     }
   };
 
-  const setCommentTattoo = async (body) => {
+  const setCommentTattoo = async (body, page) => {
     try {
       const { data } = await tattoApiSocial.post(
         "/v1/comentario",
         body,
         config
       );
-      await getCommentsTattoo(data.data.idContenido);
+      await getCommentsTattoo(data.data.idContenido, page);
     } catch (error) {
       const errorMessage = error?.message;
       // toast.error(`${errorMessage}`, {
@@ -72,17 +74,47 @@ const useTattoboxTattoos = () => {
     }
   };
 
-  const getCommentsTattoo = async (idContent) => {
+  const getCommentsTattoo = async (idContent, page) => {
     try {
       setIsLoading(true);
 
       const { data } = await tattoApiSocial.get(
-        `/v1/comentario/${idContent}`,
+        `/v1/comentario/${idContent}/${page}`,
         config
       );
-      setComments(data.comentarios);
+      setComments(data.comentarios.data);
       setIsLoading(false);
     } catch (error) {
+      const errorMessage = error?.message;
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
+    }
+  };
+
+  // actions tatttoo
+
+  const likeTattoo = async (body) => {
+    try {
+      await tattoApiSocial.post("/v1/contenido/item", body, config);
+    } catch (error) {
+      const errorMessage = error?.message;
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
+    }
+  };
+
+  const deleteWithBodyAndConfig = async (url, data) => {
+    return tattoApiSocial.delete(url, { data, ...config });
+  };
+
+  const dislikeTattoo = async (body) => {
+    try {
+      await deleteWithBodyAndConfig("/v1/contenido/item", body);
+      // tattoApiSocial.delete("/v1/contenido/item", body, config);
+    } catch (error) {
+      console.log(error);
       const errorMessage = error?.message;
       // toast.error(`${errorMessage}`, {
       //   position: "top-left",
@@ -99,6 +131,8 @@ const useTattoboxTattoos = () => {
     setCommentTattoo,
     getRelatedTattoos,
     relatedTattoos,
+    likeTattoo,
+    dislikeTattoo,
   };
 };
 

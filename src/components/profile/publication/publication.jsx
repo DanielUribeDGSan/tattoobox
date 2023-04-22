@@ -1,12 +1,5 @@
 import React from "react";
-import { Actions } from "./actions";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import { Divider } from "@mui/material";
-import { Comment } from "./comment";
-import { Messages } from "./messages";
-import { ModalCentered } from "../../modals/modalCentered";
-import { FormUploadTattoo } from "../../forms/form-upload-tattoo";
 import { ListUserCircle } from "../../utils/list/list-user-circle";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Avatar from "@mui/material/Avatar";
@@ -108,9 +101,6 @@ export const Publication = ({ tattooInfo, usuario }) => {
           </div>
         </div>
       </div>
-      <ModalCentered idModal={"uploadTattooModal"}>
-        <FormUploadTattoo />
-      </ModalCentered>
     </div>
   );
 };

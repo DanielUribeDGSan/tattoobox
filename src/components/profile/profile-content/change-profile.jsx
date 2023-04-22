@@ -75,8 +75,8 @@ function SimpleDialog({ onClose, selectedValue, open, artist, studie }) {
   );
 }
 
-export const ChangeProfile = () => {
-  const { artist, studie, isLoading, user } = useUser();
+export const ChangeProfile = (user) => {
+  const { artist, studie } = useUser();
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(user?.idPerfil);
 
@@ -90,25 +90,27 @@ export const ChangeProfile = () => {
     console.log(value);
   };
 
-  if (isLoading) return <p className="text-black">Cargando...</p>;
-
   return (
     <>
-      <button
-        onClick={handleClickOpen}
-        className="btn-md-black"
-        aria-label="Cambiar de perfil"
-      >
-        Cambiar perfil
-      </button>
+      {artist.length > 0 && studie.length > 0 && (
+        <>
+          <button
+            onClick={handleClickOpen}
+            className="btn-md-black"
+            aria-label="Cambiar de perfil"
+          >
+            Cambiar perfil
+          </button>
 
-      <SimpleDialog
-        selectedValue={selectedValue}
-        open={open}
-        onClose={handleClose}
-        artist={artist}
-        studie={studie}
-      />
+          <SimpleDialog
+            selectedValue={selectedValue}
+            open={open}
+            onClose={handleClose}
+            artist={artist}
+            studie={studie}
+          />
+        </>
+      )}
     </>
   );
 };

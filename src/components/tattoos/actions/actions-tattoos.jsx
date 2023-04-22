@@ -5,8 +5,39 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import useTattoboxTattoos from "../../../hooks/use-tattobox-tattoos";
 
-export const ActionsTattoos = ({ content, style }) => {
+export const ActionsTattoos = ({
+  content,
+  style,
+  user,
+  idContent,
+  setActionsState,
+}) => {
+  const { likeTattoo, dislikeTattoo } = useTattoboxTattoos();
+
+  const handleClickLikeTattoo = async () => {
+    const body = {
+      IdPerfil: user?.idPerfil,
+      IdContenido: idContent,
+      IdItem: 1,
+    };
+
+    await likeTattoo(body);
+    setActionsState(true);
+  };
+
+  const handleClickDislikeTattoo = async () => {
+    const body = {
+      IdPerfil: user?.idPerfil,
+      IdContenido: idContent,
+      IdItem: 1,
+    };
+
+    await dislikeTattoo(body);
+    setActionsState(true);
+  };
+
   return (
     <div className="actions-tatuaje" style={style}>
       <div className="row grid gx-3">
@@ -16,10 +47,26 @@ export const ActionsTattoos = ({ content, style }) => {
           </span>
         </div>
         <div className="col-xl-6 col-lg-6 col-md-6 col-6 d-flex align-items-center actions-icons">
-          <div>
-            <FavoriteBorderIcon sx={{ color: "var(--tp-common-black)" }} />
-            <span className="likes text-black">1,511</span>
-          </div>
+          {content?.DioLike === 0 ? (
+            <button
+              onClick={handleClickLikeTattoo}
+              className="d-flex align-items-center"
+              aria-label="dar likes a tatuajes"
+            >
+              <FavoriteBorderIcon sx={{ color: "var(--tp-common-black)" }} />
+              <span className="likes text-black">{content?.NumeroLikes}</span>
+            </button>
+          ) : (
+            <button
+              onClick={handleClickDislikeTattoo}
+              className="d-flex align-items-center"
+              aria-label="dar likes a tatuajes"
+            >
+              <FavoriteIcon sx={{ color: "var(--tp-common-like)" }} />
+              <span className="likes text-black">{content?.NumeroLikes}</span>
+            </button>
+          )}
+
           <ShareIcon sx={{ color: "var(--tp-common-black)" }} />
           <BookmarkBorderIcon sx={{ color: "var(--tp-common-black)" }} />
         </div>

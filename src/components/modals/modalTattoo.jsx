@@ -14,11 +14,14 @@ import { ActionsTattoos } from "../tattoos/actions/actions-tattoos";
 import { TabCommentsTattoos } from "../tattoos/tabs/tab-comments-tattoos";
 import { GridMansoryNotModalTattoo } from "../mansory/grid-mansory-not-modal-tattoo";
 
-export const ModalTattoo = ({ modal_id, idContent }) => {
+export const ModalTattoo = ({ modal_id, idContent, user }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
+  const [shownModal, setShownModal] = useState(false);
+  const [actionsState, setActionsState] = useState(false);
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
   const imageTattoo = useRef();
+
   const {
     getContentTattoo,
     contentTattoo,
@@ -49,13 +52,14 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
     // getContentTattoo(idContentBefore);
   };
 
+  const handleOnClickCloseModal = () => {
+    setShownModal(false);
+  };
+
   const getData = async () => {
-    const body = {
-      IdContenido: idContent,
-      page: 1,
-    };
-    await getContentTattoo(idContent);
-    await getRelatedTattoos(body);
+    await getContentTattoo(idContent, user?.idPerfil);
+    await getRelatedTattoos(idContent, 1);
+    setShownModal(true);
   };
 
   useEffect(() => {
@@ -65,10 +69,10 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
       getData();
     }
     return () => {
+      setActionsState(false);
       isActive = false;
     };
-  }, [idContent]);
-  // console.log(relatedTattoos);
+  }, [idContent, actionsState]);
 
   return (
     <div
@@ -80,7 +84,7 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
       <div className="modal-dialog modal-fullscreen">
         <div className="modal-content">
           <div className="modal-body pt-50">
-            {isLoading ? (
+            {isLoading && !shownModal ? (
               <p className="text-black">Cargando...</p>
             ) : (
               <>
@@ -90,6 +94,7 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
                   data-bs-dismiss="modal"
                   aria-label="Close"
                   title="Close"
+                  onClick={handleOnClickCloseModal}
                 >
                   <CloseIcon />
                 </button>
@@ -165,12 +170,18 @@ export const ModalTattoo = ({ modal_id, idContent }) => {
 
                             <ActionsTattoos
                               content={contentTattoo}
+                              user={user}
+                              idContent={idContent}
+                              setActionsState={setActionsState}
                               style={{
                                 marginTop: "15px",
                                 marginBottom: "15px",
                               }}
                             />
-                            <TabCommentsTattoos idContent={idContent} />
+                            <TabCommentsTattoos
+                              idContent={idContent}
+                              user={user}
+                            />
                           </div>
                         </div>
                       </div>

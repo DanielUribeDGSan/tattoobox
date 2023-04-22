@@ -20,7 +20,11 @@ const theme = createTheme({
   },
 });
 
-export const TabCommentsTattoos = ({ idContent, relatedTattoos = [] }) => {
+export const TabCommentsTattoos = ({
+  idContent,
+  relatedTattoos = [],
+  user,
+}) => {
   const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
 
   const [value, setValue] = useState(movilIpadaScreen ? "1" : "2");
@@ -83,7 +87,7 @@ export const TabCommentsTattoos = ({ idContent, relatedTattoos = [] }) => {
             </div>
           </TabPanel>
           <TabPanel value="2" sx={{ padding: 0, marginBottom: "30px" }}>
-            <CommentsTattoo idContent={idContent} />
+            <CommentsTattoo idContent={idContent} user={user} />
           </TabPanel>
         </TabContext>
       </ThemeProvider>

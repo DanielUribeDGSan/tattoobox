@@ -57,7 +57,7 @@ export const Profile = () => {
             <Avatar
               alt={"tattoobox"}
               src={
-                "https://www.denofgeek.com/wp-content/uploads/2016/02/star-wars-rey.jpeg"
+                "https://static01.nyt.com/images/2019/05/20/universal/es/20Jordi01/merlin_155140527_a799647b-bdb3-487d-8db2-ef6a0dc351d3-videoSixteenByNineJumbo1600.jpg"
               }
             />
           </Stack>

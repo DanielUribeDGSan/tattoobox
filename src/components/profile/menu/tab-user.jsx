@@ -4,10 +4,12 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import { ModalCentered } from "../../modals/modalCentered";
 import { Header } from "./header";
 import { Publication } from "../publication/publication";
 import { Tatuajes } from "../grid/tatuajes";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { FormUploadTattoo } from "../../forms/form-upload-tattoo";
 
 const theme = createTheme({
   palette: {
@@ -20,7 +22,7 @@ const theme = createTheme({
   },
 });
 
-export const TabUser = ({ data }) => {
+export const TabUser = ({ data, user }) => {
   const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
@@ -82,6 +84,15 @@ export const TabUser = ({ data }) => {
             </div>
           </TabPanel>
         </TabContext>
+        <ModalCentered idModal={"uploadTattooModal"}>
+          {user?.idTipoPerfil > 1 ? (
+            <FormUploadTattoo />
+          ) : (
+            <p className="text-black">
+              Necesitas ser artista o estudio para poder subir tatuajes
+            </p>
+          )}
+        </ModalCentered>
       </Box>
     </ThemeProvider>
   );

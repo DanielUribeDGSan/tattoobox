@@ -1,5 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
-import { useRef } from "react";
+import React, { memo, useEffect, useState, useRef } from "react";
 import useTattoboxTattoos from "../../hooks/use-tattobox-tattoos";
 import { InformationTattoo } from "../tattoos/information/information-tattoo";
 import CloseIcon from "@mui/icons-material/Close";
@@ -12,8 +11,10 @@ import { Divider } from "@mui/material";
 import { ActionsTattoos } from "../tattoos/actions/actions-tattoos";
 import { TabCommentsTattoos } from "../tattoos/tabs/tab-comments-tattoos";
 
-export const ModalTattooMovil = ({ modal_id, idContent }) => {
+export const ModalTattooMovil = ({ modal_id, idContent, user }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
+  const [shownModal, setShownModal] = useState(false);
+  const [actionsState, setActionsState] = useState(false);
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
   const imageTattoo = useRef();
@@ -47,13 +48,14 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
     // getContentTattoo(idContentBefore);
   };
 
+  const handleOnClickCloseModal = () => {
+    setShownModal(false);
+  };
+
   const getData = async () => {
-    const body = {
-      IdContenido: idContent,
-      page: 1,
-    };
-    await getContentTattoo(idContent);
-    await getRelatedTattoos(body);
+    await getContentTattoo(idContent, user?.idPerfil);
+    await getRelatedTattoos(idContent, 1);
+    setShownModal(true);
   };
 
   useEffect(() => {
@@ -63,9 +65,10 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
       getData();
     }
     return () => {
+      setActionsState(false);
       isActive = false;
     };
-  }, [idContent]);
+  }, [idContent, actionsState]);
 
   return (
     <div
@@ -78,40 +81,38 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
         <div className="modal-content">
           <div className="modal-body">
             <div className="content-movil">
-              {isLoading ? (
-                <p>Cargando...</p>
-              ) : (
-                <>
-                  <BtnSliderTattoo
-                    direction="left"
-                    action={handleOnClickNext}
-                    style={{
-                      position: "absolute",
-                      top: "20px",
-                      left: "1%",
-                      width: "auto",
-                      padding: "0rem 1rem 1.2rem 0.3rem",
-                    }}
-                  />
-                  <BtnSliderTattoo
-                    direction="right"
-                    action={handleOnClickNext}
-                    style={{
-                      position: "absolute",
-                      top: "20px",
-                      left: "12%",
-                      width: "auto",
-                      padding: "0rem 1rem 1.2rem 0.3rem",
-                    }}
-                  />
-                </>
-              )}
+              <>
+                <BtnSliderTattoo
+                  direction="left"
+                  action={handleOnClickNext}
+                  style={{
+                    position: "absolute",
+                    top: "20px",
+                    left: "1%",
+                    width: "auto",
+                    padding: "0rem 1rem 1.2rem 0.3rem",
+                  }}
+                />
+                <BtnSliderTattoo
+                  direction="right"
+                  action={handleOnClickNext}
+                  style={{
+                    position: "absolute",
+                    top: "20px",
+                    left: "12%",
+                    width: "auto",
+                    padding: "0rem 1rem 1.2rem 0.3rem",
+                  }}
+                />
+              </>
+
               <button
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
                 title="Close"
+                onClick={handleOnClickCloseModal}
               >
                 <CloseIcon />
               </button>
@@ -121,8 +122,8 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                   height: `${imageSize}px`,
                 }}
               >
-                {isLoading ? (
-                  <p>Cargando...</p>
+                {isLoading && !shownModal ? (
+                  <p className="text-black">Cargando...</p>
                 ) : (
                   <div className="row grid gx-3 h-inherit">
                     {/* <div className="col-1  p-0 m-0 d-flex align-items-center justify-content-center h-inherit">
@@ -154,6 +155,9 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
                     </div>
                     <ActionsTattoos
                       content={contentTattoo}
+                      user={user}
+                      idContent={idContent}
+                      setActionsState={setActionsState}
                       style={{
                         marginTop: "15px",
                       }}
@@ -193,6 +197,7 @@ export const ModalTattooMovil = ({ modal_id, idContent }) => {
 
                             <TabCommentsTattoos
                               idContent={idContent}
+                              user={user}
                               relatedTattoos={relatedTattoos}
                             />
                           </div>
