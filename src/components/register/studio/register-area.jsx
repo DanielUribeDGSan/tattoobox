@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useLoadScript } from "@react-google-maps/api";
 import { MemoizedMapGoogle } from "../../googlemaps";
-import { RegisterStudio } from "../../forms/register-studio";
+import { RegisterStudio } from "../../utils/forms/register-studio";
 
 const RegisterArea = () => {
   const [selected, setSelected] = useState("");

@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
-import useTattoboxAuthRegister from "../../hooks/use-tattobox-auth-register";
-import { useUser } from "../../hooks/use-user";
-import { registerSupplementary } from "../../utils/validation-schema";
+import useTattoboxAuthRegister from "../../../hooks/use-tattobox-auth-register";
+import { useUser } from "../../../hooks/use-user";
+import { registerSupplementary } from "../../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
 
 export const RegisterSupplementary = ({ refBtn }) => {

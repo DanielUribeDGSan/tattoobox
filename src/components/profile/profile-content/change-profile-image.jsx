@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
-import ModalSm from "../../modals/modal-sm";
+import ModalSm from "../../utils/modals/modal-sm";
 import { Dropzone, FileMosaic } from "@files-ui/react";
 import useTattoboxMultimediaApi from "../../../hooks/use-tattobox-multimedia-api";
 
@@ -24,7 +24,7 @@ export const ChangeProfileImage = ({ user }) => {
         aria-label="editar imagen de perfil"
         onClick={() => setOpen(true)}
       >
-        <EditIcon sx={{ color: "var(--tp-common-black)" }} />
+        <EditIcon sx={{ color: "var(--tp-theme-2)" }} />
       </button>
       <ModalSm open={open} setOpen={setOpen} title={"Selecciona tu imagen"}>
         <div className="container py-3">

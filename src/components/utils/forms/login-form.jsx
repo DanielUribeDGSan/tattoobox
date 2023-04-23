@@ -1,9 +1,9 @@
 import React from "react";
 import { useFormik } from "formik";
-import { loginSchema } from "../../utils/validation-schema";
+import { loginSchema } from "../../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
 import Link from "next/link";
-import useFirebase from "../../hooks/use-firebase";
+import useFirebase from "../../../hooks/use-firebase";
 
 const LoginForm = () => {
   // use firebase

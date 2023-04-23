@@ -1,5 +1,5 @@
-import React from 'react';
-import AboutForm from '../forms/about-form';
+import React from "react";
+import AboutForm from "../utils/forms/about-form";
 
 const AboutContact = () => {
   return (
@@ -11,8 +11,7 @@ const AboutContact = () => {
               <div>
                 <h4 className="am-contact-title">Direct massage me!</h4>
               </div>
-              <div className="am-border-shape">
-              </div>
+              <div className="am-border-shape"></div>
             </div>
           </div>
         </div>

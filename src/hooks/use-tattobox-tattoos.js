@@ -112,7 +112,6 @@ const useTattoboxTattoos = () => {
   const dislikeTattoo = async (body) => {
     try {
       await deleteWithBodyAndConfig("/v1/contenido/item", body);
-      // tattoApiSocial.delete("/v1/contenido/item", body, config);
     } catch (error) {
       console.log(error);
       const errorMessage = error?.message;

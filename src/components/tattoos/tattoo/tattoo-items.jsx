@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useTattoBoxFiltros } from "../../../hooks/use-tattobox-filtros";
 import { useQuery } from "react-query";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { FormFiltersMovil } from "../../forms/form-filters-movil";
-import { IputSearchMovil } from "../../inputs/InputSearchMovil";
-import { FormFilters } from "../../forms/form-filters";
-import { GridMansory } from "../../mansory/grid-mansory";
+import { FormFiltersMovil } from "../../utils/forms/form-filters-movil";
+import { IputSearchMovil } from "../../utils/inputs/InputSearchMovil";
+import { FormFilters } from "../../utils/forms/form-filters";
+import { GridMansory } from "../../utils/mansory/grid-mansory";
 import { useUser } from "../../../hooks/use-user";
 
 const TattoItems = () => {
@@ -105,7 +105,7 @@ const TattoItems = () => {
               <p className="text-black">Cargando...</p>
             ) : (
               <>
-                {tattoos.length == 0 && <p>No hay datos encontrados</p>}
+                {tattoos?.length == 0 && <p>No hay datos encontrados</p>}
                 <GridMansory data={tattoos} user={user} />
               </>
             )}

@@ -39,14 +39,17 @@ export const BannerUser = ({ profileStudio, user }) => {
             </div>
           </div>
         </div>
-        <div className="user-buttons">
-          <button
-            className="btn-md-black "
-            style={{ marginRight: "20px" }}
-            aria-label="Editar perfil"
-          >
-            Editar perfil
-          </button>
+        <div className="user-buttons row">
+          <div className="col-auto">
+            <button className="btn-md-black " aria-label="Editar perfil">
+              Editar perfil
+            </button>
+          </div>
+          <div className="col-auto">
+            <button className="btn-md-black " aria-label="Editar perfil">
+              Editar perfil
+            </button>
+          </div>
 
           <ChangeProfile user={user} />
         </div>

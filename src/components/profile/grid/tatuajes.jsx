@@ -9,9 +9,9 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 
 import SearchIcon from "@mui/icons-material/Search";
-import { GridMansory } from "../../mansory/grid-mansory";
+import { GridMansory } from "../../utils/mansory/grid-mansory";
 
-export const Tatuajes = ({ tattoosData }) => {
+export const Tatuajes = ({ tattoosData, user }) => {
   const matches = useMediaQuery("(max-width:800px)");
   const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
 
@@ -19,7 +19,7 @@ export const Tatuajes = ({ tattoosData }) => {
     <div className="mt-4 tp-profile-grid">
       {tattoosData ? (
         <>
-          <div className="d-flex align-items-center justify-content-center filter mb-4">
+          {/* <div className="d-flex align-items-center justify-content-center filter mb-4">
             <Paper
               component="form"
               sx={{
@@ -40,8 +40,8 @@ export const Tatuajes = ({ tattoosData }) => {
                 inputProps={{ "aria-label": "buscar tatuaje" }}
               />
             </Paper>
-          </div>
-          <GridMansory data={tattoosData} />
+          </div> */}
+          <GridMansory data={tattoosData} user={user} />
         </>
       ) : (
         <p className="text-black">No hay información...</p>

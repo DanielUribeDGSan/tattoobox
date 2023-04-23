@@ -7,15 +7,15 @@ import TabPanel from "@mui/lab/TabPanel";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CommentsTattoo } from "../comments/comments-tattoo";
-import { GridMansoryNotModalTattoo } from "../../mansory/grid-mansory-not-modal-tattoo";
+import { GridMansoryNotModalTattoo } from "../../utils/mansory/grid-mansory-not-modal-tattoo";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#000000",
+      main: "#13212c",
     },
     secondary: {
-      main: "#000000",
+      main: "#13212c",
     },
   },
 });

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { FormCommentTatto } from "../../forms/form-comment-tatto";
+import { FormCommentTatto } from "../../utils/forms/form-comment-tatto";
 import useTattoboxTattoos from "../../../hooks/use-tattobox-tattoos";
 
 export const CommentsTattoo = ({ idContent, user }) => {

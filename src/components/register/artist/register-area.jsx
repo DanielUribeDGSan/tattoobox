@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useLoadScript } from "@react-google-maps/api";
-import { RegisterArtist } from "../../forms/register-artist";
+import { RegisterArtist } from "../../utils/forms/register-artist";
 import { MemoizedMapGoogle } from "../../googlemaps";
 
 const RegisterArea = () => {

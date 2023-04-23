@@ -6,7 +6,7 @@ import Profile from "../components/profile";
 const index = () => {
   return (
     <Wrapper>
-      <SEO pageTitle={"Sobre nosotros"} />
+      <SEO pageTitle={"Mi perfil"} />
       <Profile />
     </Wrapper>
   );

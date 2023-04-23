@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useFormik } from "formik";
-import { registerSchema, registerCode } from "../../utils/validation-schema";
+import { registerSchema, registerCode } from "../../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
-import useTattoboxAuthRegister from "../../hooks/use-tattobox-auth-register";
-import useFirebase from "../../hooks/use-firebase";
-import { useUser } from "../../hooks/use-user";
+import useTattoboxAuthRegister from "../../../hooks/use-tattobox-auth-register";
+import useFirebase from "../../../hooks/use-firebase";
+import { useUser } from "../../../hooks/use-user";
+import { ProgressSmall } from "../progress/progress-small";
 
 const RegisterForm = () => {
   // register With Email Password
+  const [loading, setLoading] = useState(false);
   const { registerEmail, validateCode } = useTattoboxAuthRegister();
   const [showCode, setShowCode] = useState(false);
   const { loginWithGoogle } = useFirebase();
@@ -26,10 +28,14 @@ const RegisterForm = () => {
       validationSchema: !showCode ? registerSchema : registerCode,
       onSubmit: async ({ email, code, terminos }, { resetForm }) => {
         if (!showCode) {
+          setLoading(true);
           await registerEmail(email);
+          setLoading(false);
           setShowCode(true);
         } else {
+          setLoading(true);
           await validateCode(email, code);
+          setLoading(false);
         }
         // resetForm();
       },
@@ -108,9 +114,13 @@ const RegisterForm = () => {
           </>
         )}
         <div className="tp-login-button">
-          <button className="tp-btn-yellow w-100" type="submit">
-            {!showCode ? "Ingresar" : "Verificar código"}
-          </button>
+          {loading ? (
+            <ProgressSmall />
+          ) : (
+            <button className="tp-btn-yellow w-100" type="submit">
+              {!showCode ? "Ingresar" : "Verificar código"}
+            </button>
+          )}
           <button
             type="button"
             className="tp-btn-yellow w-100 mt-3"

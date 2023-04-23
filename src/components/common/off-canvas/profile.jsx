@@ -6,8 +6,8 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { width } from "@mui/system";
 import Link from "next/link";
 import { useUser } from "../../../hooks/use-user";
-import { ModalFullScreen } from "../../modals/modalFullScreen";
-import { RegisterSupplementary } from "../../forms/register-supplementary";
+import { ModalFullScreen } from "../../utils/modals/modalFullScreen";
+import { RegisterSupplementary } from "../../utils/forms/register-supplementary";
 
 const menuProfileData = [
   {

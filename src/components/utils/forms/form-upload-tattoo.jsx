@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { Dropzone, FileMosaic } from "@files-ui/react";
 import Select from "react-select";
 import { toast } from "react-toastify";
-import { useUser } from "../../hooks/use-user";
-import { uploadTattoo } from "../../utils/validation-schema";
+import { useUser } from "../../../hooks/use-user";
+import { uploadTattoo } from "../../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
-import { useTattoBoxFiltros } from "../../hooks/use-tattobox-filtros";
-import useTattoboxMultimediaApi from "../../hooks/use-tattobox-multimedia-api";
+import { useTattoBoxFiltros } from "../../../hooks/use-tattobox-filtros";
+import useTattoboxMultimediaApi from "../../../hooks/use-tattobox-multimedia-api";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -15,10 +15,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#000000",
+      main: "#13212c",
     },
     secondary: {
-      main: "#000000",
+      main: "#13212c",
     },
   },
 });

@@ -4,20 +4,20 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { ModalCentered } from "../../modals/modalCentered";
+import { ModalCentered } from "../../utils/modals/modalCentered";
 import { Header } from "./header";
 import { Publication } from "../publication/publication";
 import { Tatuajes } from "../grid/tatuajes";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { FormUploadTattoo } from "../../forms/form-upload-tattoo";
+import { FormUploadTattoo } from "../../utils/forms/form-upload-tattoo";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#000000",
+      main: "#13212c",
     },
     secondary: {
-      main: "#000000",
+      main: "#13212c",
     },
   },
 });
@@ -51,36 +51,19 @@ export const TabUser = ({ data, user }) => {
             }}
           >
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Publicaciones" value="1" />
-              <Tab label="Mis tatuajes" value="2" />
+              <Tab label="Tatuajes" value="1" />
+              <Tab label="Comentarios" value="2" />
               {/* <Tab label="Información adicional" value="3" /> */}
             </TabList>
           </Box>
           <TabPanel value="1" sx={{ padding: 0 }}>
-            <div className="row m-0 pb-20">
-              <div className="col-xl-5 col-lg-5 col-12 m-0 header-col">
-                <Header />
-              </div>
-              <div
-                className="col-xl-7 col-lg-7 col-12 m-0"
-                style={{ paddingRight: 0 }}
-              >
-                <div className="row m-0">
-                  {data?.Tatuajes.map((tatto, i) => (
-                    <div className="col-xl-6 col-lg-6 col-12" key={i}>
-                      <Publication
-                        tattooInfo={tatto}
-                        usuario={data?.UserName}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="container">
+              <Tatuajes tattoosData={data?.Tatuajes} user={user} />
             </div>
           </TabPanel>
           <TabPanel value="2" sx={{ padding: 0 }}>
             <div className="container">
-              <Tatuajes tattoosData={data?.Tatuajes} />
+              <Tatuajes tattoosData={data?.Tatuajes} user={user} />
             </div>
           </TabPanel>
         </TabContext>

@@ -1,17 +1,22 @@
 import React, { memo, useEffect, useState, useRef } from "react";
-import useTattoboxTattoos from "../../hooks/use-tattobox-tattoos";
-import { InformationTattoo } from "../tattoos/information/information-tattoo";
+import useTattoboxTattoos from "../../../hooks/use-tattobox-tattoos";
+import { InformationTattoo } from "../../tattoos/information/information-tattoo";
 import CloseIcon from "@mui/icons-material/Close";
-import ImageLightBox from "../common/modals/image-lightbox";
-import { BtnsActionsTattooFloat } from "../buttons/btns-actions-tattoo-float";
-import { UserCircleImage } from "../tattoos/information/user-circle-image";
-import { BtnAcheduleAppointment } from "../buttons/btn-schedule-appointment";
-import { BtnSliderTattoo } from "../buttons/btn-slider-tattoo";
+import ImageLightBox from "../../common/modals/image-lightbox";
+import { BtnsActionsTattooFloat } from "../../buttons/btns-actions-tattoo-float";
+import { UserCircleImage } from "../../tattoos/information/user-circle-image";
+import { BtnAcheduleAppointment } from "../../buttons/btn-schedule-appointment";
+import { BtnSliderTattoo } from "../../buttons/btn-slider-tattoo";
 import { Divider } from "@mui/material";
-import { ActionsTattoos } from "../tattoos/actions/actions-tattoos";
-import { TabCommentsTattoos } from "../tattoos/tabs/tab-comments-tattoos";
+import { ActionsTattoos } from "../../tattoos/actions/actions-tattoos";
+import { TabCommentsTattoos } from "../../tattoos/tabs/tab-comments-tattoos";
 
-export const ModalTattooMovil = ({ modal_id, idContent, user }) => {
+export const ModalTattooMovil = ({
+  modal_id,
+  idContent,
+  user,
+  setIdContent,
+}) => {
   const [photoIndex, setPhotoIndex] = useState(null);
   const [shownModal, setShownModal] = useState(false);
   const [actionsState, setActionsState] = useState(false);
@@ -50,6 +55,7 @@ export const ModalTattooMovil = ({ modal_id, idContent, user }) => {
 
   const handleOnClickCloseModal = () => {
     setShownModal(false);
+    setIdContent("");
   };
 
   const getData = async () => {

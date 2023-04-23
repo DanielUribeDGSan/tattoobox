@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { useState } from "react";
 import { useFormik } from "formik";
-import useTattoboxTattoos from "../../hooks/use-tattobox-tattoos";
+import useTattoboxTattoos from "../../../hooks/use-tattobox-tattoos";
 import ErrorMsg from "./error-msg";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -54,8 +54,7 @@ export const FormCommentTatto = ({ IdContenido, setNewMessages, user }) => {
         />
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         <IconButton
-          color="primary"
-          sx={{ p: "10px" }}
+          sx={{ p: "10px", color: "var(--tp-theme-2)" }}
           aria-label="directions"
           onClick={handleClick}
         >

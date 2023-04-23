@@ -7,14 +7,14 @@ import usePlacesAutocomplete, {
   getZipCode,
   getDetails,
 } from "use-places-autocomplete";
-import useTattoboxAuthRegister from "../../hooks/use-tattobox-auth-register";
-import { useUser } from "../../hooks/use-user";
+import useTattoboxAuthRegister from "../../../hooks/use-tattobox-auth-register";
+import { useUser } from "../../../hooks/use-user";
 import {
   registerSupplementarySection1,
   registerSupplementarySection2,
   registerSupplementarySection3,
   registerSupplementarySection4,
-} from "../../utils/validation-schema";
+} from "../../../utils/validation-schema";
 import ErrorMsg from "./error-msg";
 
 export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
