@@ -47,6 +47,9 @@ export const registerSupplementary = Yup.object().shape({
 });
 
 export const registerSupplementarySection1 = Yup.object().shape({
+  name: Yup.string()
+    .required("El nombre del estudio es requerido")
+    .label("Nombre"),
   description: Yup.string()
     .required("La descripción es requerida")
     .label("Descripción"),

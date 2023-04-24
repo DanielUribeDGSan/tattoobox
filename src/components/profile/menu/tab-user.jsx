@@ -22,7 +22,7 @@ const theme = createTheme({
   },
 });
 
-export const TabUser = ({ data, user }) => {
+export const TabUser = ({ dataProfile, user }) => {
   const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
@@ -58,12 +58,12 @@ export const TabUser = ({ data, user }) => {
           </Box>
           <TabPanel value="1" sx={{ padding: 0 }}>
             <div className="container">
-              <Tatuajes tattoosData={data?.Tatuajes} user={user} />
+              <Tatuajes tattoosData={dataProfile?.Tatuajes} user={user} />
             </div>
           </TabPanel>
           <TabPanel value="2" sx={{ padding: 0 }}>
             <div className="container">
-              <Tatuajes tattoosData={data?.Tatuajes} user={user} />
+              <Tatuajes tattoosData={dataProfile?.Tatuajes} user={user} />
             </div>
           </TabPanel>
         </TabContext>

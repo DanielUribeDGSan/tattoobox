@@ -34,6 +34,7 @@ export const RegisterStudio = ({ selected, setSelected, setShowImage }) => {
   const { handleChange, handleSubmit, handleBlur, errors, values, touched } =
     useFormik({
       initialValues: {
+        name: "",
         description: "",
         facebook: "",
         instagram: "",
@@ -60,6 +61,7 @@ export const RegisterStudio = ({ selected, setSelected, setShowImage }) => {
           : registerSupplementarySection4,
       onSubmit: async (
         {
+          name,
           description,
           facebook,
           instagram,
@@ -81,7 +83,7 @@ export const RegisterStudio = ({ selected, setSelected, setShowImage }) => {
         handleSubmitValidateForm();
         const body = {
           idParte: user?.idParte,
-          Nombre: user?.name || user?.nameProfile,
+          Nombre: name,
           userName: user?.userName,
           Descripcion: description,
           Facebook: facebook,
@@ -200,21 +202,37 @@ export const RegisterStudio = ({ selected, setSelected, setShowImage }) => {
             </div>
 
             {sectionForm === 1 && (
-              <div className="tp-input">
-                <label htmlFor="description">Descripciópn</label>
-                <textarea
-                  value={values.description}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="text"
-                  placeholder="Ingresa tu descripción"
-                  id="description"
-                  rows="8"
-                  cols="33"
-                  style={{ height: "auto" }}
-                />
-                {touched.description && <ErrorMsg error={errors.description} />}
-              </div>
+              <>
+                <div className="tp-input">
+                  <label htmlFor="instagram">Nombre del estudio</label>
+                  <input
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="text"
+                    placeholder="Ingresa el nombre del estudio"
+                    id="name"
+                  />
+                  {touched.name && <ErrorMsg error={errors.name} />}
+                </div>
+                <div className="tp-input">
+                  <label htmlFor="description">Descripciópn</label>
+                  <textarea
+                    value={values.description}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="text"
+                    placeholder="Ingresa tu descripción"
+                    id="description"
+                    rows="8"
+                    cols="33"
+                    style={{ height: "auto" }}
+                  />
+                  {touched.description && (
+                    <ErrorMsg error={errors.description} />
+                  )}
+                </div>
+              </>
             )}
             {sectionForm === 2 && (
               <>

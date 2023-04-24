@@ -13,10 +13,17 @@ const ProfileArea = () => {
   };
 
   useEffect(() => {
-    if (user?.email) {
+    let isActive = true;
+
+    if (user?.email && isActive) {
       getData();
     }
+
+    return () => {
+      isActive = false;
+    };
   }, [isLoadingUser]);
+  console.log(profileStudio);
 
   return (
     <>
@@ -28,8 +35,8 @@ const ProfileArea = () => {
                 <p className="text-black">Cargando...</p>
               ) : (
                 <>
-                  <BannerUser profileStudio={profileStudio} user={user} />
-                  <TabUser data={profileStudio} user={user} />
+                  <BannerUser dataProfile={profileStudio} user={user} />
+                  <TabUser dataProfile={profileStudio} user={user} />
                 </>
               )}
             </div>

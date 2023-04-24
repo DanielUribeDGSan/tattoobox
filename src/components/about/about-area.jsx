@@ -1,6 +1,6 @@
 import React from "react";
 import useModal from "../../hooks/use-modal";
-import VideoModal from "../common/utils/modals/modal-video";
+import VideoModal from "../common/modals/modal-video";
 
 const contents = {
   title: "Building software for world changers",

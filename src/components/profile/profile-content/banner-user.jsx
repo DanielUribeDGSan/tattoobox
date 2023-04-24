@@ -1,8 +1,9 @@
 import React from "react";
 import { ChangeProfile } from "./change-profile";
 import { ChangeProfileImage } from "./change-profile-image";
+import { ProfileActions } from "../menu/profile-actions";
 
-export const BannerUser = ({ profileStudio, user }) => {
+export const BannerUser = ({ dataProfile, user }) => {
   return (
     <div className="tp-profile-user-content pb-3">
       <div
@@ -42,13 +43,11 @@ export const BannerUser = ({ profileStudio, user }) => {
         <div className="user-buttons row">
           <div className="col-auto">
             <button className="btn-md-black " aria-label="Editar perfil">
-              Editar perfil
+              Agendar
             </button>
           </div>
           <div className="col-auto">
-            <button className="btn-md-black " aria-label="Editar perfil">
-              Editar perfil
-            </button>
+            <ProfileActions />
           </div>
 
           <ChangeProfile user={user} />

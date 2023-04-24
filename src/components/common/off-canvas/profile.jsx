@@ -71,24 +71,25 @@ export const Profile = () => {
       </div>
       <div className="row ">
         {/* Completar registro */}
-        {!user?.userName && (
-          <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
-            <div
-              className="content-item-profile"
-              data-bs-toggle="modal"
-              data-bs-target="#registerSupplementary"
-            >
-              <AccountBoxIcon
-                sx={{
-                  height: "30px",
-                  width: "30px",
-                  color: "var(--tp-common-black)",
-                }}
-              />
-              <p className="p-0 m-0 d-inline-block">Completar registro</p>
+        {!user?.userName ||
+          (user?.userName.toLowerCase() == user?.email.toLowerCase() && (
+            <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
+              <div
+                className="content-item-profile"
+                data-bs-toggle="modal"
+                data-bs-target="#registerSupplementary"
+              >
+                <AccountBoxIcon
+                  sx={{
+                    height: "30px",
+                    width: "30px",
+                    color: "var(--tp-common-black)",
+                  }}
+                />
+                <p className="p-0 m-0 d-inline-block">Completar registro</p>
+              </div>
             </div>
-          </div>
-        )}
+          ))}
         {/* end completar registro */}
         <div className=" col-xxl-6 col-xl-6 col-lg-6 col-12">
           <Link href="/perfil">
@@ -161,11 +162,12 @@ export const Profile = () => {
         )}
         {/* end unete como artista */}
       </div>
-      {!user?.userName && (
-        <ModalFullScreen modal_id={"registerSupplementary"} refBtn={btnClose}>
-          <RegisterSupplementary refBtn={btnClose} />
-        </ModalFullScreen>
-      )}
+      {!user?.userName ||
+        (user?.userName.toLowerCase() == user?.email.toLowerCase() && (
+          <ModalFullScreen modal_id={"registerSupplementary"} refBtn={btnClose}>
+            <RegisterSupplementary refBtn={btnClose} />
+          </ModalFullScreen>
+        ))}
     </div>
   );
 };
