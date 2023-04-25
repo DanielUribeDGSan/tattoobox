@@ -22,13 +22,7 @@ export const ModalTattoo = ({ modal_id, idContent, user, setIdContent }) => {
   const [imageSize, setImageSize] = useState(0);
   const imageTattoo = useRef();
 
-  const {
-    getContentTattoo,
-    contentTattoo,
-    getRelatedTattoos,
-    relatedTattoos,
-    isLoading,
-  } = useTattoboxTattoos();
+  const { getContentTattoo, contentTattoo, isLoading } = useTattoboxTattoos();
 
   const images = [contentTattoo?.UrlImagen];
 
@@ -59,7 +53,6 @@ export const ModalTattoo = ({ modal_id, idContent, user, setIdContent }) => {
 
   const getData = async () => {
     await getContentTattoo(idContent, user?.idPerfil);
-    await getRelatedTattoos(idContent, 1);
     setShownModal(true);
   };
 
@@ -84,7 +77,7 @@ export const ModalTattoo = ({ modal_id, idContent, user, setIdContent }) => {
     >
       <div className="modal-dialog modal-fullscreen">
         <div className="modal-content">
-          <div className="modal-body pt-50">
+          <div className="modal-body pt-50" id="infiniteScroll">
             {isLoading && !shownModal ? (
               <p className="text-black">Cargando...</p>
             ) : (
@@ -204,7 +197,7 @@ export const ModalTattoo = ({ modal_id, idContent, user, setIdContent }) => {
                   />
                 </div>
                 <div className="pt-50 container">
-                  <GridMansoryNotModalTattoo data={relatedTattoos} />
+                  <GridMansoryNotModalTattoo idContent={idContent} />
                 </div>
               </>
             )}

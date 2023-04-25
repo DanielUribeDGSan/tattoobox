@@ -25,6 +25,7 @@ export const useUserProfile = () => {
       );
       const profile = data.perfil;
       setProfileStudio(profile);
+      console.log(profileStudio);
       setIsLoading(false);
     } catch (error) {
       const errorMessage = error?.message;

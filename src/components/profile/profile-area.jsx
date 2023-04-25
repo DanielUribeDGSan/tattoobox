@@ -23,8 +23,7 @@ const ProfileArea = () => {
       isActive = false;
     };
   }, [isLoadingUser]);
-  console.log(profileStudio);
-
+  console.log(isLoadingUser);
   return (
     <>
       <div className="tp-profile-area">

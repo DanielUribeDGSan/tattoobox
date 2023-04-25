@@ -17,6 +17,7 @@ const useTattoboxTattoos = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [contentTattoo, setContentTattoo] = useState([]);
   const [relatedTattoos, setRelatedTattoos] = useState([]);
+  const [relatedTattoosAllData, setRelatedTattoosAllData] = useState([]);
 
   const [comments, setComments] = useState([]);
 
@@ -48,7 +49,11 @@ const useTattoboxTattoos = () => {
         `/v1/tatuajes-relacionados/${idContent}/${page}`,
         config
       );
-      setRelatedTattoos(data.tatuajes.data);
+
+      setRelatedTattoosAllData(data.tatuajes);
+      let relatedTattoosConcat = relatedTattoos.concat(data.tatuajes.data);
+      setRelatedTattoos(relatedTattoosConcat);
+
       setIsLoading(false);
     } catch (error) {
       const errorMessage = error?.message;
@@ -130,6 +135,7 @@ const useTattoboxTattoos = () => {
     setCommentTattoo,
     getRelatedTattoos,
     relatedTattoos,
+    relatedTattoosAllData,
     likeTattoo,
     dislikeTattoo,
   };

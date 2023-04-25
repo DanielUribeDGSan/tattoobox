@@ -39,6 +39,17 @@ export const ProfileActions = () => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
+        <ListItem disablePadding>
+          <ListItemButton
+            data-bs-toggle="modal"
+            data-bs-target="#uploadTattooModal"
+          >
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Subir tatuaje"} />
+          </ListItemButton>
+        </ListItem>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>

@@ -85,7 +85,7 @@ export const ModalTattooMovil = ({
     >
       <div className="modal-dialog modal-fullscreen">
         <div className="modal-content">
-          <div className="modal-body">
+          <div className="modal-body" id="infiniteScroll">
             <div className="content-movil">
               <>
                 <BtnSliderTattoo

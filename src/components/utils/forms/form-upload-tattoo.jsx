@@ -65,7 +65,7 @@ export const FormUploadTattoo = () => {
           DescripcionEstilo: styleState?.label,
         };
         await uploadTattooArtist(file[0].file, body);
-        toast.success(`${values.name} your message sent successfully`, {
+        toast.success(`Tatuaje publicado`, {
           position: "top-left",
         });
         // resetForm();
