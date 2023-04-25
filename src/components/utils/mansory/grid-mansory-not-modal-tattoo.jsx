@@ -54,13 +54,14 @@ export const GridMansoryNotModalTattoo = ({ data = [], idContent }) => {
           getData(relatedTattoosAllData.current_page);
         }}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
+        loader={<></>}
         scrollableTarget="infiniteScroll"
         endMessage={
-          <p style={{ textAlign: "center" }}>
+          <p style={{ textAlign: "center", color: "black" }}>
             <b>Yay! You have seen it all</b>
           </p>
         }
+        style={{ overflow: "hidden" }}
       >
         <Box sx={{ width: "100%", minHeight: 400 }}>
           <Masonry

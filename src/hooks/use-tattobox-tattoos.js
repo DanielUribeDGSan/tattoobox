@@ -18,8 +18,8 @@ const useTattoboxTattoos = () => {
   const [contentTattoo, setContentTattoo] = useState([]);
   const [relatedTattoos, setRelatedTattoos] = useState([]);
   const [relatedTattoosAllData, setRelatedTattoosAllData] = useState([]);
-
   const [comments, setComments] = useState([]);
+  const [commentsAllData, setCommentsAllData] = useState([]);
 
   const getContentTattoo = async (idContent, idProfile) => {
     try {
@@ -70,7 +70,7 @@ const useTattoboxTattoos = () => {
         body,
         config
       );
-      await getCommentsTattoo(data.data.idContenido, page);
+      await getCommentsTattoo(data.data.idContenido, page, true);
     } catch (error) {
       const errorMessage = error?.message;
       // toast.error(`${errorMessage}`, {
@@ -79,15 +79,26 @@ const useTattoboxTattoos = () => {
     }
   };
 
-  const getCommentsTattoo = async (idContent, page) => {
+  const getCommentsTattoo = async (idContent, page, reset = false) => {
     try {
       setIsLoading(true);
 
-      const { data } = await tattoApiSocial.get(
-        `/v1/comentario/${idContent}/${page}`,
-        config
-      );
-      setComments(data.comentarios.data);
+      if (reset) {
+        const { data } = await tattoApiSocial.get(
+          `/v1/comentario/${idContent}/${page}`,
+          config
+        );
+        setCommentsAllData(data.comentarios);
+        setComments(data.comentarios.data);
+      } else {
+        const { data } = await tattoApiSocial.get(
+          `/v1/comentario/${idContent}/${page}`,
+          config
+        );
+        setCommentsAllData(data.comentarios);
+        let commentsConcat = comments.concat(data.comentarios.data);
+        setComments(commentsConcat);
+      }
       setIsLoading(false);
     } catch (error) {
       const errorMessage = error?.message;
@@ -132,6 +143,7 @@ const useTattoboxTattoos = () => {
     contentTattoo,
     getCommentsTattoo,
     comments,
+    commentsAllData,
     setCommentTattoo,
     getRelatedTattoos,
     relatedTattoos,

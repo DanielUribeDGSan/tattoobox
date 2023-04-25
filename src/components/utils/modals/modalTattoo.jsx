@@ -134,6 +134,7 @@ export const ModalTattoo = ({ modal_id, idContent, user, setIdContent }) => {
                     <div
                       className="col-4 mt-lg-0 mt-md-3 mt-3 content-informatin-tattoo p-0 m-0 h-inherit"
                       style={{ overflowY: "auto" }}
+                      id="infiniteScrollComments"
                     >
                       <div className="container">
                         <div className="px-2 information-tattoo">
