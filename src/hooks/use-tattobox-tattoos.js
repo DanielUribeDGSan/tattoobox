@@ -19,6 +19,7 @@ const useTattoboxTattoos = () => {
   const [relatedTattoos, setRelatedTattoos] = useState([]);
   const [relatedTattoosAllData, setRelatedTattoosAllData] = useState([]);
   const [comments, setComments] = useState([]);
+  const [pageComments, setPageComments] = useState(1);
   const [commentsAllData, setCommentsAllData] = useState([]);
 
   const getContentTattoo = async (idContent, idProfile) => {
@@ -83,22 +84,15 @@ const useTattoboxTattoos = () => {
     try {
       setIsLoading(true);
 
-      if (reset) {
-        const { data } = await tattoApiSocial.get(
-          `/v1/comentario/${idContent}/${page}`,
-          config
-        );
-        setCommentsAllData(data.comentarios);
-        setComments(data.comentarios.data);
-      } else {
-        const { data } = await tattoApiSocial.get(
-          `/v1/comentario/${idContent}/${page}`,
-          config
-        );
-        setCommentsAllData(data.comentarios);
-        let commentsConcat = comments.concat(data.comentarios.data);
-        setComments(commentsConcat);
-      }
+      const { data } = await tattoApiSocial.get(
+        `/v1/comentario/${idContent}/${page}`,
+        config
+      );
+
+      setCommentsAllData(data.comentarios);
+      // if (pageComments === page) setComments("");
+      // let commentsConcat = comments.concat(data.comentarios.data)
+      setComments(data.comentarios.data);
       setIsLoading(false);
     } catch (error) {
       const errorMessage = error?.message;

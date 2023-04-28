@@ -5,6 +5,7 @@ import Image from "mui-image";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import useTattoboxTattoos from "../../../hooks/use-tattobox-tattoos";
+import Link from "next/link";
 
 export const GridMansoryNotModalTattoo = ({ data = [], idContent }) => {
   const matches = useMediaQuery("(max-width:800px)");
@@ -74,26 +75,30 @@ export const GridMansoryNotModalTattoo = ({ data = [], idContent }) => {
           >
             {relatedTattoos.map((item, index) => (
               <div key={index}>
-                <Image
-                  onClick={() => {
-                    handleSowTatuaje(item.IdContenid);
-                  }}
-                  duration={2000}
-                  easing="ease-in"
-                  showLoading={false}
-                  distance="100px"
-                  shiftDuration={900}
-                  src={`${item.UrlImagen}?w=162&auto=format`}
-                  alt={item?.Titulo}
-                  style={{
-                    borderBottomLeftRadius: 4,
-                    borderBottomRightRadius: 4,
-                    display: "block",
-                    width: "100%",
-                    borderRadius: matches ? 5 : 20,
-                    boxShadow: "0 3px 10px 0 rgba(0, 0, 0, 0.16)",
-                  }}
-                />
+                <Link
+                  href="/tatuajes/[id]"
+                  as={`/tatuajes/${item?.IdContenido}`}
+                >
+                  <a>
+                    <Image
+                      duration={2000}
+                      easing="ease-in"
+                      showLoading={false}
+                      distance="100px"
+                      shiftDuration={900}
+                      src={`${item.UrlImagen}?w=162&auto=format`}
+                      alt={item?.Titulo}
+                      style={{
+                        borderBottomLeftRadius: 4,
+                        borderBottomRightRadius: 4,
+                        display: "block",
+                        width: "100%",
+                        borderRadius: matches ? 5 : 20,
+                        boxShadow: "0 3px 10px 0 rgba(0, 0, 0, 0.16)",
+                      }}
+                    />
+                  </a>
+                </Link>
               </div>
             ))}
           </Masonry>

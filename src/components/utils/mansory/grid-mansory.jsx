@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
 import Image from "mui-image";
@@ -6,16 +6,29 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { ModalTattoo } from "../modals/modalTattoo";
 import { ModalTattooMovil } from "../modals/modalTattooMovil";
 
-export const GridMansory = ({ data, user = {} }) => {
+export const GridMansory = ({ data, user = {}, idContentRoute = "" }) => {
   const btnModal = useRef(null);
+  const [openModal, setOpenModal] = useState(false);
   const [idContent, setIdContent] = useState("");
+  const [idContentStatic, setidContentStatic] = useState("");
   const matches = useMediaQuery("(max-width:800px)");
   const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
 
   const handleSowTatuaje = (idContent) => {
-    btnModal.current.click();
     setIdContent(idContent);
+    setidContentStatic(idContent);
+    btnModal.current.click();
   };
+
+  useEffect(() => {
+    if (idContentRoute) {
+      setIdContent(idContentRoute);
+      if (!openModal) {
+        handleSowTatuaje(idContentRoute);
+        setOpenModal(true);
+      }
+    }
+  }, [idContentRoute]);
 
   return (
     <>
@@ -67,15 +80,15 @@ export const GridMansory = ({ data, user = {} }) => {
         <ModalTattooMovil
           modal_id="tatuajeModal"
           idContent={idContent}
+          idContentStatic={idContentStatic}
           user={user}
-          setIdContent={setIdContent}
         />
       ) : (
         <ModalTattoo
           modal_id="tatuajeModal"
           idContent={idContent}
+          idContentStatic={idContentStatic}
           user={user}
-          setIdContent={setIdContent}
         />
       )}
     </>

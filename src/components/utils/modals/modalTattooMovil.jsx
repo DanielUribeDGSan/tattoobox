@@ -14,8 +14,8 @@ import { TabCommentsTattoos } from "../../tattoos/tabs/tab-comments-tattoos";
 export const ModalTattooMovil = ({
   modal_id,
   idContent,
+  idContentStatic,
   user,
-  setIdContent,
 }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
   const [shownModal, setShownModal] = useState(false);
@@ -23,6 +23,8 @@ export const ModalTattooMovil = ({
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
   const imageTattoo = useRef();
+  const modalBody = useRef(null);
+
   const {
     getContentTattoo,
     contentTattoo,
@@ -55,13 +57,16 @@ export const ModalTattooMovil = ({
 
   const handleOnClickCloseModal = () => {
     setShownModal(false);
-    setIdContent("");
   };
 
   const getData = async () => {
     await getContentTattoo(idContent, user?.idPerfil);
     await getRelatedTattoos(idContent, 1);
     setShownModal(true);
+  };
+
+  const scrollTop = () => {
+    modalBody.current.scrollTop = 0;
   };
 
   useEffect(() => {
@@ -74,7 +79,20 @@ export const ModalTattooMovil = ({
       setActionsState(false);
       isActive = false;
     };
-  }, [idContent, actionsState]);
+  }, [actionsState]);
+
+  useEffect(() => {
+    let isActive = true;
+
+    if (idContent && isActive) {
+      getData();
+      scrollTop();
+    }
+    return () => {
+      setActionsState(false);
+      isActive = false;
+    };
+  }, [idContent]);
 
   return (
     <div
@@ -85,7 +103,7 @@ export const ModalTattooMovil = ({
     >
       <div className="modal-dialog modal-fullscreen">
         <div className="modal-content">
-          <div className="modal-body" id="infiniteScroll">
+          <div className="modal-body" id="infiniteScroll" ref={modalBody}>
             <div className="content-movil">
               <>
                 <BtnSliderTattoo
@@ -203,6 +221,7 @@ export const ModalTattooMovil = ({
 
                             <TabCommentsTattoos
                               idContent={idContent}
+                              idContentStatic={idContentStatic}
                               user={user}
                               relatedTattoos={relatedTattoos}
                             />

@@ -22,6 +22,7 @@ const theme = createTheme({
 
 export const TabCommentsTattoos = ({
   idContent,
+  idContentStatic,
   relatedTattoos = [],
   user,
 }) => {
@@ -83,7 +84,7 @@ export const TabCommentsTattoos = ({
             }}
           >
             <div className="mt-3">
-              <GridMansoryNotModalTattoo idContent={idContent} />
+              <GridMansoryNotModalTattoo idContent={idContentStatic} />
             </div>
           </TabPanel>
           <TabPanel value="2" sx={{ padding: 0, marginBottom: "30px" }}>

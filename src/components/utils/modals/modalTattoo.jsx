@@ -14,13 +14,14 @@ import { ActionsTattoos } from "../../tattoos/actions/actions-tattoos";
 import { TabCommentsTattoos } from "../../tattoos/tabs/tab-comments-tattoos";
 import { GridMansoryNotModalTattoo } from "../../utils/mansory/grid-mansory-not-modal-tattoo";
 
-export const ModalTattoo = ({ modal_id, idContent, user, setIdContent }) => {
+export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
   const [shownModal, setShownModal] = useState(false);
   const [actionsState, setActionsState] = useState(false);
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
   const imageTattoo = useRef();
+  const modalBody = useRef();
 
   const { getContentTattoo, contentTattoo, isLoading } = useTattoboxTattoos();
 
@@ -48,12 +49,15 @@ export const ModalTattoo = ({ modal_id, idContent, user, setIdContent }) => {
 
   const handleOnClickCloseModal = () => {
     setShownModal(false);
-    setIdContent("");
   };
 
   const getData = async () => {
     await getContentTattoo(idContent, user?.idPerfil);
     setShownModal(true);
+  };
+
+  const scrollTop = () => {
+    modalBody.current.scrollTop = 0;
   };
 
   useEffect(() => {
@@ -66,7 +70,20 @@ export const ModalTattoo = ({ modal_id, idContent, user, setIdContent }) => {
       setActionsState(false);
       isActive = false;
     };
-  }, [idContent, actionsState]);
+  }, [actionsState]);
+
+  useEffect(() => {
+    let isActive = true;
+
+    if (idContent && isActive) {
+      getData();
+      scrollTop();
+    }
+    return () => {
+      setActionsState(false);
+      isActive = false;
+    };
+  }, [idContent]);
 
   return (
     <div
@@ -77,7 +94,7 @@ export const ModalTattoo = ({ modal_id, idContent, user, setIdContent }) => {
     >
       <div className="modal-dialog modal-fullscreen">
         <div className="modal-content">
-          <div className="modal-body pt-50" id="infiniteScroll">
+          <div className="modal-body pt-50" id="infiniteScroll" ref={modalBody}>
             {isLoading && !shownModal ? (
               <p className="text-black">Cargando...</p>
             ) : (
@@ -198,7 +215,7 @@ export const ModalTattoo = ({ modal_id, idContent, user, setIdContent }) => {
                   />
                 </div>
                 <div className="pt-50 container">
-                  <GridMansoryNotModalTattoo idContent={idContent} />
+                  <GridMansoryNotModalTattoo idContent={idContentStatic} />
                 </div>
               </>
             )}

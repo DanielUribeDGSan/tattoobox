@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CardTattoo } from "./card-tattoo";
 
 import "swiper/swiper-bundle.css";
-
 import { Navigation } from "swiper";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
-import useTattoboxHomeTattoos from "../../../hooks/use-tattobox-home-tattoos";
 
 export const SliderTattoo = ({ data, loading, title }) => {
-  const { artist, studies, newest, isLoading } = useTattoboxHomeTattoos();
   const [sliderLoop, setSliderLoop] = useState(false);
 
   const swiperParams = {
@@ -62,7 +59,14 @@ export const SliderTattoo = ({ data, loading, title }) => {
               >
                 {data.map((tattoo, i) => (
                   <SwiperSlide key={i}>
-                    <CardTattoo tattoo={tattoo} />
+                    <Link
+                      href="/tatuajes/[id]"
+                      as={`/tatuajes/${tattoo?.IdContenido}`}
+                    >
+                      <a>
+                        <CardTattoo tattoo={tattoo} />
+                      </a>
+                    </Link>
                   </SwiperSlide>
                 ))}
               </Swiper>

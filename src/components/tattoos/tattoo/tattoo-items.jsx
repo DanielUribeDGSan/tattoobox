@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTattoBoxFiltros } from "../../../hooks/use-tattobox-filtros";
 import { useQuery } from "react-query";
+import { useRouter } from "next/router";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { FormFiltersMovil } from "../../utils/forms/form-filters-movil";
 import { IputSearchMovil } from "../../utils/inputs/InputSearchMovil";
@@ -10,6 +11,7 @@ import { useUser } from "../../../hooks/use-user";
 
 const TattoItems = () => {
   // Hooks
+  const router = useRouter();
   const { user, isLoadingUser } = useUser();
   const [searchState, setSearchState] = useState("");
   const [stateCountryState, setStateCountryState] = useState("");
@@ -18,6 +20,8 @@ const TattoItems = () => {
   const [isClearable, setIsClearable] = useState(true);
   const [page, setPage] = useState(1);
   const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
+
+  const { id: idContentRoute } = router.query;
 
   // Custom hooks
   const { isLoading, getTattoos, dataStateCountry, dataStyles, dataPrices } =
@@ -106,7 +110,11 @@ const TattoItems = () => {
             ) : (
               <>
                 {tattoos?.length == 0 && <p>No hay datos encontrados</p>}
-                <GridMansory data={tattoos} user={user} />
+                <GridMansory
+                  data={tattoos}
+                  user={user}
+                  idContentRoute={idContentRoute}
+                />
               </>
             )}
           </div>
