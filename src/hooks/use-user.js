@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { get_user } from "../redux/features/auth-slice";
-import { tattoApiSocial, tattoApi, tattoApiIdentify } from "../api/tattoApi";
-import Router from "next/router";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { get_user } from '../redux/features/auth-slice';
+import { tattoApiSocial, tattoApi, tattoApiIdentify } from '../api/tattoApi';
+import Router from 'next/router';
 
 const config = {
   headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
     fetchOptions: {
-      mode: "no-cors",
+      mode: 'no-cors',
     },
   },
 };
@@ -32,10 +32,10 @@ export const useUser = () => {
 
   useEffect(() => {
     getProfiles();
-  }, [user]);
+  }, [user?.email]);
 
   const verifyLoggedUser = () => {
-    if (user?.email) Router.push("/");
+    if (user?.email) Router.push('/');
   };
 
   const getProfiles = async () => {
@@ -45,6 +45,7 @@ export const useUser = () => {
         `/v1/perfil/${user?.idParte}`,
         config
       );
+
       const profiles = data.perfiles.Perfiles;
       SetProfilesState({
         artist: profiles.filter((p) => p?.IdTipoPerfil === 2),

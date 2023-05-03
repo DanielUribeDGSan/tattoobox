@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { CardTattoo } from "./card-tattoo";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { CardTattoo } from './card-tattoo';
 
-import "swiper/swiper-bundle.css";
-import { Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/scrollbar";
+import 'swiper/swiper-bundle.css';
+import { Navigation } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
 
 export const SliderTattoo = ({ data, loading, title }) => {
   const [sliderLoop, setSliderLoop] = useState(false);
@@ -15,8 +15,8 @@ export const SliderTattoo = ({ data, loading, title }) => {
   const swiperParams = {
     modules: [Navigation],
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
   };
 
@@ -27,16 +27,21 @@ export const SliderTattoo = ({ data, loading, title }) => {
   return (
     <>
       <>
-        <div className="pt-50 pb-50 fix">
-          <div className="container-fluid container-fluid-pm-0">
-            <div className="row">
-              <div className="col-xl-12">
-                <div className=" text-center pb-25">
-                  <h2 className="tp-title tp-white-text">{title}</h2>
+        <div className='pt-50 pb-50 fix'>
+          <div className='container-fluid container-fluid-pm-0'>
+            <div className='row'>
+              <div className='col-xl-12'>
+                <div className='pb-25 title-content'>
+                  <h2 className='tp-title tp-white-text'>{title}</h2>
+                  <div>
+                    <Link href='tatuajes'>
+                      <a className='link-title'>Ver más</a>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="tp-tattoo-slider-section d-flex justify-content-center">
+            <div className='tp-tattoo-slider-section d-flex justify-content-center'>
               {/* slider start */}
               <Swiper
                 {...swiperParams}
@@ -46,7 +51,7 @@ export const SliderTattoo = ({ data, loading, title }) => {
                 centeredSlidesBounds={true}
                 spaceBetween={0}
                 navigation
-                className="swiper-container "
+                className='swiper-container '
                 breakpoints={{
                   // when window width is >= 1200px
                   1500: { slidesPerView: 4 },
@@ -60,7 +65,7 @@ export const SliderTattoo = ({ data, loading, title }) => {
                 {data.map((tattoo, i) => (
                   <SwiperSlide key={i}>
                     <Link
-                      href="/tatuajes/[id]"
+                      href='/tatuajes/[id]'
                       as={`/tatuajes/${tattoo?.IdContenido}`}
                     >
                       <a>

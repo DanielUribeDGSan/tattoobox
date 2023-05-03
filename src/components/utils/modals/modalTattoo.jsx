@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useRef } from "react";
-import useTattoboxTattoos from "../../../hooks/use-tattobox-tattoos";
-import { InformationTattoo } from "../../tattoos/information/information-tattoo";
-import CloseIcon from "@mui/icons-material/Close";
-import ImageLightBox from "../../common/modals/image-lightbox";
-import { BtnSliderTattoo } from "../../buttons/btn-slider-tattoo";
-import { BtnsActionsTattooFloat } from "../../buttons/btns-actions-tattoo-float";
-import { UserCircleImage } from "../../tattoos/information/user-circle-image";
+import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { useRef } from 'react';
+import useTattoboxTattoos from '../../../hooks/use-tattobox-tattoos';
+import { InformationTattoo } from '../../tattoos/information/information-tattoo';
+import CloseIcon from '@mui/icons-material/Close';
+import ImageLightBox from '../../common/modals/image-lightbox';
+import { BtnSliderTattoo } from '../../buttons/btn-slider-tattoo';
+import { BtnsActionsTattooFloat } from '../../buttons/btns-actions-tattoo-float';
+import { UserCircleImage } from '../../tattoos/information/user-circle-image';
 
-import { BtnAcheduleAppointment } from "../../buttons/btn-schedule-appointment";
-import { Divider } from "@mui/material";
-import { ActionsTattoos } from "../../tattoos/actions/actions-tattoos";
-import { TabCommentsTattoos } from "../../tattoos/tabs/tab-comments-tattoos";
-import { GridMansoryNotModalTattoo } from "../../utils/mansory/grid-mansory-not-modal-tattoo";
+import { BtnAcheduleAppointment } from '../../buttons/btn-schedule-appointment';
+import { Divider } from '@mui/material';
+import { ActionsTattoos } from '../../tattoos/actions/actions-tattoos';
+import { TabCommentsTattoos } from '../../tattoos/tabs/tab-comments-tattoos';
+import { GridMansoryNotModalTattoo } from '../../utils/mansory/grid-mansory-not-modal-tattoo';
+import { ModalTattooSkeleton } from '../skeletons/ModalTattooSkeleton';
 
 export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
@@ -34,8 +36,10 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
 
   const onImgLoad = ({ target: img }) => {
     setImageSize(img.offsetHeight);
-    if (img.offsetHeight <= 600 || img.offsetHeight > 800) {
-      imageTattoo.current.style.height = "100%";
+    if (img.offsetHeight <= 600) {
+      imageTattoo.current.style.height = '100%';
+    } else {
+      imageTattoo.current.style.height = `${img.offsetHeight}px`;
     }
   };
 
@@ -49,6 +53,11 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
 
   const handleOnClickCloseModal = () => {
     setShownModal(false);
+    const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
+    ReactDOM.findDOMNode(modalBackdrop).parentNode.removeChild(modalBackdrop);
+
+    const body = document.getElementsByTagName('body')[0];
+    body.style = '';
   };
 
   const getData = async () => {
@@ -87,47 +96,51 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
 
   return (
     <div
-      className="modal fade modal-tattoo"
+      className='modal fade modal-tattoo'
       id={modal_id}
-      aria-labelledby="tatuajeModalLabel"
-      aria-hidden="true"
+      aria-labelledby='tatuajeModalLabel'
+      aria-hidden='true'
     >
-      <div className="modal-dialog modal-fullscreen">
-        <div className="modal-content">
-          <div className="modal-body pt-50" id="infiniteScroll" ref={modalBody}>
+      <div className='modal-dialog modal-fullscreen'>
+        <div className='modal-content'>
+          <div
+            className='modal-body pt-50'
+            id='infiniteScroll'
+            ref={modalBody}
+          >
+            <button
+              type='button'
+              className='btn-close'
+              data-bs-dismiss='modal'
+              aria-label='Close'
+              title='Close'
+              onClick={handleOnClickCloseModal}
+            >
+              <CloseIcon />
+            </button>
             {isLoading && !shownModal ? (
-              <p className="text-black">Cargando...</p>
+              <ModalTattooSkeleton />
             ) : (
               <>
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  title="Close"
-                  onClick={handleOnClickCloseModal}
-                >
-                  <CloseIcon />
-                </button>
                 <div
-                  className="container"
+                  className='container'
                   style={{
                     height:
                       imageSize > 600
                         ? `${imageSize}px`
                         : imageSize <= 800
-                        ? "65vh"
-                        : "80vh",
+                        ? '65vh'
+                        : `${imageSize}px`,
                   }}
                 >
-                  <div className="row grid gx-3 h-inherit">
-                    <div className="col-1  p-0 m-0 d-flex align-items-center justify-content-center h-inherit">
+                  <div className='row grid gx-3 h-inherit'>
+                    <div className='col-1  p-0 m-0 d-flex align-items-center justify-content-center h-inherit'>
                       <BtnSliderTattoo
-                        direction="left"
+                        direction='left'
                         action={handleOnClickNext}
                       />
                     </div>
-                    <div className="col-6 p-0 m-0 h-inherit position-relative">
+                    <div className='col-6 p-0 m-0 h-inherit position-relative'>
                       <BtnsActionsTattooFloat />
                       <img
                         ref={imageTattoo}
@@ -135,36 +148,35 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
                         onClick={() => {
                           handleImagePopup(0);
                         }}
-                        className="img-fluid w-100"
+                        className='img-fluid w-100'
                         src={contentTattoo.UrlImagen}
-                        alt="tattoobox"
+                        alt='tattoobox'
                         style={{
-                          maxHeight: "80vh",
-                          objectFit: "cover",
-                          objectPosition: "center",
+                          objectFit: 'cover',
+                          objectPosition: 'center',
                           // height: matches ? "40vh" : "70vh",
-                          height: "auto",
-                          borderRadius: "20px 0px 0px 20px",
+                          height: 'auto',
+                          borderRadius: '20px 0px 0px 20px',
                         }}
                       />
                     </div>
                     <div
-                      className="col-4 mt-lg-0 mt-md-3 mt-3 content-informatin-tattoo p-0 m-0 h-inherit"
-                      style={{ overflowY: "auto" }}
-                      id="infiniteScrollComments"
+                      className='col-4 mt-lg-0 mt-md-3 mt-3 content-informatin-tattoo p-0 m-0 h-inherit'
+                      style={{ overflowY: 'auto' }}
+                      id='infiniteScrollComments'
                     >
-                      <div className="container">
-                        <div className="px-2 information-tattoo">
-                          <div className="row mt-2">
-                            <div className="col-9">
+                      <div className='container'>
+                        <div className='px-2 information-tattoo'>
+                          <div className='row mt-2'>
+                            <div className='col-9'>
                               <UserCircleImage
                                 content={contentTattoo}
                                 divider={false}
                               />
                             </div>
-                            <div className="col-auto d-flex align-items-center justify-content-end m-0 p-0">
+                            <div className='col-auto d-flex align-items-center justify-content-end m-0 p-0'>
                               <BtnAcheduleAppointment
-                                style={{ marginTop: "10px" }}
+                                style={{ marginTop: '10px' }}
                               />
                             </div>
                           </div>
@@ -172,12 +184,12 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
                           <div>
                             <Divider
                               sx={{
-                                marginTop: "20px",
-                                borderColor: "rgb(0 0 0 / 45%)",
+                                marginTop: '20px',
+                                borderColor: 'rgb(0 0 0 / 45%)',
                               }}
                             />
                           </div>
-                          <div className="mt-1">
+                          <div className='mt-1'>
                             <InformationTattoo content={contentTattoo} />
 
                             <ActionsTattoos
@@ -186,8 +198,8 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
                               idContent={idContent}
                               setActionsState={setActionsState}
                               style={{
-                                marginTop: "15px",
-                                marginBottom: "15px",
+                                marginTop: '15px',
+                                marginBottom: '15px',
                               }}
                             />
                             <TabCommentsTattoos
@@ -198,9 +210,9 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-1 p-0 m-0 d-flex align-items-center justify-content-center h-inherit">
+                    <div className='col-1 p-0 m-0 d-flex align-items-center justify-content-center h-inherit'>
                       <BtnSliderTattoo
-                        direction="right"
+                        direction='right'
                         action={handleOnClickBack}
                       />
                     </div>
@@ -214,8 +226,11 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
                     setPhotoIndex={setPhotoIndex}
                   />
                 </div>
-                <div className="pt-50 container">
-                  <GridMansoryNotModalTattoo idContent={idContentStatic} />
+                <div className='pt-50 container'>
+                  <GridMansoryNotModalTattoo
+                    idContent={idContentStatic}
+                    setShownModal={setShownModal}
+                  />
                 </div>
               </>
             )}

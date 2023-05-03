@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { getLocalStorage, setLocalStorage } from "../../utils/localstorage";
+import { createSlice } from '@reduxjs/toolkit';
+import { getLocalStorage, setLocalStorage } from '../../utils/localstorage';
 
 const initialState = {
   allUsers: [],
@@ -7,13 +7,13 @@ const initialState = {
 };
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     add_user: (state, { payload }) => {
       state.allUsers.push(payload);
       state.user = payload;
-      setLocalStorage("user", state.user);
+      setLocalStorage('user', state.user);
     },
     set_id_profile: (state, { payload }) => {
       const {
@@ -32,7 +32,17 @@ export const authSlice = createSlice({
         avatar,
         name,
       };
-      setLocalStorage("user", state.user);
+      setLocalStorage('user', state.user);
+    },
+    update_id_profile: (state, { payload }) => {
+      const { idPerfil, idTipoPerfil } = payload;
+
+      state.user = {
+        ...state.user,
+        idPerfil,
+        idTipoPerfil,
+      };
+      setLocalStorage('user', state.user);
     },
 
     set_data_supplementary: (state, { payload }) => {
@@ -45,7 +55,7 @@ export const authSlice = createSlice({
         birthDate,
       } = payload;
 
-      const name = nameUser + " " + lastNamePaternal + " " + lastNameMaternal;
+      const name = nameUser + ' ' + lastNamePaternal + ' ' + lastNameMaternal;
 
       state.user = {
         ...state.user,
@@ -56,18 +66,18 @@ export const authSlice = createSlice({
         userName,
         birthDate,
       };
-      setLocalStorage("user", state.user);
+      setLocalStorage('user', state.user);
     },
     user_info: (state, { payload }) => {
       state.user = payload;
-      setLocalStorage("user", state.user);
+      setLocalStorage('user', state.user);
     },
     sign_out: (state, { payload }) => {
       state.user = {};
-      setLocalStorage("user", state.user);
+      setLocalStorage('user', state.user);
     },
     get_user: (state, { payload }) => {
-      state.user = getLocalStorage("user");
+      state.user = getLocalStorage('user');
     },
   },
 });
@@ -79,6 +89,7 @@ export const {
   sign_out,
   get_user,
   set_data_supplementary,
+  update_id_profile,
 } = authSlice.actions;
 
 export default authSlice.reducer;

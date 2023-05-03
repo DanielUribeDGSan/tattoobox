@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { tattoApiSocial, tattoApi, tattoApiIdentify } from "../api/tattoApi";
-import Router from "next/router";
+import { tattoApiSocial, tattoApi, tattoApiIdentify } from '../api/tattoApi';
+import Router from 'next/router';
 
 const config = {
   headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
     fetchOptions: {
-      mode: "no-cors",
+      mode: 'no-cors',
     },
   },
 };
@@ -16,6 +16,7 @@ const config = {
 export const useUserProfile = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [profileStudio, setProfileStudio] = useState([]);
+  const [profileArtist, setProfileArtist] = useState([]);
 
   const getProfileInfoStudio = async (profileId) => {
     try {
@@ -25,7 +26,20 @@ export const useUserProfile = () => {
       );
       const profile = data.perfil;
       setProfileStudio(profile);
-      console.log(profileStudio);
+      setIsLoading(false);
+    } catch (error) {
+      const errorMessage = error?.message;
+    }
+  };
+
+  const getProfileInfoArtist = async (artistId) => {
+    try {
+      const { data } = await tattoApiSocial.get(
+        `/v1/perfil/artista/${artistId}`,
+        config
+      );
+      const profile = data.perfil;
+      setProfileArtist(profile);
       setIsLoading(false);
     } catch (error) {
       const errorMessage = error?.message;
@@ -35,6 +49,8 @@ export const useUserProfile = () => {
   return {
     isLoading,
     getProfileInfoStudio,
+    getProfileInfoArtist,
     profileStudio,
+    profileArtist,
   };
 };

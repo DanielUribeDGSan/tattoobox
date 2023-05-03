@@ -1,4 +1,4 @@
-@use "../utils" as *;
+@use '../utils' as *;
 
 .tp-profile-area {
   & .tp-profile {
@@ -101,6 +101,14 @@
       padding: 0px 30px;
       flex-direction: column;
     }
+    & .info {
+      display: flex;
+      align-items: center;
+      @media #{$md,$sm,$xs} {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
 
     & .user-buttons {
       @media #{$md} {
@@ -115,6 +123,21 @@
       & button {
         @media #{$md,$sm,$xs} {
           padding: 0.5rem 0.5rem;
+        }
+      }
+    }
+
+    & .user-data-banner {
+      @media #{$md,$sm,$xs} {
+        width: 100%;
+        text-align: center;
+      }
+      & .followers {
+        @media #{$md,$sm,$xs} {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
         }
       }
     }
@@ -284,9 +307,17 @@
 
 .txt-user {
   font-size: 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-bottom: 5px;
+  @media #{$sm,$xs} {
+    font-size: 1.7rem;
+  }
 }
 .txt-username {
   margin-top: -5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: var(--tp-common-gray);
 }
 .txt-description {

@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import Masonry from "@mui/lab/Masonry";
-import Image from "mui-image";
-import InfiniteScroll from "react-infinite-scroll-component";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import useTattoboxTattoos from "../../../hooks/use-tattobox-tattoos";
-import Link from "next/link";
+import React, { useEffect, useState } from 'react';
+import Box from '@mui/material/Box';
+import Masonry from '@mui/lab/Masonry';
+import Image from 'mui-image';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import useTattoboxTattoos from '../../../hooks/use-tattobox-tattoos';
+import Link from 'next/link';
 
-export const GridMansoryNotModalTattoo = ({ data = [], idContent }) => {
-  const matches = useMediaQuery("(max-width:800px)");
-  const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
+export const GridMansoryNotModalTattoo = ({
+  data = [],
+  idContent,
+  setShownModal,
+}) => {
+  const matches = useMediaQuery('(max-width:800px)');
+  const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
   const [showComponent, setShowComponent] = useState(false);
   const {
     getRelatedTattoos,
@@ -18,9 +22,8 @@ export const GridMansoryNotModalTattoo = ({ data = [], idContent }) => {
     isLoading,
   } = useTattoboxTattoos();
 
-  const handleSowTatuaje = (idContent) => {
-    // setIdContent(idContent);
-    console.log("click");
+  const handleShowTatuaje = () => {
+    setShownModal(false);
   };
 
   const getData = async (currentPage = 0) => {
@@ -44,7 +47,7 @@ export const GridMansoryNotModalTattoo = ({ data = [], idContent }) => {
   }, [idContent]);
 
   if (isLoading && !showComponent) {
-    return <p className="text-black">Cargando..</p>;
+    return <p className='text-black'>Cargando..</p>;
   }
 
   return (
@@ -56,15 +59,15 @@ export const GridMansoryNotModalTattoo = ({ data = [], idContent }) => {
         }}
         hasMore={true}
         loader={<></>}
-        scrollableTarget="infiniteScroll"
+        scrollableTarget='infiniteScroll'
         endMessage={
-          <p style={{ textAlign: "center", color: "black" }}>
+          <p style={{ textAlign: 'center', color: 'black' }}>
             <b>Yay! You have seen it all</b>
           </p>
         }
-        style={{ overflow: "hidden" }}
+        style={{ overflow: 'hidden' }}
       >
-        <Box sx={{ width: "100%", minHeight: 400 }}>
+        <Box sx={{ width: '100%', minHeight: 400 }}>
           <Masonry
             columns={matches ? 2 : 4}
             spacing={2}
@@ -76,25 +79,25 @@ export const GridMansoryNotModalTattoo = ({ data = [], idContent }) => {
             {relatedTattoos.map((item, index) => (
               <div key={index}>
                 <Link
-                  href="/tatuajes/[id]"
+                  href='/tatuajes/[id]'
                   as={`/tatuajes/${item?.IdContenido}`}
                 >
-                  <a>
+                  <a onClick={handleShowTatuaje}>
                     <Image
                       duration={2000}
-                      easing="ease-in"
+                      easing='ease-in'
                       showLoading={false}
-                      distance="100px"
+                      distance='100px'
                       shiftDuration={900}
                       src={`${item.UrlImagen}?w=162&auto=format`}
                       alt={item?.Titulo}
                       style={{
                         borderBottomLeftRadius: 4,
                         borderBottomRightRadius: 4,
-                        display: "block",
-                        width: "100%",
+                        display: 'block',
+                        width: '100%',
                         borderRadius: matches ? 5 : 20,
-                        boxShadow: "0 3px 10px 0 rgba(0, 0, 0, 0.16)",
+                        boxShadow: '0 3px 10px 0 rgba(0, 0, 0, 0.16)',
                       }}
                     />
                   </a>

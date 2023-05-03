@@ -1,21 +1,21 @@
-import { useFormik } from "formik";
-import { useEffect, useState } from "react";
-import Router from "next/router";
+import { useFormik } from 'formik';
+import { useEffect, useState } from 'react';
+import Router from 'next/router';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
   getZipCode,
   getDetails,
-} from "use-places-autocomplete";
-import useTattoboxAuthRegister from "../../../hooks/use-tattobox-auth-register";
-import { useUser } from "../../../hooks/use-user";
+} from 'use-places-autocomplete';
+import useTattoboxAuthRegister from '../../../hooks/use-tattobox-auth-register';
+import { useUser } from '../../../hooks/use-user';
 import {
-  registerSupplementarySection1,
+  registerSupplementarySection1Artist,
   registerSupplementarySection2,
   registerSupplementarySection3,
   registerSupplementarySection4,
-} from "../../../utils/validation-schema";
-import ErrorMsg from "./error-msg";
+} from '../../../utils/validation-schema';
+import ErrorMsg from './error-msg';
 
 export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
   const [sectionForm, setSectionForm] = useState(1);
@@ -34,24 +34,24 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
   const { handleChange, handleSubmit, handleBlur, errors, values, touched } =
     useFormik({
       initialValues: {
-        description: "",
-        facebook: "",
-        instagram: "",
-        twitter: "",
-        whatsapp: "",
-        webSitie: "",
-        nameAddress: "",
-        zipCode: "",
-        state: "",
-        delegation: "",
-        colonia: "",
-        street: "",
-        numberOutside: "",
-        innerNumber: "",
+        description: '',
+        facebook: '',
+        instagram: '',
+        twitter: '',
+        whatsapp: '',
+        webSitie: '',
+        nameAddress: '',
+        zipCode: '',
+        state: '',
+        delegation: '',
+        colonia: '',
+        street: '',
+        numberOutside: '',
+        innerNumber: '',
       },
       validationSchema:
         sectionForm === 1
-          ? registerSupplementarySection1
+          ? registerSupplementarySection1Artist
           : sectionForm === 2
           ? registerSupplementarySection2
           : sectionForm === 3
@@ -118,14 +118,14 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
         values.street = name;
       })
       .catch((error) => {
-        console.log("Error: ", error);
+        console.log('Error: ', error);
       });
 
     values.nameAddress = address;
-    values.zipCode = zipCode || "";
-    const satteDelegation = address.split(",");
-    values.delegation = satteDelegation[2] || "";
-    values.state = satteDelegation[3] || "";
+    values.zipCode = zipCode || '';
+    const satteDelegation = address.split(',');
+    values.delegation = satteDelegation[2] || '';
+    values.state = satteDelegation[3] || '';
 
     setSelected({ lat, lng });
   };
@@ -135,7 +135,7 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
   };
 
   const handleOnClickBack = () => {
-    if (sectionForm === 1) Router.push("/");
+    if (sectionForm === 1) Router.push('/');
     if (sectionForm < 4) {
       setShowImage(true);
     } else {
@@ -171,106 +171,106 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
 
   return (
     <>
-      <div className="tpartist h-100">
-        <div className="tpartist__title">
+      <div className='tpartist h-100'>
+        <div className='tpartist__title'>
           <h3>Registro artista</h3>
         </div>
-        <div className="tpartist__form">
+        <div className='tpartist__form'>
           <form onSubmit={handleSubmit}>
             <div>
               <button
-                type="button"
-                className="text-black"
-                style={{ fontSize: "1.1rem", marginBottom: "15px" }}
+                type='button'
+                className='text-black'
+                style={{ fontSize: '1.1rem', marginBottom: '15px' }}
                 onClick={handleOnClickBack}
               >
                 <i
-                  className="far fa-arrow-left"
+                  className='far fa-arrow-left'
                   style={{
-                    marginRight: "10px",
+                    marginRight: '10px',
                   }}
                 ></i>
-                {sectionForm === 1 ? "Regresar al inicio" : "Regresar"}
+                {sectionForm === 1 ? 'Regresar al inicio' : 'Regresar'}
               </button>
             </div>
 
             {sectionForm === 1 && (
-              <div className="tp-input">
-                <label htmlFor="description">Descripciópn</label>
+              <div className='tp-input'>
+                <label htmlFor='description'>Descripciópn</label>
                 <textarea
                   value={values.description}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  type="text"
-                  placeholder="Ingresa tu descripción"
-                  id="description"
-                  rows="8"
-                  cols="33"
-                  style={{ height: "auto" }}
+                  type='text'
+                  placeholder='Ingresa tu descripción'
+                  id='description'
+                  rows='8'
+                  cols='33'
+                  style={{ height: 'auto' }}
                 />
                 {touched.description && <ErrorMsg error={errors.description} />}
               </div>
             )}
             {sectionForm === 2 && (
               <>
-                <div className="tp-input">
-                  <label htmlFor="instagram">Instagram</label>
+                <div className='tp-input'>
+                  <label htmlFor='instagram'>Instagram</label>
                   <input
                     value={values.instagram}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa el usuario de Instagram"
-                    id="instagram"
+                    type='text'
+                    placeholder='Ingresa el usuario de Instagram'
+                    id='instagram'
                   />
                   {touched.instagram && <ErrorMsg error={errors.instagram} />}
                 </div>
-                <div className="tp-input">
-                  <label htmlFor="whatsapp">Whatsapp</label>
+                <div className='tp-input'>
+                  <label htmlFor='whatsapp'>Whatsapp</label>
                   <input
                     value={values.whatsapp}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa tu whatsapp"
-                    id="whatsapp"
+                    type='text'
+                    placeholder='Ingresa tu whatsapp'
+                    id='whatsapp'
                   />
                   {touched.whatsapp && <ErrorMsg error={errors.whatsapp} />}
                 </div>
-                <div className="tp-input">
-                  <label htmlFor="description">Facebook</label>
+                <div className='tp-input'>
+                  <label htmlFor='description'>Facebook</label>
                   <input
                     value={values.facebook}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa el usuario de facebook"
-                    id="facebook"
+                    type='text'
+                    placeholder='Ingresa el usuario de facebook'
+                    id='facebook'
                   />
                   {touched.facebook && <ErrorMsg error={errors.facebook} />}
                 </div>
 
-                <div className="tp-input">
-                  <label htmlFor="webSitie">Sitio web</label>
+                <div className='tp-input'>
+                  <label htmlFor='webSitie'>Sitio web</label>
                   <input
                     value={values.webSitie}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa el link de tu sitio web"
-                    id="webSitie"
+                    type='text'
+                    placeholder='Ingresa el link de tu sitio web'
+                    id='webSitie'
                   />
                   {touched.webSitie && <ErrorMsg error={errors.webSitie} />}
                 </div>
-                <div className="tp-input">
-                  <label htmlFor="twitter">Twitter</label>
+                <div className='tp-input'>
+                  <label htmlFor='twitter'>Twitter</label>
                   <input
                     value={values.twitter}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa el usuario de twitter"
-                    id="twitter"
+                    type='text'
+                    placeholder='Ingresa el usuario de twitter'
+                    id='twitter'
                   />
                   {touched.twitter && <ErrorMsg error={errors.twitter} />}
                 </div>
@@ -278,27 +278,27 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
             )}
             {sectionForm === 3 && (
               <>
-                <div className="tp-input">
-                  <label htmlFor="adressFull">Dirección completa</label>
+                <div className='tp-input'>
+                  <label htmlFor='adressFull'>Dirección completa</label>
                   <input
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                     disabled={!ready}
-                    id="adressFull"
-                    placeholder="Escribe tu dirección completa"
+                    id='adressFull'
+                    placeholder='Escribe tu dirección completa'
                   />
 
                   <div>
-                    <ul className="list-group">
-                      {status === "OK" && (
+                    <ul className='list-group'>
+                      {status === 'OK' && (
                         <p
-                          className="text-black m-0 p-0"
-                          style={{ fontSize: "1rem" }}
+                          className='text-black m-0 p-0'
+                          style={{ fontSize: '1rem' }}
                         >
                           Selecciona tu dirección
                         </p>
                       )}
-                      {status === "OK" &&
+                      {status === 'OK' &&
                         data.map((sugestion) => (
                           <a
                             key={sugestion.place_id}
@@ -306,7 +306,7 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
                               sugestion.description,
                               sugestion.place_id
                             )}
-                            className="list-group-item"
+                            className='list-group-item'
                           >
                             {sugestion.description}
                           </a>
@@ -321,44 +321,44 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
                   value={values.nameAddress}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  type="hidden"
-                  placeholder="Ingresa tu descripción"
-                  id="nameAddress"
+                  type='hidden'
+                  placeholder='Ingresa tu descripción'
+                  id='nameAddress'
                 />
-                <div className="tp-input">
-                  <label htmlFor="zipCode">Código postal</label>
+                <div className='tp-input'>
+                  <label htmlFor='zipCode'>Código postal</label>
                   <input
                     value={values.zipCode}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa tu código postal"
-                    id="zipCode"
+                    type='text'
+                    placeholder='Ingresa tu código postal'
+                    id='zipCode'
                   />
                   {touched.zipCode && <ErrorMsg error={errors.zipCode} />}
                 </div>
 
-                <div className="tp-input">
-                  <label htmlFor="colonia">Colonia</label>
+                <div className='tp-input'>
+                  <label htmlFor='colonia'>Colonia</label>
                   <input
                     value={values.colonia}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa tu colonia"
-                    id="colonia"
+                    type='text'
+                    placeholder='Ingresa tu colonia'
+                    id='colonia'
                   />
                   {touched.colonia && <ErrorMsg error={errors.colonia} />}
                 </div>
-                <div className="tp-input">
-                  <label htmlFor="street">Calle</label>
+                <div className='tp-input'>
+                  <label htmlFor='street'>Calle</label>
                   <input
                     value={values.street}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa tu calle"
-                    id="street"
+                    type='text'
+                    placeholder='Ingresa tu calle'
+                    id='street'
                   />
                   {touched.street && <ErrorMsg error={errors.street} />}
                 </div>
@@ -366,53 +366,53 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
             )}
             {sectionForm === 4 && (
               <>
-                <div className="tp-input">
-                  <label htmlFor="state">Estado</label>
+                <div className='tp-input'>
+                  <label htmlFor='state'>Estado</label>
                   <input
                     value={values.state}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa tu estado"
-                    id="state"
+                    type='text'
+                    placeholder='Ingresa tu estado'
+                    id='state'
                   />
                   {touched.state && <ErrorMsg error={errors.state} />}
                 </div>
-                <div className="tp-input">
-                  <label htmlFor="delegation">Delegación</label>
+                <div className='tp-input'>
+                  <label htmlFor='delegation'>Delegación</label>
                   <input
                     value={values.delegation}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa tu delegación"
-                    id="delegation"
+                    type='text'
+                    placeholder='Ingresa tu delegación'
+                    id='delegation'
                   />
                   {touched.delegation && <ErrorMsg error={errors.delegation} />}
                 </div>
-                <div className="tp-input">
-                  <label htmlFor="numberOutside">Número exterior</label>
+                <div className='tp-input'>
+                  <label htmlFor='numberOutside'>Número exterior</label>
                   <input
                     value={values.numberOutside}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa tu número exterior"
-                    id="numberOutside"
+                    type='text'
+                    placeholder='Ingresa tu número exterior'
+                    id='numberOutside'
                   />
                   {touched.numberOutside && (
                     <ErrorMsg error={errors.numberOutside} />
                   )}
                 </div>
-                <div className="tp-input">
-                  <label htmlFor="innerNumber">Número interior</label>
+                <div className='tp-input'>
+                  <label htmlFor='innerNumber'>Número interior</label>
                   <input
                     value={values.innerNumber}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    type="text"
-                    placeholder="Ingresa tu número interior"
-                    id="innerNumber"
+                    type='text'
+                    placeholder='Ingresa tu número interior'
+                    id='innerNumber'
                   />
                   {touched.innerNumber && (
                     <ErrorMsg error={errors.innerNumber} />
@@ -421,28 +421,31 @@ export const RegisterArtist = ({ selected, setSelected, setShowImage }) => {
               </>
             )}
 
-            <div className="tp-login-button mb-3">
+            <div className='tp-login-button mb-3'>
               {sectionForm === 3 && (
-                <div className="mb-2">
+                <div className='mb-2'>
                   <p
-                    className="text-black  p-0 m-0"
-                    style={{ fontSize: "1rem" }}
+                    className='text-black  p-0 m-0'
+                    style={{ fontSize: '1rem' }}
                   >
-                    <span className="fw-bold">Importante:</span> Antes de seguir
+                    <span className='fw-bold'>Importante:</span> Antes de seguir
                     confirma que el icono de tu ubicación este marcado
                     correctamente en el mapa.
                   </p>
                   <p
-                    className="text-black  p-0 mx-0 mt-2"
-                    style={{ fontSize: "1rem" }}
+                    className='text-black  p-0 mx-0 mt-2'
+                    style={{ fontSize: '1rem' }}
                   >
                     En caso de no estar correcto, puedes mover el icono
                     seleccionandolo y arrastandolo al lugar correcto.
                   </p>
                 </div>
               )}
-              <button className="tp-btn-black w-100" type="submit">
-                {sectionForm < 4 ? "Siguiente" : "Completar registro"}
+              <button
+                className='tp-btn-black w-100'
+                type='submit'
+              >
+                {sectionForm < 4 ? 'Siguiente' : 'Completar registro'}
               </button>
             </div>
           </form>

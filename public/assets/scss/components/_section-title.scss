@@ -1,4 +1,4 @@
-@use "../utils" as *;
+@use '../utils' as *;
 .tp-subtitle {
   font-size: 18px;
   font-weight: 500;
@@ -8,7 +8,7 @@
     height: 12px;
     width: 12px;
     background-color: var(--tp-theme-primary);
-    content: "";
+    content: '';
     display: inline-block;
     border-radius: 50%;
     margin-right: 10px;
@@ -20,6 +20,7 @@
     background-color: rgba(41, 41, 48, 0.6);
   }
 }
+
 .tp-title {
   font-size: 60px;
   font-weight: 700;
@@ -39,6 +40,44 @@
   }
   @media #{$sm} {
     font-size: 35px;
+  }
+}
+
+.title-content {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  margin-bottom: 40px;
+  // justify-content: space-between;
+  padding: 0rem 1rem;
+  @media #{$xs,$sm} {
+    justify-content: space-between;
+  }
+
+  & .link-title {
+    display: inline-flex;
+    color: var(--tp-theme-2);
+    font-size: 30px;
+    margin: 0px;
+    margin-left: 50px;
+    border-bottom: 2px solid var(--tp-theme-2);
+    padding-bottom: 10px;
+    margin-top: 15px;
+    @media #{$md} {
+      margin-top: 0px;
+    }
+    @media #{$xs,$sm} {
+      padding-bottom: 0px;
+      font-size: 22px;
+      margin-top: 0px;
+    }
+  }
+  & .tp-title {
+    display: inline-flex;
+    margin-bottom: 0px;
+    @media #{$xs,$sm} {
+      font-size: 22px;
+    }
   }
 }
 .tp-title-sm {
