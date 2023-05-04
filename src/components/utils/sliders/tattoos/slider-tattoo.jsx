@@ -9,7 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
-export const SliderTattoo = ({ data, loading, title }) => {
+export const SliderTattoo = ({ data, loading, title, link }) => {
   const [sliderLoop, setSliderLoop] = useState(false);
 
   const swiperParams = {
@@ -34,7 +34,7 @@ export const SliderTattoo = ({ data, loading, title }) => {
                 <div className='pb-25 title-content'>
                   <h2 className='tp-title tp-white-text'>{title}</h2>
                   <div>
-                    <Link href='tatuajes'>
+                    <Link href={link}>
                       <a className='link-title'>Ver más</a>
                     </Link>
                   </div>

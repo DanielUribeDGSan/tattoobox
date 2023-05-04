@@ -8,9 +8,10 @@ import { useTattoBoxFormDataFilters } from '../../../hooks/use-tattobox-form-dat
 import { FormFiltersMovil } from '../../utils/forms/form-filters-movil';
 import { IputSearchMovil } from '../../utils/inputs/InputSearchMovil';
 import { FormFilters } from '../../utils/forms/form-filters';
-import { GridMansory } from '../../utils/mansory/grid-mansory';
+import { GridMansoryArtist } from '../../utils/mansory/grid-mansory-artists';
+import { useEffect } from 'react';
 
-const TattoItems = () => {
+const ArtistItems = () => {
   // Hooks
   const router = useRouter();
   const { user, isLoadingUser } = useUser();
@@ -21,32 +22,25 @@ const TattoItems = () => {
   const [isClearable, setIsClearable] = useState(true);
   const [page, setPage] = useState(1);
   const [showPage, setShowPage] = useState(true);
-
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
 
   const { id: idContentRoute } = router.query;
 
   // Custom hooks
-  const { getTattoos } = useTattoBoxFilters();
+  const { getArtist } = useTattoBoxFilters();
   const { isLoading, dataStateCountry, dataStyles, dataPrices } =
     useTattoBoxFormDataFilters();
 
   const {
     isLoading: isLoadingSearch,
-    data: tattoos,
+    data: artistData,
     isError,
     error,
   } = useQuery({
-    queryKey: [
-      'tattoos',
-      page,
-      searchState,
-      stateCountryState,
-      styleState,
-      priceState,
-    ],
-    queryFn: getTattoos,
+    queryKey: ['artists', page, searchState, stateCountryState, styleState],
+    queryFn: getArtist,
   });
+  console.log(artistData);
 
   if (error && isError)
     return (
@@ -55,7 +49,7 @@ const TattoItems = () => {
       </p>
     );
 
-  if (!tattoos && showPage) return <p className='text-black'>Cargando...</p>;
+  if (!artistData && showPage) return <p className='text-black'>Cargando...</p>;
 
   if (showPage) setShowPage(false);
 
@@ -78,7 +72,7 @@ const TattoItems = () => {
               <IputSearchMovil
                 searchState={searchState}
                 setSearchState={setSearchState}
-                placeholder={'Buscar tatuaje'}
+                placeholder={'Buscar artista'}
               />
               <div className='w-100 d-flex align-items-center justify-content-center'>
                 <FormFiltersMovil
@@ -93,7 +87,7 @@ const TattoItems = () => {
                   dataPrices={dataPrices}
                   isClearable={isClearable}
                   setIsClearable={setIsClearable}
-                  typeForm={'tattoos'}
+                  typeForm={'artist'}
                 />
               </div>
             </div>
@@ -115,7 +109,7 @@ const TattoItems = () => {
                 dataPrices={dataPrices}
                 isClearable={isClearable}
                 setIsClearable={setIsClearable}
-                typeForm={'tattoos'}
+                typeForm={'artist'}
               />
             </div>
           )}
@@ -125,9 +119,9 @@ const TattoItems = () => {
               <p className='text-black'>Cargando...</p>
             ) : (
               <>
-                {tattoos?.length == 0 && <p>No hay datos encontrados</p>}
-                <GridMansory
-                  data={tattoos}
+                {artistData?.length == 0 && <p>No hay datos encontrados</p>}
+                <GridMansoryArtist
+                  data={artistData}
                   user={user}
                   idContentRoute={idContentRoute}
                 />
@@ -140,4 +134,4 @@ const TattoItems = () => {
   );
 };
 
-export default TattoItems;
+export default ArtistItems;

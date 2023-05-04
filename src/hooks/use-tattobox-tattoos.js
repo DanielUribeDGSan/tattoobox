@@ -139,7 +139,8 @@ const useTattoboxTattoos = () => {
 
   const saveFavorites = async (body) => {
     try {
-      await tattoApiSocial.post('/v1/favoritos', body, config);
+      const { data } = await tattoApiSocial.post('/v1/favoritos', body, config);
+      console.log(data);
     } catch (error) {
       const errorMessage = error?.message;
       // toast.error(`${errorMessage}`, {

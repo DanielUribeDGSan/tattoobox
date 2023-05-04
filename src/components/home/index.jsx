@@ -42,14 +42,15 @@ const Home = () => {
         data={newest}
         loading={isLoading}
         title={'Lo más nuevo'}
+        link={'/tatuajes'}
       />
       <SliderTattoo
         data={artist}
         loading={isLoading}
         title={'Artistas'}
+        link={'/artistas'}
       />
-      {/* <SliderTattoo data={artist} loading={isLoading} title={"Artistas"} />
-      <SliderTattoo data={studies} loading={isLoading} title={"Estudios"} /> */}
+
       <CreativeArea />
       {/* <BrandArea/>    */}
       {/* <ProjectArea /> */}

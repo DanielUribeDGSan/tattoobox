@@ -1,4 +1,4 @@
-@use "../utils" as *;
+@use '../utils' as *;
 /*-----------------------------------------------------------------------------------
 
     Theme Name: Template Name – HTML5 Template
@@ -40,7 +40,8 @@ body {
   font-weight: 400;
   color: var(--tp-text-body);
   line-height: 25px;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
 }
 
 a {
@@ -169,7 +170,7 @@ input {
   outline: none;
 }
 
-input[type="color"] {
+input[type='color'] {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;

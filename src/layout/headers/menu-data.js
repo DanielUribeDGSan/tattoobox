@@ -18,15 +18,15 @@ const menu_data = [
     id: 1,
     mega_menu: false,
     has_dropdown: false,
-    title: "Tatuajes",
-    link: "/tatuajes",
-    sub_menus: [
-      { link: "/portfolio", title: "Portfolio Full Width" },
-      { link: "/portfolio-2", title: "Portfolio Filter 01" },
-      { link: "/portfolio-3", title: "Portfolio Filter 02" },
-      { link: "/portfolio-masonry", title: "Portfolio Masonry" },
-      { link: "/portfolio-details", title: "Portfolio Details" },
-    ],
+    title: 'Tatuajes',
+    link: '/tatuajes',
+  },
+  {
+    id: 2,
+    mega_menu: false,
+    has_dropdown: false,
+    title: 'Artistas',
+    link: '/artistas',
   },
   // {
   //   id:3,
@@ -68,19 +68,13 @@ const menu_data = [
   //     {link:'/blog-details',title:'Blog Details'},
   //   ]
   // },
+
   {
     id: 3,
     mega_menu: false,
     has_dropdown: false,
-    title: "Sobre nosotros",
-    link: "/nosotros",
-  },
-  {
-    id: 4,
-    mega_menu: false,
-    has_dropdown: false,
-    title: "Contacto",
-    link: "/contacto",
+    title: 'Contacto',
+    link: '/contacto',
   },
 ];
 export default menu_data;

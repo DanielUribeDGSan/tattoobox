@@ -57,7 +57,7 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
     modalBackdrop.remove();
 
     const body = document.getElementsByTagName('body')[0];
-    body.style = '';
+    body.style = 'backgroud-color:red';
   };
 
   const getData = async () => {

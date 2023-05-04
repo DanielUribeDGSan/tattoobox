@@ -1,5 +1,5 @@
-import { SelectCheckbox } from "../selects/selectCheckbox";
-import Select from "react-select";
+import { SelectCheckbox } from '../selects/selectCheckbox';
+import Select from 'react-select';
 
 export const FormFiltersMovil = ({
   stateCountryState,
@@ -13,6 +13,7 @@ export const FormFiltersMovil = ({
   dataPrices,
   isClearable,
   setIsClearable,
+  typeForm,
 }) => {
   const handleChangeState = (states) => {
     setStateCountryState(states);
@@ -26,20 +27,22 @@ export const FormFiltersMovil = ({
     setPriceState(prices);
   };
 
+  const colums = typeForm === 'artist' ? 'col-6 p-0 m-0' : 'col-4 p-0 m-0';
+
   return (
-    <div className=" w-100">
-      <div className="row grid gx-3 m-0">
-        <div className="col-4 p-0 m-0">
+    <div className=' w-100'>
+      <div className='row grid gx-3 m-0'>
+        <div className={colums}>
           <Select
-            aria-label="Estados"
-            className="react-select-container-filters"
-            classNamePrefix="react-select-filters"
-            name="estadosTxt"
-            id="estadosTxt"
+            aria-label='Estados'
+            className='react-select-container-filters'
+            classNamePrefix='react-select-filters'
+            name='estadosTxt'
+            id='estadosTxt'
             options={dataStateCountry}
             onChange={handleChangeState}
-            placeholder="Estado"
-            instanceId="estado"
+            placeholder='Estado'
+            instanceId='estado'
             isClearable={isClearable}
             isSearchable={false}
             menuShouldScrollIntoView={false}
@@ -48,26 +51,26 @@ export const FormFiltersMovil = ({
               borderRadius: 0,
               colors: {
                 ...theme.colors,
-                primary25: "#fff",
-                primary: "transparent",
+                primary25: '#fff',
+                primary: 'transparent',
               },
             })}
-            value={stateCountryState || ""}
+            value={stateCountryState || ''}
           />
         </div>
-        <div className="col-4 p-0 m-0">
+        <div className={colums}>
           <Select
-            aria-label="Estilos"
-            className="react-select-container-filters2"
-            classNamePrefix="react-select-filters2"
-            name="estilosTxt"
-            id="estilosTxt"
+            aria-label='Estilos'
+            className='react-select-container-filters2'
+            classNamePrefix='react-select-filters2'
+            name='estilosTxt'
+            id='estilosTxt'
             options={dataStyles}
             isMulti
             hideSelectedOptions={false}
-            placeholder="Estilos"
+            placeholder='Estilos'
             onChange={handleChangeStyle}
-            instanceId="estilos"
+            instanceId='estilos'
             components={{
               Option: SelectCheckbox,
             }}
@@ -78,45 +81,47 @@ export const FormFiltersMovil = ({
               borderRadius: 0,
               colors: {
                 ...theme.colors,
-                primary25: "#fff",
-                primary: "transparent",
+                primary25: '#fff',
+                primary: 'transparent',
               },
             })}
-            value={styleState || ""}
+            value={styleState || ''}
           />
         </div>
-        <div className="col-4 p-0 m-0">
-          <Select
-            aria-label="Precios"
-            className="react-select-container-filters3"
-            classNamePrefix="react-select-filters3"
-            name="preciosTxt"
-            id="preciosTxt"
-            isMulti
-            multiple
-            placeholder="Precios"
-            options={dataPrices}
-            hideSelectedOptions={false}
-            onChange={handleChangePrice}
-            // isOptionDisabled={() => estiloState.length >= 2}
-            instanceId="precio"
-            components={{
-              Option: SelectCheckbox,
-            }}
-            isSearchable={false}
-            menuShouldScrollIntoView={false}
-            theme={(theme) => ({
-              ...theme,
-              borderRadius: 0,
-              colors: {
-                ...theme.colors,
-                primary25: "#fff",
-                primary: "transparent",
-              },
-            })}
-            value={priceState || ""}
-          />
-        </div>
+        {typeForm !== 'artist' && (
+          <div className='col-4 p-0 m-0'>
+            <Select
+              aria-label='Precios'
+              className='react-select-container-filters3'
+              classNamePrefix='react-select-filters3'
+              name='preciosTxt'
+              id='preciosTxt'
+              isMulti
+              multiple
+              placeholder='Precios'
+              options={dataPrices}
+              hideSelectedOptions={false}
+              onChange={handleChangePrice}
+              // isOptionDisabled={() => estiloState.length >= 2}
+              instanceId='precio'
+              components={{
+                Option: SelectCheckbox,
+              }}
+              isSearchable={false}
+              menuShouldScrollIntoView={false}
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 0,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#fff',
+                  primary: 'transparent',
+                },
+              })}
+              value={priceState || ''}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
