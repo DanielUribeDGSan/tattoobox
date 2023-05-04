@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import { useRef } from 'react';
 import useTattoboxTattoos from '../../../hooks/use-tattobox-tattoos';
 import { InformationTattoo } from '../../tattoos/information/information-tattoo';
@@ -53,8 +52,9 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
 
   const handleOnClickCloseModal = () => {
     setShownModal(false);
+
     const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
-    ReactDOM.findDOMNode(modalBackdrop).parentNode.removeChild(modalBackdrop);
+    modalBackdrop.remove();
 
     const body = document.getElementsByTagName('body')[0];
     body.style = '';

@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { FooterThree, Header, Wrapper } from "../../layout";
-import { animationCreate } from "../../utils/utils";
-import LoginArea from "./login-area";
+import React, { useEffect } from 'react';
+import { Footer, Header, Wrapper } from '../../layout';
+import { animationCreate } from '../../utils/utils';
+import LoginArea from './login-area';
 
 const Login = () => {
   useEffect(() => {
@@ -14,7 +14,7 @@ const Login = () => {
     <Wrapper>
       <Header />
       <LoginArea />
-      <FooterThree />
+      <Footer />
     </Wrapper>
   );
 };

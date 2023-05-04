@@ -59,8 +59,9 @@ export const ModalTattooMovil = ({
 
   const handleOnClickCloseModal = () => {
     setShownModal(false);
+
     const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
-    ReactDOM.findDOMNode(modalBackdrop).parentNode.removeChild(modalBackdrop);
+    modalBackdrop.remove();
 
     const body = document.getElementsByTagName('body')[0];
     body.style = '';

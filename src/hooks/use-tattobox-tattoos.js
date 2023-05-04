@@ -1,14 +1,13 @@
-import { useState } from "react";
-import axios from "axios";
-import { tattoApiSocial, tattoApi, tattoApiIdentify } from "../api/tattoApi";
-import { toast } from "react-toastify";
+import { useState } from 'react';
+import { tattoApiSocial, tattoApi, tattoApiIdentify } from '../api/tattoApi';
+import { toast } from 'react-toastify';
 
 const config = {
   headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
     fetchOptions: {
-      mode: "no-cors",
+      mode: 'no-cors',
     },
   },
 };
@@ -19,8 +18,11 @@ const useTattoboxTattoos = () => {
   const [relatedTattoos, setRelatedTattoos] = useState([]);
   const [relatedTattoosAllData, setRelatedTattoosAllData] = useState([]);
   const [comments, setComments] = useState([]);
-  const [pageComments, setPageComments] = useState(1);
   const [commentsAllData, setCommentsAllData] = useState([]);
+
+  // _____________________________________________________________________________________________________________________
+  // -------------------------------------------------Info tatttoos------------------------------------------------------------
+  // *********************************************************************************************************************
 
   const getContentTattoo = async (idContent, idProfile) => {
     try {
@@ -40,7 +42,9 @@ const useTattoboxTattoos = () => {
     }
   };
 
-  // Comments
+  // _____________________________________________________________________________________________________________________
+  // -------------------------------------------------Comments------------------------------------------------------------
+  // *********************************************************************************************************************
 
   const getRelatedTattoos = async (idContent, page) => {
     try {
@@ -67,7 +71,7 @@ const useTattoboxTattoos = () => {
   const setCommentTattoo = async (body, page) => {
     try {
       const { data } = await tattoApiSocial.post(
-        "/v1/comentario",
+        '/v1/comentario',
         body,
         config
       );
@@ -102,11 +106,13 @@ const useTattoboxTattoos = () => {
     }
   };
 
-  // actions tatttoo
+  // _____________________________________________________________________________________________________________________
+  // -------------------------------------------------Actions------------------------------------------------------------
+  // *********************************************************************************************************************
 
   const likeTattoo = async (body) => {
     try {
-      await tattoApiSocial.post("/v1/contenido/item", body, config);
+      await tattoApiSocial.post('/v1/contenido/item', body, config);
     } catch (error) {
       const errorMessage = error?.message;
       // toast.error(`${errorMessage}`, {
@@ -115,13 +121,40 @@ const useTattoboxTattoos = () => {
     }
   };
 
-  const deleteWithBodyAndConfig = async (url, data) => {
+  const deleteLikeWithBodyAndConfig = async (url, data) => {
     return tattoApiSocial.delete(url, { data, ...config });
   };
 
   const dislikeTattoo = async (body) => {
     try {
-      await deleteWithBodyAndConfig("/v1/contenido/item", body);
+      await deleteLikeWithBodyAndConfig('/v1/contenido/item', body);
+    } catch (error) {
+      console.log(error);
+      const errorMessage = error?.message;
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
+    }
+  };
+
+  const saveFavorites = async (body) => {
+    try {
+      await tattoApiSocial.post('/v1/favoritos', body, config);
+    } catch (error) {
+      const errorMessage = error?.message;
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
+    }
+  };
+
+  const removeFavoritesWithBodyAndConfig = async (url, data) => {
+    return tattoApiSocial.delete(url, { data, ...config });
+  };
+
+  const removeFavorites = async (body) => {
+    try {
+      await removeFavoritesWithBodyAndConfig('/v1/contenido/item', body);
     } catch (error) {
       console.log(error);
       const errorMessage = error?.message;
@@ -144,6 +177,8 @@ const useTattoboxTattoos = () => {
     relatedTattoosAllData,
     likeTattoo,
     dislikeTattoo,
+    saveFavorites,
+    removeFavorites,
   };
 };
 

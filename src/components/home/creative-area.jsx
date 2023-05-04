@@ -1,12 +1,12 @@
-import React from "react";
-import useModal from "../../../hooks/use-modal";
-import VideoModal from "../../common/modals/modal-video";
+import React from 'react';
+import useModal from '../../hooks/use-modal';
+import VideoModal from '../common/modals/modal-video';
 
 const creative_contents = {
-  shape_1: "/assets/img/hero/shape-2.png",
+  shape_1: '/assets/img/hero/shape-2.png',
   creative_shapes: [
-    { img: "/assets/img/creative/creative-hand.png" },
-    { img_2: "-2", img: "/assets/img/creative/creative-circle-img.png" },
+    { img: '/assets/img/creative/creative-hand.png' },
+    { img_2: '-2', img: '/assets/img/creative/creative-circle-img.png' },
   ],
   title: (
     <>
@@ -14,34 +14,34 @@ const creative_contents = {
       design, build, ship and scale your vision in the most efficient way.
     </>
   ),
-  video_id: "PO_fBTkoznc",
-  video_title: "Play Take a look behind the scenes",
+  video_id: 'PO_fBTkoznc',
+  video_title: 'Play Take a look behind the scenes',
   creative_box: [
     {
       id: 1,
-      duration: ".3s",
-      delay: ".6s",
-      icon: "flaticon-satisfaction",
-      box_title: "100%",
-      box_text: "Client Satisfaction",
+      duration: '.3s',
+      delay: '.6s',
+      icon: 'flaticon-satisfaction',
+      box_title: '100%',
+      box_text: 'Client Satisfaction',
     },
     {
       id: 2,
-      duration: ".5s",
-      delay: ".8s",
-      color: "tp-creative-blue",
-      icon: "flaticon-clipboard",
-      box_title: "1200+",
-      box_text: "Complete Project",
+      duration: '.5s',
+      delay: '.8s',
+      color: 'tp-creative-blue',
+      icon: 'flaticon-clipboard',
+      box_title: '1200+',
+      box_text: 'Complete Project',
     },
     {
       id: 3,
-      duration: ".7s",
-      delay: "1s",
-      color: "tp-creative-pink",
-      icon: "flaticon-setting",
-      box_title: "1800+",
-      box_text: "Design Resource",
+      duration: '.7s',
+      delay: '1s',
+      color: 'tp-creative-pink',
+      icon: 'flaticon-setting',
+      box_title: '1800+',
+      box_text: 'Design Resource',
     },
   ],
 };
@@ -53,11 +53,11 @@ const CreativeArea = () => {
   const { isVideoOpen, setIsVideoOpen } = useModal();
   return (
     <>
-      <div className="p-relative">
-        <div className="shape-two z-index-1">
+      <div className='p-relative'>
+        <div className='shape-two z-index-1'>
           {/* <img src={shape_1} alt="" /> */}
         </div>
-        <div className="tp-creative-area p-relative bg-gray pt-140 pb-135 fix">
+        <div className='tp-creative-area p-relative bg-gray pt-140 pb-135 fix'>
           {/* <div className="circle-animation testimonial">
             <span className="tp-circle-1"></span>
             <span className="tp-circle-2"></span>
@@ -70,19 +70,19 @@ const CreativeArea = () => {
               <img src={s.img} alt="" />
             </div>
           ))} */}
-          <div className="container creative-z-index ">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="tp-creative-box text-center">
-                  <div className="tp-creative-content mb-110">
-                    <h4 className="tp-creative-title">{title}</h4>
+          <div className='container creative-z-index '>
+            <div className='row'>
+              <div className='col-lg-12'>
+                <div className='tp-creative-box text-center'>
+                  <div className='tp-creative-content mb-110'>
+                    <h4 className='tp-creative-title'>{title}</h4>
                   </div>
-                  <div className="tp-play-button mb-150">
+                  <div className='tp-play-button mb-150'>
                     <button
-                      className="popup-video"
+                      className='popup-video'
                       onClick={() => setIsVideoOpen(true)}
                     >
-                      <i className="fal fa-play"></i>
+                      <i className='fal fa-play'></i>
                     </button>
                     <span>{video_title}</span>
                   </div>
