@@ -65,8 +65,12 @@ export const SliderTattoo = ({ data, loading, title, link }) => {
                 {data.map((tattoo, i) => (
                   <SwiperSlide key={i}>
                     <Link
-                      href='/tatuajes/[id]'
-                      as={`/tatuajes/${tattoo?.IdContenido}`}
+                      href={tattoo?.IdContenido ? `/${link}/[id]` : `/${link}`}
+                      as={
+                        tattoo?.IdContenido
+                          ? `/${link}/${tattoo?.IdContenido}`
+                          : `/${link}`
+                      }
                     >
                       <a>
                         <CardTattoo tattoo={tattoo} />

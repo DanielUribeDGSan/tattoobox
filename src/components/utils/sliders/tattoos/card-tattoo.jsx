@@ -12,7 +12,12 @@ export const CardTattoo = ({ tattoo }) => {
     setImageLoading({ src: url, loading: false });
   };
 
-  const imageTattoo = tattoo?.UrlImagen || tattoo?.Avatar;
+  const notImage = '/assets/img/tatuajes/tatoobox-not-image.webp';
+
+  const imageTattoo =
+    tattoo?.Avatar === 'default.png'
+      ? notImage
+      : tattoo?.UrlImagen || tattoo?.Avatar || notImage;
   const titleTattoo = tattoo?.Cuerpo || tattoo?.UserName;
   const subTitleTattoo = tattoo?.EstiloTatuaje || tattoo?.Estado;
 

@@ -33,6 +33,7 @@ const Home = () => {
   //     />
   //   );
   // }
+
   return (
     <Wrapper>
       <Header />
@@ -42,13 +43,19 @@ const Home = () => {
         data={newest}
         loading={isLoading}
         title={'Lo más nuevo'}
-        link={'/tatuajes'}
+        link={'tatuajes'}
       />
       <SliderTattoo
         data={artist}
         loading={isLoading}
         title={'Artistas'}
-        link={'/artistas'}
+        link={'artistas'}
+      />
+      <SliderTattoo
+        data={studies}
+        loading={isLoading}
+        title={'Estudios'}
+        link={'estudios'}
       />
 
       <CreativeArea />
