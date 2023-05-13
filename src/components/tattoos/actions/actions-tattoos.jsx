@@ -14,7 +14,8 @@ export const ActionsTattoos = ({
   idContent,
   setActionsState,
 }) => {
-  const { likeTattoo, dislikeTattoo, saveFavorites } = useTattoboxTattoos();
+  const { likeTattoo, dislikeTattoo, saveFavorites, deleteFavorites } =
+    useTattoboxTattoos();
 
   const handleClickLikeTattoo = async () => {
     const body = {
@@ -48,11 +49,17 @@ export const ActionsTattoos = ({
     setActionsState(true);
   };
 
+  const handleClickRemoveFavoriteTattoo = async (idFavorite) => {
+    const body = {
+      IdFavorito: idFavorite,
+    };
+
+    await deleteFavorites(body);
+    setActionsState(true);
+  };
+
   return (
-    <div
-      className='actions-tatuaje'
-      style={style}
-    >
+    <div className='actions-tatuaje' style={style}>
       <div className='row grid gx-3'>
         <div className='col-xl-6 col-lg-6 col-md-6 col-6 d-flex align-items-center justify-content-start'>
           <span className='precio text-black'>
@@ -81,13 +88,26 @@ export const ActionsTattoos = ({
           )}
 
           <ShareIcon sx={{ color: 'var(--tp-common-black)' }} />
-          <button
-            onClick={handleClickSaveFavoriteTattoo}
-            className='d-flex align-items-center'
-            aria-label='dar likes a tatuajes'
-          >
-            <BookmarkBorderIcon sx={{ color: 'var(--tp-common-black)' }} />
-          </button>
+
+          {!content?.Favorito ? (
+            <button
+              onClick={handleClickSaveFavoriteTattoo}
+              className='d-flex align-items-center'
+              aria-label='dar likes a tatuajes'
+            >
+              <BookmarkBorderIcon sx={{ color: 'var(--tp-common-black)' }} />
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                handleClickRemoveFavoriteTattoo(content?.IdFavorito)
+              }
+              className='d-flex align-items-center'
+              aria-label='dar likes a tatuajes'
+            >
+              <BookmarkIcon sx={{ color: 'var(--tp-common-black)' }} />
+            </button>
+          )}
         </div>
       </div>
     </div>

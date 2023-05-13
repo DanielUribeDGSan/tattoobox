@@ -24,6 +24,7 @@ export const useUserProfile = () => {
         `/v1/perfil/estudio/${profileId}`,
         config
       );
+      console.log(data);
       const profile = data.perfil;
       setProfileStudio(profile);
       setIsLoading(false);
@@ -38,6 +39,7 @@ export const useUserProfile = () => {
         `/v1/perfil/artista/${artistId}`,
         config
       );
+      console.log(data);
       const profile = data.perfil;
       setProfileArtist(profile);
       setIsLoading(false);

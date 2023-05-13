@@ -22,6 +22,8 @@ const ProfileArea = () => {
     }
   };
 
+  console.log(profileArtist, profileStudio);
+
   useEffect(() => {
     let isActive = true;
 

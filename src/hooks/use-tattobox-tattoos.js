@@ -149,6 +149,19 @@ const useTattoboxTattoos = () => {
     }
   };
 
+  const deleteFavorites = async (body) => {
+    try {
+      const { data } = await tattoApiSocial.put('/v1/favoritos', body, config);
+      console.log(data);
+    } catch (error) {
+      const errorMessage = error?.message;
+      // toast.error(`${errorMessage}`, {
+      //   position: "top-left",
+      // });
+    }
+  };
+
+
   const removeFavoritesWithBodyAndConfig = async (url, data) => {
     return tattoApiSocial.delete(url, { data, ...config });
   };
@@ -179,6 +192,7 @@ const useTattoboxTattoos = () => {
     likeTattoo,
     dislikeTattoo,
     saveFavorites,
+    deleteFavorites,
     removeFavorites,
   };
 };
