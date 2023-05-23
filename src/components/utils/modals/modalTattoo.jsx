@@ -103,11 +103,7 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
     >
       <div className='modal-dialog modal-fullscreen'>
         <div className='modal-content'>
-          <div
-            className='modal-body pt-50'
-            id='infiniteScroll'
-            ref={modalBody}
-          >
+          <div className='modal-body pt-50' id='infiniteScroll' ref={modalBody}>
             <button
               type='button'
               className='btn-close'
@@ -197,6 +193,7 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
                               user={user}
                               idContent={idContent}
                               setActionsState={setActionsState}
+                              handleOnClickCloseModal={handleOnClickCloseModal}
                               style={{
                                 marginTop: '15px',
                                 marginBottom: '15px',
@@ -205,6 +202,7 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
                             <TabCommentsTattoos
                               idContent={idContent}
                               user={user}
+                              handleOnClickCloseModal={handleOnClickCloseModal}
                             />
                           </div>
                         </div>

@@ -26,6 +26,7 @@ export const TabCommentsTattoos = ({
   relatedTattoos = [],
   setShownModal,
   user,
+  handleOnClickCloseModal,
 }) => {
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
 
@@ -91,13 +92,11 @@ export const TabCommentsTattoos = ({
               />
             </div>
           </TabPanel>
-          <TabPanel
-            value='2'
-            sx={{ padding: 0, marginBottom: '30px' }}
-          >
+          <TabPanel value='2' sx={{ padding: 0, marginBottom: '30px' }}>
             <CommentsTattoo
               idContent={idContent}
               user={user}
+              handleOnClickCloseModal={handleOnClickCloseModal}
             />
           </TabPanel>
         </TabContext>

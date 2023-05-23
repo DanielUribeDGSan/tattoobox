@@ -12,7 +12,7 @@ const ArtistMain = () => {
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper classPage='page-artist'>
       <Header />
       <BreadcrumbSmall title={''} />
       <ArtistItems />

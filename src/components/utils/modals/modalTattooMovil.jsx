@@ -111,11 +111,7 @@ export const ModalTattooMovil = ({
     >
       <div className='modal-dialog modal-fullscreen'>
         <div className='modal-content'>
-          <div
-            className='modal-body'
-            id='infiniteScroll'
-            ref={modalBody}
-          >
+          <div className='modal-body' id='infiniteScroll' ref={modalBody}>
             <div className='content-movil'>
               <>
                 <BtnSliderTattoo
@@ -194,6 +190,7 @@ export const ModalTattooMovil = ({
                       user={user}
                       idContent={idContent}
                       setActionsState={setActionsState}
+                      handleOnClickCloseModal={handleOnClickCloseModal}
                       style={{
                         marginTop: '15px',
                       }}
@@ -237,6 +234,7 @@ export const ModalTattooMovil = ({
                               user={user}
                               relatedTattoos={relatedTattoos}
                               setShownModal={setShownModal}
+                              handleOnClickCloseModal={handleOnClickCloseModal}
                             />
                           </div>
                         </div>

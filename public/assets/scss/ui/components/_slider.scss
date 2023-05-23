@@ -1,4 +1,4 @@
-@use "../utils" as *;
+@use "../../utils" as *;
 
 .swiper-button-next.swiper-button-disabled,
 .swiper-button-prev.swiper-button-disabled {
@@ -34,6 +34,11 @@
     font-size: 0.7rem !important;
   }
 }
+
+.swiper-button-next, .swiper-rtl .swiper-button-prev{
+  right: 10px !important;
+}
+
 .tp-tattoo-slider-section {
   & .swiper-slide {
     border-radius: 20px;

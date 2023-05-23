@@ -3,14 +3,11 @@ import Box from '@mui/material/Box';
 import Masonry from '@mui/lab/Masonry';
 import Image from 'mui-image';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { ModalTattoo } from '../modals/modalTattoo';
-import { ModalTattooMovil } from '../modals/modalTattooMovil';
+import { CardArtistGrid } from '../../artists/components/CardArtistGrid';
 
 export const GridMansoryArtist = ({ data, user = {}, idContentRoute = '' }) => {
   const btnModal = useRef(null);
   const [openModal, setOpenModal] = useState(false);
-  const [idContent, setIdContent] = useState('');
-  const [idContentStatic, setidContentStatic] = useState('');
   const matches = useMediaQuery('(max-width:800px)');
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
 
@@ -19,16 +16,7 @@ export const GridMansoryArtist = ({ data, user = {}, idContentRoute = '' }) => {
     setidContentStatic(idContent);
     btnModal.current.click();
   };
-
-  //   useEffect(() => {
-  //     if (idContentRoute) {
-  //       setIdContent(idContentRoute);
-  //       if (!openModal) {
-  //         handleSowTatuaje(idContentRoute);
-  //         setOpenModal(true);
-  //       }
-  //     }
-  //   }, [idContentRoute]);
+  console.log(data);
 
   return (
     <>
@@ -41,16 +29,24 @@ export const GridMansoryArtist = ({ data, user = {}, idContentRoute = '' }) => {
       />
       <Box sx={{ width: '100%', minHeight: 400 }}>
         <Masonry
-          columns={matches ? 2 : 4}
+          columns={matches ? 1 : 2}
           spacing={2}
           sx={{
             marginRight: movilIpadaScreen && 0,
             marginLeft: movilIpadaScreen && 0,
           }}
         >
-          {data.map((item, index) => (
-            <div key={index}>
-              <Image
+          {data.map((item, index) => {
+            return item.Tatuajes.length > 0 ? (
+              <div key={index}>
+                <CardArtistGrid
+                  tatoos={item.Tatuajes}
+                  name={item.NombrePerfil}
+                  avatar={item.Avatar}
+                  state={item.Estado}
+                />
+
+                {/* <Image
                 onClick={() => {
                   //   handleSowTatuaje(item.IdContenido);
                 }}
@@ -70,9 +66,12 @@ export const GridMansoryArtist = ({ data, user = {}, idContentRoute = '' }) => {
                   boxShadow: '0 3px 10px 0 rgba(0, 0, 0, 0.16)',
                   cursor: 'pointer',
                 }}
-              />
-            </div>
-          ))}
+              /> */}
+              </div>
+            ) : (
+              <></>
+            );
+          })}
         </Masonry>
       </Box>
 

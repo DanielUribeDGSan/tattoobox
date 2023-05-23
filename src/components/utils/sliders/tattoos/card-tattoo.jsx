@@ -34,7 +34,7 @@ export const CardTattoo = ({ tattoo }) => {
             }}
           />
         )}
-        <Image
+        <img
           className='img-fluid '
           src={imageTattoo}
           alt='tattoobox'
@@ -58,7 +58,7 @@ export const CardTattoo = ({ tattoo }) => {
                 }}
               />
             )}
-            <Image
+            <img
               className='img-fluid'
               src={imageTattoo}
               alt='tattoobox'

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -6,6 +6,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import useTattoboxTattoos from '../../../hooks/use-tattobox-tattoos';
+import { PopoverNotLogin } from '../../utils/popover/PopoverNotLogin';
 
 export const ActionsTattoos = ({
   content,
@@ -13,9 +14,20 @@ export const ActionsTattoos = ({
   user,
   idContent,
   setActionsState,
+  handleOnClickCloseModal,
 }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
   const { likeTattoo, dislikeTattoo, saveFavorites, deleteFavorites } =
     useTattoboxTattoos();
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleClickLikeTattoo = async () => {
     const body = {
@@ -69,7 +81,7 @@ export const ActionsTattoos = ({
         <div className='col-xl-6 col-lg-6 col-md-6 col-6 d-flex align-items-center actions-icons'>
           {content?.DioLike === 0 ? (
             <button
-              onClick={handleClickLikeTattoo}
+              onClick={user?.email ? handleClickLikeTattoo : handleClick}
               className='d-flex align-items-center'
               aria-label='dar likes a tatuajes'
             >
@@ -78,7 +90,7 @@ export const ActionsTattoos = ({
             </button>
           ) : (
             <button
-              onClick={handleClickDislikeTattoo}
+              onClick={user?.email ? handleClickDislikeTattoo : handleClick}
               className='d-flex align-items-center'
               aria-label='dar likes a tatuajes'
             >
@@ -91,7 +103,9 @@ export const ActionsTattoos = ({
 
           {!content?.Favorito ? (
             <button
-              onClick={handleClickSaveFavoriteTattoo}
+              onClick={
+                user?.email ? handleClickSaveFavoriteTattoo : handleClick
+              }
               className='d-flex align-items-center'
               aria-label='dar likes a tatuajes'
             >
@@ -100,7 +114,9 @@ export const ActionsTattoos = ({
           ) : (
             <button
               onClick={() =>
-                handleClickRemoveFavoriteTattoo(content?.IdFavorito)
+                user?.email
+                  ? handleClickRemoveFavoriteTattoo(content?.IdFavorito)
+                  : handleClick
               }
               className='d-flex align-items-center'
               aria-label='dar likes a tatuajes'
@@ -110,6 +126,11 @@ export const ActionsTattoos = ({
           )}
         </div>
       </div>
+      <PopoverNotLogin
+        anchorEl={anchorEl}
+        handleClose={handleClose}
+        handleOnClickCloseModal={handleOnClickCloseModal}
+      />
     </div>
   );
 };
