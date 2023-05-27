@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useRef } from 'react';
+import React, { useRef, useCallback, useEffect, useState } from 'react';
+
 import useTattoboxTattoos from '../../../hooks/use-tattobox-tattoos';
 import { InformationTattoo } from '../../tattoos/information/information-tattoo';
 import CloseIcon from '@mui/icons-material/Close';
@@ -25,6 +25,7 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
   const modalBody = useRef();
 
   const { getContentTattoo, contentTattoo, isLoading } = useTattoboxTattoos();
+  const memoizedGetContentTattoo = useCallback(getContentTattoo, []);
 
   const images = [contentTattoo?.UrlImagen];
 
@@ -55,14 +56,6 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
 
     const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
     modalBackdrop.remove();
-
-    const body = document.getElementsByTagName('body')[0];
-    body.style = 'backgroud-color:red';
-  };
-
-  const getData = async () => {
-    await getContentTattoo(idContent, user?.idPerfil);
-    setShownModal(true);
   };
 
   const scrollTop = () => {
@@ -71,6 +64,10 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
 
   useEffect(() => {
     let isActive = true;
+    const getData = async () => {
+      await memoizedGetContentTattoo(idContent, user?.idPerfil);
+      setShownModal(true);
+    };
 
     if (idContent && isActive) {
       getData();
@@ -83,6 +80,10 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
 
   useEffect(() => {
     let isActive = true;
+    const getData = async () => {
+      await memoizedGetContentTattoo(idContent, user?.idPerfil);
+      setShownModal(true);
+    };
 
     if (idContent && isActive) {
       getData();

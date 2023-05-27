@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { TabUser } from './menu/tab-user';
 import { BannerUser } from './profile-content/banner-user';
 import { useUserProfile } from '../../hooks/use-profile';
@@ -14,18 +14,21 @@ const ProfileArea = () => {
     profileStudio,
   } = useUserProfile();
 
-  const getData = async () => {
-    if (user?.idTipoPerfil <= 2) {
-      await getProfileInfoArtist(user?.idPerfil);
-    } else {
-      await getProfileInfoStudio(user?.idPerfil);
-    }
-  };
-
   console.log(profileArtist, profileStudio);
+
+  const memoizedGetProfileInfoArtist = useCallback(getProfileInfoArtist, []);
+  const memoizedGetProfileInfoStudio = useCallback(getProfileInfoStudio, []);
 
   useEffect(() => {
     let isActive = true;
+
+    const getData = async () => {
+      if (user?.idTipoPerfil <= 2) {
+        await memoizedGetProfileInfoArtist(user?.idPerfil);
+      } else {
+        await memoizedGetProfileInfoStudio(user?.idPerfil);
+      }
+    };
 
     if (user?.email && isActive) {
       getData();
@@ -34,7 +37,7 @@ const ProfileArea = () => {
     return () => {
       isActive = false;
     };
-  }, [isLoadingUser, user?.idPerfil]);
+  }, [isLoadingUser, user?.email, user?.idTipoPerfil]);
 
   return (
     <>

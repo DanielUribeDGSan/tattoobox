@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -12,6 +12,7 @@ import { GridMansory } from '../../utils/mansory/grid-mansory';
 
 const TattoItems = () => {
   // Hooks
+  const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
   const { user, isLoadingUser } = useUser();
   const [searchState, setSearchState] = useState('');
@@ -28,6 +29,8 @@ const TattoItems = () => {
 
   // Custom hooks
   const { getTattoos } = useTattoBoxFilters();
+  const memoizedGetTattoos = useCallback(getTattoos, []);
+
   const { isLoading, dataStateCountry, dataStyles, dataPrices } =
     useTattoBoxFormDataFilters();
 
@@ -45,7 +48,7 @@ const TattoItems = () => {
       styleState,
       priceState,
     ],
-    queryFn: getTattoos,
+    queryFn: memoizedGetTattoos,
   });
 
   if (error && isError)

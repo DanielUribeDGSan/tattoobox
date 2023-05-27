@@ -1,5 +1,4 @@
-import React, { memo, useEffect, useState, useRef } from 'react';
-import ReactDOM from 'react-dom';
+import React, { memo, useEffect, useState, useRef, useCallback } from 'react';
 import useTattoboxTattoos from '../../../hooks/use-tattobox-tattoos';
 import { InformationTattoo } from '../../tattoos/information/information-tattoo';
 import CloseIcon from '@mui/icons-material/Close';
@@ -34,6 +33,7 @@ export const ModalTattooMovil = ({
     relatedTattoos,
     isLoading,
   } = useTattoboxTattoos();
+  const memoizedGetContentTattoo = useCallback(getContentTattoo, []);
 
   const images = [contentTattoo?.UrlImagen];
 
@@ -68,7 +68,7 @@ export const ModalTattooMovil = ({
   };
 
   const getData = async () => {
-    await getContentTattoo(idContent, user?.idPerfil);
+    await memoizedGetContentTattoo(idContent, user?.idPerfil);
     await getRelatedTattoos(idContent, 1);
     setShownModal(true);
   };

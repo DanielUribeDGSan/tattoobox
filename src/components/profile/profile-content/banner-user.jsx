@@ -6,7 +6,7 @@ import { ProfileActions } from '../menu/profile-actions';
 
 export const BannerUser = ({ dataProfile, user }) => {
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
-  console.log(dataProfile);
+
   if (dataProfile?.length === 0)
     return <p className='text-black'>Cargando...</p>;
 

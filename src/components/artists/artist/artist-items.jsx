@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -28,6 +28,8 @@ const ArtistItems = () => {
 
   // Custom hooks
   const { getArtist } = useTattoBoxFilters();
+  const memoizedGetArtist = useCallback(getArtist, []);
+
   const { isLoading, dataStateCountry, dataStyles, dataPrices } =
     useTattoBoxFormDataFilters();
 
@@ -38,7 +40,7 @@ const ArtistItems = () => {
     error,
   } = useQuery({
     queryKey: ['artists', page, searchState, stateCountryState, styleState],
-    queryFn: getArtist,
+    queryFn: memoizedGetArtist,
   });
   console.log(artistData);
 

@@ -19,7 +19,7 @@ const menu_data = [
     mega_menu: false,
     has_dropdown: false,
     title: 'Tatuajes',
-    link: '/tatuajes',
+    link: '/tatuajes/all',
   },
   {
     id: 2,

@@ -31,7 +31,7 @@
 }
 
 /*---------------------------------
-	typography css start 
+	typography css start
 ---------------------------------*/
 body {
   background-color: var(--tp-theme-white);
@@ -41,7 +41,7 @@ body {
   color: var(--tp-text-body);
   line-height: 25px;
   overflow-x: hidden !important;
-  overflow-y: auto !important;
+  // overflow-y: auto !important;
 }
 
 a {
@@ -211,7 +211,7 @@ input[type='color'] {
 }
 
 /*---------------------------------
-    common classes css start 
+    common classes css start
 ---------------------------------*/
 
 .w-img {

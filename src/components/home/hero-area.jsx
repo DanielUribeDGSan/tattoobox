@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const hero_contents = {
-  title: "Encuentra el artista adecuado",
+  title: 'Encuentra el artista adecuado',
   text: (
     <>
       Porque hacerse un tatuaje debe ser una gran experiencia. Trabajamos solo
@@ -12,37 +12,37 @@ const hero_contents = {
       artista adecuado para tu idea.
     </>
   ),
-  btn_text: "Encontrar mi tatuaje",
-  btn_text_2: "About Collax",
-  hero_img: "/assets/img/hero/iphone-14-pro-max.png",
+  btn_text: 'Encontrar mi tatuaje',
+  btn_text_2: 'About Collax',
+  hero_img: '/assets/img/hero/iphone-14-pro-max.png',
 };
 
 const { title, text, btn_text, btn_text_2, social_links, hero_img } =
   hero_contents;
 
 const HeroArea = () => {
-  const movilIpadaScreen = useMediaQuery("(max-width:1000px)");
+  const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
 
   return (
-    <div className="tp-hero-area tp-hero-space p-relative z-index-1 fix">
-      <div className="tp-hero-shape">
-        <div className="shape-circle-yellow d-none"></div>
+    <div className='tp-hero-area tp-hero-space p-relative z-index-1 fix'>
+      <div className='tp-hero-shape'>
+        <div className='shape-circle-yellow d-none'></div>
         {/* <div className="shape-circle-blue"></div> */}
-        <div className="shape-one">
+        <div className='shape-one'>
           {/* <img src="/assets/img/hero/hero-girl-1.png" alt="" /> */}
         </div>
       </div>
-      <div className="tp-hero-wapper">
-        <div className="container">
-          <div className="row align-items-start">
-            <div className="col-xl-7 col-lg-7 ">
-              <div className="tp-hero-content">
-                <div className="tp-hero-text">
-                  <h2 className="tp-hero-title ">{title}</h2>
+      <div className='tp-hero-wapper'>
+        <div className='container'>
+          <div className='row align-items-start'>
+            <div className='col-xl-7 col-lg-7 '>
+              <div className='tp-hero-content'>
+                <div className='tp-hero-text'>
+                  <h2 className='tp-hero-title '>{title}</h2>
                   <p>{text}</p>
-                  <div className="tp-hero-button mb-140 ">
-                    <Link href="/tatuajes">
-                      <a className="tp-btn mr-30">{btn_text}</a>
+                  <div className='tp-hero-button mb-140 '>
+                    <Link href='/tatuajes/all'>
+                      <a className='tp-btn mr-30'>{btn_text}</a>
                     </Link>
                     {/* <Link href="/about-me">
                       <a className="tp-btn-grey">{btn_text_2}
@@ -52,29 +52,29 @@ const HeroArea = () => {
                 </div>
               </div>
               {!movilIpadaScreen && (
-                <div className="tp-hero-social pb-30 d-none-movil">
-                  <div className="tp-hero-social bp-hero-social row m-0">
-                    <div className="col-6 d-flex align-items-center justify-content-center">
-                      <div className="img">
+                <div className='tp-hero-social pb-30 d-none-movil'>
+                  <div className='tp-hero-social bp-hero-social row m-0'>
+                    <div className='col-6 d-flex align-items-center justify-content-center'>
+                      <div className='img'>
                         <Image
-                          className="img-fluid"
-                          src="/assets/img/store/google-play-logo.png"
-                          alt="google play store"
-                          layout="fill"
-                          objectFit="contain"
-                          loading="lazy"
+                          className='img-fluid'
+                          src='/assets/img/store/google-play-logo.png'
+                          alt='google play store'
+                          layout='fill'
+                          objectFit='contain'
+                          loading='lazy'
                         />
                       </div>
                     </div>
-                    <div className="col-6 d-flex align-items-center justify-content-center">
-                      <div className="img">
+                    <div className='col-6 d-flex align-items-center justify-content-center'>
+                      <div className='img'>
                         <Image
-                          className="img-fluid"
-                          src="/assets/img/store/Apple_Store.png"
-                          alt="apple store"
-                          layout="fill"
-                          objectFit="contain"
-                          loading="lazy"
+                          className='img-fluid'
+                          src='/assets/img/store/Apple_Store.png'
+                          alt='apple store'
+                          layout='fill'
+                          objectFit='contain'
+                          loading='lazy'
                         />
                       </div>
                     </div>
@@ -82,13 +82,13 @@ const HeroArea = () => {
                 </div>
               )}
             </div>
-            <div className="col-xl-5 col-lg-5 d-flex justify-content-center position-relative phone-video">
+            <div className='col-xl-5 col-lg-5 d-flex justify-content-center position-relative phone-video'>
               {!movilIpadaScreen ? (
-                <div style={{ position: "relative" }}>
-                  <Image src={hero_img} alt="iPhone" width={331} height={596} />
-                  <div className="video-container">
+                <div style={{ position: 'relative' }}>
+                  <Image src={hero_img} alt='iPhone' width={331} height={596} />
+                  <div className='video-container'>
                     <video
-                      src="/assets/videos/tattoobox.mp4"
+                      src='/assets/videos/tattoobox.mp4'
                       autoPlay={true}
                       playsInline
                       muted
@@ -98,16 +98,16 @@ const HeroArea = () => {
                 </div>
               ) : (
                 <>
-                  <div style={{ position: "relative" }}>
+                  <div style={{ position: 'relative' }}>
                     <Image
                       src={hero_img}
-                      alt="iPhone"
+                      alt='iPhone'
                       width={231}
                       height={400}
                     />
-                    <div className="video-container">
+                    <div className='video-container'>
                       <video
-                        src="/assets/videos/tattoobox.mp4"
+                        src='/assets/videos/tattoobox.mp4'
                         autoPlay={true}
                         playsInline
                         muted
@@ -144,32 +144,32 @@ const HeroArea = () => {
             </div> */}
             {movilIpadaScreen && (
               <div
-                className="tp-hero-social pb-30 d-none-lg"
-                data-wow-duration=".7s"
-                data-wow-delay="1.2s"
+                className='tp-hero-social pb-30 d-none-lg'
+                data-wow-duration='.7s'
+                data-wow-delay='1.2s'
               >
-                <div className="tp-hero-social bp-hero-social row m-0">
-                  <div className="col-6 d-flex align-items-center justify-content-center">
-                    <div className="img">
+                <div className='tp-hero-social bp-hero-social row m-0'>
+                  <div className='col-6 d-flex align-items-center justify-content-center'>
+                    <div className='img'>
                       <Image
-                        className="img-fluid"
-                        src="/assets/img/store/google-play-logo.png"
-                        alt="google play store"
-                        layout="fill"
-                        objectFit="contain"
-                        loading="lazy"
+                        className='img-fluid'
+                        src='/assets/img/store/google-play-logo.png'
+                        alt='google play store'
+                        layout='fill'
+                        objectFit='contain'
+                        loading='lazy'
                       />
                     </div>
                   </div>
-                  <div className="col-6 d-flex align-items-center justify-content-center">
-                    <div className="img">
+                  <div className='col-6 d-flex align-items-center justify-content-center'>
+                    <div className='img'>
                       <Image
-                        className="img-fluid"
-                        src="/assets/img/store/Apple_Store.png"
-                        alt="apple store"
-                        layout="fill"
-                        objectFit="contain"
-                        loading="lazy"
+                        className='img-fluid'
+                        src='/assets/img/store/Apple_Store.png'
+                        alt='apple store'
+                        layout='fill'
+                        objectFit='contain'
+                        loading='lazy'
                       />
                     </div>
                   </div>

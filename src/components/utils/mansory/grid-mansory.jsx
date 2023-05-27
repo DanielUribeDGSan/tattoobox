@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import Box from '@mui/material/Box';
 import Masonry from '@mui/lab/Masonry';
 import Image from 'mui-image';
@@ -7,6 +8,7 @@ import { ModalTattoo } from '../modals/modalTattoo';
 import { ModalTattooMovil } from '../modals/modalTattooMovil';
 
 export const GridMansory = ({ data, user = {}, idContentRoute = '' }) => {
+  const router = useRouter();
   const btnModal = useRef(null);
   const [openModal, setOpenModal] = useState(false);
   const [idContent, setIdContent] = useState('');
@@ -14,14 +16,24 @@ export const GridMansory = ({ data, user = {}, idContentRoute = '' }) => {
   const matches = useMediaQuery('(max-width:800px)');
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
 
+  const updateParameter = (idContent) => {
+    const { pathname, query } = router;
+    const parameterExists = query.hasOwnProperty('id');
+    if (parameterExists) {
+      query.id = idContent;
+      router.replace({ pathname, query });
+    }
+  };
+
   const handleSowTatuaje = (idContent) => {
     setIdContent(idContent);
     setidContentStatic(idContent);
+    updateParameter(idContent);
     btnModal.current.click();
   };
 
   useEffect(() => {
-    if (idContentRoute) {
+    if (idContentRoute && idContentRoute != 'all') {
       setIdContent(idContentRoute);
       if (!openModal) {
         handleSowTatuaje(idContentRoute);

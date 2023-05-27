@@ -11,6 +11,7 @@ export const GridMansoryNotModalTattoo = ({
   data = [],
   idContent,
   setShownModal,
+  idContentTattoo,
 }) => {
   const matches = useMediaQuery('(max-width:800px)');
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');

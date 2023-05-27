@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { FooterThree, Header, Wrapper } from "../../../layout";
-import { animationCreate } from "../../../utils/utils";
-import BreadcrumbSmall from "../../common/breadcrumb/breadcrumbSmal";
-import TattoItems from "./tattoo-items";
+import React, { useEffect } from 'react';
+import { Header, Wrapper } from '../../../layout';
+import { animationCreate } from '../../../utils/utils';
+import BreadcrumbSmall from '../../common/breadcrumb/breadcrumbSmal';
+import TattoItems from './tattoo-items';
 
 const TattooMain = () => {
   useEffect(() => {
@@ -14,7 +14,7 @@ const TattooMain = () => {
   return (
     <Wrapper>
       <Header />
-      <BreadcrumbSmall title={""} />
+      <BreadcrumbSmall title={''} />
       <TattoItems />
       {/* <FooterThree /> */}
     </Wrapper>
