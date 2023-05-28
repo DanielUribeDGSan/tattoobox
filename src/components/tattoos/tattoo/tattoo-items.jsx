@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -12,8 +12,10 @@ import { GridMansory } from '../../utils/mansory/grid-mansory';
 
 const TattoItems = () => {
   // Hooks
-  const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
+  const { id: idContentRoute } = router.query;
+  const [openModal, setOpenModal] = useState(false);
+  const btnModal = useRef(null);
   const { user, isLoadingUser } = useUser();
   const [searchState, setSearchState] = useState('');
   const [stateCountryState, setStateCountryState] = useState('');
@@ -24,8 +26,6 @@ const TattoItems = () => {
   const [showPage, setShowPage] = useState(true);
 
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
-
-  const { id: idContentRoute } = router.query;
 
   // Custom hooks
   const { getTattoos } = useTattoBoxFilters();
@@ -51,6 +51,12 @@ const TattoItems = () => {
     queryFn: memoizedGetTattoos,
   });
 
+  useEffect(() => {
+    if (idContentRoute !== 'all') {
+      setOpenModal(true);
+    }
+  }, [idContentRoute]);
+
   if (error && isError)
     return (
       <p className='text-black'>
@@ -64,6 +70,13 @@ const TattoItems = () => {
 
   return (
     <>
+      <button
+        data-bs-toggle='modal'
+        data-bs-target='#tatuajeModal'
+        className='d-none'
+        aria-label='mostrar modal de tatuajes'
+        ref={btnModal}
+      />
       <div
         className='tp-portfolio-area pt-50 pb-100 p-custom p-relative'
         style={{ paddingTop: movilIpadaScreen ? '20px' : '50px' }}
@@ -132,7 +145,9 @@ const TattoItems = () => {
                 <GridMansory
                   data={tattoos}
                   user={user}
+                  openModal={openModal}
                   idContentRoute={idContentRoute}
+                  setOpenModal={setOpenModal}
                 />
               </>
             )}

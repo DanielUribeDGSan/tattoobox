@@ -11,7 +11,8 @@ export const GridMansoryNotModalTattoo = ({
   data = [],
   idContent,
   setShownModal,
-  idContentTattoo,
+  setActionsState,
+  setIdContentDynamic,
 }) => {
   const matches = useMediaQuery('(max-width:800px)');
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
@@ -23,8 +24,10 @@ export const GridMansoryNotModalTattoo = ({
     isLoading,
   } = useTattoboxTattoos();
 
-  const handleShowTatuaje = () => {
-    setShownModal(false);
+  const handleShowTatuaje = (idContent) => {
+    console.log('click');
+    setActionsState(true);
+    setIdContentDynamic(idContent);
   };
 
   const getData = async (currentPage = 0) => {
@@ -79,30 +82,26 @@ export const GridMansoryNotModalTattoo = ({
           >
             {relatedTattoos.map((item, index) => (
               <div key={index}>
-                <Link
-                  href='/tatuajes/[id]'
-                  as={`/tatuajes/${item?.IdContenido}`}
-                >
-                  <a onClick={handleShowTatuaje}>
-                    <Image
-                      duration={2000}
-                      easing='ease-in'
-                      showLoading={false}
-                      distance='100px'
-                      shiftDuration={900}
-                      src={`${item.UrlImagen}?w=162&auto=format`}
-                      alt={item?.Titulo}
-                      style={{
-                        borderBottomLeftRadius: 4,
-                        borderBottomRightRadius: 4,
-                        display: 'block',
-                        width: '100%',
-                        borderRadius: matches ? 5 : 20,
-                        boxShadow: '0 3px 10px 0 rgba(0, 0, 0, 0.16)',
-                      }}
-                    />
-                  </a>
-                </Link>
+                <Image
+                  onClick={() => handleShowTatuaje(item.IdContenido)}
+                  duration={2000}
+                  easing='ease-in'
+                  showLoading={false}
+                  distance='100px'
+                  shiftDuration={900}
+                  src={`${item.UrlImagen}?w=162&auto=format`}
+                  alt={item?.Titulo}
+                  style={{
+                    borderBottomLeftRadius: 4,
+                    borderBottomRightRadius: 4,
+                    display: 'block',
+                    width: '100%',
+                    borderRadius: matches ? 5 : 20,
+                    boxShadow: '0 3px 10px 0 rgba(0, 0, 0, 0.16)',
+                    cursor: 'pointer',
+                    userSelect: 'none',
+                  }}
+                />
               </div>
             ))}
           </Masonry>

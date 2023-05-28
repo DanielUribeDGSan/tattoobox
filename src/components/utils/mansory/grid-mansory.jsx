@@ -7,10 +7,16 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { ModalTattoo } from '../modals/modalTattoo';
 import { ModalTattooMovil } from '../modals/modalTattooMovil';
 
-export const GridMansory = ({ data, user = {}, idContentRoute = '' }) => {
+export const GridMansory = ({
+  data,
+  user = {},
+  openModal,
+  setOpenModal,
+  idContentRoute = '',
+}) => {
   const router = useRouter();
   const btnModal = useRef(null);
-  const [openModal, setOpenModal] = useState(false);
+
   const [idContent, setIdContent] = useState('');
   const [idContentStatic, setidContentStatic] = useState('');
   const matches = useMediaQuery('(max-width:800px)');
@@ -33,14 +39,14 @@ export const GridMansory = ({ data, user = {}, idContentRoute = '' }) => {
   };
 
   useEffect(() => {
-    if (idContentRoute && idContentRoute != 'all') {
-      setIdContent(idContentRoute);
-      if (!openModal) {
-        handleSowTatuaje(idContentRoute);
-        setOpenModal(true);
-      }
+    console.log(idContentRoute);
+    if (idContentRoute && openModal) {
+      handleSowTatuaje(idContentRoute);
     }
-  }, [idContentRoute]);
+    return () => {
+      setOpenModal(false);
+    };
+  }, [openModal]);
 
   return (
     <>
@@ -82,6 +88,7 @@ export const GridMansory = ({ data, user = {}, idContentRoute = '' }) => {
                     borderRadius: matches ? 5 : 20,
                     boxShadow: '0 3px 10px 0 rgba(0, 0, 0, 0.16)',
                     cursor: 'pointer',
+                    userSelect: 'none',
                   }}
                 />
               </div>

@@ -18,6 +18,7 @@ import { ModalTattooSkeleton } from '../skeletons/ModalTattooSkeleton';
 export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
   const [shownModal, setShownModal] = useState(false);
+  const [idContentDynamic, setIdContentDynamic] = useState('');
   const [actionsState, setActionsState] = useState(false);
   const [open, setOpen] = useState(false);
   const [imageSize, setImageSize] = useState(0);
@@ -54,8 +55,8 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
   const handleOnClickCloseModal = () => {
     setShownModal(false);
 
-    const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
-    modalBackdrop.remove();
+    // const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
+    // modalBackdrop.remove();
   };
 
   const scrollTop = () => {
@@ -64,8 +65,14 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
 
   useEffect(() => {
     let isActive = true;
+
     const getData = async () => {
-      await memoizedGetContentTattoo(idContent, user?.idPerfil);
+      if (idContentDynamic) {
+        await memoizedGetContentTattoo(idContentDynamic, user?.idPerfil);
+        scrollTop();
+      } else {
+        await memoizedGetContentTattoo(idContent, user?.idPerfil);
+      }
       setShownModal(true);
     };
 
@@ -154,6 +161,7 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
                           // height: matches ? "40vh" : "70vh",
                           height: 'auto',
                           borderRadius: '20px 0px 0px 20px',
+                          cursor: 'pointer',
                         }}
                       />
                     </div>
@@ -229,6 +237,8 @@ export const ModalTattoo = ({ modal_id, idContent, idContentStatic, user }) => {
                   <GridMansoryNotModalTattoo
                     idContent={idContentStatic}
                     setShownModal={setShownModal}
+                    setActionsState={setActionsState}
+                    setIdContentDynamic={setIdContentDynamic}
                   />
                 </div>
               </>
