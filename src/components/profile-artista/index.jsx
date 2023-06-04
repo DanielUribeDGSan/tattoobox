@@ -5,7 +5,7 @@ import ProfileArea from './profile-area';
 import { HeaderBottomMovil } from '../../layout/headers/header-bottom-movil';
 import Sidebar from '../common/off-canvas';
 
-const Profile = () => {
+const ProfileArtist = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
@@ -24,4 +24,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileArtist;

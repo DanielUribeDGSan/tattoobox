@@ -52,7 +52,8 @@ const TattoItems = () => {
   });
 
   useEffect(() => {
-    if (idContentRoute !== 'all') {
+    console.log(idContentRoute);
+    if (idContentRoute && idContentRoute !== 'all') {
       setOpenModal(true);
     }
   }, [idContentRoute]);

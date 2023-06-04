@@ -7,8 +7,9 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import PlaceIcon from '@mui/icons-material/Place';
 import ImageLightBox from '../../common/modals/image-lightbox';
+import Link from 'next/link';
 
-export const CardArtistGrid = ({ tatoos, name, avatar, state }) => {
+export const CardArtistGrid = ({ tatoos, name, avatar, state, profile }) => {
   const [photoIndex, setPhotoIndex] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -28,30 +29,34 @@ export const CardArtistGrid = ({ tatoos, name, avatar, state }) => {
 
   return (
     <div className='card-artist-grid'>
-      <div className='user-info'>
-        <List sx={{ width: '100%', margin: 0, padding: 0 }}>
-          <ListItem alignItems='flex-start' sx={{ margin: 0, padding: 0 }}>
-            <ListItemAvatar>
-              <Avatar alt='Remy Sharp' src='/static/images/avatar/1.jpg' />
-            </ListItemAvatar>
-            <ListItemText
-              sx={{ color: 'var(--tp-common-black)' }}
-              primary={name}
-              secondary={
-                <>
-                  <Typography
-                    sx={{ display: 'inline' }}
-                    component='span'
-                    variant='body2'
-                    color='text.primary'
-                  >
-                    <PlaceIcon /> {state}
-                  </Typography>
-                </>
-              }
-            />
-          </ListItem>
-        </List>
+      <div className='user-info w-100'>
+        <Link href={`/perfil-artista/[id]`} as={`/perfil-artista/${profile}/`}>
+          <a>
+            <List sx={{ width: '100%', margin: 0, padding: 0 }}>
+              <ListItem alignItems='flex-start' sx={{ margin: 0, padding: 0 }}>
+                <ListItemAvatar>
+                  <Avatar alt='Remy Sharp' src='/static/images/avatar/1.jpg' />
+                </ListItemAvatar>
+                <ListItemText
+                  sx={{ color: 'var(--tp-common-black)' }}
+                  primary={name}
+                  secondary={
+                    <>
+                      <Typography
+                        sx={{ display: 'inline' }}
+                        component='span'
+                        variant='body2'
+                        color='text.primary'
+                      >
+                        <PlaceIcon /> {state}
+                      </Typography>
+                    </>
+                  }
+                />
+              </ListItem>
+            </List>
+          </a>
+        </Link>
       </div>
       <div className='images row w-100'>
         {tatoos.map((tattoo, i) => (

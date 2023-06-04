@@ -8,31 +8,18 @@ import { useUser } from '../../hooks/use-user';
 
 const ProfileArea = () => {
   const router = useRouter();
-  const { type, id } = router.query;
+  const idArtist = router.query.id;
 
   const { isLoadingUser, user } = useUser();
-  const {
-    isLoading,
-    getProfileInfoStudio,
-    getProfileInfoArtist,
-    profileArtist,
-    profileStudio,
-  } = useUserProfile();
-
-  console.log(profileArtist, profileStudio);
+  const { isLoading, getProfileInfoArtist, profileArtist } = useUserProfile();
 
   const memoizedGetProfileInfoArtist = useCallback(getProfileInfoArtist, []);
-  const memoizedGetProfileInfoStudio = useCallback(getProfileInfoStudio, []);
 
   useEffect(() => {
     let isActive = true;
 
     const getData = async () => {
-      if (user?.idTipoPerfil <= 2) {
-        await memoizedGetProfileInfoArtist(user?.idPerfil);
-      } else {
-        await memoizedGetProfileInfoStudio(user?.idPerfil);
-      }
+      await memoizedGetProfileInfoArtist(idArtist);
     };
 
     if (user?.email && isActive) {
@@ -42,7 +29,7 @@ const ProfileArea = () => {
     return () => {
       isActive = false;
     };
-  }, [isLoadingUser, user?.email, user?.idTipoPerfil]);
+  }, [idArtist]);
 
   return (
     <>
@@ -54,18 +41,8 @@ const ProfileArea = () => {
                 <p className='text-black'>Cargando...</p>
               ) : (
                 <>
-                  <BannerUser
-                    dataProfile={
-                      user?.idTipoPerfil <= 2 ? profileArtist : profileStudio
-                    }
-                    user={user}
-                  />
-                  <TabUser
-                    dataProfile={
-                      user?.idTipoPerfil <= 2 ? profileArtist : profileStudio
-                    }
-                    user={user}
-                  />
+                  <BannerUser dataProfile={profileArtist} user={user} />
+                  <TabUser dataProfile={profileArtist} user={user} />
                 </>
               )}
             </div>

@@ -7,15 +7,15 @@ import { CardArtistGrid } from '../../artists/components/CardArtistGrid';
 
 export const GridMansoryArtist = ({ data, user = {}, idContentRoute = '' }) => {
   const btnModal = useRef(null);
-  const [openModal, setOpenModal] = useState(false);
+
   const matches = useMediaQuery('(max-width:800px)');
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
 
-  const handleSowTatuaje = (idContent) => {
-    setIdContent(idContent);
-    setidContentStatic(idContent);
-    btnModal.current.click();
-  };
+  // const handleSowTatuaje = (idContent) => {
+  //   setIdContent(idContent);
+  //   setidContentStatic(idContent);
+  //   btnModal.current.click();
+  // };
   console.log(data);
 
   return (
@@ -37,13 +37,14 @@ export const GridMansoryArtist = ({ data, user = {}, idContentRoute = '' }) => {
           }}
         >
           {data.map((item, index) => {
-            return item.Tatuajes.length > 0 ? (
+            return item?.Tatuajes.length > 0 ? (
               <div key={index}>
                 <CardArtistGrid
-                  tatoos={item.Tatuajes}
-                  name={item.NombrePerfil}
-                  avatar={item.Avatar}
-                  state={item.Estado}
+                  tatoos={item?.Tatuajes}
+                  name={item?.NombrePerfil}
+                  avatar={item?.Avatar}
+                  state={item?.Estado}
+                  profile={item?.IdPerfil}
                 />
 
                 {/* <Image
@@ -68,9 +69,7 @@ export const GridMansoryArtist = ({ data, user = {}, idContentRoute = '' }) => {
                 }}
               /> */}
               </div>
-            ) : (
-              <></>
-            );
+            ) : null;
           })}
         </Masonry>
       </Box>
