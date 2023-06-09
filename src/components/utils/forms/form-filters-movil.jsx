@@ -27,7 +27,7 @@ export const FormFiltersMovil = ({
     setPriceState(prices);
   };
 
-  const colums = typeForm === 'artist' ? 'col-6 p-0 m-0' : 'col-4 p-0 m-0';
+  const colums = typeForm === 'tattoos' ? 'col-4 p-0 m-0' : 'col-6 p-0 m-0';
 
   return (
     <div className=' w-100'>
@@ -88,7 +88,7 @@ export const FormFiltersMovil = ({
             value={styleState || ''}
           />
         </div>
-        {typeForm !== 'artist' && (
+        {typeForm === 'tattoos' && (
           <div className='col-4 p-0 m-0'>
             <Select
               aria-label='Precios'

@@ -1,6 +1,6 @@
 @use '../../../utils' as *;
-
-.page-artist {
+.page-artist,
+.page-studie {
   & .card-artist {
     width: 100%;
     height: auto;
@@ -27,7 +27,6 @@
       }
     }
   }
-
   & .swiper-button-next,
   .swiper-rtl .swiper-button-prev,
   .swiper-button-prev,
@@ -37,7 +36,8 @@
   }
 }
 
-.page-artist {
+.page-artist,
+.page-studie {
   & .card-artist-grid {
     background-color: var(--tp-common-white);
     padding: 1rem 0.5rem;
@@ -47,7 +47,6 @@
     justify-content: center;
     flex-direction: column;
     border-radius: 1rem;
-
     & .user-info {
       margin-bottom: 0.5rem;
     }
@@ -56,7 +55,6 @@
       @media #{$xs, $sm} {
         height: 10rem;
       }
-
       & img {
         width: 100%;
         height: 100%;

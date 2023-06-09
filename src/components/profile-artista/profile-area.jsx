@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { TabUser } from './menu/tab-user';
@@ -9,7 +9,7 @@ import { useUser } from '../../hooks/use-user';
 const ProfileArea = () => {
   const router = useRouter();
   const idArtist = router.query.id;
-
+  const [actions, setActions] = useState(false);
   const { isLoadingUser, user } = useUser();
   const { isLoading, getProfileInfoArtist, profileArtist } = useUserProfile();
 
@@ -19,17 +19,18 @@ const ProfileArea = () => {
     let isActive = true;
 
     const getData = async () => {
-      await memoizedGetProfileInfoArtist(idArtist);
+      await memoizedGetProfileInfoArtist(idArtist, user?.idPerfil);
     };
 
-    if (user?.email && isActive) {
+    if (isActive) {
       getData();
     }
 
     return () => {
       isActive = false;
+      setActions(false);
     };
-  }, [idArtist]);
+  }, [idArtist, isLoadingUser, actions]);
 
   return (
     <>
@@ -41,8 +42,16 @@ const ProfileArea = () => {
                 <p className='text-black'>Cargando...</p>
               ) : (
                 <>
-                  <BannerUser dataProfile={profileArtist} user={user} />
-                  <TabUser dataProfile={profileArtist} user={user} />
+                  <BannerUser
+                    dataProfile={profileArtist}
+                    user={user}
+                    setActions={setActions}
+                  />
+                  <TabUser
+                    dataProfile={profileArtist}
+                    user={user}
+                    setActions={setActions}
+                  />
                 </>
               )}
             </div>

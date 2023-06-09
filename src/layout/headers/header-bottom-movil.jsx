@@ -89,10 +89,18 @@ export const HeaderBottomMovil = ({ setSidebarOpen }) => {
         <IconAdd />
       </div> */}
       <div className='col-auto'>
-        <Link href='/tatuajes/all'>
+        <Link href='/artistas'>
           <a>
             <IconSearch />
             <span>Artistas</span>
+          </a>
+        </Link>
+      </div>
+      <div className='col-auto'>
+        <Link href='/estudios'>
+          <a>
+            <IconSearch />
+            <span>Estudios</span>
           </a>
         </Link>
       </div>

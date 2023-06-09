@@ -34,9 +34,9 @@ export const FormFilters = ({
   };
 
   const columSearch =
-    typeForm === 'artist'
-      ? 'col-xl-6 col-lg-6 col-md-6 p-0 m-0'
-      : 'col-xl-4 col-lg-4 col-md-4 p-0 m-0';
+    typeForm === 'tattoos'
+      ? 'col-xl-4 col-lg-4 col-md-4 p-0 m-0'
+      : 'col-xl-6 col-lg-6 col-md-6 p-0 m-0';
 
   return (
     <div className='filters'>
@@ -113,7 +113,7 @@ export const FormFilters = ({
           />
         </div>
 
-        {typeForm !== 'artist' && (
+        {typeForm === 'tattoos' && (
           <div className='col-xl-2 col-lg-2 col-md-2 p-0 m-0'>
             <Select
               aria-label='Precios'

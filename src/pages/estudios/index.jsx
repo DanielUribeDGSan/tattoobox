@@ -1,7 +1,7 @@
 import { Wrapper } from '../../layout';
 import SEO from '../../components/seo';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import ArtistMain from '../../components/artists/artist';
+import StudiesMain from '../../components/studies/studie';
 
 const queryClient = new QueryClient();
 
@@ -9,8 +9,8 @@ export default function index() {
   return (
     <QueryClientProvider client={queryClient}>
       <Wrapper>
-        <SEO pageTitle={'Encuentra tu artista'} />
-        <ArtistMain />
+        <SEO pageTitle={'Encuentra tu estudio'} />
+        <StudiesMain />
       </Wrapper>
     </QueryClientProvider>
   );

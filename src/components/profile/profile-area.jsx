@@ -19,8 +19,6 @@ const ProfileArea = () => {
     profileStudio,
   } = useUserProfile();
 
-  console.log(profileArtist, profileStudio);
-
   const memoizedGetProfileInfoArtist = useCallback(getProfileInfoArtist, []);
   const memoizedGetProfileInfoStudio = useCallback(getProfileInfoStudio, []);
 
@@ -31,6 +29,7 @@ const ProfileArea = () => {
       if (user?.idTipoPerfil <= 2) {
         await memoizedGetProfileInfoArtist(user?.idPerfil);
       } else {
+        console.log(user?.idPerfil);
         await memoizedGetProfileInfoStudio(user?.idPerfil);
       }
     };
@@ -43,6 +42,8 @@ const ProfileArea = () => {
       isActive = false;
     };
   }, [isLoadingUser, user?.email, user?.idTipoPerfil]);
+  console.log(profileArtist, profileStudio);
+  console.log(user);
 
   return (
     <>
@@ -50,7 +51,7 @@ const ProfileArea = () => {
         <div className='row gx-0 align-items-center tp-profile m-0 w-100'>
           <div className='col-12 p-0 m-0 col-profile-content d-flex justify-content-center m-0 w-100'>
             <div className='container-profile-content'>
-              {isLoading ? (
+              {isLoading && user?.idTipoPerfil >= 2 ? (
                 <p className='text-black'>Cargando...</p>
               ) : (
                 <>

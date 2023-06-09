@@ -7,7 +7,7 @@ import { ProfileActions } from '../menu/profile-actions';
 export const BannerUser = ({ dataProfile, user }) => {
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
 
-  if (dataProfile?.length === 0)
+  if (dataProfile?.length === 0 && user?.idTipoPerfil >= 2)
     return <p className='text-black'>Cargando...</p>;
 
   return (
@@ -62,11 +62,6 @@ export const BannerUser = ({ dataProfile, user }) => {
           </div>
         </div>
         <div className='user-buttons row'>
-          <div className='col-auto'>
-            <button className='btn-md-black ' aria-label='Editar perfil'>
-              Agendar
-            </button>
-          </div>
           <div className='col-auto'>
             <ChangeProfile user={user} />
           </div>

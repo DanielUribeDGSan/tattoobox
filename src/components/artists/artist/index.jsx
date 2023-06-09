@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FooterThree, Header, Wrapper } from '../../../layout';
+import { Header, Wrapper } from '../../../layout';
 import { animationCreate } from '../../../utils/utils';
 import BreadcrumbSmall from '../../common/breadcrumb/breadcrumbSmal';
 import ArtistItems from './artist-items';
@@ -16,7 +16,6 @@ const ArtistMain = () => {
       <Header />
       <BreadcrumbSmall title={''} />
       <ArtistItems />
-      {/* <FooterThree /> */}
     </Wrapper>
   );
 };

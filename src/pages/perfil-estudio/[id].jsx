@@ -1,13 +1,13 @@
 import React from 'react';
 import SEO from '../../components/seo';
 import { Wrapper } from '../../layout';
-import ProfileArtist from '../../components/profile-artista';
+import ProfileStudio from '../../components/profile-studie';
 
 const index = () => {
   return (
     <Wrapper>
-      <SEO pageTitle={'Mi perfil'} />
-      <ProfileArtist />
+      <SEO pageTitle={'Artista'} />
+      <ProfileStudio />
     </Wrapper>
   );
 };

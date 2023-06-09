@@ -1,7 +1,18 @@
-import React, { memo, useState } from "react";
-import { GoogleMap, Marker } from "@react-google-maps/api";
+import React, { memo, useState } from 'react';
+import { GoogleMap, Marker } from '@react-google-maps/api';
 
-export const MapGoogle = ({ selected, setSelected }) => {
+export const MapGoogle = ({
+  selected,
+  setSelected,
+  latParam = 0,
+  lngParam = 0,
+}) => {
+  const defaultPosition = {
+    lat: parseFloat(latParam),
+    lng: parseFloat(lngParam),
+  };
+  console.log(defaultPosition);
+
   const [markerPosition, setMarkerPosition] = useState({
     lat: 19.3907336,
     lng: -99.1436127,
@@ -21,12 +32,29 @@ export const MapGoogle = ({ selected, setSelected }) => {
     <>
       <GoogleMap
         zoom={17}
-        center={selected ? selected : markerPosition}
-        mapContainerClassName="google-map-container"
+        center={
+          parseFloat(latParam) !== 0
+            ? defaultPosition
+            : selected
+            ? selected
+            : markerPosition
+        }
+        mapContainerClassName={
+          parseFloat(latParam) !== 0
+            ? 'google-map-container-profile'
+            : 'google-map-container'
+        }
       >
         {selected && (
           <Marker
             position={selected}
+            draggable={true}
+            onDragEnd={handleMarkerDrag}
+          />
+        )}
+        {parseFloat(latParam) !== 0 && (
+          <Marker
+            position={defaultPosition}
             draggable={true}
             onDragEnd={handleMarkerDrag}
           />
