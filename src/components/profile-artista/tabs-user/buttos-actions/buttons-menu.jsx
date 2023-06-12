@@ -40,7 +40,7 @@ export const ButtonsMenu = ({ user, dataProfile, setActions }) => {
             aria-label='Editar perfil'
             onClick={handleClickUnfollow}
           >
-            Dejar de seguir
+            Siguiendo
           </button>
         )}
       </div>
