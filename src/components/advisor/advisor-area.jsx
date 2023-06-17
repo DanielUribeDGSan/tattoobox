@@ -7,7 +7,7 @@ const AdvisorArea = () => {
   const [image, setImage] = useState(1);
   return (
     <section className='advisor-area'>
-      <div className='row p-0 m-0 w-100'>
+      <div className='row p-0 m-0 w-100 overflow-hidden'>
         <div className='col-xxl-4 col-xl-4 col-lg-4 col-12 col-forms'>
           <FormAreaAdvisor setImage={setImage} image={image} />
         </div>

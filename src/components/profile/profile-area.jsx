@@ -42,8 +42,6 @@ const ProfileArea = () => {
       isActive = false;
     };
   }, [isLoadingUser, user?.email, user?.idTipoPerfil]);
-  console.log(profileArtist, profileStudio);
-  console.log(user);
 
   return (
     <>
