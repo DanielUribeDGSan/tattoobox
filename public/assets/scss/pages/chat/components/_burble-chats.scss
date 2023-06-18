@@ -1,0 +1,66 @@
+@use '../../../utils' as *;
+.burble-chats {
+  padding: 2rem;
+  overflow: auto;
+  height: calc(100vh - 11rem);
+  & .chat-advisor {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    & p {
+      background-color: var(--tp-common-white);
+      padding: 1rem;
+      border-radius: 0rem 1rem 1rem 1rem;
+      max-width: 45vw;
+      color: var(--tp-common-black);
+      font-size: 1rem;
+      display: inline-flex;
+      flex-direction: column;
+      margin-bottom: 0;
+      & img {
+        margin-top: 0.5rem;
+        height: 50vh;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+      @media #{$xs, $sm, $md} {
+        max-width: 75vw;
+      }
+    }
+    & span {
+      color: var(--tp-common-black);
+      margin: 0.5rem 0rem 1rem 0rem;
+    }
+  }
+  & .chat-user {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+    & p {
+      background-color: var(--tp-common-black);
+      padding: 1rem;
+      border-radius: 1rem 1rem 0rem 1rem;
+      max-width: 45vw;
+      color: var(--tp-common-white);
+      font-size: 1rem;
+      display: inline-flex;
+      flex-direction: column;
+      margin-bottom: 0;
+      & img {
+        margin-top: 0.5rem;
+        height: 50vh;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+      @media #{$xs, $sm, $md} {
+        max-width: 75vw;
+      }
+    }
+    & span {
+      color: var(--tp-common-black);
+      margin: 0.5rem 0rem 1rem 0rem;
+    }
+  }
+}

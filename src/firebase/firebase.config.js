@@ -1,11 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyDFjjzDRHDnvBvTRg6GZNDPedej2BtffEA",
-  authDomain: "tattoobox-54575.firebaseapp.com",
-  projectId: "tattoobox-54575",
-  storageBucket: "tattoobox-54575.appspot.com",
-  messagingSenderId: "1029492828667",
-  appId: "1:1029492828667:web:6e703fe592357479f1c35e",
-  measurementId: "G-F68BYTXYHS",
+    apiKey: "AIzaSyDBwfXJP6m6CRTXAtX_CrrK8wiqWtL_RS0",
+    authDomain: "desarrollo-web-5da60.firebaseapp.com",
+    projectId: "desarrollo-web-5da60",
+    storageBucket: "desarrollo-web-5da60.appspot.com",
+    messagingSenderId: "831087627514",
+    appId: "1:831087627514:web:190677d942f51a41220d43",
+    measurementId: "G-WP7X7WDHC2"
 };
 
 export default firebaseConfig;

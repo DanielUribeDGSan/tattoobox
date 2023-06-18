@@ -24,6 +24,10 @@
 @forward 'ui/components/slider';
 @forward 'pages/artist/components/card';
 @forward 'pages/advisor/advisor';
+@forward 'pages/chat/components/header-user';
+@forward 'pages/chat/components/burble-chats';
+@forward 'pages/chat/components/input-message';
+@forward 'pages/chat/chat-area';
 @forward 'layout/header';
 @forward 'layout/meanmenu';
 @forward 'layout/mobile-menu';
