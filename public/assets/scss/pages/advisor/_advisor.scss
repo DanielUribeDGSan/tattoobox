@@ -1,19 +1,21 @@
 @use '../../utils' as *;
 .advisor-area {
-  height: 100vh;
+  min-height: 100vh;
   & .row {
-    height: inherit;
+    min-height: 100vh;
     & .col-forms {
       padding: 0;
       margin: 0;
       background-color: var(--tp-common-white);
-      overflow-y: auto;
       height: 100vh;
     }
     & .col-images {
       padding: 0;
       margin: 0;
       max-height: 100vh;
+      @media #{$xs, $sm, $md} {
+        display: none;
+      }
       & .image-container {
         position: relative;
         height: 100%;
@@ -29,11 +31,22 @@
 }
 
 .form__advisor {
-  background-color: var(--tp-common-white);
+  // background-color: var(--tp-common-white);
   padding: 2rem;
   // border-radius: 3rem 0 0 3rem;
   height: 100%;
   display: flex;
+  @media #{$xs, $sm, $md} {
+    padding: 1rem;
+    align-items: flex-end !important;
+  }
+  & .content-advisor {
+    @media #{$xs, $sm, $md} {
+      background-color: var(--tp-common-white);
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+  }
   & .tp-input {
     & .question {
       display: block;

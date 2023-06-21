@@ -146,7 +146,7 @@ export const FormAreaAdvisor = ({ setImage, image }) => {
         className='form__advisor w-100'
         style={{ alignItems: sectionForm === 6 ? 'flex-start' : 'center' }}
       >
-        <div className='w-100'>
+        <div className='w-100 content-advisor'>
           {isLoadingQuestion2 ? (
             <p>Cargando...</p>
           ) : (

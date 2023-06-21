@@ -1,4 +1,5 @@
 @use '../../utils' as *;
+
 /*-----------------------------------------------------------------------------------
 
     Theme Name: Template Name – HTML5 Template
@@ -19,11 +20,11 @@
 **********************************************/
 
 /*----------------------------------------*/
+
 /*  01. THEME DEFAULT CSS START
 /*----------------------------------------*/
 
 @import url($font-url);
-
 * {
   margin: 0;
   padding: 0;
@@ -33,6 +34,7 @@
 /*---------------------------------
 	typography css start
 ---------------------------------*/
+
 body {
   background-color: var(--tp-theme-white);
   font-family: var(--tp-ff-body);
@@ -127,6 +129,7 @@ h5,
 h6 {
   @include transition(0.3s);
 }
+
 li {
   list-style: none;
 }
@@ -162,6 +165,7 @@ button:focus {
 .uppercase {
   text-transform: uppercase;
 }
+
 .capitalize {
   text-transform: capitalize;
 }
@@ -188,11 +192,13 @@ input[type='color'] {
   color: var(--tp-common-white);
   text-shadow: none;
 }
+
 ::-moz-selection {
   background: var(--tp-common-black);
   color: var(--tp-common-white);
   text-shadow: none;
 }
+
 ::selection {
   background: var(--tp-common-black);
   color: var(--tp-common-white);
@@ -204,10 +210,19 @@ input[type='color'] {
   font-size: var(--tp-fz-body);
   opacity: 1;
 }
+
 *::placeholder {
   color: var(--tp-common-black);
   font-size: var(--tp-fz-body);
   opacity: 1;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
 }
 
 /*---------------------------------
@@ -229,6 +244,7 @@ input[type='color'] {
 .fix {
   overflow: hidden;
 }
+
 .clear {
   clear: both;
 }
@@ -236,6 +252,7 @@ input[type='color'] {
 .f-left {
   float: left;
 }
+
 .f-right {
   float: right;
 }
@@ -258,6 +275,7 @@ input[type='color'] {
 .p-relative {
   position: relative;
 }
+
 .p-absolute {
   position: absolute;
 }
@@ -281,6 +299,7 @@ input[type='color'] {
     --bs-gutter-x: 15px;
   }
 }
+
 .gx-12 {
   --bs-gutter-x: 12px;
   --bs-gutter-y: 12px;
@@ -288,12 +307,14 @@ input[type='color'] {
     --bs-gutter-x: 30px;
   }
 }
+
 .gx-40 {
   --bs-gutter-x: 40px;
   @media #{$xs} {
     --bs-gutter-x: 0px;
   }
 }
+
 .gx-120 {
   --bs-gutter-x: 120px;
   @media #{$lg} {
@@ -306,6 +327,7 @@ input[type='color'] {
     --bs-gutter-x: 0px;
   }
 }
+
 .gx-1 {
   --bs-gutter-x: 20px;
   --bs-gutter-y: 20px;
@@ -314,6 +336,7 @@ input[type='color'] {
 .tp-gx-20 {
   --bs-gutter-x: 20px;
 }
+
 .tp-gx-15 {
   --bs-gutter-x: 15px;
 }
@@ -327,12 +350,14 @@ input[type='color'] {
     --bs-gutter-x: 15px;
   }
 }
+
 .gx-7 {
   --bs-gutter-x: 70px;
   @media #{$xs} {
     --bs-gutter-x: 0px;
   }
 }
+
 .gx-17 {
   --bs-gutter-x: 17px;
   --bs-gutter-y: 17px;
@@ -341,12 +366,14 @@ input[type='color'] {
     --bs-gutter-y: 30px;
   }
 }
+
 .gx-50 {
   --bs-gutter-x: 50px;
   @media #{$xs} {
     --bs-gutter-x: 0px;
   }
 }
+
 .radius-20 {
   border-radius: 20px;
 }
@@ -360,6 +387,7 @@ input[type='color'] {
   top: 0;
   left: 0;
 }
+
 .container-fluid-pm-0 {
   @media #{$sm,$xs} {
     padding: 0;
