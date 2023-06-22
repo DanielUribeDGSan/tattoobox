@@ -23,7 +23,7 @@ const theme = createTheme({
   },
 });
 
-export const FormAreaAdvisor = ({ setImage, image }) => {
+export const FormAreaAdvisor = ({ setImage, image, high }) => {
   const { user } = useUser();
   const [sectionForm, setSectionForm] = useState(1);
   const [file, setFile] = useState([]);
@@ -144,7 +144,10 @@ export const FormAreaAdvisor = ({ setImage, image }) => {
     <>
       <div
         className='form__advisor w-100'
-        style={{ alignItems: sectionForm === 6 ? 'flex-start' : 'center' }}
+        style={{
+          alignItems: sectionForm === 6 ? 'flex-start' : 'center',
+          height: image === 6 ? '100%' : high,
+        }}
       >
         <div className='w-100 content-advisor'>
           {isLoadingQuestion2 ? (
