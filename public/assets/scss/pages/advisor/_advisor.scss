@@ -1,13 +1,13 @@
 @use '../../utils' as *;
 .advisor-area {
-  min-height: 100vh;
+  // min-height: 100vh;
   & .row {
-    min-height: 100vh;
+    // min-height: 100vh;
     & .col-forms {
       padding: 0;
       margin: 0;
       background-color: var(--tp-common-white);
-      height: 100vh;
+      // height: 100vh;
     }
     & .col-images {
       padding: 0;

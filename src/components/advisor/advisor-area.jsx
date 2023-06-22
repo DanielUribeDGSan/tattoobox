@@ -29,8 +29,14 @@ const AdvisorArea = () => {
   }
 
   return (
-    <section className='advisor-area overflow-hidden'>
-      <div className='row p-0 m-0 w-100 overflow-hidden'>
+    <section
+      className='advisor-area overflow-hidden'
+      style={{ height: image === 6 ? '100%' : high }}
+    >
+      <div
+        className='row p-0 m-0 w-100 overflow-hidden'
+        style={{ height: image === 6 ? '100%' : high }}
+      >
         <div
           className='col-xxl-4 col-xl-4 col-lg-4 col-12 col-forms'
           style={{
