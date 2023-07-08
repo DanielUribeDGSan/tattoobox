@@ -40,8 +40,25 @@ async function validarMensajeVisto(messageId) {
 
 export const BurbleChats = () => {
   const [messages, setMessages] = useState([]);
+  const [high, setHigh] = useState(0);
+
   useEffect(() => {
     cargarMensajes();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const adjustHeight = () => {
+        setHigh(window.innerHeight);
+      };
+
+      window.addEventListener('resize', adjustHeight);
+      adjustHeight();
+
+      return () => {
+        window.removeEventListener('resize', adjustHeight);
+      };
+    }
   }, []);
 
   async function cargarMensajes() {
@@ -77,7 +94,7 @@ export const BurbleChats = () => {
   }
 
   return (
-    <div className='burble-chats'>
+    <div className='burble-chats' style={{ height: `'calc(${high} - 11rem)'` }}>
       {messages.map(({ sender, message, timestamp }, index) => {
         const fecha = new Date(timestamp?.seconds * 1000); // Convertir el timestamp a objeto de fecha
         const fechaFormateada = fecha.toLocaleDateString('es-MX', {

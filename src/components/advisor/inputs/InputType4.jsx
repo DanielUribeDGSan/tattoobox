@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
-import { TextareaAutosize } from '@mui/material';
+import React, { useCallback, useEffect, useState } from 'react';
 import useTattoboxCatalogApi from '../../../hooks/use-tattobox-catalog-api';
 
 export const InputType4 = ({
@@ -10,8 +9,20 @@ export const InputType4 = ({
   name,
 }) => {
   const { isLoading, getStyles, styleData } = useTattoboxCatalogApi();
+  const [checkbox, setCheckbox] = useState([]);
 
   const memoizedGetStyles = useCallback(getStyles, []);
+
+  const handleCheckboxChange = (event) => {
+    const { value, checked } = event.target;
+
+    if (checked) {
+      // Agregar el valor al array de checkboxes si está marcado
+      setCheckbox([...checkbox, value]);
+    }
+
+    onChangeFunction([...checkbox, value]);
+  };
 
   useEffect(() => {
     let isActive = true;
@@ -32,13 +43,18 @@ export const InputType4 = ({
   if (isLoading) {
     return <p className='text-black'>Cargando...</p>;
   }
-  console.log(styleData);
+
   return (
     <div className='row p-0 m-0 w-100'>
       {styleData.map((item, index) => (
         <div className='col-6' key={index}>
           <label className='checkbox-image'>
-            <input type='checkbox' />
+            <input
+              value={item?.id}
+              name={name}
+              type='checkbox'
+              onChange={handleCheckboxChange}
+            />
             <span className='image-overlay'></span>
             <span className='name-image'>{item?.nombre}</span>
             <img

@@ -9,8 +9,6 @@ export const InputType3 = ({
   name,
 }) => {
   const handleOnChange = (images) => {
-    console.log(images);
-
     onChangeFunction(images);
   };
 

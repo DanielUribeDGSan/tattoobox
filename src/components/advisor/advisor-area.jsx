@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import 'animate.css';
 import { FormAreaAdvisor } from './forms/form-area-advisor';
+import { LoaderImage } from '../utils/loader/LaoderImage';
 
 const AdvisorArea = () => {
   const [image, setImage] = useState(1);
@@ -31,7 +32,9 @@ const AdvisorArea = () => {
   return (
     <section
       className='advisor-area overflow-hidden'
-      style={{ height: image === 6 ? '100%' : high }}
+      style={{
+        height: movilIpadaScreen && image === 6 ? '100%' : high,
+      }}
     >
       <div
         className='row p-0 m-0 w-100 overflow-hidden'

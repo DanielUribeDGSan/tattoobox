@@ -11,6 +11,7 @@ import {
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { FormPart } from './FormPart';
 import useTattoboxAdvisor from '../../../hooks/use-tattobox-advisor';
+import { useMediaQuery } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -25,8 +26,12 @@ const theme = createTheme({
 
 export const FormAreaAdvisor = ({ setImage, image, high }) => {
   const { user } = useUser();
+  const movilIpadaScreen = useMediaQuery('(max-width:900px)');
+
   const [sectionForm, setSectionForm] = useState(1);
   const [file, setFile] = useState([]);
+  const [checkbox, setCheckbox] = useState([]);
+
   const {
     getQuestions2,
     advisorQuestion2,
@@ -43,7 +48,7 @@ export const FormAreaAdvisor = ({ setImage, image, high }) => {
         bodyPart: { value: 0, label: 'Selecciona una opción' },
         size: { value: 0, label: 'Selecciona una opción' },
         color: '',
-        style: '',
+        style: [],
         images: [],
         idea: '',
         budget: '',
@@ -123,6 +128,15 @@ export const FormAreaAdvisor = ({ setImage, image, high }) => {
     });
   };
 
+  const handleChangeCheckbox = (checkboxes) => {
+    handleChange({
+      target: {
+        name: 'style',
+        value: checkboxes,
+      },
+    });
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [sectionForm]);
@@ -147,6 +161,7 @@ export const FormAreaAdvisor = ({ setImage, image, high }) => {
         style={{
           alignItems: sectionForm === 6 ? 'flex-start' : 'center',
           height: image === 6 ? '100%' : high,
+          overflowY: movilIpadaScreen ? 'hidden' : 'auto',
         }}
       >
         <div className='w-100 content-advisor'>
@@ -224,7 +239,7 @@ export const FormAreaAdvisor = ({ setImage, image, high }) => {
                   <FormPart
                     question={advisorQuestion2[5]}
                     name='style'
-                    onChangeFunction={handleChange}
+                    onChangeFunction={handleChangeCheckbox}
                     inputValue={values.style}
                     label='Selecciona una opción'
                   />
