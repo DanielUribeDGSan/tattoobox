@@ -1,7 +1,6 @@
 @use '../../utils' as *;
 .chat__area {
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
   background-color: var(--tp-common-gray-light);
   max-width: 1200px;
   display: block;

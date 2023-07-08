@@ -1,8 +1,11 @@
 @use '../../../utils' as *;
 .input-message {
+  width: 100%;
   background-color: var(--tp-common-white);
   height: 5rem;
   padding: 1rem;
   border-radius: 2rem 2rem 0rem 0rem;
   box-shadow: 0px 24px 60px #00000012;
+  position: sticky;
+  bottom: 0;
 }
