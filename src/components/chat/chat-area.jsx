@@ -7,8 +7,10 @@ export const ChatArea = () => {
   return (
     <div className='chat__area'>
       <HeaderUserTattoo />
-      <BurbleChats />
-      <InputSendMessage />
+      <div className='chat-content'>
+        <BurbleChats />
+        <InputSendMessage />
+      </div>
     </div>
   );
 };

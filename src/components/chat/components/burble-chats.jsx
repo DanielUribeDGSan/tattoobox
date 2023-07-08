@@ -87,14 +87,12 @@ export const BurbleChats = () => {
     }
   }
 
-  console.log(messages);
-
-  if (messages.length < 0) {
+  if (messages.length < 0 || high === 0) {
     return <p>Cargando..</p>;
   }
 
   return (
-    <div className='burble-chats' style={{ height: `'calc(${high} - 11rem)'` }}>
+    <div className='burble-chats'>
       {messages.map(({ sender, message, timestamp }, index) => {
         const fecha = new Date(timestamp?.seconds * 1000); // Convertir el timestamp a objeto de fecha
         const fechaFormateada = fecha.toLocaleDateString('es-MX', {

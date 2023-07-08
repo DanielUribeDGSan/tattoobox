@@ -1,8 +1,14 @@
 @use '../../../utils' as *;
+.chat-content {
+  height: calc(
+    100vh - 6rem
+  ); /* Resta la altura del HeaderUserTattoo y el InputSendMessage */
+  overflow-y: auto;
+}
 .burble-chats {
   padding: 2rem;
-  overflow: auto;
-  height: calc(100vh - 11rem);
+  // overflow: auto;
+  // height: calc(100vh - 11rem);
   & .chat-advisor {
     display: flex;
     align-items: flex-start;
