@@ -3,6 +3,7 @@
 .burble-chats {
   padding: 2rem;
   overflow: auto;
+  min-height: 50vh;
   height: auto;
 
   & .chat-advisor {

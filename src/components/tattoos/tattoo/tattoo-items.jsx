@@ -24,6 +24,7 @@ const TattoItems = () => {
   const [isClearable, setIsClearable] = useState(true);
   const [page, setPage] = useState(1);
   const [showPage, setShowPage] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const movilIpadaScreen = useMediaQuery('(max-width:1000px)');
 
@@ -52,7 +53,6 @@ const TattoItems = () => {
   });
 
   useEffect(() => {
-    console.log(idContentRoute);
     if (idContentRoute && idContentRoute !== 'all') {
       setOpenModal(true);
     }
@@ -149,6 +149,8 @@ const TattoItems = () => {
                   openModal={openModal}
                   idContentRoute={idContentRoute}
                   setOpenModal={setOpenModal}
+                  showModal={showModal}
+                  setShowModal={setShowModal}
                 />
               </>
             )}

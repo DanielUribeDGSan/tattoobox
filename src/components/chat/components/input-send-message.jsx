@@ -15,11 +15,12 @@ import {
   serverTimestamp,
 } from 'firebase/firestore';
 import { db } from '../../../firebase/firebase';
+import Swal from 'sweetalert2';
 
-async function enviarMensaje(sender, message) {
-  const colSala = collection(db, 'col-sala');
-  const docTattoo = doc(colSala, 'tattoobox');
-  const colChat = collection(docTattoo, 'col-chat');
+async function enviarMensaje(sender, message, colUserChat) {
+  const colSala = collection(db, 'tattoobox');
+  const docTattoo = doc(colSala, 'chats');
+  const colChat = collection(docTattoo, colUserChat);
 
   const nuevoMensaje = {
     sender: sender,
@@ -45,16 +46,43 @@ const theme = createTheme({
     },
   },
 });
-export const InputSendMessage = () => {
+export const InputSendMessage = ({ colParam, user }) => {
   const [state, setState] = useState('');
+  // const colUserChat = user?.email.substr(0, 10) + '__' + colParam;
+  const sender = colParam.match(user?.email) ? 'advisor' : 'user';
 
   const handleOnChange = (event) => {
     setState(event.target.value);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.keyCode === 13) {
+      event.preventDefault(); // Prevenir el envío automático del formulario
+      handleClick(); // Llamar a la función handleClick
+    }
+  };
+
   const handleClick = async () => {
+    if (!state) {
+      Swal.fire({
+        title: 'Mensaje vacío',
+        text: 'Debes ingresar un mensaje',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#000',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+      });
+      return false;
+    }
+
     setState('');
-    await enviarMensaje('user', state);
+    await enviarMensaje(sender, state, colParam);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevenir el envío automático del formulario
+    handleClick(); // Llamar a la función handleClick
   };
 
   return (
@@ -62,6 +90,7 @@ export const InputSendMessage = () => {
       <ThemeProvider theme={theme}>
         <Paper
           component='form'
+          onSubmit={handleSubmit} // Agregar el controlador de eventos para onSubmit
           sx={{
             p: '2px 4px',
             display: 'flex',
@@ -75,6 +104,7 @@ export const InputSendMessage = () => {
           <InputBase
             value={state}
             onChange={handleOnChange}
+            onKeyDown={handleKeyDown}
             sx={{
               ml: 1,
               flex: 1,
@@ -87,7 +117,7 @@ export const InputSendMessage = () => {
             <ImageIcon />
           </IconButton>
           <IconButton
-            onClick={handleClick}
+            type='submit' // Cambiar el tipo de botón a "submit"
             color='primary'
             sx={{ p: '10px' }}
             aria-label='send message'

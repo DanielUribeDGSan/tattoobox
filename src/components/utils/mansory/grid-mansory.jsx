@@ -12,6 +12,8 @@ export const GridMansory = ({
   user = {},
   openModal,
   idContentRoute = '',
+  showModal,
+  setShowModal,
 }) => {
   const router = useRouter();
   const btnModal = useRef(null);
@@ -33,18 +35,19 @@ export const GridMansory = ({
   const handleSowTatuaje = (idContent) => {
     setIdContent(idContent);
     setidContentStatic(idContent);
-    console.log(router.pathname);
+
     if (router.pathname === '/tatuajes/[id]' || router.pathname === '/tatuajes')
       updateParameter(idContent);
     btnModal.current.click();
   };
 
   useEffect(() => {
-    if (idContentRoute && openModal) {
+    if (idContentRoute && openModal && !showModal) {
+      setShowModal(true);
       handleSowTatuaje(idContentRoute);
     }
     return () => {};
-  }, [openModal]);
+  }, [showModal]);
 
   return (
     <>

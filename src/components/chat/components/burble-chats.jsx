@@ -38,12 +38,13 @@ async function validarMensajeVisto(messageId) {
   }
 }
 
-export const BurbleChats = () => {
+export const BurbleChats = ({ colParam, user }) => {
   const [messages, setMessages] = useState([]);
   const [high, setHigh] = useState(0);
+  // const colUserChat = user?.email.substr(0, 10) + '__' + colParam;
 
   useEffect(() => {
-    cargarMensajes();
+    cargarMensajes(colParam);
   }, []);
 
   useEffect(() => {
@@ -61,10 +62,10 @@ export const BurbleChats = () => {
     }
   }, []);
 
-  async function cargarMensajes() {
-    const colSala = collection(db, 'col-sala');
-    const docTattoo = doc(colSala, 'tattoobox');
-    const colChat = collection(docTattoo, 'col-chat');
+  async function cargarMensajes(colUserChat) {
+    const colSala = collection(db, 'tattoobox');
+    const docTattoo = doc(colSala, 'chats');
+    const colChat = collection(docTattoo, colUserChat);
 
     try {
       const unsubscribe = onSnapshot(
